@@ -1,0 +1,83 @@
+slug: bewertung-substanzwert
+category: bewertungsmethoden
+subcategory: substanzwertmethode
+title_de: "Substanzwertmethode"
+title_en: "Net Asset Value Method"
+summary_de: "Bewertet das Unternehmen anhand des Zeitwerts aller Aktiva abzüglich Verbindlichkeiten. Primärmethode bei jungen Unternehmen und Asset Deals."
+summary_en: "Values the business at fair market value of all assets minus liabilities. Primary method for young companies and asset deals."
+source_url: ""
+source_law_paragraph: ""
+applies_to_rechtsformen: []
+tags:
+  - bewertung
+  - substanzwert
+  - assets
+  - methode
+last_verified: "2025-01-01"
+
+content_de: |
+  ## Substanzwertmethode
+
+  ### Formel
+  ```
+  Substanzwert = Σ Aktiva (Zeitwert) − Σ Verbindlichkeiten − latente Verbindlichkeiten
+  ```
+
+  ### Anwendung
+  Die Substanzwertmethode ist besonders geeignet für:
+  - Unternehmen mit weniger als 2 Jahren Geschichte
+  - Unternehmen mit negativem oder sehr geringem EBITDA
+  - Asset Deals, bei denen konkrete Vermögensgegenstände übernommen werden
+
+  ### Bewertung der einzelnen Assets
+  | Asset | Ansatz |
+  |-------|--------|
+  | Lagerbestand | Zeitwert (Wiederbeschaffungskosten abzgl. Alterswertminderung); bei Verbrauchsgütern: MHD beachten! |
+  | Forderungen | 80–95% des Nennwertes (Ausfallrisiko) |
+  | Fahrzeuge | Marktwert (z.B. mobile.de Vergleich) |
+  | Maschinen | Zeitwert (Anschaffung abzgl. AfA oder Gutachten) |
+  | Immobilien (Eigenbesitz) | Verkehrswert (Gutachter) |
+  | Domains | Eigene Bewertungsformel (Alter, Traffic, DA, Niche) |
+  | Marken (eingetragen) | Kosten-Ansatz oder Lizenz-Analogie |
+  | Kundenstamm | CLV × Anzahl × Wiederkaufrate × Diskontfaktor |
+  | Social-Media-Kanäle | Follower × Branchenbenchmark (0,01–0,10 €/Follower) |
+  | Goodwill | Nur ansetzbar wenn dokumentierbar |
+
+  ### Vorteile
+  - Nachvollziehbar und objektiv prüfbar
+  - Schützt Käufer vor Überbezahlung
+  - Besonders relevant bei asset-intensiven Unternehmen
+
+  ### Nachteile
+  - Berücksichtigt nicht das Ertragspotenzial
+  - Kann zukünftiges Wachstum unterschätzen
+  - In der Praxis oft zu konservativ bei ertragsstarken Unternehmen
+
+  ### Praxistipp
+  Den Substanzwert immer als **Untergrenze** des Kaufpreises interpretieren. Er zeigt: "Was bekommt der Käufer mindestens an Sachwerten?" — nicht mehr, nicht weniger.
+
+content_en: |
+  ## Net Asset Value (NAV) Method
+
+  ### Formula
+  ```
+  NAV = Σ Assets (fair value) − Σ Liabilities − contingent liabilities
+  ```
+
+  ### When to use
+  - Young companies (< 2 years) lacking profit history
+  - Negative or minimal EBITDA
+  - Asset deals where individual assets are being transferred
+
+  ### Asset valuation guidance
+  | Asset | Basis |
+  |-------|-------|
+  | Inventory | Replacement cost less deterioration; check expiry dates for consumables! |
+  | Receivables | 80–95% of face value |
+  | Vehicles | Market comparables |
+  | Machinery | Depreciated replacement value |
+  | Real estate (owned) | Independent valuation |
+  | Customer base | CLV × count × repeat purchase rate × discount factor |
+
+  ### Key takeaway
+  The NAV represents the **floor price** of any acquisition — the tangible value the buyer receives regardless of future performance.

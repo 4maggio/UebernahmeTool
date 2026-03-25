@@ -1,0 +1,111 @@
+slug: deal_struktur/share_deal
+category: deal_struktur
+title:
+  de: "Share Deal — Unternehmenskauf durch Anteilserwerb"
+  en: "Share Deal — Acquisition by Equity Purchase"
+summary:
+  de: "Beim Share Deal kauft der Erwerber die Gesellschaftsanteile (GmbH-Anteile, Aktien) und übernimmt damit alle Rechte und Pflichten der Gesellschaft."
+  en: "In a share deal, the acquirer purchases equity stakes and assumes all of the company's rights and obligations."
+content:
+  de: |
+    ## Share Deal — Kauf durch Anteilserwerb
+
+    ### Definition
+    Der Käufer erwirbt **Gesellschaftsanteile** am Zielunternehmen (bei GmbH: Geschäftsanteile nach § 15 GmbHG;
+    bei AG: Aktien nach §§ 68 ff. AktG). Der Rechtsträger — die Gesellschaft selbst — bleibt unverändert bestehen.
+    Es gibt keine Einzelrechtsübertragung; das gesamte Unternehmen geht mit allen Rechten, Verbindlichkeiten
+    und Verträgen auf den neuen Gesellschafter über.
+
+    ### § 613a BGB — Betriebsübergang
+    ⚠️ **Beim Share Deal gilt § 613a BGB NICHT!**
+    Da der Arbeitgeber (die GmbH) derselbe bleibt, liegt kein Betriebsübergang vor.
+    Arbeitnehmer müssen daher nicht informiert werden und haben kein Widerspruchsrecht.
+    *Dies ist ein entscheidender Vorteil gegenüber dem Asset Deal, insb. bei Unternehmen mit vielen Mitarbeitern.*
+
+    ### Steuerliche Behandlung
+
+    #### Beim Verkäufer (natürliche Person, Privatvermögen)
+    - GmbH-Anteile ≥ 1 % innerhalb letzter 5 Jahre: § 17 EStG
+    - Teileinkünfteverfahren: **60 % des Gewinns** steuerpflichtig (§ 3 Nr. 40 lit. c EStG)
+    - Bei Spitzensteuersatz 45 % + SolZ: eff. Steuerlast ≈ **27,8 %** auf den Gewinn
+    - Verlustverrechnung nur mit anderen § 17 EStG-Verlusten möglich
+
+    #### Beim Verkäufer (Körperschaft als Gesellschafter)
+    - **95 % des Veräußerungsgewinns steuerfrei** (§ 8b Abs. 2 KStG)
+    - 5 % gelten als fiktive nicht abziehbare Betriebsausgaben
+    - Effektive KSt-Last: ca. 1,5 % (auf volle Körperschaftsteuerbelastung von ~30 %)
+
+    #### Beim Käufer
+    - **Kein Asset Step-up möglich** — der Kaufpreis als solcher ist nicht abschreibbar
+    - Lediglich etwaige Zusatzabschreibungen auf übernommene Wirtschaftsgüter in Buchwerten möglich
+    - Möglichkeit einer Holding-Struktur prüfen (Anteilserwerb durch neu gegründete Holding-GmbH)
+
+    ### Haftungsrisiken
+
+    | Risiko | Details |
+    |---|---|
+    | Altverbindlichkeiten | Käufer haftet für ALLE bisherigen Schulden der Gesellschaft |
+    | Steuernachzahlungen | Rückwirkende Betriebsprüfungen (typisch: 3–10 Jahre) |
+    | Pensionsrückstellungen | Oft bilanzell unterdeckt |
+    | Umweltlasten | Bodenkontaminationen, Altlasten |
+    | IP-Verletzungen | Ältere Schutzrechtsverletzungen |
+    | Arbeitnehmerrisiken | Ausstehende Gehaltsansprüche, laufende Klagen |
+    | Change of Control | Kündigung von Schlüsselverträgen bei Eigentümerwechsel |
+
+    ### W&I-Versicherung (Warranties & Indemnities)
+    Bei größeren Share Deals ab ca. 5 Mio. € Kaufpreis wird häufig eine
+    W&I-Versicherung eingesetzt, die Garantieverletzungen des Verkäufers versichert.
+    Vorteil: Verkäufer kann sich "clean exit" sichern; Käufer hat Versicherungsdeckung.
+
+    ### Typischer Ablauf
+    1. **LOI** (Letter of Intent) — Vertraulichkeit, Exklusivität, Preisindikation
+    2. **Due Diligence** — Legal, Financial, Tax, Commercial, HR, IT
+    3. **SPA** (Share Purchase Agreement) — Kaufvertrag, Garantien, Freistellungen
+    4. **Notarielle Beurkundung** (bei GmbH zwingend, § 15 Abs. 3 GmbHG)
+    5. **Closing** — Kaufpreiszahlung, Übergabe Gesellschafterliste
+    6. **Post-Closing** — Integration, HR-Kommunikation, Systemmigration
+
+    ### Share Deal vs. Asset Deal — Entscheidungsmatrix
+
+    | Kriterium | Share Deal | Asset Deal |
+    |---|---|---|
+    | § 613a BGB | ✅ Kein Betriebsübergang | ⚠️ Gilt mit Widerspruchsrecht |
+    | Steuer Verkäufer | Günstiger (Teileinkünfte) | Ungünstiger (voll steuerbar) |
+    | Steuer Käufer | Kein Step-up | Step-up möglich |
+    | Haftung Käufer | Alle Verbindlichkeiten | Nur übernommene |
+    | Transaktionskosten | Geringer (keine Grunderwerbsteuer) | Höher (GrESt bei Immobilien) |
+    | Vertragsübertragung | Automatisch (Change of Control?) | Einzelübertragung nötig |
+    | Due Diligence | Umfangreicher | Selektiver |
+    | Notarerfordernis GmbH | ✅ Jetzt | Nur bei Immobilien |
+
+    ### Empfehlung für GbR-Übernahme
+    Bei GbR ist kein Share Deal möglich — GbR-Anteile können zwar abgetreten werden (§ 719 BGB),
+    aber dies erfordert in der Regel die Zustimmung aller Gesellschafter und führt faktisch
+    zu einem Asset-Deal-ähnlichen Ergebnis. Bei GbR immer Asset Deal oder vorherige Umwandlung
+    in GmbH/OHG prüfen.
+
+  en: |
+    ## Share Deal — Acquisition by Equity Purchase
+
+    ### Definition
+    The buyer acquires **equity stakes** in the target company (GmbH shares per § 15 GmbHG; AG shares per §§ 68 ff. AktG).
+    The legal entity remains unchanged — all rights, liabilities, and contracts transfer automatically.
+
+    ### § 613a BGB — Business Transfer
+    ⚠️ **§ 613a BGB does NOT apply to share deals!**
+    Since the employer (the GmbH) remains the same legal entity, no transfer of undertaking occurs.
+    Employees need not be notified and have no right to object.
+
+    ### Tax Treatment
+    - **Seller (private individual):** 60% of gain taxable (partial-income method), eff. rate ≈ 27.8%
+    - **Seller (corporate shareholder):** 95% of gain tax-exempt (§ 8b para. 2 KStG), eff. ≈ 1.5%
+    - **Buyer:** No asset step-up — purchase price not depreciable
+
+    ### Key risks
+    Buyer assumes ALL historical liabilities: tax audits, pensions, environmental liabilities, IP risks, key contract termination (change of control clauses).
+
+tags: [share-deal, anteilskauf, §15-gmbhg, §17-estg, §8b-kstg, m&a, haftung]
+source_type: manual
+source_url: "https://www.gesetze-im-internet.de/gmbhg/__15.html"
+source_law_paragraph: "§ 15 GmbHG, § 17 EStG, § 8b KStG, § 613a BGB"
+is_active: true

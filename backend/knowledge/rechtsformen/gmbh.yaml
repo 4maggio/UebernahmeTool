@@ -1,0 +1,104 @@
+slug: rechtsformen/gmbh
+category: rechtsformen
+title:
+  de: "GmbH — Gesellschaft mit beschränkter Haftung"
+  en: "GmbH — Limited Liability Company (Germany)"
+summary:
+  de: "Die GmbH ist die häufigste Kapitalgesellschaftsform in Deutschland. Bei einer Übernahme ist der Share Deal (Anteilskauf) die typische Transaktionstruktur."
+  en: "The GmbH is Germany's most common corporate entity. In acquisitions, share deals (buying equity stakes) are the typical transaction structure."
+content:
+  de: |
+    ## GmbH — Gesellschaft mit beschränkter Haftung
+
+    ### Grundlagen (§§ 1–84 GmbHG)
+    - **Mindestkapital:** 25.000 € Stammkapital (§ 5 GmbHG), davon mindestens 12.500 € bei Gründung einzuzahlen
+    - **Haftung:** auf Gesellschaftsvermögen beschränkt (§ 13 Abs. 2 GmbHG)
+    - **Geschäftsführung:** ein oder mehrere (nicht zwingend Gesellschafter) Geschäftsführer (§ 6 GmbHG)
+    - **Gesellschafterversammlung:** höchstes Organ, Beschlüsse mit einfacher oder 3/4-Mehrheit
+    - **Handelsregister:** Eintragung konstitutiv
+
+    ### GmbH-Kauf: Share Deal vs. Asset Deal
+    Bei einer GmbH-Übernahme stehen zwei Grundstrukturen zur Wahl:
+
+    | Kriterium | Share Deal | Asset Deal |
+    |---|---|---|
+    | Kaufgegenstand | GmbH-Anteile (§ 15 GmbHG) | Einzelne Wirtschaftsgüter |
+    | Vertragsform | Notariell beglaubigt (§ 15 Abs. 3 GmbHG) | Schriftlich (ggf. Grundbuch) |
+    | Haftung Käufer | Übernimmt alle Verbindlichkeiten | Nur explizit übernommene |
+    | § 613a BGB | Gilt NICHT (Identität des Rechtsträgers bleibt) | Gilt, Arbeitnehmer gehen über |
+    | Steuer Verkäufer | § 17 EStG oder Teileinkünfteverfahren | Vollständig steuerbar |
+    | Steuer Käufer | Keine Step-up-Abschreibung | Step-up auf Verkehrswert möglich |
+    | Due Diligence | Sehr umfangreich (all liabilities) | Selektiver möglich |
+
+    ### Anteilskauf (§ 15 GmbHG)
+    - Übertragung von GmbH-Anteilen bedarf notarieller Beurkundung
+    - Alle Rechte und Pflichten des Veräußerers gehen auf den Erwerber über
+    - Zustimmung der Gesellschafterversammlung oft im Gesellschaftsvertrag vorgesehen
+    - Bei > 25 % Beteiligung: kartellrechtliche Anmeldepflicht prüfen (§ 39 GWB)
+
+    ### Steuer beim Anteilsverkauf (§ 17 EStG)
+    Hält der Verkäufer die Anteile im **Privatvermögen** und war er innerhalb der letzten 5 Jahre zu mind. 1 % beteiligt:
+    - Gewinn = Erlös − (Anschaffungskosten + Anschaffungsnebenkosten)
+    - Teileinkünfteverfahren: 60 % des Gewinns steuerpflichtig (§ 3 Nr. 40 lit. c EStG)
+    - Effektiver Steuersatz bei Spitzensatz: ca. 26,4 %
+    - Freibetrag § 17 Abs. 3 EStG: 9.060 € (abschmelzend ab Gewinn 36.100 €)
+
+    Hält der Verkäufer die Anteile im **Betriebsvermögen** (z. B. als GmbH-Holding):
+    - 95 % steuerfrei (§ 8b Abs. 2 KStG), 5 % gelten als nicht abziehbare Betriebsausgaben
+    - Effektive Steuerbelastung: ca. 1,5 %
+
+    ### § 16 / § 34 EStG bei GmbH-Veräußerungen
+    Bei Veräußerung des **gesamten** GmbH-Anteils durch natürliche Personen kann unter Umständen
+    eine Tarifbegünstigung nach § 34 EStG geltend gemacht werden — **aber nur wenn** die Anteile
+    eine wesentliche Betriebsgrundlage darstellen. Dies ist einzelfallabhängig.
+    ⚠️ Steuerberater hinzuziehen!
+
+    ### Wichtige Due Diligence-Punkte bei GmbH-Übernahme
+    - Gesellschafterliste (aktuell im Handelsregister?)
+    - Gesellschaftsvertrag + alle Gesellschafterbeschlüsse der letzten 5 Jahre
+    - Geschäftsführer-Anstellungsverträge
+    - Bestehende Darlehen der Gesellschafter (§ 39 Abs. 1 Nr. 5 InsO — Subordination)
+    - Latente Steuern in der Bilanz
+    - Haftungsverbindlichkeiten (Bürgschaften, laufende Klagen)
+    - Genehmigungen/Lizenzen — gehen diese beim Share Deal automatisch über?
+    - Change-of-Control-Klauseln in Lieferanten- und Kundenverträgen
+
+    ### Typische Vertragspunkte beim GmbH-Kauf
+    - **Kaufpreismechanismus:** Locked Box vs. Closing Accounts
+    - **Representations & Warranties:** Garantien des Verkäufers zu Jahresabschluss, Rechten, Schulden
+    - **Earn-Out-Klauseln:** Teil des Kaufpreises an zukünftige Performance gekoppelt
+    - **Wettbewerbsverbot:** typisch 2 Jahre nach § 74 HGB analog (ggf. angepasst)
+    - **Management-Retention:** Halteprämien für Schlüsselpersonal
+
+  en: |
+    ## GmbH — Limited Liability Company
+
+    ### Basics (§§ 1–84 GmbHG)
+    - **Minimum capital:** €25,000 share capital (§ 5 GmbHG), at least €12,500 paid-in at founding
+    - **Liability:** limited to company assets (§ 13 para. 2 GmbHG)
+    - **Management:** one or more managing directors (Geschäftsführer), not necessarily shareholders
+    - **Shareholder meeting:** supreme governing body
+
+    ### GmbH Acquisition: Share Deal vs. Asset Deal
+    | Criterion | Share Deal | Asset Deal |
+    |---|---|---|
+    | Subject matter | GmbH shares (§ 15 GmbHG) | Individual assets |
+    | Form | Notarial certification required | Written form |
+    | Buyer liability | Assumes all liabilities | Only explicitly assumed liabilities |
+    | § 613a BGB | Does NOT apply (same legal entity) | Applies — employees transfer automatically |
+    | Seller tax | § 17 EStG / partial-income method | Fully taxable |
+    | Buyer tax | No step-up depreciation | Step-up to fair value possible |
+
+    ### Key Due Diligence Points
+    - Shareholder list (current in commercial register?)
+    - Articles of association + all shareholder resolutions (last 5 years)
+    - Managing director service agreements
+    - Shareholder loans (subordination risk under insolvency law)
+    - Deferred tax liabilities
+    - Change-of-control clauses in key contracts
+
+tags: [gmbh, kapitalgesellschaft, share-deal, anteilskauf, §15-gmbhg, §17-estg]
+source_type: manual
+source_url: "https://www.gesetze-im-internet.de/gmbhg/"
+source_law_paragraph: "§§ 1-84 GmbHG, § 15 GmbHG, § 17 EStG, § 8b KStG"
+is_active: true

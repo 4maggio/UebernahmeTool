@@ -1,0 +1,105 @@
+slug: steuer-par16-estg
+category: steuer
+subcategory: veraeusserungsgewinn
+title_de: "§ 16 EStG — Veräußerungsgewinn beim Unternehmensverkauf"
+title_en: "§ 16 EStG — Disposal Gain on Business Sales"
+summary_de: "Gewinne aus der Veräußerung eines Betriebs oder Gesellschaftsanteils gehören zu Einkünften aus Gewerbebetrieb. Freibetrag 45.000 € (ab 55 J.), Tarifbegünstigung § 34."
+summary_en: "Gains from selling a business or partnership interest are classified as business income. € 45,000 tax-free allowance for sellers aged 55+; reduced rate via § 34."
+source_url: "https://www.gesetze-im-internet.de/estg/__16.html"
+source_law_paragraph: "§ 16 EStG"
+applies_to_rechtsformen:
+  - GbR
+  - KG
+  - OHG
+  - eK
+  - Einzelunternehmen
+tags:
+  - steuer
+  - veraeusserungsgewinn
+  - estg
+  - freibetrag
+  - personengesellschaft
+last_verified: "2025-01-01"
+
+content_de: |
+  ## § 16 EStG — Veräußerung des Betriebs
+
+  ### Tatbestand
+  § 16 EStG erfasst Gewinne aus der Veräußerung:
+  1. Des ganzen Gewerbebetriebs (Asset Deal bei Einzelunternehmen/GbR)
+  2. Eines Gesellschaftsanteils (Mitunternehmeranteil bei GbR/KG)
+  3. Eines Teilbetriebs
+
+  ### Berechnung des Veräußerungsgewinns
+  ```
+  Veräußerungspreis
+  - Veräußerungskosten (Notar, RA, StB)
+  - Buchwert des Betriebsvermögens (zum Veräußerungszeitpunkt)
+  = Veräußerungsgewinn
+  ```
+  Der Buchwert ergibt sich aus der letzten Bilanz / EÜR zum Zeitpunkt der Veräußerung. Bei GbR: Kapitalkonto des einzelnen Gesellschafters.
+
+  ### Freibetrag § 16 Abs. 4 EStG
+  **Voraussetzungen:**
+  - Veräußerer ist natürliche Person (nicht Körperschaft)
+  - Hat das 55. Lebensjahr vollendet **oder** ist im sozialversicherungsrechtlichen Sinne dauerhaft berufsunfähig
+  - Freibetrag wurde noch **nicht** in Anspruch genommen (nur einmal im Leben!)
+
+  **Berechnung:**
+  ```
+  Freibetrag = 45.000 €
+  Abzüglich: Betrag, um den Veräußerungsgewinn 136.000 € übersteigt
+  Minimum: 0 €
+  ```
+  Beispiel: VG = 160.000 € → Freibetrag = 45.000 − (160.000 − 136.000) = 21.000 €
+  Beispiel: VG = 181.000 € → Freibetrag = 0 € (vollständig aufgebraucht)
+
+  ### Tarifbegünstigung § 34 EStG
+  Auf den nach Abzug des Freibetrags verbleibenden Veräußerungsgewinn kann auf Antrag die **Fünftelregelung** (§ 34 Abs. 1) oder der **halbe Durchschnittssteuersatz** (§ 34 Abs. 3) angewendet werden.
+
+  **§ 34 Abs. 3 EStG (günstiger):**
+  - Nur nutzbar wenn Freibetrag gem. § 16 Abs. 4 zusteht (= Voraussetzungen erfüllt)
+  - Nur **einmal im Leben** nutzbar
+  - Steuersatz = 56% des sonst anzuwendenden Durchschnittssteuersatzes
+  - Minimum: 14%
+
+  ### Gewerbesteuer
+  Veräußerungsgewinne natürlicher Personen bei Betriebsveräußerung sind **gewerbesteuerfrei** (§ 7 Abs. 2 GewStG), wenn der Erwerber das Unternehmen fortführt oder die GbR aufgelöst wird.
+
+  ### Hinweis für GbR-Verkäufer
+  Bei der GbR ist jeder Gesellschafter getrennt steuerpflichtig. Beide/alle Gesellschafter müssen:
+  - Ihren jeweiligen Veräußerungsgewinn ermitteln (anteilig am Kaufpreis)
+  - Eigenständig die Freibetragsvoraussetzungen (§ 16 Abs. 4) prüfen
+  - In ihrer Einkommensteuererklärung (Anlage G + Anlage 34) deklarieren
+
+  ### Praxis-Hinweis
+  Die Abgrenzung zwischen laufendem Gewinn und Veräußerungsgewinn ist komplex (keine GewSt, Teil-Abschreibung, stille Reserven). **Steuerberater unbedingt vor Vertragsabschluss einschalten!**
+
+content_en: |
+  ## § 16 EStG — Business Disposal Gains
+
+  ### Scope
+  § 16 EStG captures gains from:
+  1. Disposal of an entire business (asset deal for sole traders / GbR)
+  2. Transfer of a partnership interest (GbR/KG)
+  3. Disposal of a sub-business unit
+
+  ### Gain calculation
+  ```
+  Disposal proceeds
+  − Transaction costs (notary, lawyer, tax advisor)
+  − Tax book value of business assets at disposal date
+  = Disposal gain
+  ```
+
+  ### Tax-free allowance (§ 16(4) EStG)
+  Available if: seller is a natural person AND aged 55+ or permanently disabled under social security law AND has not previously claimed this allowance.
+  Amount: € 45,000, tapering to zero once the gain exceeds € 181,000.
+
+  ### Reduced tax rate (§ 34 EStG)
+  - § 34(1): One-fifth rule (spread income over 5 years notionally)
+  - § 34(3): Half average tax rate — only available once per lifetime if § 16(4) conditions are met
+  - Minimum effective rate: 14%
+
+  ### Trade tax
+  Disposal gains for natural persons are generally exempt from trade tax (§ 7(2) GewStG).

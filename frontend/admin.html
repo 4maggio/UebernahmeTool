@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — Unternehmensübernahme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Embedded minimal styles for admin panel */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --c-brand: #1a56db; --c-brand-light: #e8f0fd;
+      --c-success: #057a55; --c-success-bg: #def7ec;
+      --c-danger: #c81e1e; --c-danger-bg: #fde8e8;
+      --c-warning: #9f580a; --c-warning-bg: #fdf3d0;
+      --c-text: #111827; --c-text-muted: #6b7280;
+      --c-border: #d1d5db; --c-bg: #f9fafb; --c-bg-card: #fff;
+      --c-header: #111827;
+      --font: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font); color: var(--c-text); background: var(--c-bg); min-height: 100vh; }
+    header {
+      background: var(--c-header); color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; font-size: 1.1rem; font-weight: 700; }
+    .brand-badge { background: #dc2626; color: #fff; font-size: .7rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; letter-spacing: .06em; text-transform: uppercase; }
+    .logout-btn { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.2); padding: .4rem .9rem; border-radius: 6px; font-size: .85rem; cursor: pointer; transition: background .15s; }
+    .logout-btn:hover { background: rgba(255,255,255,.25); }
+    #login-screen {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: calc(100vh - 60px); gap: 1.5rem; padding: 2rem;
+    }
+    .login-card {
+      background: var(--c-bg-card); border: 1px solid var(--c-border);
+      border-radius: 12px; padding: 2.5rem; width: 100%; max-width: 420px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+    .login-card h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1rem; }
+    label { font-size: .875rem; font-weight: 600; }
+    input[type="email"], input[type="password"], input[type="text"],
+    select, textarea {
+      padding: .6rem .9rem; border: 1.5px solid var(--c-border); border-radius: 8px;
+      font: inherit; font-size: .875rem; transition: border-color .15s;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--c-brand); box-shadow: 0 0 0 3px rgba(26,86,219,.1); }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1.2rem; border: none; border-radius: 8px; font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .btn-primary { background: var(--c-brand); color: #fff; }
+    .btn-primary:hover { background: #1342a8; }
+    .btn-success { background: var(--c-success); color: #fff; }
+    .btn-danger  { background: var(--c-danger); color: #fff; }
+    .btn-secondary { background: var(--c-bg-card); color: var(--c-text); border: 1.5px solid var(--c-border); }
+    .btn-sm { padding: .3rem .7rem; font-size: .8rem; }
+    #admin-screen { display: none; }
+    .admin-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 60px); }
+    .admin-sidebar { background: var(--c-bg-card); border-right: 1px solid var(--c-border); padding: 1.5rem 1rem; }
+    .admin-sidebar h3 { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c-text-muted); font-weight: 700; margin-bottom: 1rem; padding: 0 .5rem; }
+    .nav-btn {
+      display: flex; align-items: center; gap: .6rem;
+      width: 100%; text-align: left; padding: .6rem .8rem;
+      border: none; background: transparent; cursor: pointer;
+      border-radius: 6px; font: inherit; font-size: .875rem;
+      color: var(--c-text); transition: background .15s;
+      margin-bottom: 2px;
+    }
+    .nav-btn:hover, .nav-btn.active { background: var(--c-brand-light); color: var(--c-brand); }
+    .nav-btn .badge {
+      margin-left: auto; background: var(--c-danger); color: #fff;
+      font-size: .65rem; font-weight: 700; padding: 1px 5px; border-radius: 3px;
+    }
+    .admin-main { padding: 2rem; overflow: auto; }
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .section-header h2 { font-size: 1.4rem; font-weight: 700; }
+    .alert { padding: .75rem 1rem; border-radius: 8px; font-size: .875rem; margin-bottom: 1rem; border-left: 4px solid transparent; }
+    .alert-success { background: var(--c-success-bg); color: var(--c-success); border-color: var(--c-success); }
+    .alert-danger  { background: var(--c-danger-bg);  color: var(--c-danger); border-color: var(--c-danger); }
+    .alert-warning { background: var(--c-warning-bg); color: var(--c-warning); border-color: #f59e0b; }
+    .alert-info    { background: var(--c-brand-light); color: var(--c-brand); border-color: var(--c-brand); }
+    table { border-collapse: collapse; width: 100%; background: var(--c-bg-card); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    th, td { padding: .65rem .9rem; text-align: left; border-bottom: 1px solid var(--c-border); font-size: .875rem; }
+    th { background: var(--c-bg); font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--c-text-muted); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--c-bg); }
+    .badge-cat { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; background: #e0e7ff; color: #3730a3; }
+    .badge-source-scraped { background: #d1fae5; color: #065f46; }
+    .badge-source-manual  { background: #e0e7ff; color: #3730a3; }
+    .badge-source-ai      { background: #fce7f3; color: #9d174d; }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--c-bg-card); border-radius: 12px; padding: 2rem; max-width: 700px; width: 95%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,.2); }
+    .modal h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1.5rem; border-top: 1px solid var(--c-border); padding-top: 1.5rem; }
+    textarea { width: 100%; resize: vertical; min-height: 120px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--c-bg-card); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    .stat-card .stat-val { font-size: 2rem; font-weight: 800; font-family: var(--font-mono); color: var(--c-brand); }
+    .stat-card .stat-label { font-size: .8rem; color: var(--c-text-muted); margin-top: .25rem; }
+    .log-entry { font-family: var(--font-mono); font-size: .8rem; padding: .5rem .75rem; border-radius: 4px; margin-bottom: .25rem; background: var(--c-bg); }
+    .log-success { border-left: 3px solid var(--c-success); }
+    .log-error   { border-left: 3px solid var(--c-danger); }
+    .log-info    { border-left: 3px solid var(--c-brand); }
+    .pending-card { background: var(--c-bg-card); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+    .pending-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+    .pending-card .meta { font-size: .8rem; color: var(--c-text-muted); margin-bottom: 1rem; }
+    .pending-card .diff { font-family: var(--font-mono); font-size: .8rem; background: var(--c-bg); border-radius: 6px; padding: 1rem; max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
+    .pending-actions { display: flex; gap: .5rem; margin-top: 1rem; }
+    [hidden] { display: none !important; }
+    .spinner-sm { width: 18px; height: 18px; border: 2px solid var(--c-border); border-top-color: var(--c-brand); border-radius: 50%; animation: spin .7s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pagination { display: flex; align-items: center; gap: .5rem; margin-top: 1rem; }
+    .pagination button { padding: .3rem .6rem; border: 1px solid var(--c-border); border-radius: 4px; background:var(--c-bg-card); cursor: pointer; font-size: .8rem; }
+    .pagination button:disabled { opacity: .4; cursor: default; }
+    .pagination .page-info { font-size: .8rem; color: var(--c-text-muted); }
+    select option { font: inherit; }
+    @media (max-width: 768px) { .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- ── Login Screen ────────────────────────────────────────── -->
+<header>
+  <div class="brand">
+    <span>Unternehmensübernahme</span>
+    <span class="brand-badge">ADMIN</span>
+  </div>
+  <button class="logout-btn" id="logout-btn" hidden onclick="AdminApp.logout()">Abmelden</button>
+</header>
+
+<div id="login-screen">
+  <div class="login-card">
+    <h2>Admin Login</h2>
+    <div id="login-error" class="alert alert-danger" hidden></div>
+    <form id="login-form" onsubmit="AdminApp.login(event)">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" required autocomplete="username" placeholder="admin@example.com">
+      </div>
+      <div class="form-group">
+        <label for="password">Passwort</label>
+        <input type="password" id="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:.5rem">
+        <span id="login-label">Anmelden</span>
+        <span id="login-spinner" class="spinner-sm" hidden></span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Admin Dashboard ─────────────────────────────────────── -->
+<div id="admin-screen" hidden>
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <nav class="admin-sidebar">
+      <h3>Navigation</h3>
+      <button class="nav-btn active" onclick="AdminApp.showSection('dashboard')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-btn" onclick="AdminApp.showSection('knowledge')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Wissensbasis
+      </button>
+      <button class="nav-btn" id="nav-pending" onclick="AdminApp.showSection('pending')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></svg>
+        Ausstehend
+        <span class="badge" id="pending-badge" hidden>0</span>
+      </button>
+      <button class="nav-btn" onclick="AdminApp.showSection('scraper')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.05"/></svg>
+        Scraper
+      </button>
+      <button class="nav-btn" onclick="AdminApp.showSection('logs')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Logs
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <div id="flash-msg" hidden></div>
+
+      <!-- Dashboard -->
+      <section id="section-dashboard" class="admin-section active">
+        <div class="section-header"><h2>Dashboard</h2></div>
+        <div class="stats-grid" id="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-kb">—</div><div class="stat-label">KB-Einträge aktiv</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-pending">—</div><div class="stat-label">Ausstehend</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-scraped">—</div><div class="stat-label">Zuletzt gescrapt</div></div>
+        </div>
+        <div class="alert alert-info">
+          <strong>Willkommen im Admin-Bereich.</strong> Hier verwaltest du die Wissensbasis, genehmigst KI-generierte Updates und steuerst den Scraper.
+        </div>
+        <div style="margin-top:1.5rem">
+          <h3 style="font-size:.9rem; margin-bottom:.75rem; color:var(--c-text-muted); text-transform:uppercase; letter-spacing:.06em; font-weight:700">Schnellzugriff</h3>
+          <div style="display:flex; gap:.75rem; flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="AdminApp.showSection('knowledge'); AdminApp.openCreateModal()">+ Neuer KB-Eintrag</button>
+            <button class="btn btn-secondary" onclick="AdminApp.showSection('pending')">Ausstehende prüfen</button>
+            <button class="btn btn-secondary" onclick="AdminApp.triggerScraper()">Scraper jetzt starten</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Knowledge Base Management -->
+      <section id="section-knowledge" class="admin-section">
+        <div class="section-header">
+          <h2>Wissensbasis</h2>
+          <div style="display:flex; gap:.5rem; align-items:center">
+            <select id="kb-filter-cat" onchange="AdminApp.loadKnowledge()" style="font-size:.875rem; padding:.4rem .7rem; border:1.5px solid var(--c-border); border-radius:6px">
+              <option value="">Alle Kategorien</option>
+              <option value="rechtsformen">Rechtsformen</option>
+              <option value="bewertung">Bewertung</option>
+              <option value="deal_struktur">Deal-Struktur</option>
+              <option value="steuer">Steuer</option>
+              <option value="due_diligence">Due Diligence</option>
+              <option value="branchenprofile">Branchenprofile</option>
+              <option value="finanzierung">Finanzierung</option>
+              <option value="recht">Recht</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="AdminApp.openCreateModal()">+ Neu</button>
+          </div>
+        </div>
+        <table id="kb-table">
+          <thead>
+            <tr>
+              <th>Slug</th>
+              <th>Titel (DE)</th>
+              <th>Kategorie</th>
+              <th>Quelle</th>
+              <th>Zuletzt geprüft</th>
+              <th>Aktiv</th>
+              <th>Aktionen</th>
+            </tr>
+          </thead>
+          <tbody id="kb-tbody"><tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--c-text-muted)">Lädt…</td></tr></tbody>
+        </table>
+        <div class="pagination">
+          <button onclick="AdminApp.kbPrevPage()" id="kb-prev-btn" disabled>‹ Zurück</button>
+          <span class="page-info" id="kb-page-info">Seite 1</span>
+          <button onclick="AdminApp.kbNextPage()" id="kb-next-btn">Weiter ›</button>
+        </div>
+      </section>
+
+      <!-- Pending KB Updates -->
+      <section id="section-pending" class="admin-section">
+        <div class="section-header"><h2>Ausstehende Updates</h2></div>
+        <div class="alert alert-warning">
+          KI-generierte und automatisch gescrapte Änderungen warten auf deine Genehmigung, bevor sie live gehen.
+        </div>
+        <div id="pending-list"><p style="color:var(--c-text-muted);font-size:.9rem">Lädt…</p></div>
+      </section>
+
+      <!-- Scraper Control -->
+      <section id="section-scraper" class="admin-section">
+        <div class="section-header"><h2>Scraper</h2></div>
+        <div class="alert alert-info">
+          Scraper läuft automatisch gemäß Cron-Schedule (Standard: Montags 03:00 Uhr). Manueller Start möglich.
+        </div>
+        <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin:1.5rem 0">
+          <button class="btn btn-primary" id="scraper-btn" onclick="AdminApp.triggerScraper()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.05"/></svg>
+            <span id="scraper-btn-label">Scraper jetzt starten</span>
+            <span id="scraper-spinner" class="spinner-sm" hidden></span>
+          </button>
+        </div>
+        <div id="scraper-result"></div>
+        <h3 style="font-size:.9rem; font-weight:700; margin:1.5rem 0 .75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--c-text-muted)">Konfigurierte Quellen</h3>
+        <table>
+          <thead><tr><th>Quelle</th><th>URL</th><th>Typ</th><th>Letzte Ausführung</th></tr></thead>
+          <tbody>
+            <tr><td>gesetze-im-internet.de</td><td>BGB / EStG / HGB / BewG</td><td><span class="badge-cat badge-source-scraped">Auto</span></td><td id="last-scrape-gesetze">—</td></tr>
+            <tr><td>BMF</td><td>bmf.bund.de (RSS)</td><td><span class="badge-cat badge-source-scraped">Auto</span></td><td id="last-scrape-bmf">—</td></tr>
+            <tr><td>nexxt-change Statistiken</td><td>nexxt-change.org</td><td><span class="badge-cat badge-source-manual">Halbjährlich</span></td><td>—</td></tr>
+            <tr><td>IfM Bonn Kennzahlen</td><td>ifm-bonn.org</td><td><span class="badge-cat badge-source-manual">Jährlich</span></td><td>—</td></tr>
+            <tr><td>BVK Statistiken</td><td>bvkap.de</td><td><span class="badge-cat badge-source-manual">Jährlich</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Logs -->
+      <section id="section-logs" class="admin-section">
+        <div class="section-header">
+          <h2>Scraper Logs</h2>
+          <button class="btn btn-secondary btn-sm" onclick="AdminApp.loadLogs()">Aktualisieren</button>
+        </div>
+        <div id="logs-container"><p style="color:var(--c-text-muted);font-size:.9rem">Lädt…</p></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- ── Knowledge Entry Modal ───────────────────────────────── -->
+<div class="modal-overlay" id="kb-modal" onclick="if(event.target===this)AdminApp.closeModal()">
+  <div class="modal">
+    <h3 id="modal-title">KB-Eintrag bearbeiten</h3>
+    <form id="kb-form">
+      <input type="hidden" id="kb-id">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem">
+        <div class="form-group">
+          <label>Slug (eindeutig)</label>
+          <input type="text" id="kb-slug" required placeholder="z. B. rechtsformen/gbr">
+        </div>
+        <div class="form-group">
+          <label>Kategorie</label>
+          <select id="kb-category">
+            <option value="rechtsformen">rechtsformen</option>
+            <option value="bewertung">bewertung</option>
+            <option value="deal_struktur">deal_struktur</option>
+            <option value="steuer">steuer</option>
+            <option value="due_diligence">due_diligence</option>
+            <option value="branchenprofile">branchenprofile</option>
+            <option value="finanzierung">finanzierung</option>
+            <option value="recht">recht</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem">
+        <div class="form-group">
+          <label>Titel (DE)</label>
+          <input type="text" id="kb-title-de" required>
+        </div>
+        <div class="form-group">
+          <label>Titel (EN)</label>
+          <input type="text" id="kb-title-en" required>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Zusammenfassung (DE)</label>
+        <textarea id="kb-summary-de" rows="2" placeholder="Kurze Zusammenfassung für Tooltips…"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Zusammenfassung (EN)</label>
+        <textarea id="kb-summary-en" rows="2"></textarea>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem">
+        <div class="form-group">
+          <label>Volltext (DE) — Markdown OK</label>
+          <textarea id="kb-content-de" rows="8" required placeholder="Vollständiger Inhalt auf Deutsch…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Volltext (EN) — Markdown OK</label>
+          <textarea id="kb-content-en" rows="8" required placeholder="Full content in English…"></textarea>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:1rem">
+        <div class="form-group">
+          <label>Quellentyp</label>
+          <select id="kb-source-type">
+            <option value="manual">manual</option>
+            <option value="scraped">scraped</option>
+            <option value="ai_generated">ai_generated</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Quell-URL</label>
+          <input type="url" id="kb-source-url" placeholder="https://…">
+        </div>
+        <div class="form-group">
+          <label>Gesetzesparagraph</label>
+          <input type="text" id="kb-source-law" placeholder="§ 613a BGB">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>Tags (kommagetrennt)</label>
+        <input type="text" id="kb-tags" placeholder="gbr, rechtsform, asset-deal">
+      </div>
+      <div class="form-group">
+        <label style="display:flex; align-items:center; gap:.5rem; cursor:pointer; font-weight:600">
+          <input type="checkbox" id="kb-active" checked>
+          Aktiv (sichtbar im Frontend)
+        </label>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="AdminApp.closeModal()">Abbrechen</button>
+      <button class="btn btn-primary" id="kb-save-btn" onclick="AdminApp.saveKBEntry()">
+        <span id="kb-save-label">Speichern</span>
+        <span id="kb-save-spinner" class="spinner-sm" hidden></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const AdminApp = (() => {
+  const BASE = '/api';
+  let token = localStorage.getItem('admin_token') || null;
+  let kbPage = 1;
+  const kbPerPage = 20;
+
+  /* ── Auth ─────────────────────────────────────────────────── */
+  async function login(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const label = document.getElementById('login-label');
+    const spinner = document.getElementById('login-spinner');
+    const errEl = document.getElementById('login-error');
+    errEl.hidden = true;
+    label.textContent = 'Anmelden…';
+    spinner.hidden = false;
+
+    try {
+      const res = await fetch(`${BASE}/admin/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Ungültige Anmeldedaten');
+      token = data.token;
+      localStorage.setItem('admin_token', token);
+      renderAdmin();
+    } catch (err) {
+      errEl.textContent = err.message;
+      errEl.hidden = false;
+    } finally {
+      label.textContent = 'Anmelden';
+      spinner.hidden = true;
+    }
+  }
+
+  function logout() {
+    token = null;
+    localStorage.removeItem('admin_token');
+    document.getElementById('login-screen').style.display = '';
+    document.getElementById('admin-screen').hidden = true;
+    document.getElementById('logout-btn').hidden = true;
+  }
+
+  async function authFetch(method, path, body) {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    };
+    if (body !== undefined) opts.body = JSON.stringify(body);
+    const res = await fetch(`${BASE}${path}`, opts);
+    if (res.status === 401) { logout(); throw new Error('Session abgelaufen'); }
+    const data = await res.json().catch(() => ({ error: 'Invalid JSON' }));
+    if (!res.ok) throw new Error(data.error || 'API Fehler');
+    return data;
+  }
+
+  /* ── Render Admin ─────────────────────────────────────────── */
+  function renderAdmin() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').hidden = false;
+    document.getElementById('logout-btn').hidden = false;
+    loadDashboard();
+    loadKnowledge();
+    loadPending();
+  }
+
+  /* ── Dashboard ────────────────────────────────────────────── */
+  async function loadDashboard() {
+    try {
+      const [kbData, pendingData] = await Promise.all([
+        authFetch('GET', '/admin/knowledge?limit=1'),
+        authFetch('GET', '/admin/pending'),
+      ]);
+      document.getElementById('stat-kb').textContent = kbData.total || '—';
+      document.getElementById('stat-pending').textContent = pendingData.length || 0;
+      document.getElementById('stat-scraped').textContent = new Date().toLocaleDateString('de-DE');
+      updatePendingBadge(pendingData.length || 0);
+    } catch { /* silent */ }
+  }
+
+  function updatePendingBadge(count) {
+    const badge = document.getElementById('pending-badge');
+    badge.textContent = count;
+    badge.hidden = count === 0;
+  }
+
+  /* ── Knowledge Base ───────────────────────────────────────── */
+  async function loadKnowledge() {
+    const cat = document.getElementById('kb-filter-cat').value;
+    const tbody = document.getElementById('kb-tbody');
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--c-text-muted)"><span class="spinner-sm"></span></td></tr>';
+    try {
+      const params = new URLSearchParams({ page: kbPage, limit: kbPerPage });
+      if (cat) params.set('category', cat);
+      const data = await authFetch('GET', `/admin/knowledge?${params}`);
+      const entries = data.entries || data || [];
+      tbody.innerHTML = entries.map(e => `
+        <tr>
+          <td><code style="font-size:.8rem; font-family:var(--font-mono)">${e.slug}</code></td>
+          <td>${e.title_de || '—'}</td>
+          <td><span class="badge-cat">${e.category || '—'}</span></td>
+          <td><span class="badge-cat badge-source-${e.source_type || 'manual'}">${e.source_type || 'manual'}</span></td>
+          <td>${e.last_verified ? new Date(e.last_verified).toLocaleDateString('de-DE') : '—'}</td>
+          <td>${e.is_active ? '✅' : '—'}</td>
+          <td style="white-space:nowrap">
+            <button class="btn btn-secondary btn-sm" onclick='AdminApp.openEditModal(${JSON.stringify(e)})'>Bearbeiten</button>
+            <button class="btn btn-danger btn-sm" onclick="AdminApp.deleteKB('${e.id}','${e.slug}')">Löschen</button>
+          </td>
+        </tr>`).join('') || '<tr><td colspan="7" style="text-align:center;padding:2rem">Keine Einträge gefunden.</td></tr>';
+      const total = data.total || entries.length;
+      const totalPages = Math.ceil(total / kbPerPage);
+      document.getElementById('kb-page-info').textContent = `Seite ${kbPage} / ${totalPages}`;
+      document.getElementById('kb-prev-btn').disabled = kbPage <= 1;
+      document.getElementById('kb-next-btn').disabled = kbPage >= totalPages;
+    } catch (err) {
+      tbody.innerHTML = `<tr><td colspan="7" class="alert alert-danger">${err.message}</td></tr>`;
+    }
+  }
+
+  function kbPrevPage() { if (kbPage > 1) { kbPage--; loadKnowledge(); } }
+  function kbNextPage() { kbPage++; loadKnowledge(); }
+
+  function openCreateModal() {
+    document.getElementById('modal-title').textContent = 'Neuer KB-Eintrag';
+    document.getElementById('kb-form').reset();
+    document.getElementById('kb-id').value = '';
+    document.getElementById('kb-active').checked = true;
+    document.getElementById('kb-modal').classList.add('open');
+  }
+
+  function openEditModal(entry) {
+    document.getElementById('modal-title').textContent = 'KB-Eintrag bearbeiten';
+    document.getElementById('kb-id').value = entry.id || '';
+    document.getElementById('kb-slug').value = entry.slug || '';
+    document.getElementById('kb-category').value = entry.category || 'rechtsformen';
+    document.getElementById('kb-title-de').value = entry.title_de || '';
+    document.getElementById('kb-title-en').value = entry.title_en || '';
+    document.getElementById('kb-summary-de').value = entry.summary_de || '';
+    document.getElementById('kb-summary-en').value = entry.summary_en || '';
+    document.getElementById('kb-content-de').value = entry.content_de || '';
+    document.getElementById('kb-content-en').value = entry.content_en || '';
+    document.getElementById('kb-source-type').value = entry.source_type || 'manual';
+    document.getElementById('kb-source-url').value = entry.source_url || '';
+    document.getElementById('kb-source-law').value = entry.source_law_paragraph || '';
+    document.getElementById('kb-tags').value = (entry.tags || []).join(', ');
+    document.getElementById('kb-active').checked = entry.is_active !== false;
+    document.getElementById('kb-modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('kb-modal').classList.remove('open');
+  }
+
+  async function saveKBEntry() {
+    const id = document.getElementById('kb-id').value;
+    const payload = {
+      slug: document.getElementById('kb-slug').value.trim(),
+      category: document.getElementById('kb-category').value,
+      title_de: document.getElementById('kb-title-de').value.trim(),
+      title_en: document.getElementById('kb-title-en').value.trim(),
+      summary_de: document.getElementById('kb-summary-de').value.trim(),
+      summary_en: document.getElementById('kb-summary-en').value.trim(),
+      content_de: document.getElementById('kb-content-de').value.trim(),
+      content_en: document.getElementById('kb-content-en').value.trim(),
+      source_type: document.getElementById('kb-source-type').value,
+      source_url: document.getElementById('kb-source-url').value.trim() || null,
+      source_law_paragraph: document.getElementById('kb-source-law').value.trim() || null,
+      tags: document.getElementById('kb-tags').value.split(',').map(s => s.trim()).filter(Boolean),
+      is_active: document.getElementById('kb-active').checked,
+    };
+    const label = document.getElementById('kb-save-label');
+    const spinner = document.getElementById('kb-save-spinner');
+    label.textContent = 'Speichert…';
+    spinner.hidden = false;
+    try {
+      if (id) {
+        await authFetch('PUT', `/admin/knowledge/${id}`, payload);
+      } else {
+        await authFetch('POST', '/admin/knowledge', payload);
+      }
+      closeModal();
+      flash('Erfolgreich gespeichert!', 'success');
+      loadKnowledge();
+    } catch (err) {
+      flash(err.message, 'danger');
+    } finally {
+      label.textContent = 'Speichern';
+      spinner.hidden = true;
+    }
+  }
+
+  async function deleteKB(id, slug) {
+    if (!confirm(`Eintrag "${slug}" wirklich löschen?`)) return;
+    try {
+      await authFetch('DELETE', `/admin/knowledge/${id}`);
+      flash('Eintrag gelöscht.', 'success');
+      loadKnowledge();
+    } catch (err) {
+      flash(err.message, 'danger');
+    }
+  }
+
+  /* ── Pending Updates ──────────────────────────────────────── */
+  async function loadPending() {
+    const container = document.getElementById('pending-list');
+    container.innerHTML = '<p style="color:var(--c-text-muted);font-size:.9rem"><span class="spinner-sm"></span> Lädt…</p>';
+    try {
+      const data = await authFetch('GET', '/admin/pending');
+      updatePendingBadge(data.length || 0);
+      if (!data.length) {
+        container.innerHTML = '<div class="alert alert-success">✅ Keine ausstehenden Updates — alles aktuell!</div>';
+        return;
+      }
+      container.innerHTML = data.map(p => `
+        <div class="pending-card">
+          <h4>${p.proposed_slug || p.slug || '—'} <span class="badge-cat badge-source-${p.source_type || 'ai'}">${p.source_type || 'ai'}</span></h4>
+          <div class="meta">Erstellt: ${p.created_at ? new Date(p.created_at).toLocaleString('de-DE') : '—'} | Quelle: ${p.source_url || '—'}</div>
+          <p style="font-size:.85rem; margin-bottom:.5rem"><strong>Zusammenfassung:</strong> ${p.summary_de || p.proposed_content?.summary_de || '—'}</p>
+          <div class="diff">${p.proposed_content ? JSON.stringify(p.proposed_content, null, 2) : '(Kein Inhalt)'}</div>
+          <div class="pending-actions">
+            <button class="btn btn-success btn-sm" onclick="AdminApp.approvePending('${p.id}')">✅ Genehmigen</button>
+            <button class="btn btn-danger btn-sm"  onclick="AdminApp.rejectPending('${p.id}')">✗ Ablehnen</button>
+          </div>
+        </div>`).join('');
+    } catch (err) {
+      container.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    }
+  }
+
+  async function approvePending(id) {
+    try {
+      await authFetch('POST', `/admin/pending/${id}/approve`);
+      flash('Update genehmigt und in Wissensbasis übernommen.', 'success');
+      loadPending();
+      loadKnowledge();
+    } catch (err) { flash(err.message, 'danger'); }
+  }
+
+  async function rejectPending(id) {
+    if (!confirm('Update ablehnen und verwerfen?')) return;
+    try {
+      await authFetch('DELETE', `/admin/pending/${id}/reject`);
+      flash('Update abgelehnt.', 'success');
+      loadPending();
+    } catch (err) { flash(err.message, 'danger'); }
+  }
+
+  /* ── Scraper ──────────────────────────────────────────────── */
+  async function triggerScraper() {
+    const btn = document.getElementById('scraper-btn');
+    const label = document.getElementById('scraper-btn-label');
+    const spinner = document.getElementById('scraper-spinner');
+    const result = document.getElementById('scraper-result');
+    label.textContent = 'Scraper läuft…';
+    spinner.hidden = false;
+    btn.disabled = true;
+    result.innerHTML = '<div class="alert alert-info">Scraper gestartet — bitte warten…</div>';
+    try {
+      const data = await authFetch('POST', '/admin/trigger-update');
+      result.innerHTML = `<div class="alert alert-success">✅ Scraper abgeschlossen. ${data.message || ''}</div>`;
+      flash('Scraper erfolgreich ausgeführt.', 'success');
+      loadPending();
+    } catch (err) {
+      result.innerHTML = `<div class="alert alert-danger">Fehler: ${err.message}</div>`;
+    } finally {
+      label.textContent = 'Scraper jetzt starten';
+      spinner.hidden = true;
+      btn.disabled = false;
+    }
+  }
+
+  /* ── Logs ─────────────────────────────────────────────────── */
+  async function loadLogs() {
+    const container = document.getElementById('logs-container');
+    container.innerHTML = '<p style="color:var(--c-text-muted)"><span class="spinner-sm"></span> Lädt…</p>';
+    try {
+      const data = await authFetch('GET', '/admin/scrape-logs');
+      const logs = Array.isArray(data) ? data : data.logs || [];
+      if (!logs.length) {
+        container.innerHTML = '<p style="color:var(--c-text-muted)">Keine Logs vorhanden.</p>';
+        return;
+      }
+      container.innerHTML = logs.slice(0, 100).map(log => `
+        <div class="log-entry log-${log.status || 'info'}">
+          <strong>${log.created_at ? new Date(log.created_at).toLocaleString('de-DE') : '?'}</strong>
+          [${log.scraper_name || '—'}]
+          ${log.status || '?'} —
+          ${log.message || log.entries_found !== undefined ? `${log.entries_found} Einträge gefunden` : ''}
+          ${log.error_message ? `<span style="color:var(--c-danger)"> ⚠ ${log.error_message}</span>` : ''}
+        </div>`).join('');
+    } catch (err) {
+      container.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    }
+  }
+
+  /* ── Section Nav ──────────────────────────────────────────── */
+  function showSection(name) {
+    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    const section = document.getElementById(`section-${name}`);
+    if (section) section.classList.add('active');
+    event.currentTarget?.classList.add('active');
+    if (name === 'pending') loadPending();
+    if (name === 'logs') loadLogs();
+    if (name === 'knowledge') loadKnowledge();
+    if (name === 'dashboard') loadDashboard();
+  }
+
+  /* ── Flash Message ────────────────────────────────────────── */
+  function flash(msg, type = 'info') {
+    const el = document.getElementById('flash-msg');
+    el.className = `alert alert-${type}`;
+    el.textContent = msg;
+    el.hidden = false;
+    setTimeout(() => { el.hidden = true; }, 4000);
+  }
+
+  /* ── Auto-login if token present ─────────────────────────── */
+  if (token) {
+    document.addEventListener('DOMContentLoaded', renderAdmin);
+  }
+
+  return { login, logout, renderAdmin, loadKnowledge, loadPending, loadLogs, loadDashboard,
+    kbPrevPage, kbNextPage, openCreateModal, openEditModal, closeModal, saveKBEntry, deleteKB,
+    approvePending, rejectPending, triggerScraper, showSection };
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+slug: bewertung/ertragswert
+category: bewertung
+title:
+  de: "Ertragswertmethode — vereinfachtes Ertragswertverfahren (§ 199 BewG)"
+  en: "Earnings Value Method — Simplified Earnings Value Procedure (§ 199 BewG)"
+summary:
+  de: "Das vereinfachte Ertragswertverfahren nach § 199 BewG kapitalisiert den nachhaltig erzielbaren Jahresertrag mit dem Faktor 13,75. Es wird vor allem für steuerliche Unternehmensbewertungen verwendet."
+  en: "The simplified earnings value method under § 199 BewG capitalizes the sustainable annual profit by a factor of 13.75. Primarily used for tax valuation purposes."
+content:
+  de: |
+    ## Ertragswertmethode — § 199 BewG
+
+    ### Rechtliche Grundlage
+    Das **vereinfachte Ertragswertverfahren** ist in §§ 199–203 BewG geregelt und gilt für die
+    steuerliche Bewertung von nicht börsennotierten Kapitalgesellschaften und Personenunternehmen.
+
+    Es ist bindend für die **Erbschaft- und Schenkungsteuer** (§ 11 ErbStG) sowie die
+    Schenkungsteuer bei vorweggenommener Erbfolge — und hat sich auch als **Marktorientierungsgröße**
+    bei freien Unternehmensverkäufen etabliert.
+
+    ### Berechnung (§ 199 i. V. m. § 201 BewG)
+
+    **Formel:** Ertragswert = Jahresertrag × Kapitalisierungsfaktor
+
+    #### Schritt 1: Jahresertrag ermitteln (§ 201 BewG)
+    - Durchschnitt der **letzten 3 Jahre** des Betriebsergebnisses
+    - Basis: Ergebnis nach Steuern (§ 201 Abs. 1 BewG)
+    - Korrekturen:
+      - + Einmalige Verluste (z. B. außerordentliche Abschreibungen, Sonderabschreibungen)
+      - − Einmalige Gewinne (z. B. Anlageabgänge, Subventionen/Zuschüsse)
+      - + Nicht betriebsnotwendige Ausgaben (Privatkosten des Gesellschafters)
+      - − Fiktiver Unternehmerlohn (§ 202 Abs. 1 S. 2 Nr. 2 BewG) — wenn kein oder zu niedriges Gehalt angesetzt
+      - − Ertragsteuerlicher Aufwand (ESt/KSt + SolZ + GewSt — soweit noch nicht berücksichtigt)
+
+    #### Schritt 2: Kapitalisierungsfaktor
+    - **Basiszinssatz** (Bundesbank, jährlich neu, § 203 Abs. 1 BewG): aktuell z. B. 2,5–3,5 % (2024)
+    - **Risikozuschlag:** standardmäßig 4,5 Prozentpunkte (§ 203 Abs. 1 BewG)
+    - **Kapitalisierungszinssatz:** Basis + Risiko = z. B. 2,5 % + 4,5 % = 7,0 %
+    - **Kapitalisierungsfaktor:** 1 / Kapitalisierungszinssatz = 1 / 0,07 ≈ **14,29**
+
+    ⚠️ Beim historischen Basiszinssatz 0,0 % (2020–2022) betrug der Faktor = 1/4,5% ≈ **13,75**
+    → Dieser Wert hat sich als **Standard-Daumenregel** etabliert: **Faktor 13,75**
+
+    Der aktuelle gesetzliche Faktor wird jährlich vom BMF im Bundessteuerblatt veröffentlicht.
+
+    #### Beispielrechnung
+    - Jahresertrag (Ø 3 Jahre, normalisiert): 120.000 €
+    - Kapitalisierungsfaktor: 13,75 (oder aktuellen offiziellen Wert verwenden)
+    - **Ertragswert = 120.000 × 13,75 = 1.650.000 €**
+
+    ### Vor- und Nachteile
+
+    | Vorteil | Nachteil |
+    |---|---|
+    | Einfach berechenbar | Keine individuelle Risikoeinschätzung |
+    | Rechtsverbindlich für Steuerzwecke | Starrer Risikozuschlag |
+    | Marktüblicher Referenzpunkt | Stark abhängig von Ertragsnormalisierung |
+    | Berücksichtigt Ertragskraft | Kein Mehrwert für Wachstumsunternehmen |
+
+    ### Abgrenzung zur IDW S 1-Methode
+    Das vereinfachte Ertragswertverfahren (§ 199 BewG) ist **nicht** das gleiche wie die
+    vollständige IDW S 1-Unternehmensbewertung (Wirtschaftsprüfer). Letztere ist deutlich
+    aufwendiger und individueller — aber marktpraktisch durch DCF-/Multiple-Verfahren weitgehend ersetzt.
+
+    ### Anwendungsempfehlung
+    Der § 199 BewG-Ertragswert ist ein guter **Sanity-Check**:
+    - Überstieg der Kaufpreis den steuerlichen Ertragswert deutlich? → Risiko erhöhter GrESt-Werte
+    - Liegt der Kaufpreis darunter? → Schenkungssteuerliche Relevanz bei nahen Angehörigen
+
+    Bei gewöhnlichen M&A-Transaktionen wird die Methode als **einer von mehreren Ankerpunkten**
+    verwendet, i. d. R. neben EBITDA-Multiple und Substanzwert.
+
+  en: |
+    ## Earnings Value Method — § 199 BewG
+
+    ### Legal Basis
+    §§ 199–203 BewG govern the simplified earnings value method for tax purposes.
+    Binding for inheritance and gift tax (§ 11 ErbStG) and widely used as a market reference.
+
+    ### Calculation
+    **Formula:** Earnings Value = Annual Profit × Capitalization Factor
+
+    - Annual profit = 3-year average normalized operating result (§ 201 BewG)
+    - Capitalization factor = 1 / (base rate + 4.5% risk premium)
+    - Historical standard factor ≈ **13.75** (when base rate ≈ 0%)
+    - Current factor published annually by BMF in Bundessteuerblatt
+
+    ### Example
+    - Normalized annual profit: €120,000
+    - Capitalization factor: 13.75
+    - **Earnings value = €1,650,000**
+
+    ### Key limitations
+    - Fixed risk premium doesn't reflect individual business risk
+    - Better as a cross-check than primary valuation method
+
+tags: [ertragswert, §199-bewg, kapitalisierungsfaktor, bewertung, ertragswertverfahren]
+source_type: manual
+source_url: "https://www.gesetze-im-internet.de/bewg/__199.html"
+source_law_paragraph: "§§ 199–203 BewG"
+is_active: true

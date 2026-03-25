@@ -1,0 +1,117 @@
+slug: steuer/par34_estg
+category: steuer
+title:
+  de: "§ 34 EStG — Tarifbegünstigung für außerordentliche Einkünfte (Betriebsveräußerung)"
+  en: "§ 34 EStG — Preferential Tax Rate for Extraordinary Income (Business Disposal)"
+summary:
+  de: "§ 34 EStG gewährt für Gewinne aus Betriebsveräußerungen (§ 16 EStG) eine ermäßigte Besteuerung — entweder die 1/5-Methode oder den halben Durchschnittssteuersatz (ab 55 Jahren / Berufsunfähigkeit)."
+  en: "§ 34 EStG provides a reduced tax rate for extraordinary income from business disposals — either the one-fifth method or half the average tax rate (from age 55 / permanent incapacity)."
+content:
+  de: |
+    ## § 34 EStG — Tarifbegünstigung außerordentliche Einkünfte
+
+    ⚠️ **Hinweis:** Dies ist eine vereinfachte Darstellung. Für eine verbindliche steuerliche
+    Einschätzung ist zwingend ein Steuerberater hinzuzuziehen. Die tatsächliche Steuerbelastung
+    hängt von zahlreichen individuellen Faktoren ab.
+
+    ### Sachlicher Anwendungsbereich (§ 34 Abs. 2 EStG)
+    Die Tarifbegünstigung gilt für **außerordentliche Einkünfte**, u. a.:
+    - Veräußerungsgewinne nach §§ 14, 16 Abs. 1, 16 Abs. 3 EStG (Betriebsveräußerung/-aufgabe)
+    - Entschädigungen (§ 24 Nr. 1 EStG)
+    - Vergütungen für mehrjährige Tätigkeiten (§ 34 Abs. 2 Nr. 4 EStG)
+
+    **Bei Personengesellschaften (GbR, OHG, KG):** § 16 i. V. m. § 34 EStG greift beim Verkauf
+    des Unternehmens oder eines Gesellschaftsanteils (Asset Deal).
+
+    ### Methode 1: Fünftel-Regelung (§ 34 Abs. 1 EStG)
+    Die **Fünftel-Regelung** soll die Progressionswirkung bei zusammengeballten Einkünften mildern:
+
+    **Berechnung:**
+    1. Steuer auf das reguläre Jahreseinkommen (ohne außerordentliche Einkünfte) berechnen → **Steuer A**
+    2. Steuer auf das reguläre Jahreseinkommen + 1/5 der außerordentlichen Einkünfte → **Steuer B**
+    3. Steuerdifferenz = (B − A) × 5 = Steuer auf die außerordentlichen Einkünfte
+    4. Gesamtsteuer = Steuer A + (B − A) × 5
+
+    **Wann ist die Fünftel-Methode vorteilhaft?**
+    Die Methode hilft nur, wenn der Steuerpflichtige aufgrund der außerordentlichen Einkünfte
+    in eine höhere Progressionsstufe springt. Bei sehr hohen Gewinnen (> ~300.000 €) oberhalb
+    des Spitzensteuersatzes bringt sie kaum Vorteil.
+
+    ### Methode 2: Halber Durchschnittssteuersatz (§ 34 Abs. 3 EStG)
+    Voraussetzungen:
+    - Der Steuerpflichtige hat das **55. Lebensjahr** vollendet, **oder**
+    - Ist im sozialversicherungsrechtlichen Sinne **dauernd berufsunfähig**
+    - Die Begünstigung kann im Leben **nur einmal** in Anspruch genommen werden!
+    - Der Veräußerungsgewinn muss aus § 16 oder § 14 EStG stammen
+    - Der Gewinn muss **mindestens 5 Mio. €** sein — nein, diese Schranke gilt für § 34 Abs. 3 nicht; es gibt lediglich einen Mindestbetrag (die Steuer laut § 34 Abs. 3 muss mindestens 56 % der normalen Steuer betragen für Spitzensteuerzahler)
+
+    **Berechnung halber Durchschnittssteuersatz:**
+    1. Normales zu versteuerndes Einkommen (zvE) inkl. des Veräußerungsgewinns ermitteln
+    2. Durchschnittssteuersatz auf dieses zvE berechnen: Steuer / zvE × 100 %
+    3. Halber Durchschnittssteuersatz = normaler Durchschnittssteuersatz / 2
+    4. Steuer auf außerordentliche Einkünfte = halber DSt × außerordentliche Einkünfte
+
+    **Beispiel:**
+    - Veräußerungsgewinn: 800.000 €
+    - Sonstiges Einkommen: 80.000 €
+    - zvE gesamt: 880.000 €
+    - ESt auf 880.000 € ≈ 374.000 € (ca. 42,5 % Durchschnittssatz)
+    - Halber Durchschnittssatz: 21,25 %
+    - Steuer auf Veräußerungsgewinn: 800.000 × 21,25 % = **170.000 €**
+    - Statt "normaler" Besteuerung (800.000 × 45 % ≈ 360.000 €) → **Ersparnis: ~190.000 €**
+
+    ### Zusammenspiel mit § 16 Abs. 4 EStG Freibetrag
+    Der **Freibetrag nach § 16 Abs. 4 EStG** (45.000 €, abschmelzend ab Gewinn 136.000 €) ist
+    **vor** der Anwendung der Tarifbegünstigung nach § 34 EStG abzuziehen.
+
+    **Optimale Reihenfolge:**
+    1. Veräußerungsgewinn ermitteln
+    2. § 16 Abs. 4 EStG Freibetrag abziehen (wenn Voraussetzungen erfüllt)
+    3. Verbleibenden Gewinn nach § 34 EStG begünstigt versteuern
+
+    ### Kombinationsbeispiel (GbR-Verkauf, Inhaber 57 Jahre)
+    - Veräußerungsgewinn brutto: 520.000 €
+    - § 16 Abs. 4 Freibetrag: 45.000 € (Abschmellung: max. bei Gewinn 136.000 €; bei 520.000 € → Freibetrag = 45.000 − (520.000 − 136.000) / (181.000 / 45.000) = 0 € volle Abschmellung)
+    - Tatsächlicher Freibetrag: 0 € (da Gewinn > 181.000 €, vollständig abgeschmolzen)
+    - Nach § 34 Abs. 3 EStG (halber DSt): bei 52 % regulärem Durchschnittssatz → 26 % effektiv
+    - Steuer: 520.000 × 26 % = **135.200 €**
+    - Ohne § 34: 520.000 × ~45 % = 234.000 € → **Ersparnis: 98.800 €**
+
+    ### Gewerbesteuer-Anrechnung (§ 35 EStG)
+    Bei Betriebsveräußerungen fällt grds. **keine Gewerbesteuer** an, wenn nicht ein gewerblich
+    tätiger Betrieb veräußert wird (§ 7 S. 2 GewStG). GbRs können je nach Tätigkeit GewSt-pflichtig sein.
+    Falls GewSt anfällt: § 35 EStG ermöglicht Anrechnung auf die ESt (bis zu 3,8-faches des
+    GewSt-Messbetrags).
+
+    ### Wichtige Fallstricke
+    - § 34 Abs. 3 kann nur **einmal im Leben** genutzt werden (§ 34 Abs. 3 S. 4 EStG)
+    - Wird ein Betrieb in mehreren Tranchen veräußert, können Probleme mit der "Zusammenballung" entstehen
+    - Rückwirkende Änderungen (z. B. Earn-Out-Zahlungen) können den begünstigten Gewinn beeinflussen
+    - Gesellschafterkonten, Betriebsaufgabe vs. -veräußerung — genaue Abgrenzung nötig
+
+  en: |
+    ## § 34 EStG — Preferential Tax Rate for Extraordinary Income
+
+    ⚠️ **Note:** This is a simplified overview. Always consult a tax advisor for binding advice.
+
+    ### Scope
+    Applies to extraordinary income including business disposal gains under §§ 14, 16 EStG.
+
+    ### Method 1: One-Fifth Rule (§ 34 para. 1 EStG)
+    Reduces progression effect on cumulated income:
+    1. Calculate tax on regular income → Tax A
+    2. Calculate tax on regular income + 1/5 of extraordinary income → Tax B
+    3. Total tax on extraordinary income = (B − A) × 5
+
+    ### Method 2: Half Average Tax Rate (§ 34 para. 3 EStG)
+    Requirements: Age ≥ 55 OR permanent incapacity. Can only be used ONCE in a lifetime.
+    Tax = (normal average tax rate / 2) × extraordinary income
+
+    ### Interaction with § 16 para. 4 EStG
+    Apply the €45,000 exemption FIRST, then apply § 34 tax preference to the remaining gain.
+
+tags: [§34-estg, tarifbegünstigung, halber-durchschnittssteuersatz, fünftel-regel, betriebsveräußerung]
+source_type: manual
+source_url: "https://www.gesetze-im-internet.de/estg/__34.html"
+source_law_paragraph: "§ 34 EStG, § 16 EStG"
+is_active: true

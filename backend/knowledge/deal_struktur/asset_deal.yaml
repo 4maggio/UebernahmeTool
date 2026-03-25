@@ -1,0 +1,111 @@
+slug: deal-struktur-asset-deal
+category: deal_struktur
+subcategory: asset_deal
+title_de: "Asset Deal — Einzelübertragung von Wirtschaftsgütern"
+title_en: "Asset Deal — Transfer of Individual Assets"
+summary_de: "Käufer erwirbt einzelne Wirtschaftsgüter, nicht das Unternehmen als Ganzes. Einzige Option bei GbR/KG/Einzelunternehmen. Steuerlich vorteilhaft für Käufer."
+summary_en: "Buyer acquires individual assets, not the company as a whole. Only option for GbR/KG/sole traders. Tax-advantageous for the buyer."
+source_url: "https://www.gesetze-im-internet.de/bgb/__453.html"
+source_law_paragraph: "§ 453 BGB; § 25 HGB; § 613a BGB; § 414 BGB"
+applies_to_rechtsformen:
+  - GbR
+  - KG
+  - OHG
+  - eK
+  - Einzelunternehmen
+  - GmbH
+  - UG
+tags:
+  - asset_deal
+  - transaktion
+  - uebertragung
+  - wirtschaftsgüter
+last_verified: "2025-01-01"
+
+content_de: |
+  ## Asset Deal
+
+  ### Definition
+  Beim Asset Deal erwirbt der Käufer **einzelne Vermögensgegenstände** des Unternehmens. Rechtlich werden Verträge über §§ 433 ff. BGB (Kaufvertrag) für die jeweiligen Wirtschaftsgüter abgeschlossen. Es gibt keinen automatischen Übergang des Unternehmens.
+
+  ### Wann ist der Asset Deal zwingend?
+  - **GbR, KG, OHG, Einzelkaufmann**: Da keine übertragbaren Gesellschaftsanteile existieren, ist nur der Asset Deal möglich
+  - **Käuferwunsch**: Auch bei GmbH wählen Käufer oft den Asset Deal für steuerliche Abschreibungsvorteile
+
+  ### Was wird übertragen?
+  | Asset | Übertragungsweg | Besonderheit |
+  |-------|----------------|--------------|
+  | Inventar / Lagerbestand | Übereignung (§ 929 BGB) | Physische Übergabe |
+  | Immobilien | Auflassung + Grundbucheintrag | Notar erforderlich! GrESt! |
+  | Fahrzeuge | KFZ-Brief + Ummeldung | |
+  | Domains | Transfer beim Registrar | DENIC, IONOS etc. |
+  | Marken (eingetragen) | DPMA Umschreibung | |
+  | Lieferantenverträge | Zustimmung des Vertragspartners | § 414 BGB |
+  | Mietvertrag | Zustimmung Vermieter | |
+  | Kundenstamm / Daten | Datenschutzrechtliche Prüfung! | Art. 6 DSGVO |
+  | Arbeitnehmer | Automatisch via § 613a BGB | Kein Wahlrecht! |
+  | Shopify-Store | Support-Transfer | Neuer Account? |
+  | Zahlungsanbieter (Stripe etc.) | **Nicht übertragbar** | Neues Konto nötig! |
+
+  ### Steuerliche Aspekte — Käufer
+  - **Abschreibungsvorteil**: Die Kaufpreisbestandteile können auf die Nutzungsdauer der einzelnen Wirtschaftsgüter abgeschrieben werden (AfA)
+  - **Goodwill**: Ein bezahlter Unternehmenswert (Kundenstamm, Firmenname) als immaterielles Wirtschaftsgut → 15 Jahre abschreibbar
+  - **Vorsteuer**: Auf die meisten Wirtschaftsgüter fällt USt an (Ausnahme: Geschäftsveräußerung im Ganzen gem. § 1 Abs. 1a UStG)
+
+  ### Steuerliche Aspekte — Verkäufer (GbR/Personenunternehmen)
+  - Jedes Wirtschaftsgut wird einzeln mit Marktwert (gemeiner Wert) angesetzt
+  - Differenz zum Buchwert = **Veräußerungsgewinn** → § 16 EStG
+  - Gewerbesteuerfrei (§ 7 Abs. 2 GewStG) sofern natürliche Person
+  - Freibetrag 45.000 € (§ 16 Abs. 4 EStG, ab 55 / BU, einmalig)
+  - Mögliche Tarifbegünstigung § 34 Abs. 3 EStG
+
+  ### § 613a BGB — Kritischer Punkt
+  Alle im Betrieb beschäftigten Arbeitnehmer gehen **automatisch und rechtsverbindlich** auf den Käufer über. Der Käufer tritt in alle Arbeitsverhältnisse ein, inklusive:
+  - Bisherige Lohnhöhe und Betriebszugehörigkeit
+  - Kündigungsschutz bleibt erhalten (1 Jahr kein betriebsbedingter Grund nach dem Übergang)
+  - Mitarbeiter können innerhalb 1 Monat nach Information widersprechen
+
+  ### § 25 HGB — Firmenname
+  Wird das Handelsgeschäft unter dem bisherigen Namen fortgeführt, haftet der Käufer für alle Altverbindlichkeiten, die vor der Übernahme entstanden sind — **außer: ausdrückliche Vereinbarung mit Gläubigern und Eintragung im Handelsregister**.
+
+  ### Kaufvertrag-Muss-Inhalte
+  1. Vollständige Liste aller übertragenen Wirtschaftsgüter (Anlage)
+  2. Kaufpreisaufteilung je Asset (für steuerliche Buchung)
+  3. Gewährleistungsausschluss oder -beschränkung
+  4. Übergabedatum je Asset
+  5. Wettbewerbsverbot (Dauer, Geographie, Branchen)
+  6. Übergabe-Support-Vereinbarung
+  7. Rücktrittsrecht bei wesentlichen Mängeln
+
+content_en: |
+  ## Asset Deal
+
+  ### Definition
+  In an asset deal, the buyer acquires **individual assets** of the business. Each asset class is transferred under its applicable legal framework (e.g. § 929 BGB for movables). There is no automatic transfer of the business as a whole.
+
+  ### When is an asset deal mandatory?
+  - **GbR, KG, OHG, sole trader**: No transferable shares exist — asset deal is the only option
+  - **Buyer preference**: Even for GmbH, buyers often prefer asset deals for depreciation benefits
+
+  ### Key transfer mechanisms
+  | Asset | Transfer method | Key issue |
+  |-------|----------------|-----------|
+  | Inventory | Physical handover (§ 929 BGB) | Physical count required |
+  | Real estate | Land register transfer | Notary mandatory + real estate tax |
+  | Vehicles | V5 logbook + re-registration | |
+  | Domains | Registrar transfer | |
+  | Registered trademarks | DPMA re-registration | |
+  | Trade contracts | 3rd party consent required | § 414 BGB |
+  | Customer data | GDPR legal basis required | Art. 6 GDPR |
+  | Employees | Automatic under § 613a BGB | No opt-out for buyer! |
+  | Payment processors | **Non-transferable** | New account required |
+
+  ### Tax for buyer
+  - Step-up in basis: assets are depreciated at acquisition value
+  - Goodwill: 15-year straight-line depreciation for intangible business value
+  - Input VAT reclaim possible on most assets (exception: transfer of a going concern)
+
+  ### Tax for seller (GbR/partnership)
+  - Each asset valued at fair market value; gain = FMV − book value = § 16 EStG disposal gain
+  - Trade tax exempt for natural persons (§ 7(2) GewStG)
+  - € 45,000 allowance available if seller ≥ 55 or permanently disabled (§ 16(4) EStG, once only)

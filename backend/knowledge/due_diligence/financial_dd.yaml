@@ -1,0 +1,100 @@
+slug: due-diligence-financial
+category: due_diligence
+subcategory: financial
+title_de: "Financial Due Diligence — Finanzielle Prüfung"
+title_en: "Financial Due Diligence"
+summary_de: "Systematische Überprüfung von Umsätzen, Erträgen, Verbindlichkeiten und der Qualität des Rechnungswesens. Grundlage jeder Kaufpreisverhandlung."
+summary_en: "Systematic review of revenues, earnings, liabilities and accounting quality. Foundation of any purchase price negotiation."
+source_url: ""
+source_law_paragraph: ""
+applies_to_rechtsformen: []
+tags:
+  - due_diligence
+  - financial
+  - buchhaltung
+  - jahresabschluss
+last_verified: "2025-01-01"
+
+content_de: |
+  ## Financial Due Diligence (FDD)
+
+  ### Zweck
+  Die FDD hat zwei Kernziele:
+  1. **Verifikation**: Sind die Angaben des Verkäufers korrekt?
+  2. **Normalisierung**: Was ist der "echte" Unternehmensgewinn nach Bereinigung?
+
+  ### Zu prüfende Unterlagen
+  #### Muss-Unterlagen
+  - Jahresabschlüsse / EÜR der letzten 3 Jahre (testiert oder zumindest vom StB erstellt)
+  - Aktuelle BWA (betriebswirtschaftliche Auswertung)
+  - Kontoauszüge der letzten 12 Monate (Zahlungsströme)
+  - Umsatzsteuervoranmeldungen letzter 12 Monate
+  - Offene Forderungen und Verbindlichkeiten (Liste)
+  - Kreditverträge und Leasingvereinbarungen
+
+  #### Wichtige Unterlagen
+  - Aufschlüsselung Umsatz nach Produkt / Kanal / Kunde
+  - Lohnliste (Mitarbeitervergütungen)
+  - Warenbestandsliste (mit Bewertung)
+  - Wareneinkaufskonditionen (Rabatte, Zahlungsziele)
+
+  ### EBITDA-Normalisierung — Kernaufgabe der FDD
+  Bei kleinen Unternehmen weicht das ausgewiesene EBITDA oft erheblich vom "echten" EBITDA ab:
+
+  | Korrekturbedarf | Beispiel |
+  |----------------|---------|
+  | Inhabergehalt über Marktniveau | Inhaber "zahlt" sich 10.000 €/Monat, Marktlohn wäre 3.500 €: +78.000 € Normalisierung |
+  | Privat genutzte Fahrzeuge | KFZ voll als Betriebsausgabe → private Nutzung als Hinzurechnung |
+  | Einmalige Aufwendungen | Umbau, Gerichtskosten, einmalige Marketingkampagne |
+  | Nicht-übertragbare Umsätze | Umsatz mit Verwandten zu Vorzugspreisen |
+
+  ### Red Flags
+  🚩 Keine Jahresabschlüsse (nur EÜR oder gar keine Buchführung)
+  🚩 Umsätze stark auf 1–2 Kunden konzentriert
+  🚩 Rückläufiger Umsatztrend > 15% im letzten Jahr
+  🚩 Hohe offene Verbindlichkeiten beim Finanzamt
+  🚩 Kontokorrentkredit ausgeschöpft
+  🚩 EBITDA-Marge < 3% (kaum Puffer für Käufer)
+  🚩 Große Diskrepanz zwischen Umsatz und Kontoauszügen
+  🚩 Lagerbestand wächst schneller als Umsatz (Absatzprobleme?)
+
+  ### Bewertungsrelevante Ergebnisse
+  Die FDD liefert die bereinigten Zahlen, die in alle Bewertungsmethoden einfließen:
+  - Normalisiertes EBITDA → EBITDA-Multiple, Ertragswert, DCF
+  - Buchwert Betriebsvermögen → Substanzwert, steuerlicher VG
+  - Verbindlichkeitsprofil → Enterprise Value / Equity Value Überleitung
+
+  ### Typische Kosten für externe FDD
+  - Kleinunternehmen (< 500k Umsatz): 3.000–8.000 € (Steuerberater)
+  - Mittelstand (< 5 Mio.): 10.000–25.000 € (WP-Kanzlei)
+  - Bei einfachen Asset Deals: Käufer kann FDD mit Steuerberater selbst durchführen
+
+content_en: |
+  ## Financial Due Diligence (FDD)
+
+  ### Purpose
+  1. **Verification**: Are the seller's representations accurate?
+  2. **Normalisation**: What is the true underlying profit?
+
+  ### Must-have documents
+  - Financial statements / P&L for the last 3 years
+  - Current management accounts
+  - 12 months of bank statements
+  - VAT returns (last 12 months)
+  - Open receivables and payables list
+  - Loan and leasing agreements
+
+  ### EBITDA normalisation — the core task
+  Reported EBITDA in small businesses often deviates significantly from sustainable EBITDA due to:
+  - Above-market owner compensation
+  - Private use of company assets
+  - One-off expenses
+  - Related-party transactions at non-market prices
+
+  ### Red Flags
+  🚩 No audited or professionally prepared accounts
+  🚩 Revenue concentrated on 1–2 customers
+  🚩 Declining revenue trend > 15%
+  🚩 Outstanding tax liabilities
+  🚩 Overdraft fully utilised
+  🚩 EBITDA margin < 3%

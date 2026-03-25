@@ -1,0 +1,83 @@
+slug: rechtsform-gbr
+category: rechtsformen
+subcategory: GbR
+title_de: "Gesellschaft bürgerlichen Rechts (GbR)"
+title_en: "Civil Law Partnership (GbR)"
+summary_de: "Einfachste Personengesellschaft; unbeschränkte persönliche Haftung aller Gesellschafter; kein Mindestkapital; Auflösung durch Kündigung oder Übertragung."
+summary_en: "Simplest partnership form; unlimited personal liability for all partners; no minimum capital; dissolved by notice or asset transfer."
+source_url: "https://www.gesetze-im-internet.de/bgb/__705.html"
+source_law_paragraph: "§§ 705–740c BGB"
+applies_to_rechtsformen:
+  - GbR
+tags:
+  - rechtsform
+  - gbr
+  - haftung
+  - personengesellschaft
+  - unternehmensuebernahme
+last_verified: "2025-01-01"
+
+content_de: |
+  ## GbR — Gesellschaft bürgerlichen Rechts
+
+  ### Überblick
+  Die GbR ist die einfachste Form der Personengesellschaft in Deutschland (§§ 705–740c BGB). Sie entsteht formlos durch den Zusammenschluss von mindestens zwei Personen zur Erreichung eines gemeinsamen Zwecks. Es gibt kein Mindestkapital, kein Handelsregister-Eintrag ist zwingend erforderlich (kleine GbR), und der Gesellschaftsvertrag kann mündlich geschlossen werden.
+
+  ### Haftung
+  **Alle Gesellschafter haften persönlich, gesamtschuldnerisch und unbeschränkt** mit ihrem Privatvermögen (§ 721 BGB). Das ist der entscheidende Unterschied zu GmbH/UG. Neue Gesellschafter haften auch für Altverbindlichkeiten (§ 721b BGB).
+
+  ### Übertragung einer GbR
+  **Eine GbR als solche ist nicht übertragbar.** Es gibt keine Anteile wie bei einer GmbH. Stattdessen ist nur der **Asset Deal** möglich:
+
+  1. **Einzelübertragung aller Wirtschaftsgüter**: Inventar, Domains, Marken, Fahrzeuge, Kundenstamm etc. werden einzeln auf den Käufer übertragen.
+  2. **Vertragsübernahme**: Laufende Verträge (Lieferanten, Miete) bedürfen der Zustimmung der Gegenseite (§ 414 BGB – Schuldübernahme).
+  3. **Firmenname**: Wer ein bestehendes Handelsgeschäft unter dem Namen fortführt, haftet für Altverbindlichkeiten (§ 25 HGB analog prüfen).
+  4. **Auflösung der GbR**: Die alten Gesellschafter müssen die GbR aufgeben/auflösen. Gewerbeanmeldung abmelden, Finanzamt informieren.
+
+  ### Steuerliche Behandlung beim Verkauf (Verkäufer)
+  - Veräußerungsgewinn = Kaufpreis − Buchwert der veräußerten Wirtschaftsgüter − Veräußerungskosten
+  - Gilt als **gewerblicher Veräußerungsgewinn** (§ 16 EStG), da GbR Mitunternehmerschaft ist
+  - Freibetrag § 16 Abs. 4 EStG: **45.000 €** (ab 55 J. oder dauerhaft BU, einmalig)
+  - Tarifbegünstigung § 34 EStG möglich (halber Durchschnittssteuersatz)
+  - Gewerbesteuerliche Behandlung: Veräußerungsgewinne sind i.d.R. **gewerbesteuerfrei** (§ 7 Abs. 2 GewStG)
+
+  ### Fallbeispiel: budxxl.com
+  budxxl.com ist als GbR organisiert. Für die Übernahme bedeutet das:
+  - Käufer erwirbt: Lagerbestand, Shopify-Shop, Domains, Marke (nicht eingetragen → Achtung!), Social-Media-Kanäle, Kundenstamm
+  - Shopify: Store-Transfer über Shopify-Support (neuer Eigentümer wird eingetragen)
+  - Amazon/Verkaufskanäle: Konten sind **nicht übertragbar** → neuer Account muss aufgebaut werden
+  - GbR wird danach aufgelöst / Gewerbe abgemeldet
+
+  ### Checkliste Käufer (GbR Asset Deal)
+  - [ ] Kaufvertrag anwaltlich prüfen lassen
+  - [ ] Alle Wirtschaftsgüter im Anhang einzeln aufgelistet?
+  - [ ] Lagerbestand körperlich gezählt und bewertet?
+  - [ ] Domain-Transfer initiiert (DENIC/Registrar)?
+  - [ ] Neue Gewerbeanmeldung beim Käufer erfolgt?
+  - [ ] Verkäufer-GbR wird aufgelöst?
+  - [ ] Finanzamt über Betriebsaufgabe informiert?
+  - [ ] § 613a BGB: Mitarbeiter-Übergang geprüft?
+
+content_en: |
+  ## GbR — Civil Law Partnership
+
+  ### Overview
+  The GbR (§§ 705–740c BGB) is the simplest form of partnership in Germany. It is formed informally by at least two persons pursuing a common purpose. No minimum capital is required, and registration in the commercial register is not mandatory for small GbRs.
+
+  ### Liability
+  **All partners are personally, jointly and severally liable with their private assets** (§ 721 BGB). This is the key difference from GmbH/UG. New partners also assume liability for existing obligations (§ 721b BGB).
+
+  ### Transfer of a GbR
+  **A GbR cannot be transferred as a whole.** There are no shares to sell. Only an **Asset Deal** is possible:
+
+  1. Individual transfer of all assets (inventory, domains, trademarks, customer base, etc.)
+  2. Contract assignment: ongoing supplier/lease agreements require third-party consent (§ 414 BGB)
+  3. Trade name: continuing business under the same name may trigger liability for legacy debts (§ 25 HGB)
+  4. The GbR must subsequently be dissolved
+
+  ### Tax Treatment (Seller)
+  - Capital gain = purchase price − book value of transferred assets − transaction costs
+  - Treated as **business disposal gain** (§ 16 EStG)
+  - Tax-free allowance of **€ 45,000** available if seller is ≥ 55 or permanently disabled (§ 16(4) EStG, once only)
+  - Reduced rate option under § 34 EStG (half of average tax rate)
+  - Trade tax exemption generally applies to disposal gains

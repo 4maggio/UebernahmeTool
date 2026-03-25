@@ -1,0 +1,133 @@
+slug: recht/par613a_bgb
+category: recht
+title:
+  de: "§ 613a BGB — Betriebsübergang und Arbeitnehmerrechte"
+  en: "§ 613a BGB — Transfer of Undertaking and Employee Rights"
+summary:
+  de: "§ 613a BGB regelt den automatischen Übergang aller Arbeitsverhältnisse bei einem Betriebsübergang (Asset Deal). Arbeitnehmer müssen schriftlich informiert werden und können widersprechen."
+  en: "§ 613a BGB governs the automatic transfer of all employment relationships in a business transfer (asset deal). Employees must be informed in writing and may object."
+content:
+  de: |
+    ## § 613a BGB — Betriebsübergang
+
+    ⚠️ **ACHTUNG: Dies ist einer der kritischsten Punkte bei einer Unternehmensübernahme via Asset Deal!**
+
+    ### Tatbestand — Wann gilt § 613a BGB?
+    § 613a BGB gilt bei einem **Betriebsübergang**, d. h. wenn:
+    1. Eine wirtschaftliche Einheit (Betrieb oder Betriebsteil) übergeht
+    2. Die Identität der wirtschaftlichen Einheit gewahrt bleibt (d. h. die Tätigkeit wird fortgeführt)
+    3. Der Übergang durch Rechtsgeschäft erfolgt (Kauf, Pacht, Einbringung etc.)
+
+    **Eine wirtschaftliche Einheit** = organisierte Gesamtheit von Personen und Sachen zur Verfolgung
+    eines wirtschaftlichen Zwecks. Sie kann materielle (Maschinen, Inventar) **oder** immaterielle
+    Betriebsmittel (Know-how, Kundenstamm, Marken) umfassen.
+
+    ⚠️ **Beim Share Deal gilt § 613a BGB NICHT** — da derselbe Rechtsträger erhalten bleibt.
+
+    ### Rechtsfolgen (§ 613a Abs. 1 BGB)
+    1. **Automatischer Übergang** aller Arbeitsverhältnisse auf den Erwerber zum Zeitpunkt des Übergangs
+    2. **Kein Zustimmungserfordernis** der Arbeitnehmer (gilt kraft Gesetz)
+    3. **Besitzstandsschutz:** Der Erwerber muss alle Rechte und Pflichten aus den bestehenden Arbeitsverhältnissen einhalten
+    4. **Kollektivrechtliche Weitergeltung:** Betriebsvereinbarungen gelten als Einzelvertrag fort (§ 613a Abs. 1 S. 2 BGB), Tarifverträge ebenfalls (Abs. 1 S. 3+4)
+
+    ### Informationspflicht (§ 613a Abs. 5 BGB)
+    **Vor dem Betriebsübergang** müssen Veräußerer **und** Erwerber jeden betroffenen Arbeitnehmer
+    schriftlich über folgende Punkte informieren:
+    - a) Zeitpunkt oder geplanter Zeitpunkt des Übergangs
+    - b) Grund für den Übergang
+    - c) Rechtliche, wirtschaftliche und soziale Folgen für die Arbeitnehmer
+    - d) Hinsichtlich der Arbeitnehmer in Aussicht genommene Maßnahmen
+
+    **Formerfordernis:** Das Informationsschreiben muss schriftlich erfolgen (§ 126 BGB analog), eine E-Mail reicht grundsätzlich aus, wenn die Schriftform nicht vereinbart.
+
+    Fehlerhafte oder unterlassene Information verlängert die Widerspruchsfrist!
+
+    ### Widerspruchsrecht (§ 613a Abs. 6 BGB)
+    Jeder Arbeitnehmer kann dem Übergang seines Arbeitsverhältnisses **widersprechen**:
+    - **Frist:** 1 Monat ab vollständiger schriftlicher Information (§ 613a Abs. 6 S. 1 BGB)
+    - **Form:** Schriftlich gegenüber Veräußerer oder Erwerber
+    - **Folge:** Das Arbeitsverhältnis verbleibt beim Veräußerer; dieser muss ggf. betriebsbedingt kündigen
+
+    ⚠️ Wurde die Information fehlerhaft erteilt, läuft die 1-Monats-Frist nicht an — theoretisch
+    kann noch Jahre nach dem Übergang widersprochen werden (BAG, Urt. v. 15.3.2012 — 8 AZR 700/10).
+
+    ### Kündigungsschutz (§ 613a Abs. 4 BGB)
+    **Die Kündigung eines Arbeitnehmers wegen des Betriebsübergangs ist unwirksam.**
+    (Sowohl durch Veräußerer als auch Erwerber)
+
+    Zulässig sind jedoch Kündigungen aus:
+    - Betrieblichen Gründen, die nichts mit dem Übergang zu tun haben
+    - Verhaltensbedingten oder personenbedingten Gründen
+
+    In der Praxis ist die Abgrenzung schwierig — professionelle Rechtsberatung zwingend.
+
+    ### Gesamtschuldnerische Haftung (§ 613a Abs. 2 BGB)
+    Für Verbindlichkeiten aus Arbeitsverhältnissen, die **vor dem Übergang** entstanden sind:
+    - Veräußerer und Erwerber haften **gesamtschuldnerisch** (§ 421 BGB)
+    - Erwerber haftet für Ansprüche, die vor dem Übergang entstanden und innerhalb von 1 Jahr nach dem Übergang fällig werden
+    - Ansprüche, die erst danach fällig werden: nur Erwerber haftet
+
+    ### Praxisrelevante BAG-Rechtsprechung
+    - **BAG 22.1.2015 — 8 AZR 139/14:** Informationsschreiben muss konkret sein; pauschale Formeln reichen nicht
+    - **BAG 24.9.2015 — 2 AZR 562/14:** Betriebsübergang trotz Liquidation möglich, wenn wirtschaftliche Einheit übergehen
+    - **BAG 17.12.2015 — 8 AZR 421/14:** Beim Outsourcing von Dienstleistungen gilt § 613a nur, wenn Identität bewahrt
+
+    ### Checkliste für den Erwerber
+    - [ ] Alle Arbeitnehmer identifiziert und gelistet?
+    - [ ] Vollständiges Informationsschreiben vorbereitet (von Anwalt geprüft)?
+    - [ ] Zeitplan: Zustellung min. 1 Woche vor Closing
+    - [ ] Betriebsrat informiert und angehört (§ 111 BetrVG bei betrieblichen Änderungen)?
+    - [ ] Bestehende Betriebsvereinbarungen inventarisiert?
+    - [ ] Tarif-/Gehaltsverpflichtungen in der Kaufpreiskalkulation berücksichtigt?
+    - [ ] Haftung für rückständige Lohnsteuer, Sozialversicherungsbeiträge geprüft?
+    - [ ] Arbeitsverträge (insb. Konkurrenz- und Geheimhaltungsklauseln) gesichtet?
+
+    ### Besonderheit bei GbR-Übernahme
+    Bei einer GbR ist in aller Regel keine Umwandlung möglich — daher fast immer **Asset Deal**
+    und damit gilt § 613a BGB automatisch. Die Übernahme aller Mitarbeiter muss zwingend
+    eingeplant werden.
+
+    **Steuerliche Auswirkungen:** Die übernommenen Arbeitnehmer erhöhen die laufenden Personalkosten.
+    Dies muss sowohl in der EBITDA-Normalisierung als auch in der Zukunftsprognose berücksichtigt werden.
+
+  en: |
+    ## § 613a BGB — Transfer of Undertaking
+
+    ⚠️ **CRITICAL: This is one of the most important provisions in any asset deal acquisition!**
+
+    ### When does § 613a BGB apply?
+    - Transfer of a business or business unit by legal transaction
+    - Identity of the economic entity is preserved (activity continues)
+    - Does NOT apply to share deals
+
+    ### Key consequences
+    1. **Automatic transfer** of ALL employment relationships to the acquirer
+    2. No employee consent required
+    3. Acquirer must honor all existing employment terms
+    4. Works agreements continue as individual contractual terms
+
+    ### Employee information duty (§ 613a para. 5 BGB)
+    Both seller AND buyer must inform each affected employee IN WRITING before the transfer:
+    - Date or planned date of transfer
+    - Reason for the transfer
+    - Legal, economic and social consequences for employees
+    - Envisaged measures regarding employees
+
+    Failure to inform properly means the 1-month objection period never starts running!
+
+    ### Right to object (§ 613a para. 6 BGB)
+    - Employees may object within **1 month** of proper written notification
+    - If they object, their employment remains with the seller
+    - Seller may then have to make the employee redundant
+
+    ### Prohibition on dismissal (§ 613a para. 4 BGB)
+    Any dismissal solely because of the business transfer is void.
+
+    ### Joint liability (§ 613a para. 2 BGB)
+    Seller and buyer are jointly liable for pre-transfer employment obligations arising within 1 year.
+
+tags: [§613a, betriebsübergang, arbeitnehmer, widerspruch, informationspflicht, asset-deal]
+source_type: manual
+source_url: "https://www.gesetze-im-internet.de/bgb/__613a.html"
+source_law_paragraph: "§ 613a BGB"
+is_active: true
