@@ -53,12 +53,8 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_PATH: ${{ secrets.VPS_PATH }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          NODE_ENV: production
         run: |
-          ssh "$VPS_USER@$VPS_HOST" << EOF
+          ssh "$VPS_USER@$VPS_HOST" bash << 'SSHEOF'
             set -e
             cd "$VPS_PATH"
 
@@ -69,15 +65,6 @@ jobs:
             cd backend
             npm ci --omit=dev
 
-            echo "==> Writing .env (from CI secrets)"
-            cat > .env << 'ENVEOF'
-          DATABASE_URL=$DATABASE_URL
-          JWT_SECRET=$JWT_SECRET
-          OPENAI_API_KEY=$OPENAI_API_KEY
-          NODE_ENV=production
-          PORT=3000
-          ENVEOF
-
             echo "==> Running database migrations"
             node src/db/migrate.js
 
@@ -86,10 +73,12 @@ jobs:
 
             echo "==> Restarting application with PM2"
             cd "$VPS_PATH"
-            pm2 reload ecosystem.config.js --update-env
+            pm2 describe uebernahme-api > /dev/null 2>&1 \
+              && pm2 reload ecosystem.config.js --update-env \
+              || pm2 start ecosystem.config.js --env production
 
             echo "==> Saving PM2 process list"
             pm2 save
 
             echo "==> Deploy complete!"
-          EOF
+          SSHEOF

@@ -11,7 +11,7 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../../../.e
 const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const db   = require('../db');
+const db   = require('../index');
 
 const KNOWLEDGE_DIR = path.resolve(__dirname, '../../knowledge');
 
