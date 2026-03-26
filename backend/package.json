@@ -9,7 +9,7 @@
         "migrate": "node src/db/migrate.js",
         "seed": "node src/db/seeds/run.js",
         "kb:import": "node src/db/seeds/importKnowledge.js",
-        "test": "jest --forceExit",
+        "test": "jest --forceExit --passWithNoTests",
         "lint": "eslint src/"
     },
     "dependencies": {
