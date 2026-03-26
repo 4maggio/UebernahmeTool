@@ -21,6 +21,63 @@
 </head>
 
 <body>
+
+    <!-- ── Password Gate ────────────────────────────────────── -->
+    <div id="pw-gate" style="
+        position:fixed;inset:0;z-index:9999;
+        background:#f8f8f6;
+        display:flex;align-items:center;justify-content:center;
+        font-family:'Inter',sans-serif;">
+        <div style="
+            background:#fff;border-radius:12px;
+            padding:2.5rem 2rem;width:100%;max-width:360px;
+            box-shadow:0 4px 24px rgba(0,0,0,.08);
+            text-align:center;">
+            <div style="font-size:2rem;margin-bottom:.5rem">🔐</div>
+            <h2 style="margin:0 0 .25rem;font-size:1.1rem;color:#1a1a1a">Unternehmensübernahme</h2>
+            <p style="margin:0 0 1.5rem;font-size:.85rem;color:#888">Bitte Zugangspasswort eingeben</p>
+            <input id="pw-input" type="password" placeholder="Passwort" autofocus style="
+                width:100%;box-sizing:border-box;
+                padding:.7rem 1rem;border:1.5px solid #ddd;border-radius:8px;
+                font-size:1rem;outline:none;margin-bottom:.75rem;
+                transition:border-color .15s;" />
+            <div id="pw-error" style="color:#c0392b;font-size:.8rem;min-height:1.2rem;margin-bottom:.5rem"></div>
+            <button id="pw-btn" style="
+                width:100%;padding:.75rem;background:#2c3e50;color:#fff;
+                border:none;border-radius:8px;font-size:1rem;cursor:pointer;
+                transition:background .15s;">Weiter</button>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var SESSION_KEY = 'uebernahme_auth';
+            var gate = document.getElementById('pw-gate');
+            if (sessionStorage.getItem(SESSION_KEY) === '1') {
+                gate.remove();
+                return;
+            }
+            function tryUnlock() {
+                var val = document.getElementById('pw-input').value;
+                if (val === 'Übergabe300') {
+                    sessionStorage.setItem(SESSION_KEY, '1');
+                    gate.style.opacity = '0';
+                    gate.style.transition = 'opacity .3s';
+                    setTimeout(function () { gate.remove(); }, 300);
+                } else {
+                    document.getElementById('pw-error').textContent = 'Falsches Passwort';
+                    document.getElementById('pw-input').style.borderColor = '#c0392b';
+                    document.getElementById('pw-input').select();
+                }
+            }
+            document.getElementById('pw-btn').addEventListener('click', tryUnlock);
+            document.getElementById('pw-input').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') tryUnlock();
+                document.getElementById('pw-error').textContent = '';
+                document.getElementById('pw-input').style.borderColor = '#ddd';
+            });
+        })();
+    </script>
+
     <div class="app-wrapper">
 
         <!-- ── Header ─────────────────────────────────────────── -->
