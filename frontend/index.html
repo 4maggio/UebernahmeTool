@@ -1,85 +1,95 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professionelles Tool für Unternehmensübernahme-Analyse: Bewertung, Due Diligence, Checklisten.">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Unternehmensübernahme Analyse</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- API base configuration — override for production -->
-  <script>
-    window.APP_CONFIG = { apiBase: '/api' };
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professionelles Tool für Unternehmensübernahme-Analyse: Bewertung, Due Diligence, Checklisten.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Unternehmensübernahme Analyse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- API base configuration — override for production -->
+    <script>
+        window.APP_CONFIG = { apiBase: '/api' };
+    </script>
 </head>
+
 <body>
-  <div class="app-wrapper">
+    <div class="app-wrapper">
 
-    <!-- ── Header ─────────────────────────────────────────── -->
-    <header class="app-header">
-      <div class="header-brand">
-        <div class="header-logo" aria-hidden="true">Ü</div>
-        <div>
-          <div class="header-title" data-i18n="app.title"></div>
-          <div class="header-subtitle" data-i18n="app.subtitle"></div>
+        <!-- ── Header ─────────────────────────────────────────── -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="header-logo" aria-hidden="true">Ü</div>
+                <div>
+                    <div class="header-title" data-i18n="app.title"></div>
+                    <div class="header-subtitle" data-i18n="app.subtitle"></div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="lang-toggle" aria-label="Toggle language">🇬🇧 EN</button>
+            </div>
+        </header>
+
+        <!-- ── Progress Bar ───────────────────────────────────── -->
+        <div class="progress-bar-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="7">
+            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%"></div>
         </div>
-      </div>
-      <div class="header-actions">
-        <button id="lang-toggle" aria-label="Toggle language">🇬🇧 EN</button>
-      </div>
-    </header>
+        <div class="progress-label" id="progress-label" aria-live="polite"></div>
 
-    <!-- ── Progress Bar ───────────────────────────────────── -->
-    <div class="progress-bar-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="7">
-      <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%"></div>
-    </div>
-    <div class="progress-label" id="progress-label" aria-live="polite"></div>
+        <!-- ── Body: Sidebar + Main ───────────────────────────── -->
+        <div class="app-body">
 
-    <!-- ── Body: Sidebar + Main ───────────────────────────── -->
-    <div class="app-body">
+            <!-- Sidebar Navigation -->
+            <nav class="app-sidebar" aria-label="Wizard Navigation">
+                <ul class="step-nav" id="step-nav" role="tablist"></ul>
+                <div id="nav-result" class="nav-result" role="tab" aria-label="Ergebnis">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12" />
+                    </svg>
+                    <span data-i18n="nav.result"></span>
+                </div>
+            </nav>
 
-      <!-- Sidebar Navigation -->
-      <nav class="app-sidebar" aria-label="Wizard Navigation">
-        <ul class="step-nav" id="step-nav" role="tablist"></ul>
-        <div id="nav-result" class="nav-result" role="tab" aria-label="Ergebnis">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
-          <span data-i18n="nav.result"></span>
-        </div>
-      </nav>
+            <!-- Main Wizard Content -->
+            <main class="app-main" id="main-content" role="main">
+                <div id="wizard-content">
+                    <!-- Filled dynamically by app.js -->
+                    <div class="loading-screen">
+                        <div class="spinner"></div>
+                        <p data-i18n="app.loading"></p>
+                    </div>
+                </div>
+            </main>
 
-      <!-- Main Wizard Content -->
-      <main class="app-main" id="main-content" role="main">
-        <div id="wizard-content">
-          <!-- Filled dynamically by app.js -->
-          <div class="loading-screen">
-            <div class="spinner"></div>
-            <p data-i18n="app.loading"></p>
-          </div>
-        </div>
-      </main>
+        </div><!-- /.app-body -->
 
-    </div><!-- /.app-body -->
+        <!-- ── Footer ─────────────────────────────────────────── -->
+        <footer class="app-footer">
+            <p data-i18n="app.disclaimer"></p>
+            <p style="margin-top:.25rem">
+                Quellen: <a href="https://www.gesetze-im-internet.de" target="_blank"
+                    rel="noopener noreferrer">gesetze-im-internet.de</a> ·
+                <a href="https://www.bmf.bund.de" target="_blank" rel="noopener noreferrer">BMF</a> ·
+                <a href="https://www.nexxt-change.org" target="_blank" rel="noopener noreferrer">nexxt-change.org</a> ·
+                <a href="https://www.kfw.de" target="_blank" rel="noopener noreferrer">KfW</a>
+            </p>
+        </footer>
 
-    <!-- ── Footer ─────────────────────────────────────────── -->
-    <footer class="app-footer">
-      <p data-i18n="app.disclaimer"></p>
-      <p style="margin-top:.25rem">
-        Quellen: <a href="https://www.gesetze-im-internet.de" target="_blank" rel="noopener noreferrer">gesetze-im-internet.de</a> ·
-        <a href="https://www.bmf.bund.de" target="_blank" rel="noopener noreferrer">BMF</a> ·
-        <a href="https://www.nexxt-change.org" target="_blank" rel="noopener noreferrer">nexxt-change.org</a> ·
-        <a href="https://www.kfw.de" target="_blank" rel="noopener noreferrer">KfW</a>
-      </p>
-    </footer>
+    </div><!-- /.app-wrapper -->
 
-  </div><!-- /.app-wrapper -->
-
-  <!-- ── Scripts ──────────────────────────────────────────── -->
-  <script src="js/i18n.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/valuation.js"></script>
-  <script src="js/app.js"></script>
+    <!-- ── Scripts ──────────────────────────────────────────── -->
+    <script src="js/i18n.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/valuation.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>

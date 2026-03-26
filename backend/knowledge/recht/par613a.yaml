@@ -126,7 +126,15 @@ content:
     ### Joint liability (§ 613a para. 2 BGB)
     Seller and buyer are jointly liable for pre-transfer employment obligations arising within 1 year.
 
-tags: [§613a, betriebsübergang, arbeitnehmer, widerspruch, informationspflicht, asset-deal]
+tags:
+  [
+    §613a,
+    betriebsübergang,
+    arbeitnehmer,
+    widerspruch,
+    informationspflicht,
+    asset-deal,
+  ]
 source_type: manual
 source_url: "https://www.gesetze-im-internet.de/bgb/__613a.html"
 source_law_paragraph: "§ 613a BGB"

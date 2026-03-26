@@ -94,7 +94,14 @@ content:
     - Fixed risk premium doesn't reflect individual business risk
     - Better as a cross-check than primary valuation method
 
-tags: [ertragswert, §199-bewg, kapitalisierungsfaktor, bewertung, ertragswertverfahren]
+tags:
+  [
+    ertragswert,
+    §199-bewg,
+    kapitalisierungsfaktor,
+    bewertung,
+    ertragswertverfahren,
+  ]
 source_type: manual
 source_url: "https://www.gesetze-im-internet.de/bewg/__199.html"
 source_law_paragraph: "§§ 199–203 BewG"

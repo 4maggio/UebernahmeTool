@@ -1,85 +1,84 @@
 name: Deploy to VPS
 
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 
 env:
-  NODE_VERSION: '20'
+    NODE_VERSION: "20"
 
 jobs:
-  # ── Quality gate ───────────────────────────────────────────────
-  test:
-    name: Test & Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    # ── Quality gate ───────────────────────────────────────────────
+    test:
+        name: Test & Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: backend/package-lock.json
+            - name: Setup Node.js ${{ env.NODE_VERSION }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: "npm"
+                  cache-dependency-path: backend/package-lock.json
 
-      - name: Install dependencies
-        working-directory: backend
-        run: npm ci
+            - name: Install dependencies
+              working-directory: backend
+              run: npm ci
 
-      - name: Run tests
-        working-directory: backend
-        run: npm test --if-present
+            - name: Run tests
+              working-directory: backend
+              run: npm test --if-present
 
-  # ── Deploy ─────────────────────────────────────────────────────
-  deploy:
-    name: Deploy
-    needs: test
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - uses: actions/checkout@v4
+    # ── Deploy ─────────────────────────────────────────────────────
+    deploy:
+        name: Deploy
+        needs: test
+        runs-on: ubuntu-latest
+        environment: production
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Setup SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            - name: Setup SSH agent
+              uses: webfactory/ssh-agent@v0.9.0
+              with:
+                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add server to known_hosts
-        run: |
-          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+            - name: Add server to known_hosts
+              run: |
+                  ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy via SSH
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_PATH: ${{ secrets.VPS_PATH }}
-        run: |
-          ssh "$VPS_USER@$VPS_HOST" bash << SSHEOF
-            set -e
-            cd "$VPS_PATH"
+            - name: Deploy via SSH
+              env:
+                  VPS_HOST: ${{ secrets.VPS_HOST }}
+                  VPS_USER: ${{ secrets.VPS_USER }}
+                  VPS_PATH: ${{ secrets.VPS_PATH }}
+              run: |
+                  ssh "$VPS_USER@$VPS_HOST" bash << SSHEOF
+                    set -e
+                    cd "$VPS_PATH"
 
-            echo "==> Pulling latest code"
-            git pull origin main
+                    echo "==> Pulling latest code"
+                    git pull origin main
 
-            echo "==> Installing backend dependencies"
-            cd backend
-            npm ci --omit=dev
+                    echo "==> Installing backend dependencies"
+                    cd backend
+                    npm ci --omit=dev
 
-            echo "==> Running database migrations"
-            node src/db/migrate.js
+                    echo "==> Running database migrations"
+                    node src/db/migrate.js
 
-            echo "==> Importing Knowledge Base YAML files"
-            node src/db/seeds/importKnowledge.js
+                    echo "==> Importing Knowledge Base YAML files"
+                    node src/db/seeds/importKnowledge.js
 
-            echo "==> Restarting application with PM2"
-            cd "$VPS_PATH"
-            pm2 describe uebernahme-api > /dev/null 2>&1 \
-              && pm2 reload ecosystem.config.js --update-env \
-              || pm2 start ecosystem.config.js --env production
+                    echo "==> Restarting application with PM2"
+                    cd "$VPS_PATH"
+                    pm2 describe uebernahme-api > /dev/null 2>&1 \
+                      && pm2 reload ecosystem.config.js --update-env \
+                      || pm2 start ecosystem.config.js --env production
 
-            echo "==> Saving PM2 process list"
-            pm2 save
+                    echo "==> Saving PM2 process list"
+                    pm2 save
 
-            echo "==> Deploy complete!"
-          SSHEOF
-
+                    echo "==> Deploy complete!"
+                  SSHEOF

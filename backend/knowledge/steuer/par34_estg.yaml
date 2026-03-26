@@ -110,7 +110,14 @@ content:
     ### Interaction with § 16 para. 4 EStG
     Apply the €45,000 exemption FIRST, then apply § 34 tax preference to the remaining gain.
 
-tags: [§34-estg, tarifbegünstigung, halber-durchschnittssteuersatz, fünftel-regel, betriebsveräußerung]
+tags:
+  [
+    §34-estg,
+    tarifbegünstigung,
+    halber-durchschnittssteuersatz,
+    fünftel-regel,
+    betriebsveräußerung,
+  ]
 source_type: manual
 source_url: "https://www.gesetze-im-internet.de/estg/__34.html"
 source_law_paragraph: "§ 34 EStG, § 16 EStG"
