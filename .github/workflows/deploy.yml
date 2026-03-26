@@ -61,7 +61,7 @@ jobs:
 
                     echo "==> Installing backend dependencies"
                     cd backend
-                    npm ci --omit=dev
+                    npm install --omit=dev
 
                     echo "==> Running database migrations"
                     node src/db/migrate.js
