@@ -54,19 +54,23 @@ variables:
       label: "Vollständiger Name des Verkäufers"
       type: text
       required: true
+      tooltip: "Bei natürlichen Personen: Vor- und Nachname. Bei Gesellschaften: vollständige Firmierung inkl. Rechtsformzusatz (z.B. 'Mustermann GmbH')."
     - id: VERKAEUFER_GEBURTSDATUM
       label: "Geburtsdatum des Verkäufers"
       type: date
       required: true
       condition: "seller_type == 'Privatperson' OR seller_type == 'Einzelunternehmer'"
+      tooltip: "Wird zur eindeutigen Identifikation der natürlichen Person im Vertragsrubrum benötigt."
     - id: VERKAEUFER_ADRESSE
       label: "Adresse des Verkäufers"
       type: text
       required: true
+      tooltip: "Vollständige Anschrift inkl. Straße/Hausnummer, PLZ und Ort. Bei Unternehmen: Geschäftssitz laut Handelsregister."
     - id: VERKAEUFER_STEUER_ID
       label: "Steuerliche Identifikationsnummer"
       type: text
       required: false
+      tooltip: "Für Privatpersonen: die persönliche Steuer-ID (11-stellig). Für Unternehmen: Steuernummer des Finanzamts. Wird für die steuerliche Zuordnung der Transaktion benötigt."
     - id: VERKAEUFER_RECHTSFORM
       label: "Rechtsform des Verkäufers"
       type: select
@@ -83,20 +87,24 @@ variables:
           "AG",
         ]
       required: true
+      tooltip: "Die Rechtsform bestimmt, wer unterschreibt und welche Klauseln im Vertrag erscheinen. Bei GbR/OHG/KG haften alle Gesellschafter persönlich. Bei GmbH/AG nur das Gesellschaftsvermögen."
     - id: VERKAEUFER_REGISTERGERICHT
       label: "Registergericht und HRB/HRA-Nummer"
       type: text
       condition: "seller_type IN ['GmbH','UG','AG','OHG','KG','GmbH & Co. KG']"
+      tooltip: "Z.B. 'Amtsgericht München HRB 123456'. Zu finden im Handelsregister (handelsregister.de) oder auf dem Briefkopf der Gesellschaft."
     - id: VERKAEUFER_GESCHAEFTSFUEHRER
       label: "Vertretungsberechtigte Person(en)"
       type: text
       condition: "seller_type NOT IN ['Privatperson','Einzelunternehmer']"
+      tooltip: "Name und Funktion der Person(en), die die Gesellschaft nach außen vertreten darf (z.B. 'Max Mustermann, Geschäftsführer'). Muss mit dem Handelsregistereintrag übereinstimmen."
 
   buyer:
     - id: KAEUFER_NAME
       label: "Name/Firma des Käufers"
       type: text
       required: true
+      tooltip: "Bei natürlichen Personen: Vor- und Nachname. Bei Gesellschaften: vollständige Firmierung inkl. Rechtsformzusatz."
     - id: KAEUFER_RECHTSFORM
       label: "Rechtsform des Käufers"
       type: select
@@ -112,22 +120,27 @@ variables:
           "AG",
         ]
       required: true
+      tooltip: "Die Rechtsform des Käufers bestimmt die Haftungsstruktur nach dem Kauf. Eine GmbH schützt das Privatvermögen der Gesellschafter. Bei GbR haften alle Gesellschafter mit ihrem Privatvermögen."
     - id: KAEUFER_ADRESSE
       label: "Adresse des Käufers"
       type: text
       required: true
+      tooltip: "Vollständige Anschrift. Bei einer neu gegründeten GmbH/GbR: die im Gesellschaftsvertrag festgelegte Geschäftsadresse."
     - id: KAEUFER_GESELLSCHAFTER
       label: "Gesellschafter der Käufer-GbR (mit Anteilen)"
       type: text
       condition: "buyer_type == 'GbR'"
+      tooltip: "Alle Gesellschafter mit Namen und Beteiligungsquoten, z.B. 'Thomas Müller (50%), Sandra Müller (50%)'. Bei einer GbR haften alle Gesellschafter als Gesamtschuldner."
     - id: KAEUFER_REGISTERGERICHT
       label: "Registergericht und Registernummer"
       type: text
       condition: "buyer_type IN ['GmbH','UG','AG','OHG','KG','GmbH & Co. KG']"
+      tooltip: "Handelsregisternummer der Käufergesellschaft. Muss zum Zeitpunkt des Signings bereits eingetragen sein. Bei noch nicht eingetragener GmbH in Gründung (i.G.) gesondert vermerken."
     - id: KAEUFER_GESCHAEFTSFUEHRER
       label: "Vertretungsberechtigte Person(en)"
       type: text
       condition: "buyer_type NOT IN ['Privatperson']"
+      tooltip: "Person(en) die die Käufergesellschaft rechtswirksam vertreten darf, gemäß Handelsregister oder Gesellschaftsvertrag."
 
   # ── Unternehmen / Geschäftsbetrieb ───────────────────────
   business:
@@ -135,18 +148,22 @@ variables:
       label: "Firmenname / Geschäftsbezeichnung"
       type: text
       required: true
+      tooltip: "Der Name, unter dem das Unternehmen am Markt bekannt ist. Kann von der Firmierung im Handelsregister abweichen (z.B. 'BudXXL' als Markenname)."
     - id: UNTERNEHMENSGEGENSTAND
       label: "Gegenstand des Unternehmens"
       type: textarea
       required: true
+      tooltip: "Eine präzise Beschreibung der Geschäftstätigkeit (z.B. 'Herstellung und Vertrieb von Pflanzendüngern'). Beeinflusst die steuerliche Einordnung und die Garantieklauseln."
     - id: UNTERNEHMENSSITZ
       label: "Sitz des Unternehmens"
       type: text
       required: true
+      tooltip: "Ort der Hauptniederlassung/Betriebsstätte. Bestimmt die örtliche Zuständigkeit der Behörden und ggf. des Gerichts."
     - id: BETRIEBSSTAETTEN
       label: "Betriebsstätten / Standorte"
       type: list
       required: false
+      tooltip: "Falls das Unternehmen an mehreren Orten tätig ist, alle Standorte mit Adressen auflisten. Relevant für behördliche Genehmigungen und Mietverträge."
 
   # ── Kaufpreis ─────────────────────────────────────────────
   price:
@@ -154,24 +171,31 @@ variables:
       label: "Gesamtkaufpreis (EUR)"
       type: number
       required: true
+      tooltip: "Der gesamte Kaufpreis für alle übertragenen Vermögenswerte. Dieser Betrag bildet die Basis für die Grunderwerbsteuer (bei Immobilien) und die Gewerbesteuer-Hinzurechnung beim Käufer."
     - id: KAUFPREIS_SACHANLAGEN
       label: "Anteil Sachanlagen"
       type: number
+      tooltip: "Kaufpreisanteil für Maschinen, Einrichtungen, Fahrzeuge etc. Dieser Anteil ist beim Käufer abschreibbar (AfA). Je höher der Sachanlagenanteil, desto günstiger für den Käufer steuerlich."
     - id: KAUFPREIS_VORRAETE
       label: "Anteil Vorräte"
       type: number
+      tooltip: "Kaufpreisanteil für Warenbestände, Roh-/Hilfs-/Betriebsstoffe. Wird meist zum Buchwert oder Marktpreis bewertet. Empfehlung: separat per Inventur am Stichtag ermitteln."
     - id: KAUFPREIS_FORDERUNGEN
       label: "Anteil Forderungen"
       type: number
+      tooltip: "Kaufpreisanteil für übertragene Kundenforderungen. Vorsicht: Berücksichtigen Sie Ausfallrisiken und ggf. Wertberichtigungen. Forderungen sollten einzeln in einer Anlage aufgeführt werden."
     - id: KAUFPREIS_GOODWILL
       label: "Anteil Geschäftswert/Goodwill"
       type: number
+      tooltip: "Der 'immaterielle' Mehrwert des Unternehmens: Kundenstamm, Marktstellung, Mitarbeiter-Know-how. Beim Käufer über 15 Jahre abschreibbar (§ 7 Abs. 1 S. 3 EStG). Beim Verkäufer Teil des Veräußerungsgewinns."
     - id: KAUFPREIS_IP
       label: "Anteil immaterielle Vermögenswerte/IP"
       type: number
+      tooltip: "Kaufpreisanteil für Marken, Patente, Software, Rezepturen etc. Separater Ausweis ist wichtig für die steuerliche Behandlung und eventuelle Lizenzierungen nach dem Kauf."
     - id: KAUFPREIS_WETTBEWERBSVERBOT
       label: "Anteil Wettbewerbsverbot"
       type: number
+      tooltip: "Vergütung für das Wettbewerbsverbot des Verkäufers. Dieser Betrag ist beim Verkäufer als sonstige Einkünfte (§ 22 EStG) steuerpflichtig – nicht als Veräußerungsgewinn. Kann auch §16/§34 EStG-Begünstigungen reduzieren."
 
   # ── Termine ───────────────────────────────────────────────
   dates:
@@ -179,89 +203,116 @@ variables:
       label: "Datum der Vertragsunterzeichnung"
       type: date
       required: true
+      tooltip: "Das Datum, an dem beide Parteien den Vertrag unterschreiben (Signing). Kann vom wirtschaftlichen Stichtag und dem Vollzugstag abweichen."
     - id: STICHTAG
       label: "Wirtschaftlicher Stichtag"
       type: date
       required: true
+      tooltip: "Das Datum, ab dem wirtschaftlich betrachtet der Käufer als Eigentümer gilt. Gewinne und Verluste ab diesem Datum gehen auf den Käufer über. Häufig der 1. des Folgemonats nach Signing."
     - id: CLOSING_DATUM
       label: "Vollzugstag (Closing)"
       type: date
       required: true
+      tooltip: "Der Tag, an dem alle Vollzugshandlungen stattfinden: Kaufpreiszahlung, Übergabe der Vermögenswerte, Schlüsselübergabe. Nach Closing ist der Käufer rechtlicher und wirtschaftlicher Eigentümer."
     - id: UEBERGANGSFRIST_ENDE
       label: "Ende der Übergangsphase"
       type: date
+      tooltip: "Zeitraum, in dem der Verkäufer aktiv beim Übergang unterstützt (Einarbeitung, Kundenkontakte, Wissenstransfer). Typisch: 4–12 Wochen nach Closing."
 
   # ── Konditionen ───────────────────────────────────────────
   conditions:
     - id: HAT_MITARBEITER
       label: "Werden Arbeitnehmer übernommen?"
       type: boolean
+      tooltip: "Wenn Mitarbeiter übergehen, gilt zwingend § 613a BGB: Alle Arbeitsverhältnisse gehen automatisch auf den Käufer über. Kündigung wegen des Betriebsübergangs ist unzulässig. Mitarbeiter haben ein 4-Wochen-Widerspruchsrecht. Aktiviert das Arbeitnehmer-Kapitel im Vertrag."
     - id: HAT_IMMOBILIEN
       label: "Sind Grundstücke/Immobilien enthalten?"
       type: boolean
+      tooltip: "Bei Übertragung von Grundstücken oder grundstücksgleichen Rechten: Notarielle Beurkundung des gesamten Vertrags erforderlich (§ 311b BGB). Grunderwerbsteuer fällt an (3,5–6,5% je nach Bundesland). Gesonderte Auflassung und Grundbucheintragung nötig."
     - id: HAT_MIETVERTRAG
       label: "Wird ein Mietvertrag übernommen/neu geschlossen?"
       type: boolean
+      tooltip: "Bei Übernahme bestehender Mietverträge: Zustimmung des Vermieters erforderlich. Käufer tritt in alle Rechte und Pflichten ein. Prüfen ob Sonderkündigungsrechte oder Change-of-Control-Klauseln im Mietvertrag bestehen."
     - id: HAT_VORRAETE
       label: "Sind Warenvorräte enthalten?"
       type: boolean
+      tooltip: "Warenbestände, Roh-/Hilfs-/Betriebsstoffe. Empfehlung: Inventur am Stichtag, Bestand wird dann zum Buchwert oder Marktpreis in den Kaufpreis eingerechnet (oft als variable Komponente)."
     - id: HAT_FORDERUNGEN
       label: "Werden Forderungen übertragen?"
       type: boolean
+      tooltip: "Offene Kundenforderungen (Debitoren). Abtretung erfordert Zession nach §§ 398 ff. BGB. Schuldner müssen informiert werden. Vorsicht bei langfälligen Forderungen – Ausfallrisiko prüfen. Aktiviert detaillierte Forderungsklausel im Vertrag."
     - id: HAT_VERBINDLICHKEITEN
       label: "Werden Verbindlichkeiten übernommen?"
       type: boolean
+      tooltip: "Beim Asset Deal gehen Verbindlichkeiten grundsätzlich NICHT automatisch über. Jede Verbindlichkeit braucht eine explizite Schuldübernahme (§ 414 BGB) mit Zustimmung des Gläubigers. Ausnahme: Steuerschulden und Sozialversicherungsbeiträge (§ 75 AO, § 25 HGB)."
     - id: HAT_EARNOUT
       label: "Gibt es eine Earn-Out-Komponente?"
       type: boolean
+      tooltip: "Ein variabler Kaufpreisanteil, der von der zukünftigen Entwicklung des Unternehmens abhängt (z.B. 10% des Kaufpreises wenn Umsatz in Jahr 1 > 500.000 EUR). Wichtig: Klare Berechnungsformel, Messzeitraum, Kontrollmechanismen und was der Käufer in dieser Zeit darf/nicht darf."
     - id: HAT_RATENZAHLUNG
       label: "Erfolgt Ratenzahlung?"
       type: boolean
+      tooltip: "Der Kaufpreis wird in mehreren Tranchen gezahlt statt komplett bei Closing. Vorteil für Käufer: geringerer Kapitalbedarf. Nachteil für Verkäufer: Ausfallrisiko. Empfehlung: Absicherung durch Eigentumsvorbehalt, Bankbürgschaft oder Grundschuld."
     - id: HAT_TREUHANDKONTO
       label: "Wird ein Treuhandkonto verwendet?"
       type: boolean
+      tooltip: "Ein von einem Notar oder Rechtsanwalt verwaltetes Konto, auf das der Käufer den Kaufpreis vorab einzahlt. Zahlung an Verkäufer erst nach Vorliegen aller Vollzugsbedingungen. Schützt beide Parteien. Kosten: ca. 0,2–0,5% der Kaufsumme."
     - id: HAT_IP
       label: "Sind gewerbliche Schutzrechte (Marken, Patente) enthalten?"
       type: boolean
+      tooltip: "Eingetragene Marken, Patente, Gebrauchsmuster, Designs. Umschreibung beim DPMA/EUIPO nach Closing erforderlich. Beachten: Laufende Anmeldungen, Verlängerungsfristen, bestehende Lizenzverträge."
     - id: HAT_DOMAINS
       label: "Werden Domains/Webseiten übertragen?"
       type: boolean
+      tooltip: "Domain-Transfer bei der zuständigen Registry (z.B. DENIC für .de). Technische Voraussetzungen: Auth-Code, KK-Antrag. Auch Hosting-Verträge, SSL-Zertifikate und Social-Media-Accounts bedenken."
     - id: HAT_LIZENZEN
       label: "Werden Software-Lizenzen übertragen?"
       type: boolean
+      tooltip: "Software-Lizenzen sind oft nicht übertragbar ohne Zustimmung des Lizenzgebers (z.B. Microsoft, SAP). Prüfen welche Lizenzen volumenbezogen oder personenbezogen sind. Bei SaaS-Verträgen: meist neuer Vertrag mit Käufer nötig."
     - id: HAT_KUNDENVERTRAEGE
       label: "Werden Kundenverträge übertragen?"
       type: boolean
+      tooltip: "Verträge mit Kunden können nur mit Zustimmung der Kunden übertragen werden (§ 398 BGB für Forderungen, Vertragsübernahme benötigt alle drei Parteien). Prüfen ob Rahmenverträge Change-of-Control-Klauseln enthalten."
     - id: HAT_LIEFERANTENVERTRAEGE
       label: "Werden Lieferantenverträge übertragen?"
       type: boolean
+      tooltip: "Wie bei Kundenverträgen: Zustimmung der Lieferanten erforderlich. Besonders wichtig bei exklusiven Lieferbeziehungen, Sonderkonditionen oder laufenden Bestellungen."
     - id: HAT_FAHRZEUGE
       label: "Sind Fahrzeuge enthalten?"
       type: boolean
+      tooltip: "Ummeldung beim Straßenverkehrsamt erforderlich. Kfz-Versicherung: neuer Versicherungsvertrag. Leasing-Fahrzeuge: Zustimmung der Leasinggesellschaft. Liste der Fahrzeuge mit Kennzeichen, FIN und Kilometerstand als Anlage beifügen."
     - id: HAT_GENEHMIGUNGEN
       label: "Sind behördliche Genehmigungen/Konzessionen betroffen?"
       type: boolean
+      tooltip: "Gaststättenkonzession, Gewerbeerlaubnis, BImSchG-Genehmigung, Ausschankerlaubnis etc. sind personenbezogen und nicht automatisch übertragbar. Käufer muss neue Genehmigung beantragen. Übergangsregelung im Vertrag wichtig."
     - id: HAT_UMWELTRISIKEN
       label: "Bestehen Umweltrisiken/Altlasten?"
       type: boolean
+      tooltip: "Bodenkontamination, Altlasten, Lagerung gefährlicher Stoffe. Käufer kann für Altlasten haften wenn er Zustandsstörer wird. Empfehlung: Umwelt-Due-Diligence, Freistellungserklärung des Verkäufers, ggf. Rückstellungsvereinbarung."
     - id: HAT_RECHTSSTREITIGKEITEN
       label: "Gibt es laufende Rechtsstreitigkeiten?"
       type: boolean
+      tooltip: "Aktiviert Klauseln zu laufenden Klagen, Verfahren oder Behördenverfahren. Verkäufer muss alle ihm bekannten Streitigkeiten offenbaren. Käufer schützt sich durch Garantie und Freistellungsklausel."
     - id: SCHIEDSGERICHT
       label: "Schiedsgerichtsvereinbarung statt ordentlicher Gerichtsbarkeit?"
       type: boolean
+      tooltip: "Ein privates Schiedsgericht statt staatlichem Gericht. Vorteile: Vertraulichkeit, Fachkenntnisse, oft schneller. Nachteile: Teurer (Schiedsrichterkosten), kein direkter Mahnbescheid möglich. Empfehlung bei Streitwerten > 500.000 EUR."
     - id: HAT_BERATERVERTRAG
       label: "Soll der Verkäufer als Berater tätig werden?"
       type: boolean
+      tooltip: "Ein seperater Beratervertrag mit dem Verkäufer zur Einarbeitungsphase. Definiert Stundensatz, Umfang, Laufzeit. Achtung: Nicht als verkapptes Arbeitsverhältnis ausgestalten (Scheinselbstständigkeit). Empfehlung: max. 6–12 Monate."
     - id: HAT_FIRMENFORTFUEHRUNG
       label: "Soll das Geschäft unter bisheriger Bezeichnung weitergeführt werden (§ 25 HGB)?"
       type: boolean
+      tooltip: "§ 25 HGB: Wer ein Handelsgeschäft unter bisheriger Firma fortführt, haftet für alle betrieblichen Verbindlichkeiten des Vorbesitzers – auch unbekannte! Deaktivieren = expliziter Ausschluss dieser Haftung. Aktivieren = Haftungsübernahme mit Begrenzungsmechanismus über § 25 Abs. 2 HGB."
     - id: HAT_LOI
       label: "Wurde ein Letter of Intent (LOI) unterzeichnet?"
       type: boolean
+      tooltip: "Ein Letter of Intent (Absichtserklärung) ist eine vorvertragliche Vereinbarung über die Grundzüge des Deals. Falls ein LOI existiert, wird er im Vertrag referenziert. Der Kaufvertrag ersetzt und verdrängt alle vorherigen Vereinbarungen (Merger-Clausel)."
     - id: HAT_EXKLUSIVITAET
       label: "Besteht eine Exklusivitätsvereinbarung?"
       type: boolean
+      tooltip: "Eine Exklusivitätsvereinbarung untersagt dem Verkäufer, parallel mit anderen Interessenten zu verhandeln. Üblicherweise zeitlich begrenzt (30–90 Tage). Aktiviert entsprechende Klausel im Vertragsrubrum."
     - id: UEBERGANG_IM_KAUFPREIS
       label: "Ist die Einarbeitung im Kaufpreis enthalten?"
       type: boolean

@@ -1,203 +1,783 @@
 {
-  "categories": [
-    {
-      "id": "digital",
-      "name": "Digital",
-      "items": [
-        { "id": "d_domain", "name": "Domain .de und .com", "unitPrice": 0 },
-        { "id": "d_amazon", "name": "Amazon Shop", "unitPrice": 0 },
-        { "id": "d_ebay_account", "name": "Ebay Account", "unitPrice": 0 },
-        { "id": "d_amazon_ppc", "name": "Amazon Produktbilder + EBC + PPC Abo (Paket)", "unitPrice": 2250 },
-        { "id": "d_ebay_template", "name": "eBay Template Flat2k", "unitPrice": 29.37 },
-        { "id": "d_gtin", "name": "1.000 GTIN Artikelidentnummerndatei", "unitPrice": 55 },
-        { "id": "d_gs1_abo", "name": "GS1 Abo GLN", "unitPrice": 0 },
-        { "id": "d_psd", "name": "Offene PSD-Dateien", "unitPrice": 500 },
-        { "id": "d_ionos", "name": "IONOS Paket", "unitPrice": 0 }
-      ]
-    },
-    {
-      "id": "etiketten",
-      "name": "Etiketten",
-      "items": [
-        { "id": "et_bloom", "name": "Etikett Bloom", "unitPrice": 0.346472 },
-        { "id": "et_calmag", "name": "Etikett CalMag", "unitPrice": 0.346472 },
-        { "id": "et_candy", "name": "Etikett Candy", "unitPrice": 0.346472 },
-        { "id": "et_grow", "name": "Etikett Grow", "unitPrice": 0.346472 },
-        { "id": "et_root", "name": "Etikett Root", "unitPrice": 0.346472 },
-        { "id": "et_vita", "name": "Etikett Vita+", "unitPrice": 0.346472 },
-        { "id": "et_clone", "name": "Etikett Clone Gel", "unitPrice": 0.346472 },
-        { "id": "et_phplus", "name": "Etikett PH+", "unitPrice": 0.346472 },
-        { "id": "et_phminus", "name": "Etikett PH-", "unitPrice": 0.346472 }
-      ]
-    },
-    {
-      "id": "fertig_gemischt",
-      "name": "Fertig Gemischt",
-      "items": [
-        { "id": "fg_clone_80", "name": "Clone Gel 80ml", "unitPrice": 12.99 },
-        { "id": "fg_phplus_1l", "name": "PH+ 1L", "unitPrice": 14.99 },
-        { "id": "fg_phminus_1l", "name": "PH- 1L", "unitPrice": 14.99 },
-        { "id": "fg_calmag_05", "name": "CalMag 0,5L", "unitPrice": 14.99 },
-        { "id": "fg_candy_025", "name": "Candy 0,25L", "unitPrice": 14.99 },
-        { "id": "fg_candy_05", "name": "Candy 0,5L", "unitPrice": 24.99 },
-        { "id": "fg_candy_1l", "name": "Candy 1L", "unitPrice": 29.99 },
-        { "id": "fg_candy_5l", "name": "Candy 5L", "unitPrice": 99.99 },
-        { "id": "fg_candy_10l", "name": "Candy 10L", "unitPrice": 179.99 },
-        { "id": "fg_bloom_1l", "name": "Bloom 1L", "unitPrice": 14.99 },
-        { "id": "fg_bloom_5l", "name": "Bloom 5L", "unitPrice": 39.99 },
-        { "id": "fg_bloom_10l", "name": "Bloom 10L", "unitPrice": 69.99 },
-        { "id": "fg_grow_1l", "name": "Grow 1L", "unitPrice": 14.99 },
-        { "id": "fg_grow_5l", "name": "Grow 5L", "unitPrice": 39.99 },
-        { "id": "fg_grow_10l", "name": "Grow 10L", "unitPrice": 69.99 },
-        { "id": "fg_root_025", "name": "Root 0,25L", "unitPrice": 14.99 },
-        { "id": "fg_root_05", "name": "Root 0,5L", "unitPrice": 24.99 },
-        { "id": "fg_root_1l", "name": "Root 1L", "unitPrice": 29.99 },
-        { "id": "fg_root_5l", "name": "Root 5L", "unitPrice": 99.99 },
-        { "id": "fg_root_10l", "name": "Root 10L", "unitPrice": 179.99 },
-        { "id": "fg_vita_025", "name": "Vita+ 0,25L", "unitPrice": 12.99 },
-        { "id": "fg_vita_05", "name": "Vita+ 0,5L", "unitPrice": 17.99 },
-        { "id": "fg_vita_1l", "name": "Vita+ 1L", "unitPrice": 24.99 },
-        { "id": "fg_vita_5l", "name": "Vita+ 5L", "unitPrice": 89.99 },
-        { "id": "fg_vita_10l", "name": "Vita+ 10L", "unitPrice": 159.99 }
-      ]
-    },
-    {
-      "id": "maschinen",
-      "name": "Maschinen",
-      "items": [
-        { "id": "m_drucker_ql700", "name": "Etikettendrucker Brother P-touch QL-700", "unitPrice": 68.45 },
-        { "id": "m_ruehr_bochem", "name": "Bochem Propellerrührer Edelstahl", "unitPrice": 21.10 },
-        { "id": "m_etikettiermaschine", "name": "Etikettiermaschine Etimatic Z1", "unitPrice": 1973.42 },
-        { "id": "m_topf_48l", "name": "Kochtopf 48L", "unitPrice": 57.98 },
-        { "id": "m_topf_14l", "name": "HI 14 Liter Großraumtopf Suppentopf (22023)", "unitPrice": 34.95 },
-        { "id": "m_ruehr_mr4", "name": "MR 4 100 V2A Rührer", "unitPrice": 0 },
-        { "id": "m_pumpe_sunsun", "name": "SunSun JVP-232 Strömungspumpe 15000 l/h 26W", "unitPrice": 25.20 },
-        { "id": "m_fett_oks480", "name": "OKS 480 Hochdruckfett Lebensmitteltechnik 400ml", "unitPrice": 47.99 },
-        { "id": "m_sauger_einhell", "name": "Nass-Trockensauger Einhell TC-VC 1812 S 12L", "unitPrice": 33.61 }
-      ]
-    },
-    {
-      "id": "rezepturen",
-      "name": "Rezepturen",
-      "items": [
-        { "id": "r_bloom", "name": "Rezeptur Bloom", "unitPrice": 0.346472 },
-        { "id": "r_calmag", "name": "Rezeptur CalMag", "unitPrice": 0.346472 },
-        { "id": "r_candy", "name": "Rezeptur Candy", "unitPrice": 0.346472 },
-        { "id": "r_grow", "name": "Rezeptur Grow", "unitPrice": 0.346472 },
-        { "id": "r_root", "name": "Rezeptur Root", "unitPrice": 0.346472 },
-        { "id": "r_vita", "name": "Rezeptur Vita+", "unitPrice": 0.346472 },
-        { "id": "r_clone", "name": "Rezeptur Clone Gel", "unitPrice": 0.346472 },
-        { "id": "r_phplus", "name": "Rezeptur PH+", "unitPrice": 0.346472 },
-        { "id": "r_phminus", "name": "Rezeptur PH-", "unitPrice": 0.346472 }
-      ]
-    },
-    {
-      "id": "verpackung",
-      "name": "Verpackung",
-      "items": [
-        { "id": "v_kan5l", "name": "5 Liter Kanister Weiß", "unitPrice": 2.47 },
-        { "id": "v_kan10l", "name": "10 Liter Kanister Weiß", "unitPrice": 3.05 },
-        { "id": "v_fl1000", "name": "1000 ml Rundflasche PE weiß 28/410", "unitPrice": 0.62 },
-        { "id": "v_fl250", "name": "250 ml Rundflasche PE weiß 28/410", "unitPrice": 0.54 },
-        { "id": "v_fl500", "name": "500 ml Rundflasche PE weiß 28/410", "unitPrice": 0.62 },
-        { "id": "v_verschl_kind", "name": "Kindersicherer Verschluss weiß 28/410", "unitPrice": 0.23 },
-        { "id": "v_kapsel80", "name": "Kapselbox 80 ml schwarz PE-HD mit Jaycap Deckel", "unitPrice": 0.28 },
-        { "id": "v_fl100_zyl", "name": "100 ml Zylinderflaschen glasklar PET 24/410", "unitPrice": 0.44 },
-        { "id": "v_spray_24", "name": "Spray Zerstäuber 24/410 schwarz 179mm", "unitPrice": 0.65 },
-        { "id": "v_fl30_mini", "name": "PET Flasche 30 ml 18/415 schwarz doppelwandig", "unitPrice": 0.18 },
-        { "id": "v_fl30_klar", "name": "PETG Flasche LEONORA 30 ml klar 24/410", "unitPrice": 0.32 },
-        { "id": "v_fl30_weiss", "name": "PETG Flasche LEONORA 30 ml weiß 24/410", "unitPrice": 0.32 },
-        { "id": "v_natron_rolle", "name": "Natronkraftpapier auf Rolle 50 cm", "unitPrice": 30.22 },
-        { "id": "v_schrenz_rolle", "name": "Schrenzpapier auf Rolle 50 cm", "unitPrice": 17.92 }
-      ]
-    },
-    {
-      "id": "versand",
-      "name": "Versand",
-      "items": [
-        { "id": "vs_karton_fix165", "name": "165x135x70-100 mm Fix-Aufrichtekartons", "unitPrice": 0.31 },
-        { "id": "vs_tragegriff", "name": "Tragegriffschachtel mit Automatikboden", "unitPrice": 1.80 },
-        { "id": "vs_karton_300200", "name": "300x200x200 mm einwellige Kartons", "unitPrice": 0.40 },
-        { "id": "vs_karton_113", "name": "113x113x100 mm einwellige Kartons", "unitPrice": 0.22 },
-        { "id": "vs_thermo_6rollen", "name": "1500 Thermo Etiketten 103x199 mm 6 Rollen (DHL)", "unitPrice": 47.95 },
-        { "id": "vs_karton_400300", "name": "400x300x200 mm einwellige Kartons", "unitPrice": 0.73 },
-        { "id": "vs_karton_400350", "name": "400x350x250 mm zweiwellige Kartons", "unitPrice": 1.36 },
-        { "id": "vs_falt_215", "name": "215x155x74 mm Faltschachtel DHL Kleinpaket", "unitPrice": 0.28 },
-        { "id": "vs_fix_265", "name": "265x195x120-200 mm Fix-Aufrichtekartons", "unitPrice": 0.70 },
-        { "id": "vs_paletten_294", "name": "294x194x90 mm Paletten-System-Kartons", "unitPrice": 0.61 },
-        { "id": "vs_karton_300215", "name": "300x215x100 mm einwellige Kartons", "unitPrice": 0.41 },
-        { "id": "vs_fix_304_a4", "name": "304x216x130-220 mm Fix-Aufrichtekartons A4", "unitPrice": 0.99 },
-        { "id": "vs_huelsa3_056", "name": "315x105x105 mm Versandhülse A3 quadratisch", "unitPrice": 0.56 },
-        { "id": "vs_huelsa3_064", "name": "315x105x105 mm Versandhülse A3 quadratisch (Variante)", "unitPrice": 0.64 },
-        { "id": "vs_karton_350250", "name": "350x250x120 mm zweiwellige Kartons", "unitPrice": 0.68 },
-        { "id": "vs_luft_100_220", "name": "100 Luftpolster-Versandtaschen braun 220x260 mm Gr.5", "unitPrice": 15.71 },
-        { "id": "vs_luft_100_150", "name": "100 Luftpolster-Versandtaschen braun 150x215 mm A6", "unitPrice": 12.00 },
-        { "id": "vs_luft_100_150b", "name": "100 Luftpolster-Versandtaschen braun 150x220 mm A6", "unitPrice": 16.63 },
-        { "id": "vs_luft_100_260", "name": "100 Luftpolster-Versandtaschen braun 150x260 mm Gr.5", "unitPrice": 19.26 },
-        { "id": "vs_luft_200_120", "name": "200 Luftpolster-Versandtaschen braun 120x220 mm B2", "unitPrice": 26.01 },
-        { "id": "vs_druck_1000", "name": "Druckverschlussbeutel LDPE 120x170 mm 1.000 Stück", "unitPrice": 18.07 },
-        { "id": "vs_druck_2000", "name": "Druckverschlussbeutel LDPE 120x170 mm 2.000 Stück", "unitPrice": 29.33 },
-        { "id": "vs_karton_200100", "name": "Karton 200x100x80 mm 20 Stk", "unitPrice": 3.46 },
-        { "id": "vs_toner_tn242", "name": "Toner Brother TN-242BK schwarz 2500 Seiten", "unitPrice": 51.96 },
-        { "id": "vs_etikett_traeger", "name": "Etikettenträger 40x10 mm magnetisch C-Profil 100 Stück", "unitPrice": 14.99 },
-        { "id": "vs_brother_dk22205", "name": "Brother DK-22205 Etiketten 62mm x 30,48m Endlos Papier", "unitPrice": 12.49 },
-        { "id": "vs_etikett_quad250", "name": "Hochwertige Etiketten auf Rolle 5x5cm 250 Stück", "unitPrice": 30.74 },
-        { "id": "vs_stapel_thermo", "name": "Stapel-Etiketten Thermo Eco 1000 Stück", "unitPrice": 15.79 },
-        { "id": "vs_klebeband_tesa", "name": "Tesa Verpackungsklebeband Universal transparent 50mm x 66m", "unitPrice": 1.59 }
-      ]
-    },
-    {
-      "id": "werbung",
-      "name": "Werbung",
-      "items": [
-        { "id": "w_faltblatt_a5_1000", "name": "Faltblatt DIN A5 Mittelfalz 4-seitig 1000 Stück", "unitPrice": 67.01 },
-        { "id": "w_faltblatt_a5_2500", "name": "Faltblatt DIN A5 Mittelfalz 4-seitig 2500 Stück", "unitPrice": 116.63 },
-        { "id": "w_faltblatt_a6_1000", "name": "Faltblatt DIN A6 Mittelfalz 4-seitig 1000 Stück", "unitPrice": 69.48 },
-        { "id": "w_faltblatt_a6_2500", "name": "Faltblatt DIN A6 Mittelfalz 4-seitig 2500 Stück", "unitPrice": 79.49 },
-        { "id": "w_flyer_a5_1000", "name": "Flyer DIN A5 Quer einseitig 1000 Stück", "unitPrice": 58.64 },
-        { "id": "w_flyer_a5_2500", "name": "Flyer DIN A5 Quer einseitig 2500 Stück", "unitPrice": 107.00 },
-        { "id": "w_aufkleber", "name": "Aufkleber", "unitPrice": 0 },
-        { "id": "w_dosierbecher_30", "name": "30ml Dosierbecher", "unitPrice": 0.17 },
-        { "id": "w_alu_verbund_1000", "name": "Alu Verbund 3mm schwarz 1000x1000mm (MP Schild)", "unitPrice": 129.64 },
-        { "id": "w_alu_verbund_kl", "name": "Alu Verbund 3mm schwarz 1000x1000mm (kleinere Variante)", "unitPrice": 68.23 },
-        { "id": "w_prospekthalter", "name": "Prospekthalter", "unitPrice": 5.20 },
-        { "id": "w_wandprospekt", "name": "Wandprospekthalter", "unitPrice": 4.90 },
-        { "id": "w_regal_praes", "name": "Regal zur Warenpräsentation", "unitPrice": 22.12 },
-        { "id": "w_magnetband", "name": "Magnetband schwarz selbstklebend 10mm x 5m", "unitPrice": 7.49 },
-        { "id": "w_messbecher_30", "name": "Messbecher PP 30ml Graduierung Überkappe", "unitPrice": 0.17 }
-      ]
-    },
-    {
-      "id": "zutaten",
-      "name": "Zutaten",
-      "items": [
-        { "id": "z_polyfeed_sonate_25", "name": "Haifa Poly-Feed Sonate 15-5-30(+3)+ME 25kg", "unitPrice": 64.20 },
-        { "id": "z_polyfeed_tardo_25", "name": "Haifa Poly-Feed Tardo 8-12-24(+4)+ME 25kg", "unitPrice": 61.69 },
-        { "id": "z_sop_bio", "name": "Haifa SOP Bio Kaliumsulfat 0-0-52 wasserlöslich", "unitPrice": 36.44 },
-        { "id": "z_sop_bio_25", "name": "Haifa SOP Bio Kaliumsulfat 0-0-52 25kg", "unitPrice": 35.20 },
-        { "id": "z_anthocyane", "name": "Traubenschalenextrakt Anthocyane (E163) 1000g Pulver", "unitPrice": 129.00 },
-        { "id": "z_agar_agar", "name": "Agar Agar", "unitPrice": 12.80 },
-        { "id": "z_root_booster_20l", "name": "Basfoliar Root Booster SL 20 Liter", "unitPrice": 188.84 },
-        { "id": "z_beta_carotin", "name": "Beta Carotin E160a 1000g Beutel wasserlöslich", "unitPrice": 39.95 },
-        { "id": "z_marine_power", "name": "Marine Power Braunalgenextrakt (Ascophyllum nodosum)", "unitPrice": 190.85 },
-        { "id": "z_hpmc", "name": "HPMC Hydroxypropylmethylcellulose", "unitPrice": 28.90 },
-        { "id": "z_paraffinoel_1l", "name": "Paraffinöl Weißöl 1L technisch 15 CS", "unitPrice": 12.95 },
-        { "id": "z_farbe_blau_1l", "name": "Huchem Farbstoff blau flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_farbe_gelb_1l", "name": "Huchem Farbstoff gelb flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_farbe_gruen_1l", "name": "Huchem Farbstoff grün flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_farbe_rot_1l", "name": "Huchem Farbstoff rot flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_hpmc_1000g", "name": "Hydroxypropylmethylcellulose Glutenfrei 1000g", "unitPrice": 24.29 },
-        { "id": "z_calcinit_25", "name": "Haifa Cal GG Calciumnitrat 15,5% N 25kg", "unitPrice": 25.47 },
-        { "id": "z_wallup_1kg", "name": "HaifaStim Wall-Up S 1kg", "unitPrice": 59.98 },
-        { "id": "z_phosphorsaeure_250", "name": "Phosphorsäure 85% 250kg Fass (€/kg)", "unitPrice": 3.03 },
-        { "id": "z_polyfeed_sonate_bulk", "name": "POLYFEED SONATE 15-5-30(+3+ME) 25KG (Bulk)", "unitPrice": 41.28 },
-        { "id": "z_polyfeed_tardo_bulk", "name": "POLYFEED TARDO 8-12-24(+4+ME) 25KG (Bulk)", "unitPrice": 38.19 },
-        { "id": "z_kalilauge_45_300", "name": "KALILAUGE 45% TECHNISCH 300kg Fass (€/kg)", "unitPrice": 2.05 },
-        { "id": "z_gly_blau_1l", "name": "Glycol.eu Farbstoff blau flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_gly_gruen_1l", "name": "Glycol.eu Farbstoff grün flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_gly_rot_1l", "name": "Glycol.eu Farbstoff rot flüssig 1L", "unitPrice": 21.15 },
-        { "id": "z_calcinit_yara_25", "name": "YARA TERA KALKSALPETER CALCINIT 25KG", "unitPrice": 15.60 }
-      ]
-    }
-  ]
+    "categories": [
+        {
+            "id": "digital",
+            "name": "Digital",
+            "items": [
+                {
+                    "id": "d_domain",
+                    "name": "Domain .de und .com",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "d_amazon",
+                    "name": "Amazon Shop",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "d_ebay_account",
+                    "name": "Ebay Account",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "d_amazon_ppc",
+                    "name": "Amazon Produktbilder + EBC + PPC Abo (Paket)",
+                    "unitPrice": 2250
+                },
+                {
+                    "id": "d_ebay_template",
+                    "name": "eBay Template Flat2k",
+                    "unitPrice": 29.37
+                },
+                {
+                    "id": "d_gtin",
+                    "name": "1.000 GTIN Artikelidentnummerndatei",
+                    "unitPrice": 55
+                },
+                {
+                    "id": "d_gs1_abo",
+                    "name": "GS1 Abo GLN",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "d_psd",
+                    "name": "Offene PSD-Dateien",
+                    "unitPrice": 500
+                },
+                {
+                    "id": "d_ionos",
+                    "name": "IONOS Paket",
+                    "unitPrice": 0
+                }
+            ]
+        },
+        {
+            "id": "etiketten",
+            "name": "Etiketten",
+            "items": [
+                {
+                    "id": "et_bloom",
+                    "name": "Etikett Bloom",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_calmag",
+                    "name": "Etikett CalMag",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_candy",
+                    "name": "Etikett Candy",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_grow",
+                    "name": "Etikett Grow",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_root",
+                    "name": "Etikett Root",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_vita",
+                    "name": "Etikett Vita+",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_clone",
+                    "name": "Etikett Clone Gel",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_phplus",
+                    "name": "Etikett PH+",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "et_phminus",
+                    "name": "Etikett PH-",
+                    "unitPrice": 0.346472
+                }
+            ]
+        },
+        {
+            "id": "fertig_gemischt",
+            "name": "Fertig Gemischt",
+            "items": [
+                {
+                    "id": "fg_clone_80",
+                    "name": "Clone Gel 80ml",
+                    "unitPrice": 12.99
+                },
+                {
+                    "id": "fg_phplus_1l",
+                    "name": "PH+ 1L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_phminus_1l",
+                    "name": "PH- 1L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_calmag_05",
+                    "name": "CalMag 0,5L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_candy_025",
+                    "name": "Candy 0,25L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_candy_05",
+                    "name": "Candy 0,5L",
+                    "unitPrice": 24.99
+                },
+                {
+                    "id": "fg_candy_1l",
+                    "name": "Candy 1L",
+                    "unitPrice": 29.99
+                },
+                {
+                    "id": "fg_candy_5l",
+                    "name": "Candy 5L",
+                    "unitPrice": 99.99
+                },
+                {
+                    "id": "fg_candy_10l",
+                    "name": "Candy 10L",
+                    "unitPrice": 179.99
+                },
+                {
+                    "id": "fg_bloom_1l",
+                    "name": "Bloom 1L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_bloom_5l",
+                    "name": "Bloom 5L",
+                    "unitPrice": 39.99
+                },
+                {
+                    "id": "fg_bloom_10l",
+                    "name": "Bloom 10L",
+                    "unitPrice": 69.99
+                },
+                {
+                    "id": "fg_grow_1l",
+                    "name": "Grow 1L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_grow_5l",
+                    "name": "Grow 5L",
+                    "unitPrice": 39.99
+                },
+                {
+                    "id": "fg_grow_10l",
+                    "name": "Grow 10L",
+                    "unitPrice": 69.99
+                },
+                {
+                    "id": "fg_root_025",
+                    "name": "Root 0,25L",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "fg_root_05",
+                    "name": "Root 0,5L",
+                    "unitPrice": 24.99
+                },
+                {
+                    "id": "fg_root_1l",
+                    "name": "Root 1L",
+                    "unitPrice": 29.99
+                },
+                {
+                    "id": "fg_root_5l",
+                    "name": "Root 5L",
+                    "unitPrice": 99.99
+                },
+                {
+                    "id": "fg_root_10l",
+                    "name": "Root 10L",
+                    "unitPrice": 179.99
+                },
+                {
+                    "id": "fg_vita_025",
+                    "name": "Vita+ 0,25L",
+                    "unitPrice": 12.99
+                },
+                {
+                    "id": "fg_vita_05",
+                    "name": "Vita+ 0,5L",
+                    "unitPrice": 17.99
+                },
+                {
+                    "id": "fg_vita_1l",
+                    "name": "Vita+ 1L",
+                    "unitPrice": 24.99
+                },
+                {
+                    "id": "fg_vita_5l",
+                    "name": "Vita+ 5L",
+                    "unitPrice": 89.99
+                },
+                {
+                    "id": "fg_vita_10l",
+                    "name": "Vita+ 10L",
+                    "unitPrice": 159.99
+                }
+            ]
+        },
+        {
+            "id": "maschinen",
+            "name": "Maschinen",
+            "items": [
+                {
+                    "id": "m_drucker_ql700",
+                    "name": "Etikettendrucker Brother P-touch QL-700",
+                    "unitPrice": 68.45
+                },
+                {
+                    "id": "m_ruehr_bochem",
+                    "name": "Bochem Propellerrührer Edelstahl",
+                    "unitPrice": 21.10
+                },
+                {
+                    "id": "m_etikettiermaschine",
+                    "name": "Etikettiermaschine Etimatic Z1",
+                    "unitPrice": 1973.42
+                },
+                {
+                    "id": "m_topf_48l",
+                    "name": "Kochtopf 48L",
+                    "unitPrice": 57.98
+                },
+                {
+                    "id": "m_topf_14l",
+                    "name": "HI 14 Liter Großraumtopf Suppentopf (22023)",
+                    "unitPrice": 34.95
+                },
+                {
+                    "id": "m_ruehr_mr4",
+                    "name": "MR 4 100 V2A Rührer",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "m_pumpe_sunsun",
+                    "name": "SunSun JVP-232 Strömungspumpe 15000 l/h 26W",
+                    "unitPrice": 25.20
+                },
+                {
+                    "id": "m_fett_oks480",
+                    "name": "OKS 480 Hochdruckfett Lebensmitteltechnik 400ml",
+                    "unitPrice": 47.99
+                },
+                {
+                    "id": "m_sauger_einhell",
+                    "name": "Nass-Trockensauger Einhell TC-VC 1812 S 12L",
+                    "unitPrice": 33.61
+                }
+            ]
+        },
+        {
+            "id": "rezepturen",
+            "name": "Rezepturen",
+            "items": [
+                {
+                    "id": "r_bloom",
+                    "name": "Rezeptur Bloom",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_calmag",
+                    "name": "Rezeptur CalMag",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_candy",
+                    "name": "Rezeptur Candy",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_grow",
+                    "name": "Rezeptur Grow",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_root",
+                    "name": "Rezeptur Root",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_vita",
+                    "name": "Rezeptur Vita+",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_clone",
+                    "name": "Rezeptur Clone Gel",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_phplus",
+                    "name": "Rezeptur PH+",
+                    "unitPrice": 0.346472
+                },
+                {
+                    "id": "r_phminus",
+                    "name": "Rezeptur PH-",
+                    "unitPrice": 0.346472
+                }
+            ]
+        },
+        {
+            "id": "verpackung",
+            "name": "Verpackung",
+            "items": [
+                {
+                    "id": "v_kan5l",
+                    "name": "5 Liter Kanister Weiß",
+                    "unitPrice": 2.47
+                },
+                {
+                    "id": "v_kan10l",
+                    "name": "10 Liter Kanister Weiß",
+                    "unitPrice": 3.05
+                },
+                {
+                    "id": "v_fl1000",
+                    "name": "1000 ml Rundflasche PE weiß 28/410",
+                    "unitPrice": 0.62
+                },
+                {
+                    "id": "v_fl250",
+                    "name": "250 ml Rundflasche PE weiß 28/410",
+                    "unitPrice": 0.54
+                },
+                {
+                    "id": "v_fl500",
+                    "name": "500 ml Rundflasche PE weiß 28/410",
+                    "unitPrice": 0.62
+                },
+                {
+                    "id": "v_verschl_kind",
+                    "name": "Kindersicherer Verschluss weiß 28/410",
+                    "unitPrice": 0.23
+                },
+                {
+                    "id": "v_kapsel80",
+                    "name": "Kapselbox 80 ml schwarz PE-HD mit Jaycap Deckel",
+                    "unitPrice": 0.28
+                },
+                {
+                    "id": "v_fl100_zyl",
+                    "name": "100 ml Zylinderflaschen glasklar PET 24/410",
+                    "unitPrice": 0.44
+                },
+                {
+                    "id": "v_spray_24",
+                    "name": "Spray Zerstäuber 24/410 schwarz 179mm",
+                    "unitPrice": 0.65
+                },
+                {
+                    "id": "v_fl30_mini",
+                    "name": "PET Flasche 30 ml 18/415 schwarz doppelwandig",
+                    "unitPrice": 0.18
+                },
+                {
+                    "id": "v_fl30_klar",
+                    "name": "PETG Flasche LEONORA 30 ml klar 24/410",
+                    "unitPrice": 0.32
+                },
+                {
+                    "id": "v_fl30_weiss",
+                    "name": "PETG Flasche LEONORA 30 ml weiß 24/410",
+                    "unitPrice": 0.32
+                },
+                {
+                    "id": "v_natron_rolle",
+                    "name": "Natronkraftpapier auf Rolle 50 cm",
+                    "unitPrice": 30.22
+                },
+                {
+                    "id": "v_schrenz_rolle",
+                    "name": "Schrenzpapier auf Rolle 50 cm",
+                    "unitPrice": 17.92
+                }
+            ]
+        },
+        {
+            "id": "versand",
+            "name": "Versand",
+            "items": [
+                {
+                    "id": "vs_karton_fix165",
+                    "name": "165x135x70-100 mm Fix-Aufrichtekartons",
+                    "unitPrice": 0.31
+                },
+                {
+                    "id": "vs_tragegriff",
+                    "name": "Tragegriffschachtel mit Automatikboden",
+                    "unitPrice": 1.80
+                },
+                {
+                    "id": "vs_karton_300200",
+                    "name": "300x200x200 mm einwellige Kartons",
+                    "unitPrice": 0.40
+                },
+                {
+                    "id": "vs_karton_113",
+                    "name": "113x113x100 mm einwellige Kartons",
+                    "unitPrice": 0.22
+                },
+                {
+                    "id": "vs_thermo_6rollen",
+                    "name": "1500 Thermo Etiketten 103x199 mm 6 Rollen (DHL)",
+                    "unitPrice": 47.95
+                },
+                {
+                    "id": "vs_karton_400300",
+                    "name": "400x300x200 mm einwellige Kartons",
+                    "unitPrice": 0.73
+                },
+                {
+                    "id": "vs_karton_400350",
+                    "name": "400x350x250 mm zweiwellige Kartons",
+                    "unitPrice": 1.36
+                },
+                {
+                    "id": "vs_falt_215",
+                    "name": "215x155x74 mm Faltschachtel DHL Kleinpaket",
+                    "unitPrice": 0.28
+                },
+                {
+                    "id": "vs_fix_265",
+                    "name": "265x195x120-200 mm Fix-Aufrichtekartons",
+                    "unitPrice": 0.70
+                },
+                {
+                    "id": "vs_paletten_294",
+                    "name": "294x194x90 mm Paletten-System-Kartons",
+                    "unitPrice": 0.61
+                },
+                {
+                    "id": "vs_karton_300215",
+                    "name": "300x215x100 mm einwellige Kartons",
+                    "unitPrice": 0.41
+                },
+                {
+                    "id": "vs_fix_304_a4",
+                    "name": "304x216x130-220 mm Fix-Aufrichtekartons A4",
+                    "unitPrice": 0.99
+                },
+                {
+                    "id": "vs_huelsa3_056",
+                    "name": "315x105x105 mm Versandhülse A3 quadratisch",
+                    "unitPrice": 0.56
+                },
+                {
+                    "id": "vs_huelsa3_064",
+                    "name": "315x105x105 mm Versandhülse A3 quadratisch (Variante)",
+                    "unitPrice": 0.64
+                },
+                {
+                    "id": "vs_karton_350250",
+                    "name": "350x250x120 mm zweiwellige Kartons",
+                    "unitPrice": 0.68
+                },
+                {
+                    "id": "vs_luft_100_220",
+                    "name": "100 Luftpolster-Versandtaschen braun 220x260 mm Gr.5",
+                    "unitPrice": 15.71
+                },
+                {
+                    "id": "vs_luft_100_150",
+                    "name": "100 Luftpolster-Versandtaschen braun 150x215 mm A6",
+                    "unitPrice": 12.00
+                },
+                {
+                    "id": "vs_luft_100_150b",
+                    "name": "100 Luftpolster-Versandtaschen braun 150x220 mm A6",
+                    "unitPrice": 16.63
+                },
+                {
+                    "id": "vs_luft_100_260",
+                    "name": "100 Luftpolster-Versandtaschen braun 150x260 mm Gr.5",
+                    "unitPrice": 19.26
+                },
+                {
+                    "id": "vs_luft_200_120",
+                    "name": "200 Luftpolster-Versandtaschen braun 120x220 mm B2",
+                    "unitPrice": 26.01
+                },
+                {
+                    "id": "vs_druck_1000",
+                    "name": "Druckverschlussbeutel LDPE 120x170 mm 1.000 Stück",
+                    "unitPrice": 18.07
+                },
+                {
+                    "id": "vs_druck_2000",
+                    "name": "Druckverschlussbeutel LDPE 120x170 mm 2.000 Stück",
+                    "unitPrice": 29.33
+                },
+                {
+                    "id": "vs_karton_200100",
+                    "name": "Karton 200x100x80 mm 20 Stk",
+                    "unitPrice": 3.46
+                },
+                {
+                    "id": "vs_toner_tn242",
+                    "name": "Toner Brother TN-242BK schwarz 2500 Seiten",
+                    "unitPrice": 51.96
+                },
+                {
+                    "id": "vs_etikett_traeger",
+                    "name": "Etikettenträger 40x10 mm magnetisch C-Profil 100 Stück",
+                    "unitPrice": 14.99
+                },
+                {
+                    "id": "vs_brother_dk22205",
+                    "name": "Brother DK-22205 Etiketten 62mm x 30,48m Endlos Papier",
+                    "unitPrice": 12.49
+                },
+                {
+                    "id": "vs_etikett_quad250",
+                    "name": "Hochwertige Etiketten auf Rolle 5x5cm 250 Stück",
+                    "unitPrice": 30.74
+                },
+                {
+                    "id": "vs_stapel_thermo",
+                    "name": "Stapel-Etiketten Thermo Eco 1000 Stück",
+                    "unitPrice": 15.79
+                },
+                {
+                    "id": "vs_klebeband_tesa",
+                    "name": "Tesa Verpackungsklebeband Universal transparent 50mm x 66m",
+                    "unitPrice": 1.59
+                }
+            ]
+        },
+        {
+            "id": "werbung",
+            "name": "Werbung",
+            "items": [
+                {
+                    "id": "w_faltblatt_a5_1000",
+                    "name": "Faltblatt DIN A5 Mittelfalz 4-seitig 1000 Stück",
+                    "unitPrice": 67.01
+                },
+                {
+                    "id": "w_faltblatt_a5_2500",
+                    "name": "Faltblatt DIN A5 Mittelfalz 4-seitig 2500 Stück",
+                    "unitPrice": 116.63
+                },
+                {
+                    "id": "w_faltblatt_a6_1000",
+                    "name": "Faltblatt DIN A6 Mittelfalz 4-seitig 1000 Stück",
+                    "unitPrice": 69.48
+                },
+                {
+                    "id": "w_faltblatt_a6_2500",
+                    "name": "Faltblatt DIN A6 Mittelfalz 4-seitig 2500 Stück",
+                    "unitPrice": 79.49
+                },
+                {
+                    "id": "w_flyer_a5_1000",
+                    "name": "Flyer DIN A5 Quer einseitig 1000 Stück",
+                    "unitPrice": 58.64
+                },
+                {
+                    "id": "w_flyer_a5_2500",
+                    "name": "Flyer DIN A5 Quer einseitig 2500 Stück",
+                    "unitPrice": 107.00
+                },
+                {
+                    "id": "w_aufkleber",
+                    "name": "Aufkleber",
+                    "unitPrice": 0
+                },
+                {
+                    "id": "w_dosierbecher_30",
+                    "name": "30ml Dosierbecher",
+                    "unitPrice": 0.17
+                },
+                {
+                    "id": "w_alu_verbund_1000",
+                    "name": "Alu Verbund 3mm schwarz 1000x1000mm (MP Schild)",
+                    "unitPrice": 129.64
+                },
+                {
+                    "id": "w_alu_verbund_kl",
+                    "name": "Alu Verbund 3mm schwarz 1000x1000mm (kleinere Variante)",
+                    "unitPrice": 68.23
+                },
+                {
+                    "id": "w_prospekthalter",
+                    "name": "Prospekthalter",
+                    "unitPrice": 5.20
+                },
+                {
+                    "id": "w_wandprospekt",
+                    "name": "Wandprospekthalter",
+                    "unitPrice": 4.90
+                },
+                {
+                    "id": "w_regal_praes",
+                    "name": "Regal zur Warenpräsentation",
+                    "unitPrice": 22.12
+                },
+                {
+                    "id": "w_magnetband",
+                    "name": "Magnetband schwarz selbstklebend 10mm x 5m",
+                    "unitPrice": 7.49
+                },
+                {
+                    "id": "w_messbecher_30",
+                    "name": "Messbecher PP 30ml Graduierung Überkappe",
+                    "unitPrice": 0.17
+                }
+            ]
+        },
+        {
+            "id": "zutaten",
+            "name": "Zutaten",
+            "items": [
+                {
+                    "id": "z_polyfeed_sonate_25",
+                    "name": "Haifa Poly-Feed Sonate 15-5-30(+3)+ME 25kg",
+                    "unitPrice": 64.20
+                },
+                {
+                    "id": "z_polyfeed_tardo_25",
+                    "name": "Haifa Poly-Feed Tardo 8-12-24(+4)+ME 25kg",
+                    "unitPrice": 61.69
+                },
+                {
+                    "id": "z_sop_bio",
+                    "name": "Haifa SOP Bio Kaliumsulfat 0-0-52 wasserlöslich",
+                    "unitPrice": 36.44
+                },
+                {
+                    "id": "z_sop_bio_25",
+                    "name": "Haifa SOP Bio Kaliumsulfat 0-0-52 25kg",
+                    "unitPrice": 35.20
+                },
+                {
+                    "id": "z_anthocyane",
+                    "name": "Traubenschalenextrakt Anthocyane (E163) 1000g Pulver",
+                    "unitPrice": 129.00
+                },
+                {
+                    "id": "z_agar_agar",
+                    "name": "Agar Agar",
+                    "unitPrice": 12.80
+                },
+                {
+                    "id": "z_root_booster_20l",
+                    "name": "Basfoliar Root Booster SL 20 Liter",
+                    "unitPrice": 188.84
+                },
+                {
+                    "id": "z_beta_carotin",
+                    "name": "Beta Carotin E160a 1000g Beutel wasserlöslich",
+                    "unitPrice": 39.95
+                },
+                {
+                    "id": "z_marine_power",
+                    "name": "Marine Power Braunalgenextrakt (Ascophyllum nodosum)",
+                    "unitPrice": 190.85
+                },
+                {
+                    "id": "z_hpmc",
+                    "name": "HPMC Hydroxypropylmethylcellulose",
+                    "unitPrice": 28.90
+                },
+                {
+                    "id": "z_paraffinoel_1l",
+                    "name": "Paraffinöl Weißöl 1L technisch 15 CS",
+                    "unitPrice": 12.95
+                },
+                {
+                    "id": "z_farbe_blau_1l",
+                    "name": "Huchem Farbstoff blau flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_farbe_gelb_1l",
+                    "name": "Huchem Farbstoff gelb flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_farbe_gruen_1l",
+                    "name": "Huchem Farbstoff grün flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_farbe_rot_1l",
+                    "name": "Huchem Farbstoff rot flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_hpmc_1000g",
+                    "name": "Hydroxypropylmethylcellulose Glutenfrei 1000g",
+                    "unitPrice": 24.29
+                },
+                {
+                    "id": "z_calcinit_25",
+                    "name": "Haifa Cal GG Calciumnitrat 15,5% N 25kg",
+                    "unitPrice": 25.47
+                },
+                {
+                    "id": "z_wallup_1kg",
+                    "name": "HaifaStim Wall-Up S 1kg",
+                    "unitPrice": 59.98
+                },
+                {
+                    "id": "z_phosphorsaeure_250",
+                    "name": "Phosphorsäure 85% 250kg Fass (€/kg)",
+                    "unitPrice": 3.03
+                },
+                {
+                    "id": "z_polyfeed_sonate_bulk",
+                    "name": "POLYFEED SONATE 15-5-30(+3+ME) 25KG (Bulk)",
+                    "unitPrice": 41.28
+                },
+                {
+                    "id": "z_polyfeed_tardo_bulk",
+                    "name": "POLYFEED TARDO 8-12-24(+4+ME) 25KG (Bulk)",
+                    "unitPrice": 38.19
+                },
+                {
+                    "id": "z_kalilauge_45_300",
+                    "name": "KALILAUGE 45% TECHNISCH 300kg Fass (€/kg)",
+                    "unitPrice": 2.05
+                },
+                {
+                    "id": "z_gly_blau_1l",
+                    "name": "Glycol.eu Farbstoff blau flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_gly_gruen_1l",
+                    "name": "Glycol.eu Farbstoff grün flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_gly_rot_1l",
+                    "name": "Glycol.eu Farbstoff rot flüssig 1L",
+                    "unitPrice": 21.15
+                },
+                {
+                    "id": "z_calcinit_yara_25",
+                    "name": "YARA TERA KALKSALPETER CALCINIT 25KG",
+                    "unitPrice": 15.60
+                }
+            ]
+        }
+    ]
 }

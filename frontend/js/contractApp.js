@@ -203,6 +203,10 @@ const ContractApp = (() => {
 
             html += `<div class="${cls}" data-field-id="${v.id}">`;
             html += `<label for="f_${v.id}">${esc(v.label)}${req}</label>`;
+            if (v.tooltip) {
+                html += `<button class="tooltip-btn" type="button" onclick="ContractApp.toggleTooltip('tip_${v.id}')" aria-label="Hilfe">?</button>`;
+                html += `<div class="tooltip-panel" id="tip_${v.id}" hidden>${esc(v.tooltip)}</div>`;
+            }
 
             if (v.type === 'select' && v.options) {
                 html += `<select id="f_${v.id}" name="${v.id}" data-var="${v.id}">`;
@@ -245,10 +249,12 @@ const ContractApp = (() => {
             const checked = state.data[t.id] === true;
             const cls = checked ? 'toggle-item active' : 'toggle-item';
             html += `
+                <div class="toggle-item-wrap">
                 <label class="${cls}" data-toggle="${t.id}">
                     <input type="checkbox" data-var="${t.id}" ${checked ? 'checked' : ''}>
                     <span>${esc(t.label)}</span>
-                </label>`;
+                </label>${t.tooltip ? `<button class="tooltip-btn" type="button" onclick="ContractApp.toggleTooltip('tip_${t.id}')" aria-label="Hilfe">?</button>` : ''}
+                </div>${t.tooltip ? `<div class="tooltip-panel" id="tip_${t.id}" hidden>${esc(t.tooltip)}</div>` : ''}`;
         }
 
         html += '</div></div>';
@@ -433,12 +439,12 @@ const ContractApp = (() => {
                             ${sel ? '' : 'disabled'} placeholder="Menge">
                         <span class="asset-item-unit">Stk.</span>
                         ${item.unitPrice > 0
-                            ? `<span class="asset-item-subtotal" data-sub="${item.id}">${sel ? fmtEur(qty * item.unitPrice) : '—'}</span>`
-                            : `<input type="text" class="asset-price-input" placeholder="Preis €"
+                        ? `<span class="asset-item-subtotal" data-sub="${item.id}">${sel ? fmtEur(qty * item.unitPrice) : '—'}</span>`
+                        : `<input type="text" class="asset-price-input" placeholder="Preis €"
                                 data-custprice-for="${item.id}"
                                 value="${sel && selectedMap[item.id].unitPrice ? selectedMap[item.id].unitPrice : ''}"
                                 ${sel ? '' : 'disabled'}>`
-                        }
+                    }
                     </div>
                 </div>`;
             }
@@ -1112,6 +1118,11 @@ const ContractApp = (() => {
         return d.toLocaleDateString('de-DE') + ' ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
     }
 
+    function toggleTooltip(id) {
+        const el = document.getElementById(id);
+        if (el) el.hidden = !el.hidden;
+    }
+
     function next() {
         collectFormValues();
         saveLocal();
@@ -1140,6 +1151,7 @@ const ContractApp = (() => {
         deselectAllInCategory,
         addCustomItem,
         removeCustomItem,
+        toggleTooltip,
     };
 })();
 
