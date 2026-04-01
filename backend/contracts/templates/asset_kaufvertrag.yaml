@@ -521,7 +521,6 @@ sections:
               und übernimmt vom Verkäufer die nachfolgend einzeln bezeichneten
               Vermögensgegenstände (nachfolgend gemeinsam die „Kaufgegenstände"):
 
-    clauses:
       # ── 2.1 Sachanlagen ───────────────────────────────────────
       - id: kaufgegenstand_sachanlagen
         title: "Sachanlagen (Maschinen, Einrichtung, Werkzeuge)"
