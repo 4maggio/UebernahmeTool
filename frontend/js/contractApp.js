@@ -849,7 +849,7 @@ const ContractApp = (() => {
                 throw new Error(err.error);
             }
             const blob = await resp.blob();
-            const name = (state.data.UNTERNEHMENSNAME || 'Kaufvertrag').replace(/[^a-zA-Z0-9äöüÄÖÜß_-]/g, '_');
+            const name = (state.draftName || state.data.UNTERNEHMENSNAME || 'Kaufvertrag').replace(/[^a-zA-Z0-9äöüÄÖÜß_-]/g, '_');
             const ext = format === 'docx' ? 'docx' : 'pdf';
             downloadBlob(blob, `Asset_Kaufvertrag_${name}.${ext}`);
         } catch (e) {
@@ -1040,7 +1040,7 @@ const ContractApp = (() => {
             // Save index of all drafts
             const idx = getDraftIndex();
             const entry = idx.find(d => d.id === state.draftId);
-            const name = state.data.UNTERNEHMENSNAME || 'Unbenannter Entwurf';
+            const name = state.draftName || state.data.UNTERNEHMENSNAME || 'Unbenannter Entwurf';
             if (entry) {
                 entry.name = name;
                 entry.updatedAt = state.updatedAt;
@@ -1151,6 +1151,7 @@ const ContractApp = (() => {
                     const draft = loadDraftById(id);
                     if (draft) {
                         state = draft;
+                        syncDraftNameInput();
                         renderSidebar();
                         goToStep(state.currentStep || 0);
                         modal.style.display = 'none';
@@ -1174,15 +1175,22 @@ const ContractApp = (() => {
     function startNewDraft() {
         state = {
             draftId: generateId(),
+            draftName: '',
             currentStep: 0,
             data: {},
             createdAt: new Date().toISOString(),
             updatedAt: null,
         };
         initDefaults();
+        syncDraftNameInput();
         renderSidebar();
         goToStep(0);
         document.getElementById('modal-load-draft').style.display = 'none';
+    }
+
+    function syncDraftNameInput() {
+        const el = document.getElementById('draft-name-input');
+        if (el) el.value = state.draftName || '';
     }
 
     // ═══════════════════════════════════════════════════════════════
@@ -1229,6 +1237,17 @@ const ContractApp = (() => {
     // GLOBAL EVENTS
     // ═══════════════════════════════════════════════════════════════
     function bindGlobalEvents() {
+        // Draft name input
+        const nameInput = document.getElementById('draft-name-input');
+        if (nameInput) {
+            nameInput.value = state.draftName || '';
+            nameInput.addEventListener('input', () => {
+                state.draftName = nameInput.value;
+                dirty = true;
+                saveLocal();
+            });
+        }
+
         document.getElementById('btn-load-draft').addEventListener('click', showDraftModal);
         document.getElementById('btn-close-modal').addEventListener('click', () => {
             document.getElementById('modal-load-draft').style.display = 'none';
