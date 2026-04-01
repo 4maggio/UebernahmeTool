@@ -1925,8 +1925,8 @@ sections:
         condition: null
         tags: ["garantie", "verjaehrung"]
         text: |
-              d) Ansprüche aus der Verletzung aller übrigen Garantien:
-                 {{VERJAEHRUNG_ALLGEMEIN_MONATE}} Monate nach dem Vollzugstag.
+          d) Ansprüche aus der Verletzung aller übrigen Garantien:
+             {{VERJAEHRUNG_ALLGEMEIN_MONATE}} Monate nach dem Vollzugstag.
 
           (7) Die Verjährung wird durch schriftliche Geltendmachung des Anspruches
               gehemmt. Die Hemmung endet 6 Monate nach dem Zeitpunkt, in dem dem
