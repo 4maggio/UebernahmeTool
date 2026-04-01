@@ -1,0 +1,1053 @@
+ASSET-KAUFVERTRAG
+(Unternehmenskaufvertrag im Wege des Asset Deals)
+
+zwischen
+
+BudXXL GbR,
+Gesellschaft bürgerlichen Rechts, bestehend aus den Gesellschaftern:
+a) Thomas Müller, geb. 04.09.1975, wohnhaft Musterstraße 12, 50667 Köln (Anteil: 60 %),
+      b) Sandra Müller, geb. 17.02.1980, wohnhaft Musterstraße 12, 50667 Köln (Anteil: 40 %),
+mit Sitz in Musterstraße 12, 50667 Köln,
+vertreten durch Thomas Müller und Sandra Müller, jeweils einzelvertretungsberechtigt,
+
+— nachfolgend „Verkäufer" genannt —
+
+und
+
+Herr Philipp Weber,
+geboren am 22.07.1990,
+wohnhaft Hauptstraße 88, 40213 Düsseldorf,
+
+— nachfolgend „Käufer" genannt —
+
+Verkäufer und Käufer nachfolgend einzeln auch „Partei" und gemeinsam „Parteien" genannt.
+
+
+§ 1 Präambel
+
+(1) Der Verkäufer betreibt unter der Bezeichnung „BudXXL" ein Unternehmen
+    mit dem Gegenstand: Online-Handel mit Heimtierbedarf, insbesondere Hundefutter, Katzenfutter, Zubehör und Pflegeprodukte über den Webshop budxxl.com
+    am Standort Köln (nachfolgend der „Geschäftsbetrieb").
+
+(2) Der Verkäufer beabsichtigt, den Geschäftsbetrieb mit sämtlichen in diesem Vertrag
+    näher bezeichneten Vermögensgegenständen im Wege eines Asset Deals auf den Käufer
+    zu übertragen. Der Käufer beabsichtigt, den Geschäftsbetrieb zu erwerben und
+    fortzuführen.
+
+(3) Die Parteien haben im Vorfeld dieses Vertrages eine Due-Diligence-Prüfung
+    durchgeführt. Die Ergebnisse sind den Parteien bekannt und in den Anlagen
+    zu diesem Vertrag dokumentiert. Der Käufer hat die wirtschaftlichen, rechtlichen
+    und steuerlichen Verhältnisse des Geschäftsbetriebs eingehend geprüft.
+
+(4) Vor diesem Hintergrund schließen die Parteien den nachfolgenden Kaufvertrag:
+
+(5) Die Parteien haben am {{LOI_DATUM}} eine Absichtserklärung (Letter of Intent)
+    unterzeichnet. Dieser Vertrag ersetzt die Absichtserklärung vollständig.
+    Ansprüche aus der Absichtserklärung bestehen mit Abschluss dieses Vertrages
+    nicht mehr fort, soweit in diesem Vertrag nicht ausdrücklich etwas anderes
+    bestimmt ist.
+
+(6) Der Verkäufer versichert, dass er seit dem {{EXKLUSIVITAET_DATUM}} keine
+    Verhandlungen mit Dritten über den Verkauf des Geschäftsbetriebs oder
+    wesentlicher Teile davon geführt hat und bis zum Vollzugstag keine solchen
+    Verhandlungen aufnehmen wird.
+
+
+§ 2 Vertragsgegenstand
+
+(1) Der Verkäufer verkauft und überträgt hiermit an den Käufer, und der Käufer kauft
+    und übernimmt vom Verkäufer den Geschäftsbetrieb mit sämtlichen nachfolgend
+    bezeichneten Vermögensgegenständen (nachfolgend gemeinsam die „Kaufgegenstände"):
+
+(2) Sachanlagen und Betriebsausstattung:
+    Sämtliche zum Geschäftsbetrieb gehörenden beweglichen Sachen, insbesondere:
+    a) Maschinen und maschinelle Anlagen,
+    b) Betriebs- und Geschäftsausstattung,
+    c) Büromöbel und Büroeinrichtung,
+    d) EDV-Hardware (Computer, Server, Peripheriegeräte),
+    e) Werkzeuge und Kleingeräte,
+    f) sonstige Betriebsmittel,
+    jeweils im Zustand zum Stichtag gemäß § 5 und im Einzelnen aufgeführt
+    in Anlage 2.2 (Inventarliste).
+
+(6) Vorräte:
+    Sämtliche zum Geschäftsbetrieb gehörenden Roh-, Hilfs- und Betriebsstoffe,
+    unfertigen und fertigen Erzeugnisse sowie Waren (nachfolgend „Vorräte")
+    im Zustand und Umfang zum Stichtag gemäß § 5, nach Maßgabe der am Stichtag
+    durchzuführenden gemeinsamen Inventur (Anlage 2.6).
+
+    Die Bewertung der Vorräte erfolgt wie folgt:
+    a) Fertigerzeugnisse: zum niedrigeren Wert aus Herstellungskosten und
+       Nettoveräußerungswert,
+    b) Rohmaterial und Handelswaren: zum niedrigeren Wert aus Anschaffungskosten
+       und Wiederbeschaffungskosten,
+    c) Unverkäufliche, beschädigte oder überalterte Vorräte (älter als
+       12 Monate) werden nicht übernommen
+       oder mit einem Abschlag von 50 % bewertet.
+
+    Der endgültige Vorrätewert wird in einem gemeinsamen Protokoll festgestellt
+    und führt zu einer Anpassung des Kaufpreises gemäß § 3 Abs. (6).
+
+(9) Lieferantenverträge:
+    Die in Anlage 2.9 aufgeführten Verträge mit Lieferanten und
+    Dienstleistern werden im Wege der Vertragsübernahme auf den Käufer
+    übertragen. § 2 Abs. (8) Sätze 2–4 gelten entsprechend.
+
+(10) Firma und Geschäftsbezeichnung:
+     Das Recht zur Führung der Geschäftsbezeichnung „BudXXL"
+     einschließlich aller damit verbundenen Namens- und Kennzeichenrechte.
+     Der Verkäufer wird ab dem Vollzugstag die Geschäftsbezeichnung nicht
+     mehr verwenden und auf Verlangen des Käufers die für eine Umschreibung
+     erforderlichen Erklärungen abgeben.
+
+     Der Käufer ist nicht verpflichtet, das Geschäft unter der bisherigen
+     Geschäftsbezeichnung fortzuführen. Eine Firmenfortführung im Sinne
+     des § 25 HGB ist nicht beabsichtigt und wird ausdrücklich
+     ausgeschlossen.
+
+(12) Domains, Webseiten und Online-Präsenzen:
+     a) Die in Anlage 2.12 aufgeführten Internet-Domains einschließlich aller
+        zugehörigen Inhalte, Datenbanken und Konfigurationen,
+     b) Hosting-Verträge und SSL-Zertifikate,
+     c) Social-Media-Accounts (Instagram (@budxxl), Facebook (BudXXL), TikTok (@budxxl_official)),
+     d) Google Business Profile, Google Ads-Konten und sonstige Online-Marketing-Konten,
+     e) Newsletter-Abonnenten und E-Mail-Marketing-Listen
+        (vorbehaltlich datenschutzrechtlicher Zulässigkeit gemäß Art. 6 DSGVO),
+     f) sonstige digitale Assets gemäß Anlage 2.12.
+
+     Der Verkäufer wird die Übertragung der Domains durch entsprechende
+     Auth-Codes und Freigaben bei den zuständigen Registraren unverzüglich
+     nach dem Vollzugstag veranlassen.
+
+(12a) Online-Shop / Webshop:
+      Soweit der Geschäftsbetrieb einen Online-Shop umfasst, werden
+      zusätzlich zu den in Abs. (12) genannten Gegenständen insbesondere
+      übertragen:
+
+      a) Quellcode (Source Code):
+         Der vollständige Quellcode des Online-Shops einschließlich
+         aller Eigenentwicklungen, Plug-ins, Erweiterungen, Themes
+         und Konfigurationsdateien. Der Verkäufer versichert, dass
+         der Quellcode frei von Rechten Dritter ist oder die
+         erforderlichen Lizenzen in Anlage 2.13 aufgeführt sind.
+
+      b) Design und Layout:
+         Sämtliche grafischen Gestaltungselemente des Online-Shops
+         (Templates, Themes, Logos, Icons, Farbschemata, Schriftarten),
+         einschließlich der Quelldateien (PSD, Sketch, Figma o. Ä.),
+         soweit vorhanden.
+
+      c) Inhalte (Content):
+         Sämtliche im Online-Shop veröffentlichten Inhalte,
+         insbesondere Produktbeschreibungen, Produktfotos und -videos,
+         Kategorietexte, Blog-Beiträge, FAQ-Texte, AGB, Impressum
+         und Datenschutzerklärung (letztere zur Anpassung durch den
+         Käufer). Der Verkäufer versichert, dass er berechtigt ist,
+         sämtliche Inhalte zu nutzen und zu übertragen, und dass
+         keine Urheberrechte Dritter verletzt werden.
+
+      d) Shop-System und Zugänge:
+         Sämtliche Zugangsdaten zum Shop-System
+         (Shopify), einschließlich:
+         - Administrator-Zugänge zum Backend/CMS,
+         - Datenbank-Zugänge,
+         - FTP/SFTP/SSH-Zugänge zum Webserver,
+         - Payment-Provider-Konten (Stripe, PayPal, Klarna),
+         - Versanddienstleister-Konten und API-Schlüssel,
+         - E-Mail-Konten und -Weiterleitungen,
+         - Analytics-Zugänge (Google Analytics, Search Console etc.).
+
+      e) Kundenbewertungen und Rezensionen:
+         Soweit rechtlich zulässig und technisch möglich, werden
+         vorhandene Kundenbewertungen und Rezensionen auf den
+         Käufer übertragen.
+
+      Der Verkäufer wird sämtliche Zugangsdaten in einem gesicherten
+      Übergabeprotokoll (Anlage 12a) dokumentieren und dem Käufer
+      am Vollzugstag übergeben. Der Verkäufer wird nach dem Vollzugstag
+      sämtliche eigenen Zugänge löschen oder dem Käufer die Löschung
+      ermöglichen.
+
+(13) Software-Lizenzen:
+     Die in Anlage 2.13 aufgeführten Software-Lizenzen, soweit diese
+     vertraglich übertragbar sind. Der Verkäufer wird die für die Übertragung
+     erforderlichen Zustimmungen der Lizenzgeber einholen. Soweit einzelne
+     Lizenzen nicht übertragbar sind, wird der Verkäufer dem Käufer dies
+     unverzüglich mitteilen; in diesem Fall wird der Kaufpreis gemäß § 3
+     Abs. (7) angepasst.
+
+(14) Kundenstamm und Geschäftsdaten:
+     a) Kundenlisten, Kundendateien und Kundenstammdaten,
+     b) Lieferanten- und Kontaktdatenbanken,
+     c) Buchhaltungsunterlagen und Geschäftskorrespondenz
+        (soweit gesetzlich zulässig),
+     d) technische Dokumentation und Betriebsanleitungen.
+
+     Die Übertragung personenbezogener Daten erfolgt ausschließlich im
+     Einklang mit der Datenschutz-Grundverordnung (DSGVO) und dem BDSG.
+     Soweit erforderlich, werden die Parteien eine gesonderte Vereinbarung
+     zur Auftragsverarbeitung gemäß Art. 28 DSGVO abschließen. Der Verkäufer
+     wird die betroffenen Personen gemäß Art. 13, 14 DSGVO über die
+     Übertragung informieren, soweit der Käufer dies nicht selbst übernimmt.
+
+(16) Geschäftswert (Goodwill):
+     Der mit dem Geschäftsbetrieb verbundene Geschäftswert (Goodwill),
+     bestehend aus dem Ruf des Unternehmens, den Kunden- und
+     Geschäftsbeziehungen, der Marktstellung, der Organisation und dem
+     sonstigen immateriellen Wert des Geschäftsbetriebs als
+     wirtschaftliche Einheit.
+
+
+§ 3 Ausgenommene Vermögensgegenstände
+
+(1) Von der Übertragung ausgenommen sind, soweit in diesem Vertrag nicht
+    ausdrücklich etwas anderes bestimmt ist:
+
+    a) Bankkonten und Kassenbestände des Verkäufers,
+    b) Rückerstattungsansprüche des Verkäufers gegenüber Finanzbehörden
+       (insbesondere Vorsteuerüberhänge und Steuererstattungsansprüche,
+       die den Zeitraum vor dem Stichtag betreffen),
+    c) Ansprüche des Verkäufers aus Versicherungsverträgen (soweit diese
+       nicht ausdrücklich übertragen werden),
+    d) persönliche Gegenstände des Verkäufers,
+    e) privates Büromobiliar der Gesellschafter (soweit nicht in Anlage 2.2 aufgeführt),
+    f) sonstige Vermögensgegenstände, die nicht ausdrücklich als Kaufgegenstände
+       in § 2 bezeichnet sind.
+
+(2) Zweifel über die Zuordnung einzelner Gegenstände sind einvernehmlich
+    zwischen den Parteien zu klären. Können sich die Parteien nicht einigen,
+    entscheidet ein von beiden Parteien gemeinsam benannter Sachverständiger
+    verbindlich.
+
+
+§ 4 Kaufpreis
+
+(1) Der Kaufpreis für die Kaufgegenstände beträgt
+
+    85.000,00 EUR
+    (in Worten: fünfundachtzigtausend Euro)
+
+    (nachfolgend der „Kaufpreis").
+
+(2) Der Kaufpreis verteilt sich auf die einzelnen Kaufgegenstände wie folgt
+    (nachfolgend die „Kaufpreisaufteilung"):
+
+    a) Sachanlagen und Betriebsausstattung:    2.000,00 EUR
+    b) Vorräte (vorläufig):                    18.000,00 EUR
+    c) Forderungen (vorläufig):                0,00 EUR
+    d) Gewerbliche Schutzrechte / IP:          5.000,00 EUR
+    e) Geschäftswert (Goodwill):               45.000,00 EUR
+    f) Wettbewerbsverbot:                      10.000,00 EUR
+    g) Sonstiges:                              5.000,00 EUR
+
+(3) Die Kaufpreisaufteilung erfolgt in Anlehnung an die Grundsätze ordnungsgemäßer
+    Buchführung und die steuerlichen Vorgaben. Die Parteien verpflichten sich, die
+    vereinbarte Kaufpreisaufteilung gegenüber den Finanzbehörden einheitlich zugrunde
+    zu legen.
+
+(4) Kaufpreisanpassung Vorräte:
+    Der unter Abs. (2) lit. b) genannte Betrag für Vorräte ist vorläufig.
+    Der endgültige Vorrätewert wird auf Grundlage der am Stichtag
+    durchzuführenden gemeinsamen körperlichen Inventur ermittelt (gemäß § 2
+    Abs. (6)). Die Differenz zwischen dem vorläufigen und dem endgültigen
+    Vorrätewert erhöht oder mindert den Kaufpreis.
+
+    Die Inventur wird von beiden Parteien oder ihren Bevollmächtigten
+    gemeinsam durchgeführt. Das Inventurergebnis wird in einem von beiden
+    Parteien zu unterzeichnenden Protokoll festgehalten. Können sich die
+    Parteien nicht auf den Wert einzelner Vorratsposten einigen, wird ein
+    von der IHK Düsseldorf zu benennender Sachverständiger verbindlich
+    entscheiden. Die Kosten des Sachverständigen tragen die Parteien
+    je zur Hälfte.
+
+(6) Kaufpreisanpassung Lizenzen:
+    Soweit Software-Lizenzen gemäß § 2 Abs. (13) nicht auf den Käufer
+    übertragen werden können, mindert sich der Kaufpreis um den für die
+    betreffende Lizenz in Anlage 2.13 ausgewiesenen anteiligen Kaufpreis.
+
+(8) Umsatzsteuer:
+    Die Parteien gehen übereinstimmend davon aus, dass die Veräußerung
+    der Kaufgegenstände eine nicht steuerbare Geschäftsveräußerung im Ganzen
+    gemäß § 1 Abs. 1a UStG darstellt und folglich keine Umsatzsteuer anfällt.
+
+    Der Verkäufer versichert, dass er ein im Ganzen übertragbares Unternehmen
+    oder einen gesondert geführten Teilbetrieb veräußert. Der Käufer
+    versichert, dass er den Geschäftsbetrieb als Unternehmer fortführen wird.
+
+    Sollte die Finanzverwaltung abweichend hiervon Umsatzsteuer festsetzen,
+    ist der Käufer verpflichtet, dem Verkäufer die festgesetzte Umsatzsteuer
+    (derzeit 19 %) zusätzlich zum Kaufpreis zu zahlen. Im Gegenzug
+    wird der Verkäufer dem Käufer eine ordnungsgemäße Rechnung mit
+    gesondertem Umsatzsteuerausweis erteilen, die den Käufer zum
+    Vorsteuerabzug berechtigt.
+
+
+§ 5 Kaufpreiszahlung
+
+(1) Der Kaufpreis ist in voller Höhe am Vollzugstag (§ 7) durch Überweisung auf
+    folgendes Konto des Verkäufers zur Zahlung fällig:
+
+    Kontoinhaber:  BudXXL GbR
+    IBAN:          DE89 3704 0044 0532 0130 00
+    BIC:           COBADEFFXXX
+    Bank:          Commerzbank Köln
+
+(2) Maßgeblich für die Rechtzeitigkeit der Zahlung ist der Eingang des Kaufpreises
+    auf dem Konto des Verkäufers.
+
+(3) Abweichend von Abs. (1) wird der Kaufpreis wie folgt in Raten gezahlt:
+
+    a) Erste Rate in Höhe von 25.000,00 EUR (29,4 %
+       des Kaufpreises) am Vollzugstag,
+    b) 12 weitere gleiche Raten in Höhe von jeweils
+       5.000,00 EUR, zahlbar jeweils zum 1..
+       eines jeden Monats, erstmals am 01.08.2026,
+    c) letzte Rate in Höhe von 5.000,00 EUR am 01.07.2027.
+
+(4) Die ausstehenden Raten sind ab dem Vollzugstag mit 4,5 %
+    p.a. zu verzinsen. Die Zinsen sind zusammen mit der jeweiligen Rate fällig.
+
+(5) Bei Verzug mit einer Rate um mehr als 14 Kalendertage
+    wird der gesamte Restkaufpreis sofort zur Zahlung fällig
+    (Verfallklausel).
+
+(7) Ein Teilbetrag in Höhe von 8.500,00 EUR
+    (10 % des Kaufpreises) wird vom Käufer einbehalten
+    (nachfolgend der „Einbehaltsbetrag"). Der Einbehaltsbetrag dient der
+    Sicherung von Ansprüchen des Käufers aus Garantieverletzungen gemäß § 8
+    und wird 12 Monate nach dem Vollzugstag an den
+    Verkäufer ausgezahlt, soweit bis dahin keine berechtigten Ansprüche
+    geltend gemacht wurden.
+
+(8) Die beweglichen Kaufgegenstände gemäß § 2 stehen bis zur vollständigen
+    Zahlung des Kaufpreises unter Eigentumsvorbehalt des Verkäufers
+    (§ 449 BGB). Der Käufer ist berechtigt, die unter Eigentumsvorbehalt
+    stehenden Gegenstände im ordnungsgemäßen Geschäftsgang zu nutzen,
+    darf sie jedoch nicht veräußern, verpfänden oder zur Sicherheit
+    übereignen.
+
+(9) Zur Sicherung der Kaufpreisforderung stellt der Käufer dem Verkäufer
+    folgende Sicherheiten:
+
+    {{SICHERHEITEN_ART_UND_UMFANG}}
+
+    Die Sicherheiten sind spätestens am Vollzugstag zu bestellen.
+    Der Verkäufer ist verpflichtet, die Sicherheiten nach vollständiger
+    Kaufpreiszahlung unverzüglich freizugeben.
+
+
+§ 6 Wirtschaftlicher Stichtag; Gefahrübergang
+
+(1) Wirtschaftlicher Stichtag für die Übertragung der Kaufgegenstände ist der
+    30.06.2026 24:00 Uhr (nachfolgend der „Stichtag").
+
+(2) Mit Ablauf des Stichtages gehen Nutzen und Lasten sowie die Gefahr des
+    zufälligen Untergangs und der zufälligen Verschlechterung der Kaufgegenstände
+    auf den Käufer über.
+
+(3) Sämtliche Einnahmen und Ausgaben, die wirtschaftlich den Zeitraum bis
+    einschließlich des Stichtages betreffen, stehen dem Verkäufer zu bzw.
+    sind von ihm zu tragen. Einnahmen und Ausgaben, die wirtschaftlich den
+    Zeitraum ab dem auf den Stichtag folgenden Tag betreffen, stehen dem
+    Käufer zu bzw. sind von ihm zu tragen. Die Parteien werden eine
+    entsprechende Abgrenzungsrechnung erstellen.
+
+(4) Der Verkäufer wird den Geschäftsbetrieb in der Zeit zwischen Vertragsschluss
+    und Stichtag ordnungsgemäß und im gewöhnlichen Geschäftsgang weiterführen.
+    Insbesondere wird der Verkäufer ohne vorherige schriftliche Zustimmung des
+    Käufers keine Maßnahmen vornehmen, die über den gewöhnlichen Geschäftsgang
+    hinausgehen, insbesondere nicht:
+    a) wesentliche Vermögensgegenstände veräußern oder belasten,
+    b) neue Verbindlichkeiten über 2.500 EUR einzeln
+       oder 5.000 EUR insgesamt eingehen,
+    c) Arbeitnehmer einstellen oder kündigen (außer aus wichtigem Grund),
+    d) Verträge mit einer Laufzeit von mehr als 12 Monaten
+       abschließen,
+    e) Preise wesentlich ändern.
+
+
+§ 7 Vollzug (Closing)
+
+(1) Der Vollzug dieses Vertrages (nachfolgend das „Closing") findet am
+    01.07.2026 statt (nachfolgend der „Vollzugstag"), sofern sämtliche
+    Vollzugsbedingungen gemäß § 9 erfüllt oder von der berechtigten Partei
+    darauf verzichtet wurden.
+
+(2) Am Vollzugstag werden folgende Vollzugshandlungen Zug um Zug vorgenommen:
+
+    Durch den Verkäufer:
+    a) Übergabe des Besitzes an sämtlichen beweglichen Kaufgegenständen,
+    b) Übergabe sämtlicher Schlüssel, Zugangskarten, Passwörter und Zugangsdaten,
+    c) Übergabe der vollständigen Geschäftsunterlagen und Dokumentation,
+    d) Übergabe unterzeichneter Abtretungserklärungen für Forderungen,
+       Verträge und Schutzrechte,
+    e) Mitteilung an Geschäftspartner, Kunden und Lieferanten über den
+       Inhaberwechsel (nach Abstimmung mit dem Käufer),
+    f) Übergabe sämtlicher in den Anlagen zu diesem Vertrag bezeichneten
+       Unterlagen und Gegenstände.
+
+    Durch den Käufer:
+    g) Zahlung des am Vollzugstag fälligen Kaufpreises gemäß § 5,
+    h) Übernahme der Kaufgegenstände,
+    i) Übernahme der arbeitsrechtlichen Verpflichtungen gemäß § 11
+       (soweit anwendbar).
+
+(3) Die Parteien werden über den Vollzug ein gemeinsames Closing-Protokoll
+    erstellen, in dem sämtliche Vollzugshandlungen dokumentiert werden.
+    Das Closing-Protokoll wird von beiden Parteien unterzeichnet.
+
+
+§ 8 Garantien des Verkäufers
+
+Der Verkäufer gibt dem Käufer die nachfolgenden selbständigen
+Garantieversprechen im Sinne des § 311 Abs. 1 BGB (nachfolgend einzeln
+eine „Garantie" und zusammen die „Garantien") zum Stichtag ab, soweit
+nachfolgend nicht ein anderer Zeitpunkt bestimmt ist:
+
+(1) Rechtliche Verhältnisse:
+    a) Der Verkäufer ist uneingeschränkt berechtigt, die Kaufgegenstände
+       zu veräußern und zu übertragen. Es bestehen keine Verfügungsbeschränkungen
+       oder Veräußerungsverbote.
+    b) Die Kaufgegenstände stehen im unbelasteten Eigentum des Verkäufers
+       und sind frei von Rechten Dritter, insbesondere frei von Pfandrechten,
+       Sicherungsübereignungen und sonstigen dinglichen Belastungen, sofern
+       in den Anlagen nicht anders angegeben.
+    c) Der Verkäufer ist voll geschäftsfähig und befugt, diesen Vertrag
+       abzuschließen und seine Verpflichtungen hieraus zu erfüllen.
+    d) Die Unterzeichnung und Durchführung dieses Vertrages verstößt nicht
+       gegen gesetzliche Vorschriften, behördliche Verfügungen, gerichtliche
+       Entscheidungen oder vertragliche Verpflichtungen des Verkäufers.
+
+(2) Finanzielle Verhältnisse:
+    a) Die dem Käufer vorgelegten Jahresabschlüsse und betriebswirtschaftlichen
+       Auswertungen (BWA) für die Geschäftsjahre 2023, 2024, 2025 wurden
+       nach den Grundsätzen ordnungsgemäßer Buchführung aufgestellt und geben
+       ein den tatsächlichen Verhältnissen entsprechendes Bild der Vermögens-,
+       Finanz- und Ertragslage des Geschäftsbetriebs.
+    b) Seit dem letzten Bilanzstichtag (31.12.2025) haben sich
+       keine wesentlichen nachteiligen Veränderungen in der Vermögens-, Finanz-
+       und Ertragslage des Geschäftsbetriebs ergeben (kein „Material Adverse
+       Change").
+    c) Es bestehen keine wesentlichen Verbindlichkeiten, die nicht in den
+       vorgelegten Unterlagen offengelegt wurden.
+    d) Die Bücher und Aufzeichnungen des Geschäftsbetriebs sind vollständig
+       und richtig geführt.
+
+(3) Steuerliche Verhältnisse:
+    a) Der Verkäufer hat sämtliche Steuererklärungen für den Geschäftsbetrieb
+       fristgerecht und inhaltlich zutreffend abgegeben.
+    b) Sämtliche fälligen Steuern und Abgaben wurden vollständig entrichtet.
+    c) Es bestehen keine Steuerrückstände oder laufenden Betriebsprüfungen,
+       die den Geschäftsbetrieb betreffen, es sei denn, diese sind in
+       Anlage 8.3 offengelegt.
+    d) Es sind dem Verkäufer keine Umstände bekannt, die zu einer Steuernachforderung
+       führen könnten.
+
+(4) Sachanlagen:
+    a) Die in Anlage 2.2 aufgeführten Sachanlagen befinden sich in einem
+       Zustand, der den ordnungsgemäßen und bestimmungsgemäßen Gebrauch
+       ermöglicht, und unterliegen einem angemessenen Wartungs- und
+       Instandhaltungsprogramm.
+    b) Die Sachanlagen sind für die übliche Fortführung des Geschäftsbetriebs
+       ausreichend und betriebsbereit.
+    c) Es sind keine wesentlichen Instandhaltungs- oder Erneuerungsmaßnahmen
+       erforderlich, die nicht in Anlage 8.4 offengelegt sind.
+
+(4a) Online-Shop / Technische Funktionsfähigkeit:
+     a) Der Online-Shop ist zum Stichtag technisch funktionsfähig und
+        betriebsbereit. Sämtliche wesentlichen Funktionen — insbesondere
+        Produktdarstellung, Warenkorb, Bestellvorgang (Checkout),
+        Zahlungsabwicklung und Versandschnittstellen — sind voll
+        funktionsfähig.
+     b) Der Quellcode des Online-Shops ist frei von bekannten
+        Sicherheitslücken, Malware, Backdoors und sonstiger
+        Schadsoftware. Der Verkäufer hat angemessene Maßnahmen zum
+        Schutz vor unbefugtem Zugriff ergriffen.
+     c) Die dem Online-Shop zugrunde liegende Software (Shop-System,
+        CMS, Plug-ins, Erweiterungen) befindet sich in einer aktuellen,
+        vom Hersteller unterstützten Version oder ist in
+        Anlage 8.4a mit den jeweiligen Versionsnummern dokumentiert.
+     d) Die dem Online-Shop zugrunde liegenden Lizenzen (Open-Source-
+        und kommerzielle Lizenzen) sind in Anlage 2.13 vollständig
+        aufgeführt; die Nutzung verstößt nicht gegen
+        Lizenzbedingungen.
+     e) Die Inhalte des Online-Shops (Produktbeschreibungen, Fotos,
+        Videos, Texte) dürfen vom Käufer rechtmäßig weiter genutzt
+        werden. Der Verkäufer verfügt über die erforderlichen
+        Nutzungsrechte oder hat diese ordnungsgemäß erworben.
+     f) Der Online-Shop entspricht den wesentlichen gesetzlichen
+        Anforderungen an E-Commerce-Webseiten, insbesondere:
+        - Impressumspflicht (§ 5 TMG / § 5 DDG),
+        - Datenschutzerklärung (Art. 13 DSGVO),
+        - Widerrufsbelehrung (§ 355 BGB, Muster nach EGBGB),
+        - Preisangaben (PAngV),
+        - AGB-Einbeziehung (§§ 305 ff. BGB),
+        - Button-Lösung (§ 312j BGB),
+        - Cookie-Consent (§ 25 TTDSG).
+
+(7) Verträge:
+    a) Die in den Anlagen 2.8 und 2.9 aufgeführten Verträge sind gültig,
+       wirksam und vollziehbar. Es liegen keine Kündigungen oder
+       Kündigungsandrohungen vor.
+    b) Weder der Verkäufer noch ein Vertragspartner befindet sich in Verzug
+       mit wesentlichen Verpflichtungen aus diesen Verträgen.
+    c) Es bestehen keine Verträge mit dem Verkäufer nahestehenden Personen
+       (§ 138 AO), die nicht in Anlage 8.7 offengelegt sind.
+    d) Die bestehenden Verträge enthalten keine Change-of-Control-Klauseln,
+       die durch die Übertragung der Kaufgegenstände ausgelöst werden,
+       es sei denn, diese sind in Anlage 8.7 offengelegt.
+
+(9) Compliance und behördliche Genehmigungen:
+    a) Der Geschäftsbetrieb wird in Übereinstimmung mit allen anwendbaren
+       gesetzlichen Vorschriften und behördlichen Auflagen geführt.
+    b) Sämtliche für den Betrieb erforderlichen behördlichen Genehmigungen,
+       Erlaubnisse und Konzessionen liegen vor, sind gültig und nicht
+       widerrufen oder eingeschränkt.
+    c) Es bestehen keine Verstöße gegen Datenschutzvorschriften (DSGVO, BDSG)
+       und es sind keine Verfahren der Datenschutzaufsichtsbehörden anhängig
+       oder angedroht.
+
+(9a) Abmahnungen, wettbewerbsrechtliche Verstöße und behördliche Verfahren:
+     a) Es bestehen keine Abmahnungen — gleich ob wettbewerbsrechtlicher,
+        markenrechtlicher, urheberrechtlicher oder datenschutzrechtlicher
+        Natur —, die den Geschäftsbetrieb oder dessen Produkte, Dienstleistungen,
+        Werbe- und Vertriebsmaßnahmen betreffen, und es sind dem Verkäufer
+        keine solchen Abmahnungen angedroht.
+     b) Der Geschäftsbetrieb hat in den letzten 3
+        Jahren vor dem Stichtag keine Abmahnungen erhalten oder selbst
+        ausgesprochen, es sei denn, diese sind in Anlage 8.9a vollständig
+        offengelegt und abschließend erledigt.
+     c) Es bestehen keine Verstöße gegen das Gesetz gegen den unlauteren
+        Wettbewerb (UWG), die Preisangabenverordnung (PAngV), das
+        Telemediengesetz (TMG/TTDSG), die EU-Verbraucherrechterichtlinie
+        oder sonstige wettbewerbsrechtliche Vorschriften.
+     d) Es sind keine behördlichen Bußgeldverfahren, Ordnungswidrigkeiten-
+        verfahren oder sonstige Verwaltungsverfahren anhängig oder
+        angedroht, die den Geschäftsbetrieb betreffen, einschließlich,
+        aber nicht beschränkt auf Verfahren der:
+        - Datenschutzaufsichtsbehörden,
+        - Gewerbeaufsicht,
+        - Kartellbehörden (Bundeskartellamt),
+        - Verbraucherschutzbehörden,
+        - Finanzbehörden (außerhalb der Steuergarantien in Abs. (3)),
+        - Berufsgenossenschaften und Sozialversicherungsträger.
+     e) Es bestehen keine einstweiligen Verfügungen, Unterlassungstitel
+        oder Vergleiche aus früheren Abmahnverfahren, die den
+        Geschäftsbetrieb in seiner Geschäftstätigkeit einschränken
+        oder dem Käufer Pflichten auferlegen.
+     f) Sämtliche Impressums-, Kennzeichnungs- und Informationspflichten
+        (insbesondere nach TMG/TTDSG, DSGVO, PAngV, Verpackungsgesetz,
+        Elektrogesetz) werden eingehalten.
+
+(9b) Kartell- und Wettbewerbsrecht:
+     a) Der Geschäftsbetrieb hat keine Vereinbarungen getroffen oder
+        abgestimmte Verhaltensweisen praktiziert, die gegen Art. 101 AEUV
+        oder §§ 1 ff. GWB (Kartellverbot) verstoßen.
+     b) Der Geschäftsbetrieb hat seine marktbeherrschende Stellung
+        (sofern vorhanden) nicht missbraucht (Art. 102 AEUV, § 19 GWB).
+     c) Es sind keine Verfahren des Bundeskartellamts oder der
+        Europäischen Kommission gegen den Geschäftsbetrieb anhängig
+        oder angedroht.
+     d) Die Parteien haben geprüft, ob die Transaktion der Fusionskontrolle
+        nach §§ 35 ff. GWB oder der EU-Fusionskontrollverordnung
+        (FKVO) unterliegt. Die Schwellenwerte nach § 35 GWB werden nicht erreicht; eine Anmeldung ist nicht erforderlich.
+
+(10) Rechtsstreitigkeiten:
+     a) Es sind keine Rechtsstreitigkeiten, Schiedsverfahren oder
+        behördlichen Verfahren anhängig, die den Geschäftsbetrieb oder die
+        Kaufgegenstände betreffen, mit Ausnahme der in Anlage 8.10
+        offengelegten Verfahren.
+     b) Es sind dem Verkäufer keine Umstände bekannt, die die Einleitung
+        solcher Verfahren erwarten lassen.
+
+(12) Versicherungen:
+     a) Die in Anlage 8.12 aufgeführten Versicherungen bestehen und sind
+        durch fristgemäße Prämienzahlung in Kraft.
+     b) Es sind keine Umstände eingetreten, die den Versicherungsschutz
+        gefährden oder einschränken.
+     c) Es sind keine Versicherungsfälle eingetreten, die nicht reguliert
+        oder in Anlage 8.12 offengelegt sind.
+
+(13) Vollständigkeit der Offenlegung:
+     a) Der Verkäufer hat dem Käufer sämtliche für die Bewertung der
+        Kaufgegenstände und des Geschäftsbetriebs wesentlichen Informationen
+        vollständig und zutreffend offengelegt.
+     b) Die in den Anlagen zu diesem Vertrag enthaltenen Informationen sind
+        vollständig und zutreffend.
+     c) Es gibt keine wesentlichen Umstände, die der Verkäufer pflichtwidrig
+        verschwiegen hat.
+
+
+§ 9 Vollzugsbedingungen
+
+(1) Die Verpflichtung der Parteien zur Vornahme der Vollzugshandlungen
+    gemäß § 7 steht unter der aufschiebenden Bedingung, dass sämtliche
+    nachfolgenden Vollzugsbedingungen bis zum Vollzugstag eingetreten sind
+    oder auf sie verzichtet wurde:
+
+    a) Sämtliche Garantien des Verkäufers gemäß § 8 sind zum Vollzugstag
+       weiterhin zutreffend; es ist kein Material Adverse Change eingetreten.
+    b) Der Verkäufer hat sämtliche ihm nach diesem Vertrag bis zum Vollzugstag
+       obliegenden Verpflichtungen erfüllt.
+
+e) Die Zustimmung der in Anlage 9.1 bezeichneten wesentlichen
+   Vertragspartner zur Vertragsübernahme liegt vor.
+
+f) Der Käufer hat die verbindliche Finanzierungszusage seiner Bank
+   über mindestens {{FINANZIERUNG_MINDESTBETRAG}} EUR vorgelegt.
+   Die Finanzierungszusage muss folgende Mindestbedingungen erfüllen:
+   {{FINANZIERUNG_BEDINGUNGEN}}.
+
+g) Zwischen Vertragsschluss und Vollzugstag sind keine Rechtsstreitigkeiten
+   oder behördlichen Verfahren gegen den Geschäftsbetrieb eingeleitet worden,
+   deren Streitwert einzeln {{RECHTSSTREIT_SCHWELLE}} EUR oder insgesamt
+   {{RECHTSSTREIT_SCHWELLE_GESAMT}} EUR übersteigt.
+
+(2) Ist eine Vollzugsbedingung bis zum 31.08.2026 (Long Stop Date)
+    nicht eingetreten und wird auf sie nicht verzichtet, ist jede Partei
+    berechtigt, von diesem Vertrag durch schriftliche Erklärung gegenüber
+    der anderen Partei zurückzutreten. In diesem Fall entfallen sämtliche
+    Rechte und Pflichten der Parteien aus diesem Vertrag; bereits erbrachte
+    Leistungen sind zurückzugewähren.
+
+(3) Die Parteien werden sich nach Kräften darum bemühen, die
+    Vollzugsbedingungen rechtzeitig herbeizuführen und einander über den
+    Stand der Bemühungen unverzüglich informieren.
+
+
+§ 10 Rechtsfolgen bei Garantieverletzung
+
+(1) Erweist sich eine Garantie des Verkäufers gemäß § 8 als unzutreffend,
+    ist der Verkäufer verpflichtet, den Käufer so zu stellen, wie er stünde,
+    wenn die Garantie zutreffend wäre (Naturalrestitution). Ist die
+    Naturalrestitution unmöglich oder unzumutbar, hat der Verkäufer dem Käufer
+    den daraus entstehenden Schaden in Geld zu ersetzen.
+
+(2) Die Rechte des Käufers aus einer Garantieverletzung sind ausschließlich
+    in diesem § 10 geregelt. Die gesetzlichen Gewährleistungsrechte
+    (§§ 434 ff. BGB) werden hierdurch abbedungen, soweit gesetzlich zulässig.
+    Ansprüche aus vorsätzlicher oder arglistiger Täuschung bleiben unberührt.
+
+(3) Der Verkäufer haftet nur für solche Garantieverletzungen, bei denen
+    der Einzelschaden {{DE_MINIMIS_BETRAG}} EUR übersteigt
+    (De-Minimis-Schwelle). Ansprüche unterhalb der De-Minimis-Schwelle
+    bleiben bei der Berechnung der nachfolgenden Freibetragsregelung
+    unberücksichtigt.
+
+(4) Der Verkäufer haftet nur, wenn und soweit die Summe aller
+    Einzelschäden, die die De-Minimis-Schwelle übersteigen,
+    insgesamt {{BASKET_BETRAG}} EUR übersteigt (Freibetrag / Basket).
+    Wird der Freibetrag überschritten, haftet der Verkäufer:
+    {{BASKET_TYP}}
+
+    [Option A: Tipping Basket]
+    für den gesamten Betrag ab dem ersten Euro (Tipping Basket).
+
+    [Option B: Deductible / Selbstbehalt]
+    nur für den den Freibetrag übersteigenden Betrag (Deductible).
+
+(5) Die Gesamthaftung des Verkäufers aus oder im Zusammenhang mit diesem
+    Vertrag ist auf 85.000,00 EUR begrenzt
+    (100 % des Kaufpreises)
+    (nachfolgend „Haftungshöchstgrenze" oder „Cap").
+
+    Die Haftungsbegrenzung gilt nicht für:
+    a) Ansprüche wegen Vorsatz oder Arglist,
+    b) Verletzung der Eigentumsgarantie gemäß § 8 Abs. (1),
+    c) Steuerfreistellungsansprüche gemäß § 11,
+    d) Ansprüche aus der Verletzung wesentlicher Garantien
+       (Fundamental Warranties) gemäß Abs. (8).
+
+(6) Ansprüche aus Garantieverletzungen verjähren wie folgt:
+    a) Ansprüche aus der Verletzung von Steuergarantien (§ 8 Abs. (3)):
+       6 Monate nach Bestandskraft des die Steuer festsetzenden
+       Bescheids, spätestens jedoch 5 Jahre
+       nach dem Vollzugstag.
+    b) Ansprüche aus der Verletzung der Eigentumsgarantie (§ 8 Abs. (1)):
+       10 Jahre nach dem Vollzugstag.
+    c) Ansprüche aus der Verletzung von Umweltgarantien (§ 8 Abs. (11)):
+       {{VERJAEHRUNG_UMWELT_JAHRE}} Jahre nach dem Vollzugstag.
+    d) Ansprüche aus der Verletzung aller übrigen Garantien:
+       18 Monate nach dem Vollzugstag.
+
+(7) Die Verjährung wird durch schriftliche Geltendmachung des Anspruches
+    gehemmt. Die Hemmung endet 6 Monate nach dem Zeitpunkt, in dem dem
+    Verkäufer die Geltendmachung zugeht, sofern der Käufer nicht zuvor
+    Klage erhoben oder ein Schiedsverfahren eingeleitet hat.
+
+(8) Als wesentliche Garantien (Fundamental Warranties) gelten:
+    a) Eigentums- und Verfügungsberechtigung (§ 8 Abs. (1)),
+    b) Steuerliche Verhältnisse (§ 8 Abs. (3)),
+    c) Vollständigkeit der Offenlegung (§ 8 Abs. (13)).
+
+    Für Verletzungen wesentlicher Garantien gelten die
+    Haftungshöchstgrenze und der Freibetrag gemäß Abs. (3)–(5) nicht.
+    Die Haftung bei Verletzung wesentlicher Garantien ist auf
+    {{FUNDAMENTAL_CAP_BETRAG}} EUR ({{FUNDAMENTAL_CAP_PROZENT}} % des
+    Kaufpreises) begrenzt.
+
+(9) Ansprüche des Käufers aus Garantieverletzungen bestehen nicht, soweit
+    der Käufer zum Zeitpunkt des Vertragsschlusses positive Kenntnis von
+    der betreffenden Unrichtigkeit der Garantie hatte.
+
+    „Positive Kenntnis" bedeutet die tatsächliche Kenntnis des Käufers
+    oder seiner in Anlage 9.9 namentlich benannten Berater; ein
+    Kennenmüssen genügt nicht.
+
+(10) Der Käufer ist verpflichtet, zumutbare Maßnahmen zur Minderung eines
+     Schadens aus einer Garantieverletzung zu ergreifen (§ 254 BGB). Der
+     Käufer wird den Verkäufer über eine Garantieverletzung unverzüglich
+     schriftlich unter Darlegung des Sachverhalts informieren.
+
+(11) Macht ein Dritter Ansprüche geltend, die eine Garantieverletzung
+     begründen könnten, wird der Käufer den Verkäufer unverzüglich
+     informieren und dem Verkäufer Gelegenheit geben, die Abwehr des
+     Drittanspruchs zu übernehmen oder an der Abwehr mitzuwirken.
+
+
+§ 11 Freistellungen
+
+(1) Steuerliche Freistellung:
+    Der Verkäufer stellt den Käufer von sämtlichen Steuern und
+    steuerlichen Nebenleistungen frei, die den Geschäftsbetrieb
+    betreffen und wirtschaftlich den Zeitraum bis einschließlich
+    des Stichtages zuzurechnen sind, insbesondere von:
+    a) Nachforderungen aus Betriebsprüfungen für Veranlagungszeiträume
+       bis einschließlich des Stichtages,
+    b) Haftungsansprüchen nach § 75 AO (Haftung des
+       Betriebsübernehmers) für Steuern und steuerliche
+       Nebenleistungen, die vor dem Stichtag entstanden sind.
+
+    Die Freistellung umfasst auch angemessene Kosten der
+    Rechtsverteidigung (Steuerberater, Rechtsanwalt) sowie Zinsen
+    und Säumniszuschläge.
+
+
+§ 13 Übernahme von Verbindlichkeiten
+
+(1) Der Käufer übernimmt ausschließlich die in Anlage 13 aufgeführten
+    Verbindlichkeiten (nachfolgend die „Übernommenen Verbindlichkeiten").
+
+(2) Alle nicht ausdrücklich in Anlage 13 aufgeführten Verbindlichkeiten
+    verbleiben beim Verkäufer. Insbesondere übernimmt der Käufer nicht:
+    a) Steuerschulden und steuerliche Nebenleistungen für Zeiträume vor
+       dem Stichtag (vorbehaltlich § 75 AO),
+    b) Bankverbindlichkeiten des Verkäufers,
+    c) Verbindlichkeiten aus Rechtsstreitigkeiten, die ihren Ursprung
+       vor dem Stichtag haben,
+    d) sonstige nicht betrieblich veranlasste Verbindlichkeiten.
+
+(3) Den Parteien ist bekannt, dass der Käufer gemäß § 75 AO für bestimmte
+    Steuerschulden des Verkäufers haftet. Die Haftung des Käufers nach
+    § 75 AO ist in der Steuerschutzklausel gemäß § 11 Abs. (1) berücksichtigt.
+    Der Käufer ist berechtigt, bei dem zuständigen Finanzamt eine
+    Unbedenklichkeitsbescheinigung nach § 22 Abs. 3 UStG zu beantragen.
+    Der Verkäufer wird den Käufer hierbei unterstützen.
+
+(5) Haftungsausschluss nach § 25 HGB:
+    a) Die Parteien stellen klar, dass eine Haftung des Käufers für
+       Verbindlichkeiten des Verkäufers gemäß § 25 HGB ausdrücklich
+       ausgeschlossen wird.
+    b) Der Verkäufer stellt den Käufer von sämtlichen bestehenden
+       Verbindlichkeiten des Geschäftsbetriebs frei, die vor dem
+       Stichtag begründet wurden und nicht ausdrücklich als
+       Übernommene Verbindlichkeiten in Anlage 13 aufgeführt sind.
+    c) Der Verkäufer verpflichtet sich, an der unverzüglichen
+       Bekanntmachung des Haftungsausschlusses im Sinne des
+       § 25 Abs. 2 HGB mitzuwirken, insbesondere durch:
+       - Mitwirkung an der Eintragung im Handelsregister
+         (soweit anwendbar),
+       - Zustimmung zur handelsüblichen Bekanntmachung
+         (z. B. Veröffentlichung auf der Webseite des
+         Geschäftsbetriebs, Mitteilung an Geschäftspartner),
+       - Abgabe aller hierfür erforderlichen Erklärungen.
+    d) Die Kosten der Bekanntmachung tragen die Parteien
+       je zur Hälfte.
+
+
+§ 14 Wettbewerbsverbot
+
+(1) Der Verkäufer verpflichtet sich, für die Dauer von 2
+    Jahren ab dem Vollzugstag weder unmittelbar noch mittelbar:
+    a) ein Unternehmen zu gründen, zu erwerben oder zu betreiben, das mit dem
+       Geschäftsbetrieb im Wettbewerb steht,
+    b) sich an einem solchen Unternehmen gesellschaftsrechtlich zu beteiligen
+       (ausgenommen reine Finanzbeteiligungen von weniger als 5 % an
+       börsennotierten Unternehmen),
+    c) für ein solches Unternehmen in leitender Funktion tätig zu werden
+       (als Geschäftsführer, Prokurist, Berater oder in vergleichbarer
+       Position),
+    d) Kunden oder Lieferanten des Geschäftsbetriebs abzuwerben oder dies
+       zu versuchen.
+
+(2) Das Wettbewerbsverbot gilt räumlich für die Bundesrepublik Deutschland.
+
+(3) Das Wettbewerbsverbot gilt sachlich für den Online-Handel mit Heimtierbedarf und Tiernahrung.
+
+(4) Für jeden Fall der schuldhaften Zuwiderhandlung verpflichtet sich der
+    Verkäufer zur Zahlung einer Vertragsstrafe in Höhe von
+    15.000,00 EUR. Im Falle eines Dauerverstoßes wird die
+    Vertragsstrafe für jeden angefangenen Monat der Zuwiderhandlung fällig.
+    Die Geltendmachung eines weitergehenden Schadensersatzanspruches bleibt
+    unberührt.
+
+(5) Verstößt der Verkäufer gegen das Wettbewerbsverbot, ist der Käufer
+    zusätzlich berechtigt, Unterlassung zu verlangen. Der Verkäufer
+    unterwirft sich hinsichtlich des Unterlassungsanspruchs der sofortigen
+    Zwangsvollstreckung gemäß § 890 ZPO.
+
+(6) Als Gegenleistung für das Wettbewerbsverbot zahlt der Käufer dem
+    Verkäufer eine Karenzentschädigung in Höhe von monatlich
+    {{KARENZ_BETRAG}} EUR, zahlbar jeweils zum Monatsende. Die
+    Karenzentschädigung ist im Kaufpreis (§ 4 Abs. (2) lit. f))
+    gesondert ausgewiesen.
+
+(7) Der Käufer verpflichtet sich, den unter der Bezeichnung
+    „BudXXL" geführten Geschäftsbetrieb für die Dauer
+    von {{KAEUFER_WETTBEWERB_SCHUTZ_JAHRE}} Jahren nach dem Vollzugstag
+    nicht stillzulegen oder in eine andere Branche zu überführen,
+    sofern nicht ein wichtiger wirtschaftlicher Grund vorliegt.
+    Diese Klausel dient dem Schutz des Verkäufers hinsichtlich der
+    Werthaltigkeit einer etwaigen Earn-Out-Vereinbarung (§ 4 Abs. (7))
+    sowie des Interesses an der Fortführung des Geschäftsbetriebs.
+
+(8) Das Wettbewerbsverbot gemäß Abs. (1)–(3) umfasst auch:
+    a) die Nutzung der übertragenen Domains, Social-Media-Accounts oder
+       ähnlich klingender Bezeichnungen durch den Verkäufer für
+       konkurrierende Zwecke,
+    b) die Erstellung konkurrierender Online-Präsenzen unter Verwendung
+       von Kundendaten, SEO-Rankings oder sonstigen digitalen Assets
+       des Geschäftsbetriebs,
+    c) bezahlte oder organische Werbung, die gezielt auf die Kunden
+       des übertragenen Geschäftsbetriebs ausgerichtet ist.
+
+
+§ 16 Geheimhaltung
+
+(1) Die Parteien verpflichten sich, alle im Zusammenhang mit der Vorbereitung
+    und Durchführung dieses Vertrages erhaltenen Informationen über die jeweils
+    andere Partei und den Geschäftsbetrieb (nachfolgend „Vertrauliche
+    Informationen") streng vertraulich zu behandeln und weder gegenüber Dritten
+    offenzulegen noch für andere als die in diesem Vertrag vorgesehenen Zwecke
+    zu verwenden.
+
+(2) Die Geheimhaltungsplicht gilt nicht für Informationen, die:
+    a) zum Zeitpunkt der Offenlegung bereits öffentlich bekannt waren oder
+       nachträglich ohne Verschulden der empfangenden Partei öffentlich
+       bekannt werden,
+    b) der empfangenden Partei bereits vor der Offenlegung aus anderen
+       Quellen rechtmäßig bekannt waren,
+    c) von der empfangenden Partei nachweislich unabhängig entwickelt wurden,
+    d) aufgrund gesetzlicher oder behördlicher Anordnung offengelegt werden
+       müssen (in diesem Fall wird die offenlegende Partei die andere Partei
+       hiervon unverzüglich informieren).
+
+(3) Die Parteien sind berechtigt, Vertrauliche Informationen an ihre
+    Berater (Rechtsanwälte, Steuerberater, Wirtschaftsprüfer, Banken)
+    weiterzugeben, soweit diese zur Berufsverschwiegenheit verpflichtet
+    sind oder eine entsprechende Vertraulichkeitsvereinbarung unterzeichnet
+    haben.
+
+(4) Die Geheimhaltungspflicht besteht für die Dauer von
+    3 Jahren nach dem Vollzugstag fort.
+
+(5) Für jeden Fall der schuldhaften Verletzung der Geheimhaltungspflicht
+    zahlt die verletzende Partei eine Vertragsstrafe in Höhe von
+    10.000,00 EUR. Die Geltendmachung eines
+    weitergehenden Schadensersatzanspruches bleibt unberührt.
+
+
+§ 17 Übergangsphase und Einarbeitung
+
+(1) Der Verkäufer verpflichtet sich, den Käufer nach dem Vollzugstag für
+    einen Zeitraum von 3 Monaten bei der
+    Übernahme und Einarbeitung in den Geschäftsbetrieb zu unterstützen
+    (nachfolgend die „Übergangsphase").
+
+(2) Während der Übergangsphase wird der Verkäufer insbesondere:
+    a) den Käufer bei Kunden, Lieferanten und Geschäftspartnern einführen,
+    b) Fragen zur Unternehmensführung und den betrieblichen Abläufen
+       beantworten,
+    c) bei der Übergabe von Wissen und Erfahrung mitwirken,
+    d) bei der Migration von IT-Systemen und Daten unterstützen.
+
+(3) Während der Übergangsphase steht der Verkäufer dem Käufer für bis zu
+    10 Stunden pro Woche zur Verfügung.
+
+(4) Die Tätigkeit des Verkäufers während der Übergangsphase
+    ist mit dem Kaufpreis abgegolten.
+
+    [Option A: im Kaufpreis enthalten]
+    ist mit dem Kaufpreis abgegolten.
+
+    [Option B: gesondert vergütet]
+    wird mit {{UEBERGANG_STUNDENSATZ}} EUR pro Stunde zuzüglich
+    Reisekosten vergütet. Die Vergütung ist monatlich nachträglich
+    fällig. Es wird kein Arbeitsverhältnis begründet.
+
+
+§ 18 Steuerliche Regelungen
+
+(1) Die Parteien legen die in § 4 Abs. (2) vereinbarte Kaufpreisaufteilung
+    auch steuerlich zugrunde. Die Parteien verpflichten sich, die
+    Kaufpreisaufteilung in ihren jeweiligen Steuererklärungen
+    einheitlich anzuwenden und der Finanzverwaltung gegenüber nicht
+    abweichend zu erklären.
+
+(2) Die Kaufpreisaufteilung wurde unter Berücksichtigung der Grundsätze
+    der BMF-Schreiben zur steuerlichen Behandlung von Unternehmenskäufen
+    und der aktuellen Rechtsprechung des BFH erstellt.
+
+(5) AfA-Bemessungsgrundlage:
+    Der Käufer ist berechtigt, die erworbenen Vermögensgegenstände
+    mit den Anschaffungskosten (Kaufpreisanteile) zu aktivieren und
+    entsprechend abzuschreiben (Step-Up). Die Nutzungsdauern
+    richten sich nach den steuerlichen AfA-Tabellen.
+
+(6) Die Parteien werden einander bei der Erfüllung steuerlicher
+    Pflichten, die den Geschäftsbetrieb betreffen, unterstützen und
+    die hierfür erforderlichen Unterlagen und Auskünfte erteilen.
+    Dies gilt insbesondere für Betriebsprüfungen, Einspruchsverfahren
+    und Finanzgerichtsverfahren.
+
+    Der Verkäufer ist verpflichtet, dem Käufer sämtliche für die
+    Buchführung und Steuererklärungen des Geschäftsbetriebs
+    erforderlichen Unterlagen und Informationen für Zeiträume
+    vor dem Stichtag zu übergeben.
+
+
+§ 19 Garantien des Käufers
+
+Der Käufer gibt dem Verkäufer folgende Garantien:
+
+(1) Der Käufer ist voll geschäftsfähig und berechtigt, diesen Vertrag
+    abzuschließen und seine Verpflichtungen hieraus zu erfüllen.
+
+(2) Die Unterzeichnung und Durchführung dieses Vertrages verstößt nicht
+    gegen gesetzliche Vorschriften, behördliche Verfügungen, gerichtliche
+    Entscheidungen oder vertragliche Verpflichtungen des Käufers.
+
+(3) Der Käufer verfügt über die zur Zahlung des Kaufpreises erforderlichen
+    Mittel oder hat verbindliche Finanzierungszusagen eingeholt.
+
+
+§ 20 Datenschutz
+
+(1) Die Parteien werden die Übertragung personenbezogener Daten im Rahmen
+    dieses Vertrages in Übereinstimmung mit der Datenschutz-Grundverordnung
+    (DSGVO) und dem Bundesdatenschutzgesetz (BDSG) durchführen.
+
+(2) Soweit personenbezogene Daten von Kunden, Lieferanten oder sonstigen
+    Geschäftspartnern übertragen werden, stützen sich die Parteien auf
+    Art. 6 Abs. 1 lit. f) DSGVO (berechtigtes Interesse an der
+    Fortführung des Geschäftsbetriebs).
+
+(3) Arbeitnehmerdaten werden im Rahmen des Betriebsübergangs gemäß
+    § 613a BGB auf Grundlage von Art. 6 Abs. 1 lit. b) und c) DSGVO
+    übertragen.
+
+(4) Die betroffenen Personen werden gemäß Art. 13, 14 DSGVO über die
+    Übertragung ihrer Daten informiert.
+
+(5) Die Parteien werden — soweit erforderlich — eine gesonderte
+    Vereinbarung zur gemeinsamen Verantwortlichkeit nach Art. 26 DSGVO
+    oder zur Auftragsverarbeitung nach Art. 28 DSGVO abschließen.
+
+
+§ 21 Schlussbestimmungen
+
+(1) Anwendbares Recht:
+    Dieser Vertrag und alle sich aus oder im Zusammenhang mit diesem
+    Vertrag ergebenden Streitigkeiten unterliegen ausschließlich dem
+    Recht der Bundesrepublik Deutschland unter Ausschluss des
+    UN-Kaufrechts (CISG) und der Verweisungsnormen des internationalen
+    Privatrechts (IPR).
+
+(2) Schriftform:
+    Änderungen und Ergänzungen dieses Vertrages einschließlich dieser
+    Schriftformklausel bedürfen zu ihrer Wirksamkeit der Schriftform.
+    Mündliche Nebenabreden bestehen nicht.
+
+(3) Salvatorische Klausel:
+    Sollte eine Bestimmung dieses Vertrages ganz oder teilweise unwirksam
+    oder undurchführbar sein oder werden, so wird die Gültigkeit der
+    übrigen Bestimmungen hierdurch nicht berührt. Die unwirksame oder
+    undurchführbare Bestimmung ist durch eine wirksame und durchführbare
+    Bestimmung zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen
+    oder undurchführbaren Bestimmung möglichst nahekommt. Entsprechendes
+    gilt für Regelungslücken.
+
+(4) Kosten:
+    Jede Partei trägt die ihr im Zusammenhang mit der Vorbereitung,
+    Verhandlung und Durchführung dieses Vertrages entstehenden Kosten
+    (Rechtsanwälte, Steuerberater, Wirtschaftsprüfer) selbst, soweit
+    in diesem Vertrag nicht ausdrücklich etwas anderes bestimmt ist.
+
+(5) Gerichtsstand:
+    Ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder
+    im Zusammenhang mit diesem Vertrag ist Düsseldorf, soweit
+    eine Gerichtsstandsvereinbarung zulässig ist.
+
+(6) Mediation:
+    Vor Einleitung eines gerichtlichen oder schiedsgerichtlichen
+    Verfahrens werden die Parteien versuchen, die Streitigkeit im
+    Wege einer Mediation durch einen gemeinsam bestellten Mediator
+    beizulegen. Die Mediationskosten tragen die Parteien je zur
+    Hälfte. Kann die Streitigkeit nicht innerhalb von
+    {{MEDIATION_FRIST_WOCHEN}} Wochen nach Beginn der Mediation
+    beigelegt werden, steht den Parteien der Rechtsweg offen.
+
+(7) Zustellungen und Mitteilungen:
+    Sämtliche Erklärungen, Mitteilungen und Zustellungen im
+    Zusammenhang mit diesem Vertrag sind in Schriftform (Brief, Telefax
+    oder E-Mail mit qualifizierter elektronischer Signatur) an die
+    in der Rubrum genannten Adressen zu richten. Jede Partei kann
+    ihre Zustelladresse durch schriftliche Mitteilung an die andere
+    Partei ändern.
+
+(8) Gesamtvereinbarung:
+    Dieser Vertrag einschließlich seiner Anlagen enthält sämtliche
+    Vereinbarungen der Parteien und ersetzt alle vorherigen
+    mündlichen oder schriftlichen Absprachen, Vereinbarungen und
+    Erklärungen der Parteien in Bezug auf den Vertragsgegenstand.
+
+(9) Abtretung:
+    Die Rechte und Pflichten aus diesem Vertrag dürfen ohne vorherige
+    schriftliche Zustimmung der anderen Partei nicht an Dritte
+    abgetreten oder übertragen werden. Eine Abtretung an verbundene
+    Unternehmen im Sinne der §§ 15 ff. AktG bedarf keiner Zustimmung,
+    ist aber der anderen Partei unverzüglich mitzuteilen.
+
+
+Düsseldorf, den 15.06.2026
+
+
+_______________________________________
+BudXXL GbR
+Gesellschaft bürgerlichen Rechts (GbR)
+vertreten durch Thomas Müller und Sandra Müller, jeweils einzelvertretungsberechtigt
+(Verkäufer)
+
+
+_______________________________________
+Herr Philipp Weber
+(Käufer)
+
+
+ANLAGENVERZEICHNIS
+
+Anlage 2.2 — Inventarliste Sachanlagen und Betriebsausstattung
+Anlage 2.6 — Inventurprotokoll Vorräte
+Anlage 2.9 — Übersicht Lieferantenverträge
+Anlage 2.12 — Domains, Online-Präsenzen und digitale Assets
+Anlage 2.12a — Online-Shop Übergabeprotokoll (Zugangsdaten, Quellcode, Shop-System)
+Anlage 2.13 — Software-Lizenzen
+Anlage 8.2 — Jahresabschlüsse und BWA
+Anlage 8.3 — Offengelegte steuerliche Sachverhalte
+Anlage 8.4 — Offengelegte Instandhaltungsmaßnahmen
+Anlage 8.4a — Technischer Status Online-Shop (Versionen, Plug-ins, bekannte Einschränkungen)
+Anlage 8.7 — Verträge mit nahestehenden Personen
+Anlage 8.9a — Offengelegte Abmahnungen, einstweilige Verfügungen und behördliche Verfahren
+Anlage 8.12 — Versicherungsübersicht
+Anlage 9.1 — Liste der erforderlichen Zustimmungen Dritter
+Anlage 13 — Übernommene Verbindlichkeiten
