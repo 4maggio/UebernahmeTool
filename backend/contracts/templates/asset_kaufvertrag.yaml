@@ -266,6 +266,10 @@ variables:
       label: "Werden Arbeitnehmer übernommen?"
       type: boolean
       tooltip: "Wenn Mitarbeiter übergehen, gilt zwingend § 613a BGB: Alle Arbeitsverhältnisse gehen automatisch auf den Käufer über. Kündigung wegen des Betriebsübergangs ist unzulässig. Mitarbeiter haben ein 4-Wochen-Widerspruchsrecht. Aktiviert das Arbeitnehmer-Kapitel im Vertrag."
+    - id: HAT_BETRIEBSRAT
+      label: "Besteht ein Betriebsrat?"
+      type: boolean
+      tooltip: "Wenn ein Betriebsrat besteht, muss dieser gemäß §§ 111, 112 BetrVG rechtzeitig über den Betriebsübergang informiert werden. Ggf. Interessenausgleich und Sozialplan erforderlich."
     - id: HAT_IMMOBILIEN
       label: "Sind Grundstücke/Immobilien enthalten?"
       type: boolean
@@ -3017,6 +3021,8 @@ module_config:
         - "HAT_GENEHMIGUNGEN"
         - "HAT_KUNDENDATEN"
         - "HAT_FIRMENFORTFUEHRUNG"
+        - "HAT_MITARBEITER"
+        - "HAT_BETRIEBSRAT"
 
     - step: 3
       title: "Asset-Liste"
@@ -3052,12 +3058,6 @@ module_config:
         - "BASKET_TIPPING"
 
     - step: 7
-      title: "Arbeitnehmer"
-      description: "Gehen Mitarbeiter über?"
-      sections: ["arbeitnehmer", "abwerbeverbot"]
-      condition: "HAT_MITARBEITER"
-
-    - step: 8
       title: "Schutzklauseln"
       description: "Wettbewerbsverbot, Geheimhaltung, Übergang"
       sections: ["wettbewerbsverbot", "geheimhaltung", "uebergangsphase"]
@@ -3065,7 +3065,7 @@ module_config:
         - "HAT_BERATERVERTRAG"
         - "UEBERGANG_IM_KAUFPREIS"
 
-    - step: 9
+    - step: 8
       title: "Steuern & Recht"
       description: "Steuerliche und rechtliche Rahmenbedingungen"
       sections:
@@ -3078,7 +3078,7 @@ module_config:
       toggles:
         - "SCHIEDSGERICHT"
 
-    - step: 10
+    - step: 9
       title: "Prüfen & Erstellen"
       description: "Vertrag prüfen und herunterladen"
       sections: ["unterschriften", "anlagen"]
@@ -3090,6 +3090,7 @@ module_config:
       description: "Kleinunternehmen, einfache Struktur, keine Mitarbeiter"
       enabled_conditions:
         HAT_MITARBEITER: false
+        HAT_BETRIEBSRAT: false
         HAT_IMMOBILIEN: false
         HAT_VORRAETE: false
         HAT_FORDERUNGEN: false
@@ -3122,6 +3123,7 @@ module_config:
       description: "Typischer KMU-Kauf mit Mitarbeitern und üblichem Umfang"
       enabled_conditions:
         HAT_MITARBEITER: true
+        HAT_BETRIEBSRAT: false
         HAT_IMMOBILIEN: false
         HAT_VORRAETE: true
         HAT_FORDERUNGEN: true
@@ -3154,6 +3156,7 @@ module_config:
       description: "Alle Klauseln aktiviert — für komplexe Transaktionen"
       enabled_conditions:
         HAT_MITARBEITER: true
+        HAT_BETRIEBSRAT: true
         HAT_IMMOBILIEN: true
         HAT_VORRAETE: true
         HAT_FORDERUNGEN: true

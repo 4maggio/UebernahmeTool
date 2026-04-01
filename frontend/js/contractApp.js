@@ -341,6 +341,11 @@ const ContractApp = (() => {
         return html;
     }
 
+    // Map of toggles that depend on another toggle being active
+    const TOGGLE_DEPENDS_ON = {
+        'HAT_BETRIEBSRAT': 'HAT_MITARBEITER',
+    };
+
     function renderToggles(toggleIds) {
         const conditions = template.variables.conditions || [];
         const toggleVars = conditions.filter(c => toggleIds.includes(c.id));
@@ -351,6 +356,10 @@ const ContractApp = (() => {
         html += '<div class="toggle-list">';
 
         for (const t of toggleVars) {
+            // Skip toggles whose dependency is not met
+            const dep = TOGGLE_DEPENDS_ON[t.id];
+            if (dep && !state.data[dep]) continue;
+
             const checked = state.data[t.id] === true;
             const cls = checked ? 'toggle-item active' : 'toggle-item';
             html += `
@@ -453,8 +462,8 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 8 (was 7): Non-compete & confidentiality
-        if (stepIdx === 7) {
+        // Step 7: Non-compete & confidentiality
+        if (stepIdx === 6) {
             fields.push(
                 { id: 'WETTBEWERBSVERBOT_DAUER_JAHRE', label: 'Wettbewerbsverbot Dauer (Jahre)', showIf: null },
                 { id: 'WETTBEWERBSVERBOT_GEBIET', label: 'Räumliches Gebiet', showIf: null },
@@ -469,8 +478,8 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 9 (was 8): Tax & legal
-        if (stepIdx === 8) {
+        // Step 8: Tax & legal
+        if (stepIdx === 7) {
             fields.push(
                 { id: 'GERICHTSSTAND', label: 'Gerichtsstand', showIf: null },
                 { id: 'UST_SATZ', label: 'USt-Satz (%)', showIf: null, hint: 'Standard: 19' },
@@ -485,6 +494,9 @@ const ContractApp = (() => {
                 { id: 'SHOP_SYSTEM_NAME', label: 'Shop-System', showIf: 'HAT_DOMAINS', hint: 'z.B. Shopify, WooCommerce, Shopware' },
                 { id: 'PAYMENT_PROVIDER', label: 'Payment-Provider', showIf: 'HAT_DOMAINS', hint: 'z.B. Stripe, PayPal, Klarna' },
                 { id: 'WEITERE_AUSNAHMEN', label: 'Ausgenommene Vermögensgegenstände', showIf: null, hint: 'z.B. privater PKW, persönliche Gegenstände' },
+                { id: 'ARBEITNEHMER_INFORMATION_DATUM', label: 'Information der Arbeitnehmer bis', showIf: 'HAT_MITARBEITER', hint: 'Frist für das Informationsschreiben gemäß § 613a Abs. 5 BGB' },
+                { id: 'PENSION_RUECKSTELLUNG', label: 'Pensionsrückstellung (EUR)', showIf: 'HAT_MITARBEITER', hint: 'Versicherungsmathematisch ermittelter Barwert der betrieblichen Altersversorgung zum Stichtag' },
+                { id: 'PENSION_NACHHAFTUNG_JAHRE', label: 'Nachhaftung Pension (Jahre)', showIf: 'HAT_MITARBEITER', hint: 'Zeitraum der gesamtschuldnerischen Nachhaftung des Verkäufers (§ 613a Abs. 2 BGB)' },
             );
         }
 
@@ -1396,8 +1408,8 @@ const ContractApp = (() => {
         collectFormValues();
         saveLocal();
 
-        // ── Plausibilitätsprüfung: Vertragsstrafe (Step 8 = index 7) ──
-        if (state.currentStep === 7) {
+        // ── Plausibilitätsprüfung: Vertragsstrafe (Schutzklauseln = index 6) ──
+        if (state.currentStep === 6) {
             const kaufpreis = parseFloat((state.data.KAUFPREIS_GESAMT || '0').replace(/\./g, '').replace(',', '.'));
             if (kaufpreis > 0) {
                 const warnings = [];
@@ -1416,13 +1428,21 @@ const ContractApp = (() => {
         }
 
         const maxStep = template.wizard_steps.length - 1;
-        if (state.currentStep < maxStep) goToStep(state.currentStep + 1);
+        let nextIdx = state.currentStep + 1;
+        while (nextIdx < maxStep && template.wizard_steps[nextIdx].condition && !evalCondition(template.wizard_steps[nextIdx].condition)) {
+            nextIdx++;
+        }
+        if (nextIdx <= maxStep) goToStep(nextIdx);
     }
 
     function prev() {
         collectFormValues();
         saveLocal();
-        if (state.currentStep > 0) goToStep(state.currentStep - 1);
+        let prevIdx = state.currentStep - 1;
+        while (prevIdx > 0 && template.wizard_steps[prevIdx].condition && !evalCondition(template.wizard_steps[prevIdx].condition)) {
+            prevIdx--;
+        }
+        if (prevIdx >= 0) goToStep(prevIdx);
     }
 
     // ─── Boot ────────────────────────────────────────────────
