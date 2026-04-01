@@ -253,6 +253,9 @@ variables:
     - id: HAT_BERATERVERTRAG
       label: "Soll der Verkäufer als Berater tätig werden?"
       type: boolean
+    - id: HAT_FIRMENFORTFUEHRUNG
+      label: "Soll das Geschäft unter bisheriger Bezeichnung weitergeführt werden (§ 25 HGB)?"
+      type: boolean
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # VERTRAGSABSCHNITTE
@@ -571,10 +574,43 @@ sections:
                mehr verwenden und auf Verlangen des Käufers die für eine Umschreibung
                erforderlichen Erklärungen abgeben.
 
+      # ── 2.9a § 25 HGB – Firmenfortführung gewünscht ───────────
+      - id: kaufgegenstand_par25_fortfuehrung
+        title: "§ 25 HGB – Geschäftsfortführung mit Haftungsübernahme"
+        required: false
+        condition: "HAT_FIRMENFORTFUEHRUNG"
+        tags: ["firma", "hgb", "haftung", "fortfuehrung"]
+        text: |
+          (10a) Firmenfortführung (§ 25 HGB):
+               Der Käufer wird das Handelsgeschäft unter der bisherigen
+               Geschäftsbezeichnung „{{UNTERNEHMENSNAME}}" fortführen.
+               Die Parteien sind sich bewusst, dass der Käufer gemäß § 25 Abs. 1 HGB
+               für alle im Betrieb des Geschäfts begründeten Verbindlichkeiten des
+               Verkäufers haftet, sofern diese nicht ausdrücklich ausgenommen werden.
+
+               Abweichend von § 25 Abs. 1 HGB vereinbaren die Parteien, dass der
+               Käufer ausschließlich die in Abschnitt „Verbindlichkeiten" dieses
+               Vertrages ausdrücklich aufgeführten Verbindlichkeiten übernimmt.
+               Sämtliche übrigen Verbindlichkeiten verbleiben beim Verkäufer;
+               dieser stellt den Käufer von allen daraus resultierenden Ansprüchen
+               Dritter frei. Diese Haftungsbeschränkung wird gemäß § 25 Abs. 2 HGB
+               gegenüber Dritten durch Eintragung im Handelsregister oder durch
+               unverzügliche Bekanntmachung gegenüber Gläubigern wirksam gemacht.
+
+      # ── 2.9b § 25 HGB – ausdrücklich ausgeschlossen ──────────
+      - id: kaufgegenstand_par25_ausschluss
+        title: "§ 25 HGB – Ausdrücklicher Ausschluss der Haftungsübernahme"
+        required: false
+        condition: "NOT HAT_FIRMENFORTFUEHRUNG"
+        tags: ["firma", "hgb", "haftung", "ausschluss"]
+        text: |
+          (10a) Kein § 25 HGB:
                Der Käufer ist nicht verpflichtet, das Geschäft unter der bisherigen
                Geschäftsbezeichnung fortzuführen. Eine Firmenfortführung im Sinne
                des § 25 HGB ist nicht beabsichtigt und wird ausdrücklich
-               ausgeschlossen.
+               ausgeschlossen. Der Käufer übernimmt keine Haftung für Verbindlichkeiten
+               des Verkäufers aus dem bisherigen Geschäftsbetrieb, soweit diese nicht
+               ausdrücklich in diesem Vertrag übernommen werden.
 
       # ── 2.10 Gewerbliche Schutzrechte / IP ────────────────────
       - id: kaufgegenstand_ip
@@ -2723,6 +2759,7 @@ module_config:
         - "HAT_DOMAINS"
         - "HAT_LIZENZEN"
         - "HAT_GENEHMIGUNGEN"
+        - "HAT_FIRMENFORTFUEHRUNG"
 
     - step: 3
       title: "Kaufpreis & Zahlung"
