@@ -56,6 +56,10 @@ function evalCondition(condition, data) {
 function replacePlaceholders(text, data) {
     if (!text) return '';
     return text.replace(/\{\{(\w+)\}\}/g, (match, key) => {
+        // For person_list fields, prefer the _TEXT flat representation
+        if (Array.isArray(data[key]) && data[key + '_TEXT'] !== undefined) {
+            return data[key + '_TEXT'];
+        }
         return data[key] !== undefined ? data[key] : match;
     });
 }

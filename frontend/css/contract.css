@@ -194,6 +194,63 @@
     gap: 0;
 }
 
+/* ── Person List ────────────────────────────────────────────── */
+.person-list-wrap {
+    grid-column: 1 / -1;
+}
+.person-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: .5rem;
+}
+.person-card {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    background: var(--c-bg);
+    overflow: hidden;
+}
+.person-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .4rem .75rem;
+    background: var(--c-bg-2, #f5f7fa);
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    border-bottom: 1px solid var(--c-border);
+}
+.person-card-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    padding: .6rem .75rem;
+}
+.person-field label {
+    display: block;
+    font-size: .75rem;
+    color: var(--c-text-muted);
+    margin-bottom: .15rem;
+}
+.person-field input {
+    width: 100%;
+    padding: .35rem .5rem;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    font-size: .85rem;
+}
+.btn-add-person {
+    font-size: .82rem;
+    padding: .35rem .75rem;
+    margin-top: .25rem;
+}
+@media (max-width: 640px) {
+    .person-card-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ── Toggle Switches ────────────────────────────────────────── */
 .toggle-group {
     margin-bottom: var(--sp-6);

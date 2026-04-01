@@ -95,7 +95,12 @@ variables:
       tooltip: "Z.B. 'Amtsgericht München HRB 123456'. Zu finden im Handelsregister (handelsregister.de) oder auf dem Briefkopf der Gesellschaft."
     - id: VERKAEUFER_GESCHAEFTSFUEHRER
       label: "Vertretungsberechtigte Person(en)"
-      type: text
+      type: person_list
+      person_fields:
+        - { id: name, label: "Name", type: text, required: true }
+        - { id: funktion, label: "Funktion", type: text, required: true, placeholder: "z.B. Geschäftsführer" }
+        - { id: adresse, label: "Adresse", type: text, required: false }
+        - { id: geburtsdatum, label: "Geburtsdatum", type: date, required: false }
       condition: "seller_type NOT IN ['Privatperson','Einzelunternehmer']"
       tooltip: "Name und Funktion der Person(en), die die Gesellschaft nach außen vertreten darf (z.B. 'Max Mustermann, Geschäftsführer'). Muss mit dem Handelsregistereintrag übereinstimmen."
 
@@ -138,7 +143,12 @@ variables:
       tooltip: "Handelsregisternummer der Käufergesellschaft. Muss zum Zeitpunkt des Signings bereits eingetragen sein. Bei noch nicht eingetragener GmbH in Gründung (i.G.) gesondert vermerken."
     - id: KAEUFER_GESCHAEFTSFUEHRER
       label: "Vertretungsberechtigte Person(en)"
-      type: text
+      type: person_list
+      person_fields:
+        - { id: name, label: "Name", type: text, required: true }
+        - { id: funktion, label: "Funktion", type: text, required: true, placeholder: "z.B. Geschäftsführer" }
+        - { id: adresse, label: "Adresse", type: text, required: false }
+        - { id: geburtsdatum, label: "Geburtsdatum", type: date, required: false }
       condition: "buyer_type NOT IN ['Privatperson']"
       tooltip: "Person(en) die die Käufergesellschaft rechtswirksam vertreten darf, gemäß Handelsregister oder Gesellschaftsvertrag."
 
@@ -148,22 +158,31 @@ variables:
       label: "Firmenname / Geschäftsbezeichnung"
       type: text
       required: true
-      tooltip: "Der Name, unter dem das Unternehmen am Markt bekannt ist. Kann von der Firmierung im Handelsregister abweichen (z.B. 'BudXXL' als Markenname)."
+      condition: "HAT_FIRMENFORTFUEHRUNG"
+      tooltip: "Der Name, unter dem das Unternehmen am Markt bekannt ist. Nur relevant wenn die Firma unter bisheriger Bezeichnung weitergeführt werden soll (§ 25 HGB)."
+    - id: VERTRAGSGEGENSTAND_BESCHREIBUNG
+      label: "Beschreibung der zu übertragenden Vermögenswerte"
+      type: textarea
+      required: true
+      condition: "NOT HAT_FIRMENFORTFUEHRUNG"
+      tooltip: "Eine kurze Beschreibung der Vermögenswerte, die übertragen werden (z.B. 'Sämtliche Produktionsanlagen, Rezepturen und Warenvorräte des Geschäftsbereichs Pflanzendünger'). Die Details ergeben sich aus der Asset-Liste."
     - id: UNTERNEHMENSGEGENSTAND
       label: "Gegenstand des Unternehmens"
       type: textarea
       required: true
-      tooltip: "Eine präzise Beschreibung der Geschäftstätigkeit (z.B. 'Herstellung und Vertrieb von Pflanzendüngern'). Beeinflusst die steuerliche Einordnung und die Garantieklauseln."
+      condition: "HAT_FIRMENFORTFUEHRUNG"
+      tooltip: "Eine präzise Beschreibung der Geschäftstätigkeit (z.B. 'Herstellung und Vertrieb von Pflanzendüngern'). Nur relevant bei Geschäftsfortführung."
     - id: UNTERNEHMENSSITZ
-      label: "Sitz des Unternehmens"
+      label: "Sitz des Unternehmens / Standort der Assets"
       type: text
       required: true
-      tooltip: "Ort der Hauptniederlassung/Betriebsstätte. Bestimmt die örtliche Zuständigkeit der Behörden und ggf. des Gerichts."
+      tooltip: "Ort der Hauptniederlassung bzw. Standort der zu übertragenden Vermögenswerte."
     - id: BETRIEBSSTAETTEN
       label: "Betriebsstätten / Standorte"
       type: list
       required: false
-      tooltip: "Falls das Unternehmen an mehreren Orten tätig ist, alle Standorte mit Adressen auflisten. Relevant für behördliche Genehmigungen und Mietverträge."
+      condition: "HAT_FIRMENFORTFUEHRUNG"
+      tooltip: "Falls das Unternehmen an mehreren Orten tätig ist, alle Standorte mit Adressen auflisten. Nur relevant bei Geschäftsfortführung."
 
   # ── Kaufpreis ─────────────────────────────────────────────
   price:
@@ -286,13 +305,13 @@ variables:
       type: boolean
       tooltip: "Gaststättenkonzession, Gewerbeerlaubnis, BImSchG-Genehmigung, Ausschankerlaubnis etc. sind personenbezogen und nicht automatisch übertragbar. Käufer muss neue Genehmigung beantragen. Übergangsregelung im Vertrag wichtig."
     - id: HAT_UMWELTRISIKEN
-      label: "Bestehen Umweltrisiken/Altlasten?"
+      label: "Garantie: Es bestehen keine Umweltrisiken/Altlasten"
       type: boolean
-      tooltip: "Bodenkontamination, Altlasten, Lagerung gefährlicher Stoffe. Käufer kann für Altlasten haften wenn er Zustandsstörer wird. Empfehlung: Umwelt-Due-Diligence, Freistellungserklärung des Verkäufers, ggf. Rückstellungsvereinbarung."
+      tooltip: "Aktiviert eine Schutzklausel zugunsten des Käufers. Der Verkäufer garantiert, dass keine Bodenkontamination, Altlasten oder Lagerung gefährlicher Stoffe vorliegen. Bei Verletzung haftet der Verkäufer und stellt den Käufer frei. Empfohlen für alle Deals."
     - id: HAT_RECHTSSTREITIGKEITEN
-      label: "Gibt es laufende Rechtsstreitigkeiten?"
+      label: "Garantie: Es sind keine Rechtsstreitigkeiten anhängig"
       type: boolean
-      tooltip: "Aktiviert Klauseln zu laufenden Klagen, Verfahren oder Behördenverfahren. Verkäufer muss alle ihm bekannten Streitigkeiten offenbaren. Käufer schützt sich durch Garantie und Freistellungsklausel."
+      tooltip: "Aktiviert eine Schutzklausel zugunsten des Käufers. Der Verkäufer garantiert, dass keine laufenden Klagen, Gerichts- oder Behördenverfahren bestehen. Bei Falschaussage haftet der Verkäufer und stellt den Käufer von allen Kosten frei."
     - id: SCHIEDSGERICHT
       label: "Schiedsgerichtsvereinbarung statt ordentlicher Gerichtsbarkeit?"
       type: boolean
@@ -314,11 +333,13 @@ variables:
       type: boolean
       tooltip: "Eine Exklusivitätsvereinbarung untersagt dem Verkäufer, parallel mit anderen Interessenten zu verhandeln. Üblicherweise zeitlich begrenzt (30–90 Tage). Aktiviert entsprechende Klausel im Vertragsrubrum."
     - id: UEBERGANG_IM_KAUFPREIS
-      label: "Ist die Einarbeitung im Kaufpreis enthalten?"
+      label: "Einarbeitung ist im Kaufpreis enthalten (keine separate Vergütung)"
       type: boolean
+      tooltip: "Wenn aktiviert, ist die Übergangsbegleitung/Einarbeitung des Verkäufers mit dem Kaufpreis abgegolten – keine gesonderte Vergütung. Deaktiviert = Verkäufer erhält zusätzlich einen Stundensatz für die Einarbeitung."
     - id: BASKET_TIPPING
-      label: "Tipping Basket (volle Haftung ab 1. Euro bei Überschreitung)?"
+      label: "Tipping Basket (volle Haftung ab dem 1. Euro bei Überschreitung des Freibetrags)"
       type: boolean
+      tooltip: "Bestimmt, was passiert wenn die Gesamtsumme aller Garantieansprüche den vereinbarten Freibetrag (Basket) übersteigt. Tipping Basket = Verkäufer haftet dann rückwirkend ab dem 1. Euro. Deductible = Verkäufer haftet nur für den übersteigenden Betrag. Tipping ist käuferfreundlicher."
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # VERTRAGSABSCHNITTE
@@ -404,23 +425,48 @@ sections:
     text: |
       § 1 Präambel
 
-      (1) Der Verkäufer betreibt unter der Bezeichnung „{{UNTERNEHMENSNAME}}" ein Unternehmen
-          mit dem Gegenstand: {{UNTERNEHMENSGEGENSTAND}}
-          am Standort {{UNTERNEHMENSSITZ}} (nachfolgend der „Geschäftsbetrieb").
-
-      (2) Der Verkäufer beabsichtigt, den Geschäftsbetrieb mit sämtlichen in diesem Vertrag
-          näher bezeichneten Vermögensgegenständen im Wege eines Asset Deals auf den Käufer
-          zu übertragen. Der Käufer beabsichtigt, den Geschäftsbetrieb zu erwerben und
-          fortzuführen.
-
-      (3) Die Parteien haben im Vorfeld dieses Vertrages eine Due-Diligence-Prüfung
-          durchgeführt. Die Ergebnisse sind den Parteien bekannt und in den Anlagen
-          zu diesem Vertrag dokumentiert. Der Käufer hat die wirtschaftlichen, rechtlichen
-          und steuerlichen Verhältnisse des Geschäftsbetriebs eingehend geprüft.
-
-      (4) Vor diesem Hintergrund schließen die Parteien den nachfolgenden Kaufvertrag:
-
     clauses:
+      - id: praeambel_body_fortfuehrung
+        title: "Präambel — Geschäftsfortführung"
+        required: false
+        condition: "HAT_FIRMENFORTFUEHRUNG"
+        tags: ["praeambel", "fortfuehrung"]
+        text: |
+          (1) Der Verkäufer betreibt unter der Bezeichnung „{{UNTERNEHMENSNAME}}" ein Unternehmen
+              mit dem Gegenstand: {{UNTERNEHMENSGEGENSTAND}}
+              am Standort {{UNTERNEHMENSSITZ}} (nachfolgend der „Geschäftsbetrieb").
+
+          (2) Der Verkäufer beabsichtigt, den Geschäftsbetrieb mit sämtlichen in diesem Vertrag
+              näher bezeichneten Vermögensgegenständen im Wege eines Asset Deals auf den Käufer
+              zu übertragen. Der Käufer beabsichtigt, den Geschäftsbetrieb zu erwerben und
+              unter der bisherigen Geschäftsbezeichnung fortzuführen.
+
+          (3) Die Parteien haben im Vorfeld dieses Vertrages eine Due-Diligence-Prüfung
+              durchgeführt. Die Ergebnisse sind den Parteien bekannt und in den Anlagen
+              zu diesem Vertrag dokumentiert. Der Käufer hat die wirtschaftlichen, rechtlichen
+              und steuerlichen Verhältnisse des Geschäftsbetriebs eingehend geprüft.
+
+          (4) Vor diesem Hintergrund schließen die Parteien den nachfolgenden Kaufvertrag:
+
+      - id: praeambel_body_asset_only
+        title: "Präambel — Reiner Asset Deal"
+        required: false
+        condition: "NOT HAT_FIRMENFORTFUEHRUNG"
+        tags: ["praeambel", "asset_deal"]
+        text: |
+          (1) Der Verkäufer ist Eigentümer der in diesem Vertrag näher bezeichneten
+              Vermögensgegenstände, die sich am Standort {{UNTERNEHMENSSITZ}} befinden.
+
+          (2) Der Verkäufer beabsichtigt, die nachfolgend aufgeführten Vermögensgegenstände
+              im Wege eines Asset Deals einzeln auf den Käufer zu übertragen. Eine Übernahme
+              des Geschäftsbetriebs als Ganzes oder eine Fortführung unter bisheriger
+              Geschäftsbezeichnung im Sinne des § 25 HGB ist ausdrücklich nicht beabsichtigt.
+
+          (3) Die Parteien haben im Vorfeld dieses Vertrages die zu übertragenden
+              Vermögensgegenstände geprüft. Der Käufer hat den Zustand und Wert
+              der Kaufgegenstände eingehend untersucht.
+
+          (4) Vor diesem Hintergrund schließen die Parteien den nachfolgenden Kaufvertrag:
       - id: praeambel_loi_bezug
         title: "Bezugnahme auf Letter of Intent"
         required: false
@@ -455,9 +501,25 @@ sections:
     text: |
       § 2 Vertragsgegenstand
 
-      (1) Der Verkäufer verkauft und überträgt hiermit an den Käufer, und der Käufer kauft
-          und übernimmt vom Verkäufer den Geschäftsbetrieb mit sämtlichen nachfolgend
-          bezeichneten Vermögensgegenständen (nachfolgend gemeinsam die „Kaufgegenstände"):
+    clauses:
+      - id: vertragsgegenstand_intro_fortfuehrung
+        title: "Einleitung Vertragsgegenstand — Geschäftsfortführung"
+        required: false
+        condition: "HAT_FIRMENFORTFUEHRUNG"
+        text: |
+          (1) Der Verkäufer verkauft und überträgt hiermit an den Käufer, und der Käufer kauft
+              und übernimmt vom Verkäufer den Geschäftsbetrieb „{{UNTERNEHMENSNAME}}" mit
+              sämtlichen nachfolgend bezeichneten Vermögensgegenständen (nachfolgend gemeinsam
+              die „Kaufgegenstände"):
+
+      - id: vertragsgegenstand_intro_asset_only
+        title: "Einleitung Vertragsgegenstand — Reiner Asset Deal"
+        required: false
+        condition: "NOT HAT_FIRMENFORTFUEHRUNG"
+        text: |
+          (1) Der Verkäufer verkauft und überträgt hiermit an den Käufer, und der Käufer kauft
+              und übernimmt vom Verkäufer die nachfolgend einzeln bezeichneten
+              Vermögensgegenstände (nachfolgend gemeinsam die „Kaufgegenstände"):
 
     clauses:
       # ── 2.1 Sachanlagen ───────────────────────────────────────
@@ -2837,8 +2899,8 @@ module_config:
         - "HAT_EXKLUSIVITAET"
 
     - step: 2
-      title: "Geschäftsbetrieb"
-      description: "Was wird übertragen?"
+      title: "Vertragsgegenstand"
+      description: "Was wird übertragen? Legen Sie zunächst fest, ob eine Geschäftsfortführung beabsichtigt ist."
       sections: ["vertragsgegenstand"]
       variables: ["business"]
       toggles:

@@ -155,6 +155,20 @@ const ContractApp = (() => {
         html += `<h2 class="step-title">${esc(step.title)}</h2>`;
         html += `<p class="step-description">${esc(step.description)}</p>`;
 
+        // On price step (index 3): show asset list total and auto-fill
+        if (idx === 3 && state.data.assetList && state.data.assetList.length > 0) {
+            const assetTotal = state.data.assetList.reduce((s, i) => s + (parseFloat(i.qty) || 0) * (parseFloat(i.unitPrice) || 0), 0);
+            html += `<div class="info-box info-box-asset-sum">
+                📦 Aus der Asset-Liste: <strong>${fmtEur(assetTotal)}</strong> (${state.data.assetList.length} Posten)
+                <button type="button" class="btn-sm" style="margin-left:.75rem" onclick="ContractApp.applyAssetTotal()">In Kaufpreis übernehmen</button>
+            </div>`;
+        }
+
+        // Render toggle section for this step (before variables so conditions are set first)
+        if (step.toggles && step.toggles.length > 0) {
+            html += renderToggles(step.toggles);
+        }
+
         // Render variable groups for this step
         if (step.variables) {
             for (const groupKey of step.variables) {
@@ -162,11 +176,6 @@ const ContractApp = (() => {
                 if (!vars) continue;
                 html += renderFormGroup(vars);
             }
-        }
-
-        // Render toggle section for this step
-        if (step.toggles && step.toggles.length > 0) {
-            html += renderToggles(step.toggles);
         }
 
         // Conditional extra fields based on toggles
@@ -195,6 +204,12 @@ const ContractApp = (() => {
         for (const v of vars) {
             // Check condition
             if (v.condition && !evalCondition(v.condition)) continue;
+
+            // Person list — special renderer
+            if (v.type === 'person_list') {
+                html += renderPersonList(v);
+                continue;
+            }
 
             const val = state.data[v.id] || '';
             const req = v.required ? '<span class="required">*</span>' : '';
@@ -233,6 +248,49 @@ const ContractApp = (() => {
             html += `</div>`;
         }
         html += '</div>';
+        return html;
+    }
+
+    // ── Person List (add/remove persons with structured fields) ──
+    function renderPersonList(v) {
+        if (!state.data[v.id]) state.data[v.id] = [];
+        const persons = state.data[v.id];
+        // Also build flat string for contract placeholder
+        state.data[v.id + '_TEXT'] = persons.map(p => {
+            let s = p.name || '';
+            if (p.funktion) s += ', ' + p.funktion;
+            if (p.adresse) s += ', ' + p.adresse;
+            if (p.geburtsdatum) s += ', geb. ' + p.geburtsdatum;
+            return s;
+        }).join('; ');
+
+        const fields = v.person_fields || [];
+        let html = `<div class="form-group full-width person-list-wrap" data-field-id="${v.id}">`;
+        html += `<label>${esc(v.label)}</label>`;
+        if (v.tooltip) {
+            html += `<button class="tooltip-btn" type="button" onclick="ContractApp.toggleTooltip('tip_${v.id}')" aria-label="Hilfe">?</button>`;
+            html += `<div class="tooltip-panel" id="tip_${v.id}" hidden>${esc(v.tooltip)}</div>`;
+        }
+
+        html += `<div class="person-list" data-person-var="${v.id}">`;
+        persons.forEach((person, idx) => {
+            html += `<div class="person-card" data-person-idx="${idx}">`;
+            html += `<div class="person-card-header"><span>Person ${idx + 1}</span><button type="button" class="btn-sm btn-sm-danger person-remove" data-person-var="${v.id}" data-person-idx="${idx}">✕</button></div>`;
+            html += `<div class="person-card-fields">`;
+            for (const f of fields) {
+                const fval = person[f.id] || '';
+                const inputType = f.type === 'date' ? 'date' : 'text';
+                const ph = f.placeholder ? ` placeholder="${esc(f.placeholder)}"` : '';
+                html += `<div class="person-field">`;
+                html += `<label>${esc(f.label)}${f.required ? '<span class="required">*</span>' : ''}</label>`;
+                html += `<input type="${inputType}" data-person-var="${v.id}" data-person-idx="${idx}" data-person-field="${f.id}" value="${esc(fval)}"${ph}>`;
+                html += `</div>`;
+            }
+            html += `</div></div>`;
+        });
+        html += `</div>`;
+        html += `<button type="button" class="btn-outline btn-add-person" data-person-var="${v.id}">+ Person hinzufügen</button>`;
+        html += `</div>`;
         return html;
     }
 
@@ -821,6 +879,33 @@ const ContractApp = (() => {
             }
         });
 
+        // Collect person list field values
+        document.querySelectorAll('[data-person-field]').forEach(el => {
+            const varId = el.dataset.personVar;
+            const idx = parseInt(el.dataset.personIdx);
+            const field = el.dataset.personField;
+            if (!state.data[varId]) state.data[varId] = [];
+            if (!state.data[varId][idx]) state.data[varId][idx] = {};
+            state.data[varId][idx][field] = el.value;
+        });
+
+        // Build flat text for person_list fields used in contract placeholders
+        for (const groupKey of ['seller', 'buyer']) {
+            const vars = template.variables[groupKey];
+            if (!vars) continue;
+            for (const v of vars) {
+                if (v.type === 'person_list' && Array.isArray(state.data[v.id])) {
+                    state.data[v.id + '_TEXT'] = state.data[v.id].map(p => {
+                        let s = p.name || '';
+                        if (p.funktion) s += ', ' + p.funktion;
+                        if (p.adresse) s += ', ' + p.adresse;
+                        if (p.geburtsdatum) s += ', geb. ' + p.geburtsdatum;
+                        return s;
+                    }).filter(s => s).join('; ');
+                }
+            }
+        }
+
         // Sync seller_type / buyer_type from rechtsform fields
         if (state.data.VERKAEUFER_RECHTSFORM) {
             state.data.seller_type = state.data.VERKAEUFER_RECHTSFORM;
@@ -886,6 +971,53 @@ const ContractApp = (() => {
                 renderStep(state.currentStep);
             });
         }
+
+        // Person list — add person buttons
+        document.querySelectorAll('.btn-add-person').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const varId = btn.dataset.personVar;
+                if (!state.data[varId]) state.data[varId] = [];
+                state.data[varId].push({});
+                dirty = true;
+                saveLocal();
+                renderStep(state.currentStep);
+            });
+        });
+
+        // Person list — remove person buttons
+        document.querySelectorAll('.person-remove').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const varId = btn.dataset.personVar;
+                const idx = parseInt(btn.dataset.personIdx);
+                if (state.data[varId]) {
+                    state.data[varId].splice(idx, 1);
+                    dirty = true;
+                    saveLocal();
+                    renderStep(state.currentStep);
+                }
+            });
+        });
+
+        // Person list — field inputs
+        document.querySelectorAll('[data-person-field]').forEach(el => {
+            el.addEventListener('input', () => {
+                const varId = el.dataset.personVar;
+                const idx = parseInt(el.dataset.personIdx);
+                const field = el.dataset.personField;
+                if (!state.data[varId]) state.data[varId] = [];
+                if (!state.data[varId][idx]) state.data[varId][idx] = {};
+                state.data[varId][idx][field] = el.value;
+                // Update flat text for contract
+                state.data[varId + '_TEXT'] = state.data[varId].map(p => {
+                    let s = p.name || '';
+                    if (p.funktion) s += ', ' + p.funktion;
+                    if (p.adresse) s += ', ' + p.adresse;
+                    if (p.geburtsdatum) s += ', geb. ' + p.geburtsdatum;
+                    return s;
+                }).join('; ');
+                dirty = true;
+            });
+        });
 
         // All inputs — mark dirty on change
         document.querySelectorAll('[data-var]').forEach(el => {
@@ -1061,20 +1193,25 @@ const ContractApp = (() => {
         const d = state.data;
         try {
             let expr = condition;
-            // Replace condition variables with values
-            expr = expr.replace(/\bAND\b/gi, '&&').replace(/\bOR\b/gi, '||').replace(/\bNOT\b/gi, '!');
-            // Handle 'X == Y' comparisons
-            expr = expr.replace(/(\w+)\s*==\s*'([^']+)'/g, (_, v, val) => (d[v] === val) ? 'true' : 'false');
+
+            // Handle NOT IN [...] BEFORE general NOT replacement
+            expr = expr.replace(/(\w+)\s+NOT\s+IN\s+\[([^\]]+)\]/gi, (_, v, arr) => {
+                const items = arr.split(',').map(s => s.trim().replace(/'/g, ''));
+                return !items.includes(d[v]) ? 'true' : 'false';
+            });
+
             // Handle IN [...]
             expr = expr.replace(/(\w+)\s+IN\s+\[([^\]]+)\]/gi, (_, v, arr) => {
                 const items = arr.split(',').map(s => s.trim().replace(/'/g, ''));
                 return items.includes(d[v]) ? 'true' : 'false';
             });
-            // Handle NOT IN [...]
-            expr = expr.replace(/(\w+)\s+!IN\s+\[([^\]]+)\]/gi, (_, v, arr) => {
-                const items = arr.split(',').map(s => s.trim().replace(/'/g, ''));
-                return !items.includes(d[v]) ? 'true' : 'false';
-            });
+
+            // Handle 'X == Y' comparisons
+            expr = expr.replace(/(\w+)\s*==\s*'([^']+)'/g, (_, v, val) => (d[v] === val) ? 'true' : 'false');
+
+            // Now replace logical operators
+            expr = expr.replace(/\bAND\b/gi, '&&').replace(/\bOR\b/gi, '||').replace(/\bNOT\b/gi, '!');
+
             // Replace boolean variables
             for (const [k, v] of Object.entries(d)) {
                 if (typeof v === 'boolean') {
@@ -1142,6 +1279,19 @@ const ContractApp = (() => {
         if (el) el.hidden = !el.hidden;
     }
 
+    function applyAssetTotal() {
+        const list = state.data.assetList || [];
+        const total = list.reduce((s, i) => s + (parseFloat(i.qty) || 0) * (parseFloat(i.unitPrice) || 0), 0);
+        state.data.KAUFPREIS_SACHANLAGEN = total.toFixed(2).replace('.', ',');
+        // Also set as total if not yet set
+        if (!state.data.KAUFPREIS_GESAMT) {
+            state.data.KAUFPREIS_GESAMT = total.toFixed(2).replace('.', ',');
+        }
+        dirty = true;
+        saveLocal();
+        renderStep(state.currentStep);
+    }
+
     function next() {
         collectFormValues();
         saveLocal();
@@ -1171,6 +1321,7 @@ const ContractApp = (() => {
         addCustomItem,
         removeCustomItem,
         toggleTooltip,
+        applyAssetTotal,
     };
 })();
 
