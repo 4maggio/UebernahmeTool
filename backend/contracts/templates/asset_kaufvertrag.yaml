@@ -98,9 +98,20 @@ variables:
       type: person_list
       person_fields:
         - { id: name, label: "Name", type: text, required: true }
-        - { id: funktion, label: "Funktion", type: text, required: true, placeholder: "z.B. Geschäftsführer" }
+        - {
+            id: funktion,
+            label: "Funktion",
+            type: text,
+            required: true,
+            placeholder: "z.B. Geschäftsführer",
+          }
         - { id: adresse, label: "Adresse", type: text, required: false }
-        - { id: geburtsdatum, label: "Geburtsdatum", type: date, required: false }
+        - {
+            id: geburtsdatum,
+            label: "Geburtsdatum",
+            type: date,
+            required: false,
+          }
       condition: "seller_type NOT IN ['Privatperson','Einzelunternehmer']"
       tooltip: "Name und Funktion der Person(en), die die Gesellschaft nach außen vertreten darf (z.B. 'Max Mustermann, Geschäftsführer'). Muss mit dem Handelsregistereintrag übereinstimmen."
 
@@ -146,9 +157,20 @@ variables:
       type: person_list
       person_fields:
         - { id: name, label: "Name", type: text, required: true }
-        - { id: funktion, label: "Funktion", type: text, required: true, placeholder: "z.B. Geschäftsführer" }
+        - {
+            id: funktion,
+            label: "Funktion",
+            type: text,
+            required: true,
+            placeholder: "z.B. Geschäftsführer",
+          }
         - { id: adresse, label: "Adresse", type: text, required: false }
-        - { id: geburtsdatum, label: "Geburtsdatum", type: date, required: false }
+        - {
+            id: geburtsdatum,
+            label: "Geburtsdatum",
+            type: date,
+            required: false,
+          }
       condition: "buyer_type NOT IN ['Privatperson']"
       tooltip: "Person(en) die die Käufergesellschaft rechtswirksam vertreten darf, gemäß Handelsregister oder Gesellschaftsvertrag."
 
