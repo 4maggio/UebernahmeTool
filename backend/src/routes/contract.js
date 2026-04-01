@@ -14,7 +14,9 @@ const contractExport = require('../services/contractExport');
 //  Load YAML template once at startup
 // ──────────────────────────────────────────────
 const TEMPLATE_PATH = path.join(__dirname, '../../contracts/templates/asset_kaufvertrag.yaml');
+const ASSETS_PATH = path.join(__dirname, '../../contracts/assets/reference_list.json');
 let templateCache = null;
+let assetsCache = null;
 
 function getTemplate() {
     if (!templateCache) {
@@ -23,6 +25,26 @@ function getTemplate() {
     }
     return templateCache;
 }
+
+function getAssets() {
+    if (!assetsCache) {
+        assetsCache = JSON.parse(fs.readFileSync(ASSETS_PATH, 'utf8'));
+    }
+    return assetsCache;
+}
+
+// ──────────────────────────────────────────────
+//  GET /api/contract/assets
+//  Returns the reference asset list (categories + items)
+// ──────────────────────────────────────────────
+router.get('/assets', (req, res) => {
+    try {
+        res.json(getAssets());
+    } catch (err) {
+        logger.error('Failed to load asset reference list', err);
+        res.status(500).json({ error: 'Artikelliste konnte nicht geladen werden.' });
+    }
+});
 
 // ──────────────────────────────────────────────
 //  GET /api/contract/template

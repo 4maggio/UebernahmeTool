@@ -15,6 +15,7 @@ const ContractApp = (() => {
     const AUTOSAVE_INTERVAL = 30000; // 30s backend sync
 
     let template = null;   // YAML template config from API
+    let assetRefList = null; // Reference asset list from API
     let state = {
         draftId: null,
         currentStep: 0,
@@ -30,7 +31,10 @@ const ContractApp = (() => {
     // ═══════════════════════════════════════════════════════════════
     async function init() {
         try {
-            template = await fetchJSON('/contract/template');
+            [template, assetRefList] = await Promise.all([
+                fetchJSON('/contract/template'),
+                fetchJSON('/contract/assets'),
+            ]);
         } catch (e) {
             document.getElementById('wizard-content').innerHTML =
                 '<p class="text-muted" style="padding:2rem">Fehler beim Laden der Vorlage. Bitte später erneut versuchen.</p>';
@@ -66,6 +70,8 @@ const ContractApp = (() => {
         // Set default types
         state.data.seller_type = '';
         state.data.buyer_type = '';
+        // Initialize asset list
+        if (!state.data.assetList) state.data.assetList = [];
     }
 
     // ═══════════════════════════════════════════════════════════════
@@ -136,6 +142,12 @@ const ContractApp = (() => {
         // Last step = preview + export
         if (idx === template.wizard_steps.length - 1) {
             renderPreviewStep(container, step);
+            return;
+        }
+
+        // Asset picker step
+        if (step.type === 'asset_picker') {
+            renderAssetStep(container, step, idx);
             return;
         }
 
@@ -268,8 +280,8 @@ const ContractApp = (() => {
         const fields = [];
         const stepIdx = template.wizard_steps.indexOf(step);
 
-        // Step 3: Kaufpreis & Zahlung extras
-        if (stepIdx === 2) {
+        // Step 4 (was 3): Kaufpreis & Zahlung extras
+        if (stepIdx === 3) {
             fields.push(
                 { id: 'KAUFPREIS_GESAMT_WORT', label: 'Kaufpreis in Worten', showIf: null },
                 { id: 'KAUFPREIS_SONSTIGES', label: 'Anteil Sonstiges (EUR)', showIf: null },
@@ -292,8 +304,8 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 4: Dates extras
-        if (stepIdx === 3) {
+        // Step 5 (was 4): Dates extras
+        if (stepIdx === 4) {
             fields.push(
                 { id: 'SIGNING_ORT', label: 'Ort der Unterzeichnung', showIf: null },
                 { id: 'LONG_STOP_DATE', label: 'Long Stop Date', showIf: null },
@@ -303,8 +315,8 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 5: Guarantees & liability
-        if (stepIdx === 4) {
+        // Step 6 (was 5): Guarantees & liability
+        if (stepIdx === 5) {
             fields.push(
                 { id: 'BILANZ_JAHRE', label: 'Bilanzjahre (z.B. 2023, 2024, 2025)', showIf: null },
                 { id: 'LETZTER_BILANZSTICHTAG', label: 'Letzter Bilanzstichtag', showIf: null },
@@ -317,8 +329,8 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 7: Non-compete & confidentiality
-        if (stepIdx === 6) {
+        // Step 8 (was 7): Non-compete & confidentiality
+        if (stepIdx === 7) {
             fields.push(
                 { id: 'WETTBEWERBSVERBOT_DAUER_JAHRE', label: 'Wettbewerbsverbot Dauer (Jahre)', showIf: null },
                 { id: 'WETTBEWERBSVERBOT_GEBIET', label: 'Räumliches Gebiet', showIf: null },
@@ -331,15 +343,15 @@ const ContractApp = (() => {
             );
         }
 
-        // Step 8: Tax & legal
-        if (stepIdx === 7) {
+        // Step 9 (was 8): Tax & legal
+        if (stepIdx === 8) {
             fields.push(
                 { id: 'GERICHTSSTAND', label: 'Gerichtsstand', showIf: null },
                 { id: 'UST_SATZ', label: 'USt-Satz (%)', showIf: null, hint: 'Standard: 19' },
             );
         }
 
-        // Step 2: Business extras
+        // Step 2: Business extras (index stays 1)
         if (stepIdx === 1) {
             fields.push(
                 { id: 'SOCIAL_MEDIA_PLATTFORMEN', label: 'Social-Media-Accounts', showIf: 'HAT_DOMAINS', hint: 'z.B. Instagram (@shop), Facebook, TikTok' },
@@ -353,8 +365,335 @@ const ContractApp = (() => {
     }
 
     // ═══════════════════════════════════════════════════════════════
-    // PREVIEW & EXPORT (Step 9)
+    // ASSET PICKER (Step 3)
     // ═══════════════════════════════════════════════════════════════
+    function renderAssetStep(container, step, idx) {
+        if (!state.data.assetList) state.data.assetList = [];
+        const list = state.data.assetList; // [{id, category, name, qty, unitPrice, custom}]
+
+        // Build selected set for quick lookup
+        const selectedMap = {};
+        for (const item of list) selectedMap[item.id] = item;
+
+        let html = `<div class="step-section">`;
+        html += `<h2 class="step-title">${esc(step.title)}</h2>`;
+        html += `<p class="step-description">${esc(step.description)}</p>`;
+
+        // Summary bar
+        const total = list.reduce((s, i) => s + (parseFloat(i.qty) || 0) * (parseFloat(i.unitPrice) || 0), 0);
+        const totalItems = list.length;
+        html += `<div class="asset-summary-bar">
+            <span>${totalItems} Posten ausgewählt</span>
+            <span class="asset-total">Gesamt: <strong>${fmtEur(total)}</strong></span>
+        </div>`;
+
+        // Category tabs
+        const cats = assetRefList.categories;
+        html += `<div class="asset-tabs">`;
+        cats.forEach((cat, ci) => {
+            const selCount = list.filter(i => i.category === cat.id && !i.custom).length;
+            html += `<button class="asset-tab${ci === 0 ? ' active' : ''}" data-cat="${cat.id}">
+                ${esc(cat.name)}${selCount > 0 ? ` <span class="badge">${selCount}</span>` : ''}
+            </button>`;
+        });
+        html += `<button class="asset-tab" data-cat="__custom">+ Eigener Posten</button>`;
+        html += `</div>`;
+
+        // Category panels
+        cats.forEach((cat, ci) => {
+            html += `<div class="asset-panel${ci === 0 ? ' active' : ''}" data-panel="${cat.id}">`;
+            html += `<div class="asset-cat-actions">
+                <button class="btn-sm" onclick="ContractApp.selectAllInCategory('${cat.id}')">Alle wählen</button>
+                <button class="btn-sm btn-sm-outline" onclick="ContractApp.deselectAllInCategory('${cat.id}')">Alle abwählen</button>
+            </div>`;
+            html += `<div class="asset-item-list">`;
+            for (const item of cat.items) {
+                const sel = !!selectedMap[item.id];
+                const qty = sel ? (selectedMap[item.id].qty || 1) : 1;
+                html += `<div class="asset-item${sel ? ' selected' : ''}" data-item-id="${item.id}">
+                    <label class="asset-item-check">
+                        <input type="checkbox" data-asset-id="${item.id}" data-cat="${cat.id}"
+                            data-name="${esc(item.name)}" data-price="${item.unitPrice}"
+                            ${sel ? 'checked' : ''}>
+                        <span class="asset-item-name">${esc(item.name)}</span>
+                    </label>
+                    <div class="asset-item-right">
+                        <span class="asset-item-price">${item.unitPrice > 0 ? fmtEur(item.unitPrice) : '—'}</span>
+                        <input type="number" class="asset-qty-input" min="1" step="1"
+                            data-qty-for="${item.id}" value="${qty}"
+                            ${sel ? '' : 'disabled'} placeholder="Menge">
+                        <span class="asset-item-unit">Stk.</span>
+                        ${item.unitPrice > 0
+                            ? `<span class="asset-item-subtotal" data-sub="${item.id}">${sel ? fmtEur(qty * item.unitPrice) : '—'}</span>`
+                            : `<input type="text" class="asset-price-input" placeholder="Preis €"
+                                data-custprice-for="${item.id}"
+                                value="${sel && selectedMap[item.id].unitPrice ? selectedMap[item.id].unitPrice : ''}"
+                                ${sel ? '' : 'disabled'}>`
+                        }
+                    </div>
+                </div>`;
+            }
+            html += `</div></div>`;
+        });
+
+        // Custom items panel
+        const customItems = list.filter(i => i.custom);
+        html += `<div class="asset-panel" data-panel="__custom">`;
+        html += `<div class="asset-custom-form">
+            <input type="text" id="custom-cat" placeholder="Kategorie" style="width:140px">
+            <input type="text" id="custom-name" placeholder="Bezeichnung" style="flex:1">
+            <input type="number" id="custom-qty" placeholder="Menge" value="1" min="1" style="width:70px">
+            <input type="number" id="custom-price" placeholder="Preis €" step="0.01" style="width:100px">
+            <button class="btn-primary btn-sm" onclick="ContractApp.addCustomItem()">Hinzufügen</button>
+        </div>`;
+        if (customItems.length > 0) {
+            html += `<div class="asset-item-list">`;
+            for (const item of customItems) {
+                html += `<div class="asset-item selected" data-item-id="${item.id}">
+                    <span class="asset-item-name">📦 ${esc(item.category ? item.category + ' — ' : '')}${esc(item.name)}</span>
+                    <div class="asset-item-right">
+                        <span>${fmtEur(item.unitPrice)}</span>
+                        <span>× ${item.qty}</span>
+                        <span class="asset-item-subtotal">${fmtEur(item.qty * item.unitPrice)}</span>
+                        <button class="btn-sm btn-sm-danger" onclick="ContractApp.removeCustomItem('${item.id}')">✕</button>
+                    </div>
+                </div>`;
+            }
+            html += '</div>';
+        }
+        html += `</div>`;
+
+        // Selected items summary table
+        if (list.length > 0) {
+            html += `<div class="asset-selected-summary">
+                <h4>Ausgewählte Posten (${totalItems})</h4>
+                <table class="asset-table">
+                    <thead><tr><th>Kategorie</th><th>Bezeichnung</th><th>Menge</th><th>EP</th><th>Gesamt</th></tr></thead>
+                    <tbody>`;
+            for (const item of list) {
+                const sub = (parseFloat(item.qty) || 0) * (parseFloat(item.unitPrice) || 0);
+                html += `<tr>
+                    <td>${esc(item.category || '')}</td>
+                    <td>${esc(item.name)}</td>
+                    <td style="text-align:right">${item.qty}</td>
+                    <td style="text-align:right">${fmtEur(item.unitPrice)}</td>
+                    <td style="text-align:right">${fmtEur(sub)}</td>
+                </tr>`;
+            }
+            html += `<tr class="asset-table-total">
+                <td colspan="4"><strong>Gesamtwert</strong></td>
+                <td style="text-align:right"><strong>${fmtEur(total)}</strong></td>
+            </tr>`;
+            html += `</tbody></table></div>`;
+        }
+
+        // Navigation
+        html += `<div class="wizard-actions">
+            <button class="btn-outline" onclick="ContractApp.prev()">← Zurück</button>
+            <button class="btn-primary" onclick="ContractApp.next()">Weiter →</button>
+        </div>`;
+        html += `</div>`;
+
+        container.innerHTML = html;
+        bindAssetEvents();
+    }
+
+    function bindAssetEvents() {
+        // Tab switching
+        document.querySelectorAll('.asset-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.asset-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                const panel = document.querySelector(`.asset-panel[data-panel="${tab.dataset.cat}"]`);
+                if (panel) panel.classList.add('active');
+            });
+        });
+
+        // Checkbox selection
+        document.querySelectorAll('[data-asset-id]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const id = cb.dataset.assetId;
+                const name = cb.dataset.name;
+                const cat = cb.dataset.cat;
+                const price = parseFloat(cb.dataset.price) || 0;
+                const qtyInput = document.querySelector(`[data-qty-for="${id}"]`);
+                const priceInput = document.querySelector(`[data-custprice-for="${id}"]`);
+                const row = cb.closest('.asset-item');
+
+                if (cb.checked) {
+                    const qty = parseInt(qtyInput?.value) || 1;
+                    const actualPrice = priceInput ? parseFloat(priceInput.value) || 0 : price;
+                    addToAssetList({ id, category: cat, name, qty, unitPrice: actualPrice, custom: false });
+                    if (qtyInput) qtyInput.disabled = false;
+                    if (priceInput) priceInput.disabled = false;
+                    if (row) row.classList.add('selected');
+                } else {
+                    removeFromAssetList(id);
+                    if (qtyInput) { qtyInput.disabled = true; }
+                    if (priceInput) { priceInput.disabled = true; }
+                    if (row) row.classList.remove('selected');
+                }
+                updateAssetSummaryBar();
+                dirty = true;
+                saveLocal();
+            });
+        });
+
+        // Quantity changes
+        document.querySelectorAll('.asset-qty-input').forEach(input => {
+            input.addEventListener('change', () => {
+                const id = input.dataset.qtyFor;
+                const qty = parseFloat(input.value) || 1;
+                updateAssetItemQty(id, qty);
+                // Update subtotal display
+                const item = (state.data.assetList || []).find(i => i.id === id);
+                const subEl = document.querySelector(`[data-sub="${id}"]`);
+                if (subEl && item) subEl.textContent = fmtEur(qty * item.unitPrice);
+                updateAssetSummaryBar();
+                dirty = true;
+                saveLocal();
+            });
+        });
+
+        // Custom price inputs
+        document.querySelectorAll('.asset-price-input').forEach(input => {
+            input.addEventListener('change', () => {
+                const id = input.dataset.custpriceFor;
+                const price = parseFloat(input.value) || 0;
+                updateAssetItemPrice(id, price);
+                updateAssetSummaryBar();
+                dirty = true;
+                saveLocal();
+            });
+        });
+    }
+
+    function addToAssetList(item) {
+        if (!state.data.assetList) state.data.assetList = [];
+        const existing = state.data.assetList.findIndex(i => i.id === item.id);
+        if (existing >= 0) {
+            state.data.assetList[existing] = item;
+        } else {
+            state.data.assetList.push(item);
+        }
+    }
+
+    function removeFromAssetList(id) {
+        state.data.assetList = (state.data.assetList || []).filter(i => i.id !== id);
+    }
+
+    function updateAssetItemQty(id, qty) {
+        const item = (state.data.assetList || []).find(i => i.id === id);
+        if (item) item.qty = qty;
+    }
+
+    function updateAssetItemPrice(id, price) {
+        const item = (state.data.assetList || []).find(i => i.id === id);
+        if (item) item.unitPrice = price;
+    }
+
+    function updateAssetSummaryBar() {
+        const list = state.data.assetList || [];
+        const total = list.reduce((s, i) => s + (parseFloat(i.qty) || 0) * (parseFloat(i.unitPrice) || 0), 0);
+        const bar = document.querySelector('.asset-summary-bar');
+        if (bar) {
+            bar.innerHTML = `<span>${list.length} Posten ausgewählt</span>
+                <span class="asset-total">Gesamt: <strong>${fmtEur(total)}</strong></span>`;
+        }
+    }
+
+    function selectAllInCategory(catId) {
+        const cat = assetRefList.categories.find(c => c.id === catId);
+        if (!cat) return;
+        for (const item of cat.items) {
+            if (!(state.data.assetList || []).find(i => i.id === item.id)) {
+                addToAssetList({ id: item.id, category: catId, name: item.name, qty: 1, unitPrice: item.unitPrice, custom: false });
+            }
+        }
+        dirty = true;
+        saveLocal();
+        renderStep(state.currentStep);
+    }
+
+    function deselectAllInCategory(catId) {
+        state.data.assetList = (state.data.assetList || []).filter(i => i.category !== catId || i.custom);
+        dirty = true;
+        saveLocal();
+        renderStep(state.currentStep);
+    }
+
+    function addCustomItem() {
+        const cat = document.getElementById('custom-cat')?.value?.trim() || 'Sonstige';
+        const name = document.getElementById('custom-name')?.value?.trim();
+        const qty = parseFloat(document.getElementById('custom-qty')?.value) || 1;
+        const price = parseFloat(document.getElementById('custom-price')?.value) || 0;
+        if (!name) { alert('Bitte Bezeichnung eingeben.'); return; }
+        const id = 'custom_' + Date.now();
+        addToAssetList({ id, category: cat, name, qty, unitPrice: price, custom: true });
+        dirty = true;
+        saveLocal();
+        renderStep(state.currentStep);
+        // Jump back to custom tab
+        setTimeout(() => {
+            const tab = document.querySelector('.asset-tab[data-cat="__custom"]');
+            if (tab) tab.click();
+        }, 50);
+    }
+
+    function removeCustomItem(id) {
+        removeFromAssetList(id);
+        dirty = true;
+        saveLocal();
+        renderStep(state.currentStep);
+        setTimeout(() => {
+            const tab = document.querySelector('.asset-tab[data-cat="__custom"]');
+            if (tab) tab.click();
+        }, 50);
+    }
+
+    function fmtEur(val) {
+        const n = parseFloat(val) || 0;
+        return n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    }
+
+    // Build ANLAGE_ASSETLISTE text for contract
+    function buildAssetListText() {
+        const list = state.data.assetList || [];
+        if (list.length === 0) return '(keine Posten erfasst)';
+
+        // Group by category
+        const byCategory = {};
+        for (const item of list) {
+            const cat = item.category || 'Sonstige';
+            if (!byCategory[cat]) byCategory[cat] = [];
+            byCategory[cat].push(item);
+        }
+
+        let text = '\n';
+        let totalAll = 0;
+        for (const [cat, items] of Object.entries(byCategory)) {
+            text += `\n  ${cat.toUpperCase()}\n`;
+            text += `  ${'─'.repeat(60)}\n`;
+            let catTotal = 0;
+            for (const item of items) {
+                const sub = (parseFloat(item.qty) || 0) * (parseFloat(item.unitPrice) || 0);
+                catTotal += sub;
+                const priceStr = item.unitPrice > 0
+                    ? `${item.qty} × ${fmtEur(item.unitPrice)} = ${fmtEur(sub)}`
+                    : `${item.qty} Stk. (Preis: 0,00 €)`;
+                text += `  • ${item.name.padEnd(50).substring(0, 50)}  ${priceStr}\n`;
+            }
+            text += `  Zwischensumme ${cat}: ${fmtEur(catTotal)}\n`;
+            totalAll += catTotal;
+        }
+        text += `\n  ${'═'.repeat(60)}\n`;
+        text += `  GESAMTWERT ASSETLISTE: ${fmtEur(totalAll)}\n`;
+        return text;
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // PREVIEW & EXPORT (last step)
     function renderPreviewStep(container, step) {
         container.innerHTML = `
             <div class="step-section">
@@ -455,6 +794,9 @@ const ContractApp = (() => {
         if (state.data.KAEUFER_RECHTSFORM) {
             state.data.buyer_type = state.data.KAEUFER_RECHTSFORM;
         }
+
+        // Build asset list text for contract placeholder
+        state.data.ANLAGE_ASSETLISTE = buildAssetListText();
     }
 
     function fillFormValues() {
@@ -784,6 +1126,10 @@ const ContractApp = (() => {
         showDraftModal,
         removeDraft,
         startNewDraft,
+        selectAllInCategory,
+        deselectAllInCategory,
+        addCustomItem,
+        removeCustomItem,
     };
 })();
 

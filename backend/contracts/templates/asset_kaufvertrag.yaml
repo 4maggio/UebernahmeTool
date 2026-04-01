@@ -2572,7 +2572,7 @@ sections:
         title: "Anlage 2.2 — Inventarliste Sachanlagen"
         required: true
         condition: null
-        text: "Anlage 2.2 — Inventarliste Sachanlagen und Betriebsausstattung"
+        text: "Anlage 2.2 — Inventarliste Sachanlagen und Betriebsausstattung\n{{ANLAGE_ASSETLISTE}}"
 
       - id: anlage_fahrzeuge
         title: "Anlage 2.3 — Fahrzeugliste"
@@ -2762,6 +2762,12 @@ module_config:
         - "HAT_FIRMENFORTFUEHRUNG"
 
     - step: 3
+      title: "Asset-Liste"
+      description: "Welche konkreten Posten werden übertragen? (Anlage 2.2)"
+      type: "asset_picker"
+      sections: ["anlagen"]
+
+    - step: 4
       title: "Kaufpreis & Zahlung"
       description: "Wie viel und wie wird bezahlt?"
       sections: ["kaufpreis", "kaufpreiszahlung"]
@@ -2771,13 +2777,13 @@ module_config:
         - "HAT_RATENZAHLUNG"
         - "HAT_TREUHANDKONTO"
 
-    - step: 4
+    - step: 5
       title: "Stichtag & Vollzug"
       description: "Wann wird übergeben?"
       sections: ["stichtag", "closing", "vollzugsbedingungen"]
       variables: ["dates"]
 
-    - step: 5
+    - step: 6
       title: "Garantien & Haftung"
       description: "Welche Zusicherungen & Schutzklauseln?"
       sections:
@@ -2786,20 +2792,20 @@ module_config:
         - "HAT_UMWELTRISIKEN"
         - "HAT_RECHTSSTREITIGKEITEN"
 
-    - step: 6
+    - step: 7
       title: "Arbeitnehmer"
       description: "Gehen Mitarbeiter über?"
       sections: ["arbeitnehmer", "abwerbeverbot"]
       condition: "HAT_MITARBEITER"
 
-    - step: 7
+    - step: 8
       title: "Schutzklauseln"
       description: "Wettbewerbsverbot, Geheimhaltung, Übergang"
       sections: ["wettbewerbsverbot", "geheimhaltung", "uebergangsphase"]
       toggles:
         - "HAT_BERATERVERTRAG"
 
-    - step: 8
+    - step: 9
       title: "Steuern & Recht"
       description: "Steuerliche und rechtliche Rahmenbedingungen"
       sections:
@@ -2812,7 +2818,7 @@ module_config:
       toggles:
         - "SCHIEDSGERICHT"
 
-    - step: 9
+    - step: 10
       title: "Prüfen & Erstellen"
       description: "Vertrag prüfen und herunterladen"
       sections: ["unterschriften", "anlagen"]
