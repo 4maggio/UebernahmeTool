@@ -136,6 +136,7 @@ app.use((err, req, res, next) => {
 // ──────────────────────────────────────────────
 app.listen(PORT, () => {
     logger.info(`Server running on port ${PORT} (${process.env.NODE_ENV || 'development'})`);
+    if (process.send) process.send('ready');
     if (process.env.SCRAPER_ENABLED === 'true') {
         initScraperCron();
         logger.info('Scraper cron initialised.');

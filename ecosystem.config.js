@@ -8,8 +8,8 @@ module.exports = {
             cwd: __dirname,
 
             // Cluster mode — use all available CPU cores (max 2 for typical VPS)
-            instances: 2,
-            exec_mode: 'cluster',
+            instances: 1,
+            exec_mode: 'fork',
 
             // Auto-restart on crash
             autorestart: true,
