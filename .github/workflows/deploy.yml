@@ -52,35 +52,4 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_PATH: ${{ secrets.VPS_PATH }}
         run: |
-          ssh "$VPS_USER@$VPS_HOST" bash << SSHEOF
-            set -e
-            cd "$VPS_PATH"
-
-            echo "==> Pulling latest code"
-            git fetch origin main
-            git reset --hard origin/main
-
-            echo "==> Installing backend dependencies"
-            cd backend
-            npm install --omit=dev
-
-            echo "==> Running database migrations"
-            node src/db/migrate.js
-
-            echo "==> Importing Knowledge Base YAML files"
-            node src/db/seeds/importKnowledge.js
-
-            echo "==> Reloading nginx config (zero-downtime)"
-            sudo docker exec traefik-uebernahme-1 nginx -s reload
-
-            echo "==> Restarting application with PM2"
-            cd "$VPS_PATH"
-            pm2 describe uebernahme-api > /dev/null 2>&1 \
-              && pm2 reload ecosystem.config.js --update-env \
-              || pm2 start ecosystem.config.js --env production
-
-            echo "==> Saving PM2 process list"
-            pm2 save
-
-            echo "==> Deploy complete!"
-          SSHEOF
+          ssh "$VPS_USER@$VPS_HOST" "bash /srv/uebernahme/scripts/deploy.sh /srv/uebernahme"
