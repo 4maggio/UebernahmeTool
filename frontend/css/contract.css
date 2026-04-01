@@ -473,15 +473,31 @@
 }
 
 .asset-tab .badge {
-    background: rgba(255, 255, 255, .35);
+    display: inline-block;
+    background: rgba(0, 0, 0, .12);
+    color: inherit;
     border-radius: 10px;
-    padding: 0 .4rem;
-    font-size: .75rem;
-    margin-left: .25rem;
+    padding: 0 .45rem;
+    font-size: .72rem;
+    font-weight: 600;
+    margin-left: .3rem;
+    line-height: 1.6;
+    vertical-align: middle;
 }
 
 .asset-tab.active .badge {
-    background: rgba(255, 255, 255, .4);
+    background: rgba(255, 255, 255, .25);
+    color: #fff;
+}
+
+.asset-tab .badge.badge-full {
+    background: #16a34a;
+    color: #fff;
+}
+
+.asset-tab.active .badge.badge-full {
+    background: #fff;
+    color: #16a34a;
 }
 
 .asset-panel {
@@ -549,7 +565,14 @@
 }
 
 .asset-item.selected {
-    background: #eef6ff;
+    background: #dbeafe;
+    border-left: 3px solid var(--c-accent);
+    padding-left: calc(.6rem - 3px);
+}
+
+.asset-item.selected .asset-item-name {
+    font-weight: 600;
+    color: var(--c-text);
 }
 
 .asset-item-check {

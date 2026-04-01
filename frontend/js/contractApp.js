@@ -407,11 +407,14 @@ const ContractApp = (() => {
         html += `<div class="asset-tabs">`;
         cats.forEach((cat, ci) => {
             const selCount = list.filter(i => i.category === cat.id && !i.custom).length;
+            const totalCount = cat.items.length;
+            const badgeCls = selCount === totalCount && totalCount > 0 ? 'badge badge-full' : 'badge';
             html += `<button class="asset-tab${ci === 0 ? ' active' : ''}" data-cat="${cat.id}">
-                ${esc(cat.name)}${selCount > 0 ? ` <span class="badge">${selCount}</span>` : ''}
+                ${esc(cat.name)} <span class="${badgeCls}" data-badge-cat="${cat.id}">${selCount}/${totalCount}</span>
             </button>`;
         });
-        html += `<button class="asset-tab" data-cat="__custom">+ Eigener Posten</button>`;
+        const customCount = list.filter(i => i.custom).length;
+        html += `<button class="asset-tab" data-cat="__custom">+ Eigener Posten${customCount > 0 ? ` <span class="badge" data-badge-cat="__custom">${customCount}</span>` : ''}</button>`;
         html += `</div>`;
 
         // Category panels
@@ -615,6 +618,22 @@ const ContractApp = (() => {
         if (bar) {
             bar.innerHTML = `<span>${list.length} Posten ausgewählt</span>
                 <span class="asset-total">Gesamt: <strong>${fmtEur(total)}</strong></span>`;
+        }
+        // Update tab badges live
+        if (assetRefList && assetRefList.categories) {
+            for (const cat of assetRefList.categories) {
+                const badge = document.querySelector(`[data-badge-cat="${cat.id}"]`);
+                if (!badge) continue;
+                const selCount = list.filter(i => i.category === cat.id && !i.custom).length;
+                const totalCount = cat.items.length;
+                badge.textContent = `${selCount}/${totalCount}`;
+                badge.className = selCount === totalCount && totalCount > 0 ? 'badge badge-full' : 'badge';
+            }
+            const customBadge = document.querySelector('[data-badge-cat="__custom"]');
+            if (customBadge) {
+                const customCount = list.filter(i => i.custom).length;
+                customBadge.textContent = customCount;
+            }
         }
     }
 
