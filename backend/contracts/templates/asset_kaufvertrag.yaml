@@ -256,6 +256,18 @@ variables:
     - id: HAT_FIRMENFORTFUEHRUNG
       label: "Soll das Geschäft unter bisheriger Bezeichnung weitergeführt werden (§ 25 HGB)?"
       type: boolean
+    - id: HAT_LOI
+      label: "Wurde ein Letter of Intent (LOI) unterzeichnet?"
+      type: boolean
+    - id: HAT_EXKLUSIVITAET
+      label: "Besteht eine Exklusivitätsvereinbarung?"
+      type: boolean
+    - id: UEBERGANG_IM_KAUFPREIS
+      label: "Ist die Einarbeitung im Kaufpreis enthalten?"
+      type: boolean
+    - id: BASKET_TIPPING
+      label: "Tipping Basket (volle Haftung ab 1. Euro bei Überschreitung)?"
+      type: boolean
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # VERTRAGSABSCHNITTE
@@ -361,7 +373,7 @@ sections:
       - id: praeambel_loi_bezug
         title: "Bezugnahme auf Letter of Intent"
         required: false
-        condition: null
+        condition: "HAT_LOI"
         tags: ["loi", "vorvertrag"]
         text: |
           (5) Die Parteien haben am {{LOI_DATUM}} eine Absichtserklärung (Letter of Intent)
@@ -373,7 +385,7 @@ sections:
       - id: praeambel_exklusivitaet
         title: "Exklusivitätsklausel"
         required: false
-        condition: null
+        condition: "HAT_EXKLUSIVITAET"
         tags: ["exklusivitaet"]
         text: |
           (6) Der Verkäufer versichert, dass er seit dem {{EXKLUSIVITAET_DATUM}} keine
@@ -1653,10 +1665,10 @@ sections:
 
     clauses:
       - id: garantie_de_minimis
-        title: "De-Minimis-Schwelle und Basket"
+        title: "De-Minimis-Schwelle"
         required: false
         condition: null
-        tags: ["garantie", "haftung", "de_minimis", "basket"]
+        tags: ["garantie", "haftung", "de_minimis"]
         risk_note: "Ohne De-Minimis und Basket drohen Bagatellstreitigkeiten. Empfehlung: De-Minimis 0,5-1% des Kaufpreises, Basket 2-5% des Kaufpreises."
         text: |
           (3) Der Verkäufer haftet nur für solche Garantieverletzungen, bei denen
@@ -1665,16 +1677,28 @@ sections:
               bleiben bei der Berechnung der nachfolgenden Freibetragsregelung
               unberücksichtigt.
 
+      - id: garantie_basket_tipping
+        title: "Basket — Tipping Basket"
+        required: false
+        condition: "BASKET_TIPPING"
+        tags: ["garantie", "haftung", "basket", "tipping"]
+        text: |
           (4) Der Verkäufer haftet nur, wenn und soweit die Summe aller
               Einzelschäden, die die De-Minimis-Schwelle übersteigen,
               insgesamt {{BASKET_BETRAG}} EUR übersteigt (Freibetrag / Basket).
-              Wird der Freibetrag überschritten, haftet der Verkäufer:
-              {{BASKET_TYP}}
-
-              [Option A: Tipping Basket]
+              Wird der Freibetrag überschritten, haftet der Verkäufer
               für den gesamten Betrag ab dem ersten Euro (Tipping Basket).
 
-              [Option B: Deductible / Selbstbehalt]
+      - id: garantie_basket_deductible
+        title: "Basket — Deductible / Selbstbehalt"
+        required: false
+        condition: "NOT BASKET_TIPPING"
+        tags: ["garantie", "haftung", "basket", "deductible"]
+        text: |
+          (4) Der Verkäufer haftet nur, wenn und soweit die Summe aller
+              Einzelschäden, die die De-Minimis-Schwelle übersteigen,
+              insgesamt {{BASKET_BETRAG}} EUR übersteigt (Freibetrag / Basket).
+              Wird der Freibetrag überschritten, haftet der Verkäufer
               nur für den den Freibetrag übersteigenden Betrag (Deductible).
 
       - id: garantie_haftungscap
@@ -2055,7 +2079,7 @@ sections:
       - id: wettbewerb_non_compete_kaeufer
         title: "Fortführungspflicht / Schutz des Verkäufers (Reverse Non-Compete)"
         required: false
-        condition: null
+        condition: "HAT_EARNOUT"
         tags: ["wettbewerbsverbot", "kaeufer", "gegenseitig", "fortfuehrung"]
         risk_note: "Selten benötigt – nur relevant, wenn der Käufer bereits in einer ähnlichen Branche tätig ist und der Verkäufer Schutz vor kannibalisierender Nutzung wünscht (insb. bei Earn-Out)."
         text: |
@@ -2194,19 +2218,22 @@ sections:
           {{EINARBEITUNG_STUNDEN}} Stunden pro Woche zur Verfügung.
 
     clauses:
-      - id: uebergang_verguetung
-        title: "Vergütung der Übergangstätigkeit"
+      - id: uebergang_verguetung_im_kp
+        title: "Vergütung im Kaufpreis enthalten"
         required: false
-        condition: null
+        condition: "UEBERGANG_IM_KAUFPREIS"
         tags: ["uebergang", "verguetung"]
         text: |
           (4) Die Tätigkeit des Verkäufers während der Übergangsphase
-              {{UEBERGANG_VERGUETUNG_OPTION}}
-
-              [Option A: im Kaufpreis enthalten]
               ist mit dem Kaufpreis abgegolten.
 
-              [Option B: gesondert vergütet]
+      - id: uebergang_verguetung_separat
+        title: "Gesonderte Vergütung der Übergangstätigkeit"
+        required: false
+        condition: "NOT UEBERGANG_IM_KAUFPREIS"
+        tags: ["uebergang", "verguetung"]
+        text: |
+          (4) Die Tätigkeit des Verkäufers während der Übergangsphase
               wird mit {{UEBERGANG_STUNDENSATZ}} EUR pro Stunde zuzüglich
               Reisekosten vergütet. Die Vergütung ist monatlich nachträglich
               fällig. Es wird kein Arbeitsverhältnis begründet.
@@ -2373,16 +2400,29 @@ sections:
           Art. 6 Abs. 1 lit. f) DSGVO (berechtigtes Interesse an der
           Fortführung des Geschäftsbetriebs).
 
-      (3) Arbeitnehmerdaten werden im Rahmen des Betriebsübergangs gemäß
-          § 613a BGB auf Grundlage von Art. 6 Abs. 1 lit. b) und c) DSGVO
-          übertragen.
+    clauses:
+      - id: datenschutz_arbeitnehmer
+        title: "Datenschutz Arbeitnehmerdaten"
+        required: false
+        condition: "HAT_MITARBEITER"
+        tags: ["datenschutz", "arbeitnehmer", "613a"]
+        text: |
+          (3) Arbeitnehmerdaten werden im Rahmen des Betriebsübergangs gemäß
+              § 613a BGB auf Grundlage von Art. 6 Abs. 1 lit. b) und c) DSGVO
+              übertragen.
 
-      (4) Die betroffenen Personen werden gemäß Art. 13, 14 DSGVO über die
-          Übertragung ihrer Daten informiert.
+      - id: datenschutz_information
+        title: "Datenschutz Information und Vereinbarung"
+        required: true
+        condition: null
+        tags: ["datenschutz", "information"]
+        text: |
+          (4) Die betroffenen Personen werden gemäß Art. 13, 14 DSGVO über die
+              Übertragung ihrer Daten informiert.
 
-      (5) Die Parteien werden — soweit erforderlich — eine gesonderte
-          Vereinbarung zur gemeinsamen Verantwortlichkeit nach Art. 26 DSGVO
-          oder zur Auftragsverarbeitung nach Art. 28 DSGVO abschließen.
+          (5) Die Parteien werden — soweit erforderlich — eine gesonderte
+              Vereinbarung zur gemeinsamen Verantwortlichkeit nach Art. 26 DSGVO
+              oder zur Auftragsverarbeitung nach Art. 28 DSGVO abschließen.
 
   # ═════════════════════════════════════════════════════════════════════════════
   # § 21 — SCHLUSSBESTIMMUNGEN
@@ -2741,6 +2781,9 @@ module_config:
       description: "Wer sind Verkäufer und Käufer?"
       sections: ["rubrum"]
       variables: ["seller", "buyer"]
+      toggles:
+        - "HAT_LOI"
+        - "HAT_EXKLUSIVITAET"
 
     - step: 2
       title: "Geschäftsbetrieb"
@@ -2791,6 +2834,7 @@ module_config:
       toggles:
         - "HAT_UMWELTRISIKEN"
         - "HAT_RECHTSSTREITIGKEITEN"
+        - "BASKET_TIPPING"
 
     - step: 7
       title: "Arbeitnehmer"
@@ -2804,6 +2848,7 @@ module_config:
       sections: ["wettbewerbsverbot", "geheimhaltung", "uebergangsphase"]
       toggles:
         - "HAT_BERATERVERTRAG"
+        - "UEBERGANG_IM_KAUFPREIS"
 
     - step: 9
       title: "Steuern & Recht"
@@ -2849,6 +2894,11 @@ module_config:
         HAT_BERATERVERTRAG: false
         HAT_MIETVERTRAG: true
         HAT_VERBINDLICHKEITEN: false
+        HAT_LOI: false
+        HAT_EXKLUSIVITAET: false
+        HAT_FIRMENFORTFUEHRUNG: false
+        UEBERGANG_IM_KAUFPREIS: true
+        BASKET_TIPPING: true
 
     - id: standard
       name: "Standardvertrag"
@@ -2874,6 +2924,11 @@ module_config:
         HAT_BERATERVERTRAG: true
         HAT_MIETVERTRAG: true
         HAT_VERBINDLICHKEITEN: true
+        HAT_LOI: true
+        HAT_EXKLUSIVITAET: true
+        HAT_FIRMENFORTFUEHRUNG: false
+        UEBERGANG_IM_KAUFPREIS: false
+        BASKET_TIPPING: true
 
     - id: vollstaendig
       name: "Vollständiger Vertrag"
@@ -2898,4 +2953,9 @@ module_config:
         SCHIEDSGERICHT: true
         HAT_BERATERVERTRAG: true
         HAT_MIETVERTRAG: false
+        HAT_LOI: true
+        HAT_EXKLUSIVITAET: true
+        HAT_FIRMENFORTFUEHRUNG: false
+        UEBERGANG_IM_KAUFPREIS: false
+        BASKET_TIPPING: false
         HAT_VERBINDLICHKEITEN: true

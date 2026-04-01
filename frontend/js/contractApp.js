@@ -340,6 +340,7 @@ const ContractApp = (() => {
                 { id: 'GEHEIMHALTUNG_VERTRAGSSTRAFE', label: 'Vertragsstrafe Geheimhaltung (EUR)', showIf: null },
                 { id: 'EINARBEITUNG_DAUER_MONATE', label: 'Einarbeitung Dauer (Monate)', showIf: null },
                 { id: 'EINARBEITUNG_STUNDEN', label: 'Stunden pro Woche', showIf: null },
+                { id: 'UEBERGANG_STUNDENSATZ', label: 'Stundensatz Einarbeitung (EUR)', showIf: null, hint: 'Nur bei gesonderter Vergütung' },
             );
         }
 
@@ -358,6 +359,14 @@ const ContractApp = (() => {
                 { id: 'SHOP_SYSTEM_NAME', label: 'Shop-System', showIf: 'HAT_DOMAINS', hint: 'z.B. Shopify, WooCommerce, Shopware' },
                 { id: 'PAYMENT_PROVIDER', label: 'Payment-Provider', showIf: 'HAT_DOMAINS', hint: 'z.B. Stripe, PayPal, Klarna' },
                 { id: 'WEITERE_AUSNAHMEN', label: 'Ausgenommene Vermögensgegenstände', showIf: null, hint: 'z.B. privater PKW, persönliche Gegenstände' },
+            );
+        }
+
+        // Step 1: Party extras (index 0)
+        if (stepIdx === 0) {
+            fields.push(
+                { id: 'LOI_DATUM', label: 'LOI-Datum', showIf: 'HAT_LOI', hint: 'Datum der Absichtserklärung' },
+                { id: 'EXKLUSIVITAET_DATUM', label: 'Exklusivität seit', showIf: 'HAT_EXKLUSIVITAET', hint: 'Beginn der Exklusivitätsvereinbarung' },
             );
         }
 
@@ -1048,7 +1057,8 @@ const ContractApp = (() => {
                 }
             }
             return Function('"use strict"; return (' + expr + ')')();
-        } catch {
+        } catch (e) {
+            console.warn('[contractApp] evalCondition failed for "' + condition + '":', e.message, '— defaulting to show');
             return true; // default show
         }
     }

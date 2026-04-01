@@ -44,7 +44,8 @@ function evalCondition(condition, data) {
 
     try {
         return Function('"use strict"; return (' + expr + ')')();
-    } catch {
+    } catch (e) {
+        console.warn(`[contractGenerator] evalCondition failed for "${condition}": ${e.message} — defaulting to include`);
         return true; // default include
     }
 }
