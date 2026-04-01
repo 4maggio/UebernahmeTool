@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/baeste_favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/baeste_favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/baeste_favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/assets/baeste_favicon_io/site.webmanifest">
     <style>
         /* Embedded minimal styles for admin panel */
         *,
@@ -63,6 +67,12 @@
             gap: .75rem;
             font-size: 1.1rem;
             font-weight: 700;
+        }
+
+        .brand-logo {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1);
         }
 
         .brand-badge {
@@ -571,7 +581,7 @@
     <!-- ── Login Screen ────────────────────────────────────────── -->
     <header>
         <div class="brand">
-            <span>Unternehmensübernahme</span>
+            <img src="/assets/baesteLogoTag_PNG.png" alt="bäste" class="brand-logo">
             <span class="brand-badge">ADMIN</span>
         </div>
         <button class="logout-btn" id="logout-btn" hidden onclick="AdminApp.logout()">Abmelden</button>

@@ -144,16 +144,8 @@ table {
 }
 
 .header-logo {
-    width: 36px;
-    height: 36px;
-    background: var(--c-brand);
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: var(--text-lg);
-    color: #fff;
+    height: 32px;
+    width: auto;
 }
 
 .header-title {
