@@ -379,9 +379,33 @@
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     line-height: 1.7;
-    white-space: pre-wrap;
     max-height: 600px;
     overflow-y: auto;
+}
+
+.contract-preview pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.default-highlight {
+    background: #fff3cd;
+    color: #856404;
+    border-radius: 2px;
+    padding: 0 2px;
+    cursor: help;
+}
+
+.missing-highlight {
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 2px;
+    padding: 0 2px;
+    cursor: help;
 }
 
 .export-bar {

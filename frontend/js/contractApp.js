@@ -72,6 +72,53 @@ const ContractApp = (() => {
         state.data.buyer_type = '';
         // Initialize asset list
         if (!state.data.assetList) state.data.assetList = [];
+
+        // Set default values from field labels for all variable groups
+        const defaultValues = buildDefaultValues();
+        for (const [key, val] of Object.entries(defaultValues)) {
+            if (state.data[key] === undefined || state.data[key] === '') {
+                state.data[key] = val;
+            }
+        }
+        // Store the defaults for later comparison (highlight check)
+        state._defaults = defaultValues;
+    }
+
+    /**
+     * Build a map of { fieldId → defaultValue } where the default is
+     * the field label (for testing convenience & visual indicator).
+     */
+    function buildDefaultValues() {
+        const defaults = {};
+        // Template variables (seller, buyer, business, price, dates)
+        if (template.variables) {
+            for (const groupKey of Object.keys(template.variables)) {
+                const vars = template.variables[groupKey];
+                if (!Array.isArray(vars)) continue;
+                for (const v of vars) {
+                    if (v.type === 'boolean' || v.type === 'person_list') continue;
+                    if (v.type === 'select') continue; // selects have no meaningful text default
+                    defaults[v.id] = `[${v.label}]`;
+                }
+            }
+        }
+        // Extra fields from wizard steps
+        for (let si = 0; si < (template.wizard_steps || []).length; si++) {
+            const step = template.wizard_steps[si];
+            const extras = getExtraFieldsForStep(step);
+            for (const f of extras) {
+                defaults[f.id] = `[${f.label}]`;
+            }
+        }
+        return defaults;
+    }
+
+    /**
+     * Check if a value is still at its default placeholder.
+     */
+    function isDefaultValue(key, val) {
+        const defaults = state._defaults || {};
+        return defaults[key] !== undefined && val === defaults[key];
     }
 
     // ═══════════════════════════════════════════════════════════════
@@ -376,6 +423,10 @@ const ContractApp = (() => {
                 { id: 'WESENTLICHKEITSSCHWELLE', label: 'Wesentlichkeitsschwelle Einzeln (EUR)', showIf: null },
                 { id: 'WESENTLICHKEITSSCHWELLE_GESAMT', label: 'Wesentlichkeitsschwelle Gesamt (EUR)', showIf: null },
                 { id: 'MAX_VERTRAGS_LAUFZEIT', label: 'Max. Vertragslaufzeit neue Verträge (Monate)', showIf: null },
+                { id: 'FINANZIERUNG_MINDESTBETRAG', label: 'Finanzierung Mindestbetrag (EUR)', showIf: null, hint: 'Mindestbetrag der Finanzierungszusage' },
+                { id: 'FINANZIERUNG_BEDINGUNGEN', label: 'Finanzierungsbedingungen', showIf: null, hint: 'z.B. unwiderruflich, befristet bis [Datum]' },
+                { id: 'RECHTSSTREIT_SCHWELLE', label: 'Rechtsstreitigkeiten Einzelschwelle (EUR)', showIf: null, hint: 'Ab welchem Streitwert als Vollzugsbedingung relevant' },
+                { id: 'RECHTSSTREIT_SCHWELLE_GESAMT', label: 'Rechtsstreitigkeiten Gesamtschwelle (EUR)', showIf: null },
             );
         }
 
@@ -384,11 +435,20 @@ const ContractApp = (() => {
             fields.push(
                 { id: 'BILANZ_JAHRE', label: 'Bilanzjahre (z.B. 2023, 2024, 2025)', showIf: null },
                 { id: 'LETZTER_BILANZSTICHTAG', label: 'Letzter Bilanzstichtag', showIf: null },
+                { id: 'MAC_UMSATZ_SCHWELLE', label: 'MAC-Schwelle Umsatzrückgang (%)', showIf: null, hint: 'Ab welchem Umsatzrückgang ein Material Adverse Change vorliegt (z.B. 20)' },
+                { id: 'MAC_EBITDA_SCHWELLE', label: 'MAC-Schwelle EBITDA-Rückgang (%)', showIf: null, hint: 'Ab welchem EBITDA-Rückgang ein MAC vorliegt (z.B. 30)' },
+                { id: 'MAC_KUNDEN_SCHWELLE', label: 'MAC-Schwelle Kundenverlust (%)', showIf: null, hint: 'Ab welchem Umsatzanteil verlorener Kunden ein MAC vorliegt (z.B. 25)' },
+                { id: 'DE_MINIMIS_BETRAG', label: 'De-Minimis-Schwelle (EUR)', showIf: null, hint: 'Empfehlung: 0,5–1% des Kaufpreises' },
+                { id: 'BASKET_BETRAG', label: 'Freibetrag / Basket (EUR)', showIf: null, hint: 'Empfehlung: 2–5% des Kaufpreises' },
                 { id: 'HAFTUNGSCAP_BETRAG', label: 'Haftungshöchstgrenze (EUR)', showIf: null },
                 { id: 'HAFTUNGSCAP_PROZENT', label: 'Haftungshöchstgrenze (% vom KP)', showIf: null },
+                { id: 'FUNDAMENTAL_CAP_BETRAG', label: 'Fundamental Warranties Cap (EUR)', showIf: null, hint: 'Höhere Grenze für wesentliche Garantien, z.B. 100% des KP' },
+                { id: 'FUNDAMENTAL_CAP_PROZENT', label: 'Fundamental Warranties Cap (%)', showIf: null },
                 { id: 'VERJAEHRUNG_ALLGEMEIN_MONATE', label: 'Verjährung allgemein (Monate)', showIf: null },
                 { id: 'VERJAEHRUNG_STEUER_JAHRE', label: 'Verjährung Steuer (Jahre)', showIf: null },
                 { id: 'VERJAEHRUNG_EIGENTUM_JAHRE', label: 'Verjährung Eigentum (Jahre)', showIf: null },
+                { id: 'VERJAEHRUNG_UMWELT_JAHRE', label: 'Verjährung Umwelt (Jahre)', showIf: 'HAT_UMWELTRISIKEN', hint: 'Nur bei aktivierter Umweltgarantie' },
+                { id: 'FUSIONSKONTROLLE_ERGEBNIS', label: 'Ergebnis Fusionskontrollprüfung', showIf: null, hint: 'z.B. Die Schwellenwerte werden nicht erreicht; eine Anmeldung ist nicht erforderlich.' },
                 { id: 'ABMAHNUNG_ZEITRAUM_JAHRE', label: 'Abmahnungsprüfzeitraum (Jahre)', showIf: null },
             );
         }
@@ -400,6 +460,7 @@ const ContractApp = (() => {
                 { id: 'WETTBEWERBSVERBOT_GEBIET', label: 'Räumliches Gebiet', showIf: null },
                 { id: 'WETTBEWERBSVERBOT_BRANCHE', label: 'Sachlicher Bereich / Branche', showIf: null },
                 { id: 'VERTRAGSSTRAFE_BETRAG', label: 'Vertragsstrafe Wettbewerb (EUR)', showIf: null },
+                { id: 'KARENZ_BETRAG', label: 'Karenzentschädigung monatlich (EUR)', showIf: null, hint: 'Monatliche Zahlung an den Verkäufer als Gegenleistung für das Wettbewerbsverbot' },
                 { id: 'GEHEIMHALTUNG_DAUER_JAHRE', label: 'Geheimhaltungsdauer (Jahre)', showIf: null },
                 { id: 'GEHEIMHALTUNG_VERTRAGSSTRAFE', label: 'Vertragsstrafe Geheimhaltung (EUR)', showIf: null },
                 { id: 'EINARBEITUNG_DAUER_MONATE', label: 'Einarbeitung Dauer (Monate)', showIf: null },
@@ -413,6 +474,7 @@ const ContractApp = (() => {
             fields.push(
                 { id: 'GERICHTSSTAND', label: 'Gerichtsstand', showIf: null },
                 { id: 'UST_SATZ', label: 'USt-Satz (%)', showIf: null, hint: 'Standard: 19' },
+                { id: 'MEDIATION_FRIST_WOCHEN', label: 'Mediationsfrist (Wochen)', showIf: null, hint: 'Zeitraum für den Mediationsversuch vor Klageerhebung' },
             );
         }
 
@@ -823,7 +885,26 @@ const ContractApp = (() => {
                 method: 'POST',
                 body: JSON.stringify(state.data),
             });
-            preview.textContent = resp.contract;
+            // Highlight default values that haven't been changed
+            let html = esc(resp.contract);
+            const defaults = state._defaults || {};
+            for (const [key, defVal] of Object.entries(defaults)) {
+                const actual = state.data[key];
+                if (actual && actual === defVal) {
+                    // Escape the default for regex and replace in HTML
+                    const escaped = esc(defVal).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    html = html.replace(
+                        new RegExp(escaped, 'g'),
+                        `<mark class="default-highlight" title="Bitte anpassen: ${esc(key)}">${esc(defVal)}</mark>`
+                    );
+                }
+            }
+            // Also highlight remaining unresolved {{PLACEHOLDER}} patterns
+            html = html.replace(
+                /\{\{(\w+)\}\}/g,
+                '<mark class="missing-highlight" title="Fehlender Wert">{{$1}}</mark>'
+            );
+            preview.innerHTML = '<pre>' + html + '</pre>';
         } catch (e) {
             preview.textContent = 'Fehler bei der Vertragsgenerierung: ' + e.message;
         }
@@ -1314,6 +1395,26 @@ const ContractApp = (() => {
     function next() {
         collectFormValues();
         saveLocal();
+
+        // ── Plausibilitätsprüfung: Vertragsstrafe (Step 8 = index 7) ──
+        if (state.currentStep === 7) {
+            const kaufpreis = parseFloat((state.data.KAUFPREIS_GESAMT || '0').replace(/\./g, '').replace(',', '.'));
+            if (kaufpreis > 0) {
+                const warnings = [];
+                const strafe = parseFloat((state.data.VERTRAGSSTRAFE_BETRAG || '0').replace(/\./g, '').replace(',', '.'));
+                const strafeGH = parseFloat((state.data.GEHEIMHALTUNG_VERTRAGSSTRAFE || '0').replace(/\./g, '').replace(',', '.'));
+                if (strafe > 0 && strafe < kaufpreis * 0.01) {
+                    warnings.push(`Vertragsstrafe Wettbewerb (${strafe.toLocaleString('de-DE')} EUR) liegt unter 1 % des Kaufpreises (${(kaufpreis * 0.01).toLocaleString('de-DE')} EUR). In der Praxis wird ein Betrag zwischen 5–10 % des Kaufpreises empfohlen, um eine abschreckende Wirkung zu erzielen.`);
+                }
+                if (strafeGH > 0 && strafeGH < kaufpreis * 0.005) {
+                    warnings.push(`Vertragsstrafe Geheimhaltung (${strafeGH.toLocaleString('de-DE')} EUR) liegt unter 0,5 % des Kaufpreises. Empfehlung: mindestens 1–5 % des Kaufpreises.`);
+                }
+                if (warnings.length > 0 && !confirm('⚠️ Plausibilitätswarnung:\n\n' + warnings.join('\n\n') + '\n\nTrotzdem fortfahren?')) {
+                    return;
+                }
+            }
+        }
+
         const maxStep = template.wizard_steps.length - 1;
         if (state.currentStep < maxStep) goToStep(state.currentStep + 1);
     }

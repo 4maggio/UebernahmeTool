@@ -96,6 +96,92 @@ function applyVariants(rawText, variants, data) {
 }
 
 // ──────────────────────────────────────────────
+//  Dynamic Clause Renumbering
+// ──────────────────────────────────────────────
+/**
+ * Renumbers clause paragraphs within each § section so that there are
+ * no gaps when conditional clauses are excluded.
+ * Handles patterns like (1), (2), (3a), (10a) at the start of lines.
+ * Also renumbers § headers (§ 1 → § 2 etc.) sequentially.
+ */
+function renumberClauses(text) {
+    // Split into § sections
+    const sectionPattern = /^(§\s*)(\d+)(.*)/;
+    const clausePattern = /^(\s*)\((\d+)((?:[a-z])?)\)/;
+
+    const lines = text.split('\n');
+    const result = [];
+
+    let currentSectionNum = 0;    // running § counter
+    let clauseCounter = 0;        // running clause counter within section
+    let lastBaseNum = null;       // last base digit seen (for letter suffixes)
+    let currentLetterSuffix = ''; // tracking letter suffixes like 'a', 'b'
+
+    // First pass: build a map of old § numbers to new § numbers
+    const sectionMap = {};        // { old# → new# }
+    let tempCounter = 0;
+    for (const line of lines) {
+        const sm = line.match(/^§\s*(\d+)/);
+        if (sm) {
+            tempCounter++;
+            sectionMap[sm[1]] = String(tempCounter);
+        }
+    }
+
+    // Second pass: renumber everything
+    currentSectionNum = 0;
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+
+        // Check for § header
+        const sm = line.match(sectionPattern);
+        if (sm) {
+            currentSectionNum++;
+            clauseCounter = 0;
+            lastBaseNum = null;
+            line = `${sm[1]}${currentSectionNum}${sm[3]}`;
+            // Replace § cross-references in same line (rare, but possible)
+        }
+
+        // Check for clause number like (1), (2a), etc.
+        const cm = line.match(clausePattern);
+        if (cm) {
+            const indent = cm[1];
+            const oldBase = cm[2];
+            const suffix = cm[3] || '';
+
+            if (suffix) {
+                // Letter suffix like (2a) — keep same base as parent, just increment suffix
+                if (oldBase !== lastBaseNum) {
+                    // New base with suffix — increment clause counter
+                    clauseCounter++;
+                    lastBaseNum = oldBase;
+                }
+                line = line.replace(clausePattern, `${indent}(${clauseCounter}${suffix})`);
+            } else {
+                // Plain number like (2) — increment
+                clauseCounter++;
+                lastBaseNum = oldBase;
+                line = line.replace(clausePattern, `${indent}(${clauseCounter})`);
+            }
+        }
+
+        // Replace § cross-references like "§ 8 Abs." or "gemäß § 11"
+        // Only replace within text (not headers), using the sectionMap
+        if (!sm) {
+            line = line.replace(/§\s*(\d+)/g, (match, num) => {
+                const mapped = sectionMap[num];
+                return mapped ? `§ ${mapped}` : match;
+            });
+        }
+
+        result.push(line);
+    }
+
+    return result.join('\n');
+}
+
+// ──────────────────────────────────────────────
 //  Main Generator
 // ──────────────────────────────────────────────
 function generate(tpl, data) {
@@ -126,7 +212,12 @@ function generate(tpl, data) {
         lines.push('');
     }
 
-    return lines.join('\n');
+    let result = lines.join('\n');
+
+    // Renumber clauses to close gaps from excluded conditional clauses
+    result = renumberClauses(result);
+
+    return result;
 }
 
 module.exports = { generate, evalCondition, replacePlaceholders };

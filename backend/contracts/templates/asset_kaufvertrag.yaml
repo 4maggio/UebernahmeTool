@@ -346,6 +346,10 @@ variables:
       label: "Soll das Geschäft unter bisheriger Bezeichnung weitergeführt werden (§ 25 HGB)?"
       type: boolean
       tooltip: "§ 25 HGB: Wer ein Handelsgeschäft unter bisheriger Firma fortführt, haftet für alle betrieblichen Verbindlichkeiten des Vorbesitzers – auch unbekannte! Deaktivieren = expliziter Ausschluss dieser Haftung. Aktivieren = Haftungsübernahme mit Begrenzungsmechanismus über § 25 Abs. 2 HGB."
+    - id: HAT_KUNDENDATEN
+      label: "Werden Kundenstammdaten und Geschäftsdaten übertragen?"
+      type: boolean
+      tooltip: "⚠️ ACHTUNG: Die Übertragung personenbezogener Kundendaten im Rahmen eines Asset Deals ist datenschutzrechtlich umstritten. Einige Datenschutzbehörden bezweifeln, dass Art. 6 Abs. 1 lit. f) DSGVO (berechtigtes Interesse) als Rechtsgrundlage ausreicht. Eine ausdrückliche Einwilligung der Kunden (Art. 6 Abs. 1 lit. a) DSGVO) ist die sicherste Lösung, in der Praxis aber oft nicht realisierbar. Empfehlung: Nur aktivieren, wenn zwingend nötig und rechtliche Beratung einholen."
     - id: HAT_LOI
       label: "Wurde ein Letter of Intent (LOI) unterzeichnet?"
       type: boolean
@@ -362,6 +366,10 @@ variables:
       label: "Tipping Basket (volle Haftung ab dem 1. Euro bei Überschreitung des Freibetrags)"
       type: boolean
       tooltip: "Bestimmt, was passiert wenn die Gesamtsumme aller Garantieansprüche den vereinbarten Freibetrag (Basket) übersteigt. Tipping Basket = Verkäufer haftet dann rückwirkend ab dem 1. Euro. Deductible = Verkäufer haftet nur für den übersteigenden Betrag. Tipping ist käuferfreundlicher."
+    - id: ZAHLUNG_EINGANG
+      label: "Zahlungszeitpunkt = Eingang beim Verkäufer (verkäuferfreundlich)"
+      type: boolean
+      tooltip: "Wenn aktiviert: Rechtzeitige Zahlung = Eingang auf dem Konto des Verkäufers. Wenn deaktiviert: Rechtzeitige Zahlung = Zeitpunkt der Überweisungserteilung bei ausreichender Deckung (käuferfreundlicher). Empfehlung: Kompromiss vereinbaren (z.B. 3 Bankarbeitstage vor dem Fälligkeitsdatum)."
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # VERTRAGSABSCHNITTE
@@ -480,9 +488,13 @@ sections:
               Vermögensgegenstände, die sich am Standort {{UNTERNEHMENSSITZ}} befinden.
 
           (2) Der Verkäufer beabsichtigt, die nachfolgend aufgeführten Vermögensgegenstände
-              im Wege eines Asset Deals einzeln auf den Käufer zu übertragen. Eine Übernahme
-              des Geschäftsbetriebs als Ganzes oder eine Fortführung unter bisheriger
-              Geschäftsbezeichnung im Sinne des § 25 HGB ist ausdrücklich nicht beabsichtigt.
+              im Wege eines Asset Deals einzeln auf den Käufer zu übertragen. Eine Fortführung
+              des Handelsgeschäfts unter bisheriger Firma im Sinne des § 25 HGB ist
+              ausdrücklich nicht beabsichtigt. Die umsatzsteuerliche Behandlung der
+              Transaktion richtet sich nach § 1 Abs. 1a UStG (vgl. § 4 Abs. (8)).
+              Steuerliche Identifikationsnummern, Steuernummern und Umsatzsteuer-
+              Identifikationsnummern des Verkäufers werden nicht übertragen; der
+              Käufer wird eigene steuerliche Registrierungen vornehmen.
 
           (3) Die Parteien haben im Vorfeld dieses Vertrages die zu übertragenden
               Vermögensgegenstände geprüft. Der Käufer hat den Zustand und Wert
@@ -879,7 +891,7 @@ sections:
       - id: kaufgegenstand_kundenstamm
         title: "Kundenstamm und Geschäftsdaten"
         required: false
-        condition: null
+        condition: "HAT_KUNDENDATEN"
         tags: ["kunden", "daten", "datenschutz"]
         text: |
           (14) Kundenstamm und Geschäftsdaten:
@@ -946,14 +958,23 @@ sections:
           c) Ansprüche des Verkäufers aus Versicherungsverträgen (soweit diese
              nicht ausdrücklich übertragen werden),
           d) persönliche Gegenstände des Verkäufers,
-          e) {{WEITERE_AUSNAHMEN}}
-          f) sonstige Vermögensgegenstände, die nicht ausdrücklich als Kaufgegenstände
+          e) sonstige Vermögensgegenstände, die nicht ausdrücklich als Kaufgegenstände
              in § 2 bezeichnet sind.
 
       (2) Zweifel über die Zuordnung einzelner Gegenstände sind einvernehmlich
           zwischen den Parteien zu klären. Können sich die Parteien nicht einigen,
           entscheidet ein von beiden Parteien gemeinsam benannter Sachverständiger
           verbindlich.
+
+    clauses:
+      - id: ausnahmen_weitere
+        title: "Weitere ausgenommene Vermögensgegenstände"
+        required: false
+        condition: null
+        tags: ["ausnahmen", "weitere"]
+        text: |
+          (3) Darüber hinaus sind von der Übertragung ausgenommen:
+              {{WEITERE_AUSNAHMEN}}
 
   # ═════════════════════════════════════════════════════════════════════════════
   # § 4 — KAUFPREIS
@@ -1136,10 +1157,24 @@ sections:
           BIC:           {{VERKAEUFER_BIC}}
           Bank:          {{VERKAEUFER_BANK}}
 
-      (2) Maßgeblich für die Rechtzeitigkeit der Zahlung ist der Eingang des Kaufpreises
-          auf dem Konto des Verkäufers.
-
     clauses:
+      # ── 5.2 Zahlungszeitpunkt ─────────────────────────────────
+      - id: zahlung_zeitpunkt_eingang
+        title: "Zahlungszeitpunkt (Eingang)"
+        required: false
+        condition: "ZAHLUNG_EINGANG"
+        text: |
+          (2) Maßgeblich für die Rechtzeitigkeit der Zahlung ist der Eingang des Kaufpreises
+              auf dem Konto des Verkäufers.
+
+      - id: zahlung_zeitpunkt_auftrag
+        title: "Zahlungszeitpunkt (Auftragserteilung)"
+        required: false
+        condition: "NOT ZAHLUNG_EINGANG"
+        text: |
+          (2) Maßgeblich für die Rechtzeitigkeit der Zahlung ist der Zeitpunkt der
+              Überweisungserteilung durch den Käufer bei ausreichender Deckung des
+              belasteten Kontos.
       # ── 5.3 Ratenzahlung ──────────────────────────────────────
       - id: zahlung_ratenzahlung
         title: "Ratenzahlung"
@@ -1371,7 +1406,15 @@ sections:
               b) Seit dem letzten Bilanzstichtag ({{LETZTER_BILANZSTICHTAG}}) haben sich
                  keine wesentlichen nachteiligen Veränderungen in der Vermögens-, Finanz-
                  und Ertragslage des Geschäftsbetriebs ergeben (kein „Material Adverse
-                 Change").
+                 Change"). Als wesentliche nachteilige Veränderung gilt insbesondere:
+                 - ein Rückgang des Umsatzes um mehr als {{MAC_UMSATZ_SCHWELLE}} %
+                   gegenüber dem Vergleichszeitraum des Vorjahres,
+                 - ein Rückgang des EBITDA um mehr als {{MAC_EBITDA_SCHWELLE}} %
+                   gegenüber dem Vergleichszeitraum des Vorjahres,
+                 - der Verlust von Kunden, die einzeln oder zusammen mehr als
+                   {{MAC_KUNDEN_SCHWELLE}} % des Jahresumsatzes ausmachen,
+                 - das Eintreten von Umständen, die den Fortbestand des
+                   Geschäftsbetriebs wesentlich gefährden.
               c) Es bestehen keine wesentlichen Verbindlichkeiten, die nicht in den
                  vorgelegten Unterlagen offengelegt wurden.
               d) Die Bücher und Aufzeichnungen des Geschäftsbetriebs sind vollständig
@@ -1866,8 +1909,22 @@ sections:
                  nach dem Vollzugstag.
               b) Ansprüche aus der Verletzung der Eigentumsgarantie (§ 8 Abs. (1)):
                  {{VERJAEHRUNG_EIGENTUM_JAHRE}} Jahre nach dem Vollzugstag.
+
+      - id: garantie_verjaehrung_umwelt
+        title: "Verjährung Umweltgarantien"
+        required: false
+        condition: "HAT_UMWELTRISIKEN OR HAT_IMMOBILIEN"
+        tags: ["garantie", "verjaehrung", "umwelt"]
+        text: |
               c) Ansprüche aus der Verletzung von Umweltgarantien (§ 8 Abs. (11)):
                  {{VERJAEHRUNG_UMWELT_JAHRE}} Jahre nach dem Vollzugstag.
+
+      - id: garantie_verjaehrung_allgemein
+        title: "Verjährung allgemein und Hemmung"
+        required: true
+        condition: null
+        tags: ["garantie", "verjaehrung"]
+        text: |
               d) Ansprüche aus der Verletzung aller übrigen Garantien:
                  {{VERJAEHRUNG_ALLGEMEIN_MONATE}} Monate nach dem Vollzugstag.
 
@@ -2256,6 +2313,20 @@ sections:
               Kontaktaufnahme, die auf die Anbahnung oder Durchführung von
               Geschäften gerichtet ist, welche dem Geschäftsgegenstand des
               übertragenen Geschäftsbetriebs entsprechen.
+
+      - id: wettbewerb_geltungserhaltende_reduktion
+        title: "Geltungserhaltende Reduktion"
+        required: true
+        condition: null
+        tags: ["wettbewerbsverbot", "reduktion", "wirksamkeit"]
+        text: |
+          (10) Sollte das Wettbewerbsverbot gemäß Abs. (1)–(3) in zeitlicher,
+               räumlicher oder sachlicher Hinsicht als zu weitgehend und daher
+               als unwirksam angesehen werden, so gilt es in dem Umfang, der
+               gerade noch zulässig ist (geltungserhaltende Reduktion). Die
+               Parteien sind sich einig, dass in diesem Fall das Wettbewerbsverbot
+               auf das zeitlich, räumlich und sachlich zulässige Maß beschränkt
+               wird, anstatt insgesamt entfallen zu sollen.
 
   # ═════════════════════════════════════════════════════════════════════════════
   # § 15 — ABWERBEVERBOT
@@ -2673,9 +2744,17 @@ sections:
           (9) Abtretung:
               Die Rechte und Pflichten aus diesem Vertrag dürfen ohne vorherige
               schriftliche Zustimmung der anderen Partei nicht an Dritte
-              abgetreten oder übertragen werden. Eine Abtretung an verbundene
-              Unternehmen im Sinne der §§ 15 ff. AktG bedarf keiner Zustimmung,
-              ist aber der anderen Partei unverzüglich mitzuteilen.
+              abgetreten oder übertragen werden.
+
+      - id: schluss_abtretung_konzern
+        title: "Abtretung an verbundene Unternehmen"
+        required: false
+        condition: "seller_type IN ['GmbH','UG','AG','GmbH & Co. KG'] OR buyer_type IN ['GmbH','UG','AG','GmbH & Co. KG']"
+        tags: ["abtretung", "konzern", "aktg"]
+        text: |
+              Eine Abtretung an verbundene Unternehmen im Sinne der §§ 15 ff. AktG
+              bedarf keiner Zustimmung, ist aber der anderen Partei unverzüglich
+              mitzuteilen.
 
       - id: schluss_notarielle_beurkundung
         title: "Notarielle Beurkundung"
@@ -2936,6 +3015,7 @@ module_config:
         - "HAT_DOMAINS"
         - "HAT_LIZENZEN"
         - "HAT_GENEHMIGUNGEN"
+        - "HAT_KUNDENDATEN"
         - "HAT_FIRMENFORTFUEHRUNG"
 
     - step: 3
@@ -2953,6 +3033,7 @@ module_config:
         - "HAT_EARNOUT"
         - "HAT_RATENZAHLUNG"
         - "HAT_TREUHANDKONTO"
+        - "ZAHLUNG_EINGANG"
 
     - step: 5
       title: "Stichtag & Vollzug"
@@ -3030,9 +3111,11 @@ module_config:
         HAT_VERBINDLICHKEITEN: false
         HAT_LOI: false
         HAT_EXKLUSIVITAET: false
+        HAT_KUNDENDATEN: false
         HAT_FIRMENFORTFUEHRUNG: false
         UEBERGANG_IM_KAUFPREIS: true
         BASKET_TIPPING: true
+        ZAHLUNG_EINGANG: true
 
     - id: standard
       name: "Standardvertrag"
@@ -3060,9 +3143,11 @@ module_config:
         HAT_VERBINDLICHKEITEN: true
         HAT_LOI: true
         HAT_EXKLUSIVITAET: true
+        HAT_KUNDENDATEN: false
         HAT_FIRMENFORTFUEHRUNG: false
         UEBERGANG_IM_KAUFPREIS: false
         BASKET_TIPPING: true
+        ZAHLUNG_EINGANG: true
 
     - id: vollstaendig
       name: "Vollständiger Vertrag"
@@ -3089,7 +3174,9 @@ module_config:
         HAT_MIETVERTRAG: false
         HAT_LOI: true
         HAT_EXKLUSIVITAET: true
+        HAT_KUNDENDATEN: true
         HAT_FIRMENFORTFUEHRUNG: false
         UEBERGANG_IM_KAUFPREIS: false
         BASKET_TIPPING: false
+        ZAHLUNG_EINGANG: false
         HAT_VERBINDLICHKEITEN: true
