@@ -1920,8 +1920,8 @@ sections:
         condition: "HAT_UMWELTRISIKEN OR HAT_IMMOBILIEN"
         tags: ["garantie", "verjaehrung", "umwelt"]
         text: |
-              c) Ansprüche aus der Verletzung von Umweltgarantien (§ 8 Abs. (11)):
-                 {{VERJAEHRUNG_UMWELT_JAHRE}} Jahre nach dem Vollzugstag.
+          c) Ansprüche aus der Verletzung von Umweltgarantien (§ 8 Abs. (11)):
+             {{VERJAEHRUNG_UMWELT_JAHRE}} Jahre nach dem Vollzugstag.
 
       - id: garantie_verjaehrung_allgemein
         title: "Verjährung allgemein und Hemmung"
@@ -2756,9 +2756,9 @@ sections:
         condition: "seller_type IN ['GmbH','UG','AG','GmbH & Co. KG'] OR buyer_type IN ['GmbH','UG','AG','GmbH & Co. KG']"
         tags: ["abtretung", "konzern", "aktg"]
         text: |
-              Eine Abtretung an verbundene Unternehmen im Sinne der §§ 15 ff. AktG
-              bedarf keiner Zustimmung, ist aber der anderen Partei unverzüglich
-              mitzuteilen.
+          Eine Abtretung an verbundene Unternehmen im Sinne der §§ 15 ff. AktG
+          bedarf keiner Zustimmung, ist aber der anderen Partei unverzüglich
+          mitzuteilen.
 
       - id: schluss_notarielle_beurkundung
         title: "Notarielle Beurkundung"

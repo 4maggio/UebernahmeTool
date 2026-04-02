@@ -6,25 +6,25 @@ const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const db = require('../db');
 const logger = require('../utils/logger');
-const { requireAuth, requireSuperAdmin } = require('../middleware/auth');
+const { requireAuth, requireRole, requireSuperAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
 // ─────────────────────────────────────────────────
-//  POST /api/admin/login
+//  POST /api/admin/login — works for ALL roles
 // ─────────────────────────────────────────────────
 router.post('/login',
-    body('email').isEmail().normalizeEmail(),
+    body('username').isString().trim().isLength({ min: 2 }),
     body('password').isLength({ min: 8 }),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) return res.status(400).json({ error: 'Invalid credentials format' });
 
         try {
-            const { email, password } = req.body;
+            const { username, password } = req.body;
             const { rows } = await db.query(
-                'SELECT id, email, password_hash, role, is_active FROM admin_users WHERE email = $1',
-                [email]
+                'SELECT id, username, password_hash, role, is_active FROM users WHERE LOWER(username) = LOWER($1)',
+                [username]
             );
 
             if (!rows.length || !rows[0].is_active) {
@@ -37,23 +37,62 @@ router.post('/login',
             if (!valid) return res.status(401).json({ error: 'Invalid credentials' });
 
             const token = jwt.sign(
-                { sub: rows[0].id, email: rows[0].email, role: rows[0].role },
+                { sub: rows[0].id, username: rows[0].username, role: rows[0].role },
                 process.env.JWT_SECRET,
-                { expiresIn: process.env.JWT_EXPIRES_IN || '8h' }
+                { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
             );
 
-            return res.json({ token, role: rows[0].role, email: rows[0].email });
+            return res.json({ token, role: rows[0].role, username: rows[0].username });
         } catch (err) {
-            logger.error('Admin login error:', err);
+            logger.error('Login error:', err);
             return res.status(500).json({ error: 'Internal server error' });
         }
     }
 );
 
 // ─────────────────────────────────────────────────
-//  All routes below require authentication
+//  Password change — any logged-in user (before admin guard)
+// ─────────────────────────────────────────────────
+router.patch('/password', requireAuth,
+    body('currentPassword').isString().notEmpty(),
+    body('newPassword').isLength({ min: 12 }).withMessage('Neues Passwort muss mind. 12 Zeichen haben'),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) return res.status(400).json({ error: errors.array()[0].msg });
+
+        try {
+            const { currentPassword, newPassword } = req.body;
+
+            // Fetch current hash
+            const { rows } = await db.query(
+                'SELECT password_hash FROM users WHERE id = $1',
+                [req.user.id]
+            );
+            if (!rows.length) return res.status(404).json({ error: 'User not found' });
+
+            const valid = await bcrypt.compare(currentPassword, rows[0].password_hash);
+            if (!valid) return res.status(401).json({ error: 'Aktuelles Passwort ist falsch' });
+
+            // Prevent reuse of same password
+            const same = await bcrypt.compare(newPassword, rows[0].password_hash);
+            if (same) return res.status(400).json({ error: 'Neues Passwort darf nicht identisch sein' });
+
+            const hash = await bcrypt.hash(newPassword, 12);
+            await db.query('UPDATE users SET password_hash = $1 WHERE id = $2', [hash, req.user.id]);
+
+            return res.json({ success: true });
+        } catch (err) {
+            logger.error('Password change error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+);
+
+// ─────────────────────────────────────────────────
+//  All routes below require authentication + admin role
 // ─────────────────────────────────────────────────
 router.use(requireAuth);
+router.use(requireRole('admin'));
 
 // GET /api/admin/me
 router.get('/me', (req, res) => res.json(req.admin));
@@ -279,12 +318,27 @@ router.patch('/multipliers/:key', async (req, res) => {
 });
 
 // ─────────────────────────────────────────────────
-//  Admin user management (superadmin only)
+//  Admin user management (admin only)
 // ─────────────────────────────────────────────────
-router.post('/users', requireSuperAdmin,
-    body('email').isEmail().normalizeEmail(),
+
+// GET /api/admin/users — list all users
+router.get('/users', requireRole('admin'), async (req, res) => {
+    try {
+        const { rows } = await db.query(
+            'SELECT id, username, email, role, is_active, created_at FROM users ORDER BY username'
+        );
+        return res.json(rows);
+    } catch (err) {
+        logger.error(err);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// POST /api/admin/users — create new user
+router.post('/users', requireRole('admin'),
+    body('username').isString().trim().isLength({ min: 2, max: 50 }),
     body('password').isLength({ min: 12 }),
-    body('role').isIn(['editor', 'superadmin']),
+    body('role').isIn(['user', 'manager', 'admin']),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) return res.status(400).json({ error: 'Validation failed', details: errors.array() });
@@ -292,16 +346,60 @@ router.post('/users', requireSuperAdmin,
         try {
             const hash = await bcrypt.hash(req.body.password, 12);
             const { rows } = await db.query(
-                'INSERT INTO admin_users (email, password_hash, role) VALUES ($1, $2, $3) RETURNING id, email, role',
-                [req.body.email, hash, req.body.role]
+                'INSERT INTO users (username, password_hash, role) VALUES ($1, $2, $3) RETURNING id, username, role',
+                [req.body.username.trim(), hash, req.body.role]
             );
             return res.status(201).json(rows[0]);
         } catch (err) {
-            if (err.code === '23505') return res.status(409).json({ error: 'Email already exists' });
+            if (err.code === '23505') return res.status(409).json({ error: 'Username already exists' });
             logger.error(err);
             return res.status(500).json({ error: 'Internal server error' });
         }
     }
 );
+
+// PATCH /api/admin/users/:id — update user (role, is_active, password)
+router.patch('/users/:id', requireRole('admin'), async (req, res) => {
+    const { role, is_active, password } = req.body;
+    const userId = parseInt(req.params.id);
+    if (!userId) return res.status(400).json({ error: 'Invalid user id' });
+
+    // Prevent admin from deactivating themselves
+    if (is_active === false && userId === req.user.id) {
+        return res.status(400).json({ error: 'Cannot deactivate your own account' });
+    }
+
+    try {
+        const updates = [];
+        const values = [];
+        let idx = 1;
+
+        if (role && ['user', 'manager', 'admin'].includes(role)) {
+            updates.push(`role = $${idx++}`);
+            values.push(role);
+        }
+        if (typeof is_active === 'boolean') {
+            updates.push(`is_active = $${idx++}`);
+            values.push(is_active);
+        }
+        if (password && password.length >= 12) {
+            const hash = await bcrypt.hash(password, 12);
+            updates.push(`password_hash = $${idx++}`);
+            values.push(hash);
+        }
+
+        if (!updates.length) return res.status(400).json({ error: 'No valid fields to update' });
+
+        values.push(userId);
+        await db.query(
+            `UPDATE users SET ${updates.join(', ')} WHERE id = $${idx}`,
+            values
+        );
+        return res.json({ success: true });
+    } catch (err) {
+        logger.error(err);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 module.exports = router;

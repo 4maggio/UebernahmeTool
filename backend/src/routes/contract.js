@@ -9,6 +9,8 @@ const { body, validationResult } = require('express-validator');
 const logger = require('../utils/logger');
 const contractGenerator = require('../services/contractGenerator');
 const contractExport = require('../services/contractExport');
+const { requireAuth, requireRole } = require('../middleware/auth');
+const db = require('../db');
 
 // ──────────────────────────────────────────────
 //  Load YAML template once at startup
@@ -32,6 +34,11 @@ function getAssets() {
     }
     return assetsCache;
 }
+
+// ──────────────────────────────────────────────
+//  All contract routes require authentication
+// ──────────────────────────────────────────────
+router.use(requireAuth);
 
 // ──────────────────────────────────────────────
 //  GET /api/contract/assets
@@ -127,7 +134,7 @@ router.post('/export/:format', [
 
 // ──────────────────────────────────────────────
 //  PUT /api/contract/draft
-//  Save draft to database (optional backend sync)
+//  Save draft to database (upsert, owned by current user)
 // ──────────────────────────────────────────────
 router.put('/draft', [
     body('draftId').isString().notEmpty(),
@@ -139,15 +146,14 @@ router.put('/draft', [
     }
 
     try {
-        const db = require('../db');
         const { draftId, data, currentStep } = req.body;
 
         await db.query(
-            `INSERT INTO contract_drafts (draft_id, data, current_step, updated_at)
-             VALUES ($1, $2, $3, NOW())
+            `INSERT INTO contract_drafts (draft_id, data, current_step, created_by, updated_at)
+             VALUES ($1, $2, $3, $4, NOW())
              ON CONFLICT (draft_id) DO UPDATE
              SET data = $2, current_step = $3, updated_at = NOW()`,
-            [draftId, JSON.stringify(data), currentStep || 0]
+            [draftId, JSON.stringify(data), currentStep || 0, req.user.id]
         );
 
         res.json({ ok: true });
@@ -158,20 +164,58 @@ router.put('/draft', [
 });
 
 // ──────────────────────────────────────────────
+//  GET /api/contract/drafts
+//  List all drafts for the current user (admin sees all)
+// ──────────────────────────────────────────────
+router.get('/drafts', async (req, res) => {
+    try {
+        let query, params;
+        if (req.user.role === 'admin') {
+            query = `SELECT d.draft_id, d.data->>'UNTERNEHMENSNAME' AS name, d.current_step,
+                            d.created_at, d.updated_at, u.username AS owner
+                     FROM contract_drafts d
+                     LEFT JOIN users u ON u.id = d.created_by
+                     WHERE d.deleted_at IS NULL
+                     ORDER BY d.updated_at DESC`;
+            params = [];
+        } else {
+            query = `SELECT draft_id, data->>'UNTERNEHMENSNAME' AS name, current_step,
+                            created_at, updated_at
+                     FROM contract_drafts
+                     WHERE created_by = $1 AND deleted_at IS NULL
+                     ORDER BY updated_at DESC`;
+            params = [req.user.id];
+        }
+        const { rows } = await db.query(query, params);
+        res.json(rows);
+    } catch (err) {
+        logger.error('Draft list failed', err);
+        res.status(500).json({ error: 'Entwürfe konnten nicht geladen werden.' });
+    }
+});
+
+// ──────────────────────────────────────────────
 //  GET /api/contract/draft/:id
 //  Load a draft from database
 // ──────────────────────────────────────────────
 router.get('/draft/:id', async (req, res) => {
     try {
-        const db = require('../db');
         const result = await db.query(
-            'SELECT draft_id, data, current_step, created_at, updated_at FROM contract_drafts WHERE draft_id = $1',
+            `SELECT draft_id, data, current_step, created_by, created_at, updated_at
+             FROM contract_drafts
+             WHERE draft_id = $1 AND deleted_at IS NULL`,
             [req.params.id]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Entwurf nicht gefunden.' });
         }
         const row = result.rows[0];
+
+        // Users can only load their own drafts; admin can load any
+        if (req.user.role !== 'admin' && row.created_by !== req.user.id) {
+            return res.status(403).json({ error: 'Kein Zugriff auf diesen Entwurf.' });
+        }
+
         res.json({
             draftId: row.draft_id,
             data: row.data,
@@ -182,6 +226,38 @@ router.get('/draft/:id', async (req, res) => {
     } catch (err) {
         logger.error('Draft load failed', err);
         res.status(500).json({ error: 'Entwurf konnte nicht geladen werden.' });
+    }
+});
+
+// ──────────────────────────────────────────────
+//  DELETE /api/contract/draft/:id
+//  Soft-delete a draft (manager + admin only)
+// ──────────────────────────────────────────────
+router.delete('/draft/:id', requireRole('manager', 'admin'), async (req, res) => {
+    try {
+        // Verify draft exists and is not already deleted
+        const { rows } = await db.query(
+            'SELECT id, created_by FROM contract_drafts WHERE draft_id = $1 AND deleted_at IS NULL',
+            [req.params.id]
+        );
+        if (!rows.length) {
+            return res.status(404).json({ error: 'Entwurf nicht gefunden.' });
+        }
+
+        // Managers can only delete their own drafts; admins can delete any
+        if (req.user.role === 'manager' && rows[0].created_by !== req.user.id) {
+            return res.status(403).json({ error: 'Nur eigene Entwürfe können gelöscht werden.' });
+        }
+
+        await db.query(
+            'UPDATE contract_drafts SET deleted_at = NOW() WHERE draft_id = $1',
+            [req.params.id]
+        );
+
+        res.json({ ok: true });
+    } catch (err) {
+        logger.error('Draft delete failed', err);
+        res.status(500).json({ error: 'Entwurf konnte nicht gelöscht werden.' });
     }
 });
 

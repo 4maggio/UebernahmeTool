@@ -934,7 +934,7 @@ const ContractApp = (() => {
         try {
             const resp = await fetch(`${BASE}/contract/export/${format}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: Auth.authHeaders(),
                 body: JSON.stringify(state.data),
             });
             if (!resp.ok) {
@@ -1223,6 +1223,7 @@ const ContractApp = (() => {
         const modal = document.getElementById('modal-load-draft');
         const list = document.getElementById('draft-list');
         const drafts = getDraftIndex();
+        const canDelete = window.Auth && Auth.hasRole('manager', 'admin');
 
         if (drafts.length === 0) {
             list.innerHTML = '<p class="text-muted">Keine gespeicherten Entwürfe vorhanden.</p>';
@@ -1234,7 +1235,7 @@ const ContractApp = (() => {
                         <div class="draft-name">${esc(d.name)}</div>
                         <div class="draft-date">Schritt ${(d.step || 0) + 1} · ${formatDate(d.updatedAt)}</div>
                     </div>
-                    <button class="btn-outline" style="padding:.3rem .6rem;font-size:.75rem" onclick="event.stopPropagation();ContractApp.removeDraft('${d.id}')">✕</button>
+                    ${canDelete ? `<button class="btn-outline btn-delete-draft" style="padding:.3rem .6rem;font-size:.75rem;color:#c0392b;border-color:#c0392b" onclick="event.stopPropagation();ContractApp.deleteDraft('${d.id}')" title="Entwurf löschen">🗑</button>` : ''}
                 </div>
             `).join('');
 
@@ -1263,6 +1264,23 @@ const ContractApp = (() => {
         }
         deleteDraft(id);
         showDraftModal(); // refresh
+    }
+
+    async function deleteDraftPermanent(id) {
+        if (id === state.draftId) {
+            alert('Der aktuelle Entwurf kann nicht gelöscht werden.');
+            return;
+        }
+        if (!confirm('Entwurf wirklich löschen?')) return;
+        try {
+            // Soft-delete on backend
+            await fetchJSON(`/contract/draft/${encodeURIComponent(id)}`, { method: 'DELETE' });
+            // Remove from localStorage
+            deleteDraft(id);
+            showDraftModal();
+        } catch (e) {
+            alert('Löschen fehlgeschlagen: ' + e.message);
+        }
     }
 
     function startNewDraft() {
@@ -1360,10 +1378,17 @@ const ContractApp = (() => {
     async function fetchJSON(path, opts = {}) {
         const defaults = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
+            headers: Auth.authHeaders(),
         };
         const merged = { ...defaults, ...opts, headers: { ...defaults.headers, ...(opts.headers || {}) } };
         const resp = await fetch(`${BASE}${path}`, merged);
+
+        // Auto-logout on 401
+        if (resp.status === 401 && window.Auth) {
+            Auth.logout();
+            return;
+        }
+
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.error || 'API Error');
         return data;
@@ -1455,6 +1480,7 @@ const ContractApp = (() => {
         exportDocx,
         showDraftModal,
         removeDraft,
+        deleteDraft: deleteDraftPermanent,
         startNewDraft,
         selectAllInCategory,
         deselectAllInCategory,

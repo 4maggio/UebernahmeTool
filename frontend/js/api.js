@@ -1,18 +1,34 @@
 /**
  * api.js — Backend API abstraction layer
  * All fetch calls go through here. Falls back gracefully if backend unavailable.
+ * Uses Auth.getToken() for JWT authorization on all requests.
  */
 
 const API = (() => {
     const BASE = (window.APP_CONFIG && window.APP_CONFIG.apiBase) || '/api';
 
+    function getAuthHeaders() {
+        const headers = { 'Content-Type': 'application/json' };
+        if (window.Auth && Auth.getToken()) {
+            headers.Authorization = `Bearer ${Auth.getToken()}`;
+        }
+        return headers;
+    }
+
     async function request(method, path, body) {
         const opts = {
             method,
-            headers: { 'Content-Type': 'application/json' },
+            headers: getAuthHeaders(),
         };
         if (body !== undefined) opts.body = JSON.stringify(body);
         const resp = await fetch(`${BASE}${path}`, opts);
+
+        // Auto-logout on 401
+        if (resp.status === 401 && window.Auth) {
+            Auth.logout();
+            return;
+        }
+
         const data = await resp.json().catch(() => ({ error: 'Invalid response' }));
         if (!resp.ok) throw Object.assign(new Error(data.error || 'API Error'), { status: resp.status, data });
         return data;
@@ -54,10 +70,20 @@ const API = (() => {
         return request('GET', `/checklist${qs}`);
     }
 
+    /* ── Contract Drafts ───────────────────────────────────────────── */
+
+    function listDrafts() {
+        return request('GET', '/contract/drafts');
+    }
+
+    function deleteDraftBackend(draftId) {
+        return request('DELETE', `/contract/draft/${encodeURIComponent(draftId)}`);
+    }
+
     /* ── Admin ─────────────────────────────────────────────────────── */
 
-    function adminLogin(email, password) {
-        return request('POST', '/admin/login', { email, password });
+    function adminLogin(username, password) {
+        return request('POST', '/admin/login', { username, password });
     }
 
     function adminGetKnowledge(token, params) {
@@ -96,6 +122,18 @@ const API = (() => {
         return authRequest(token, 'GET', '/admin/scrape-logs');
     }
 
+    function adminGetUsers(token) {
+        return authRequest(token, 'GET', '/admin/users');
+    }
+
+    function adminCreateUser(token, userData) {
+        return authRequest(token, 'POST', '/admin/users', userData);
+    }
+
+    function adminUpdateUser(token, id, userData) {
+        return authRequest(token, 'PATCH', `/admin/users/${id}`, userData);
+    }
+
     async function authRequest(token, method, path, body, params) {
         const opts = {
             method,
@@ -120,6 +158,8 @@ const API = (() => {
         getKnowledgeEntry,
         listKnowledge,
         getChecklist,
+        listDrafts,
+        deleteDraftBackend,
         adminLogin,
         adminGetKnowledge,
         adminCreateKnowledge,
@@ -130,6 +170,9 @@ const API = (() => {
         adminRejectPending,
         adminTriggerUpdate,
         adminGetLogs,
+        adminGetUsers,
+        adminCreateUser,
+        adminUpdateUser,
     };
 })();
 

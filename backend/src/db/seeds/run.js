@@ -16,8 +16,8 @@ async function seed() {
     // ── Admin user ──
     if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD_HASH) {
         await db.query(
-            `INSERT INTO admin_users (email, password_hash, role)
-       VALUES ($1, $2, 'superadmin')
+            `INSERT INTO users (email, username, password_hash, role)
+       VALUES ($1, SPLIT_PART($1, '@', 1), $2, 'admin')
        ON CONFLICT (email) DO NOTHING`,
             [process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD_HASH]
         );
