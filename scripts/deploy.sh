@@ -24,7 +24,7 @@ else
 fi
 
 echo "==> Reloading nginx config (zero-downtime)"
-sudo /usr/bin/docker exec traefik-uebernahme-1 nginx -s reload
+docker exec traefik-uebernahme-1 nginx -s reload
 
 echo "==> Restarting application with PM2"
 cd "$VPS_PATH"
