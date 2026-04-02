@@ -3,6 +3,11 @@ set -euo pipefail
 
 VPS_PATH="${1:-/srv/uebernahme}"
 
+echo "==> Fixing permissions for deployer-uebernahme user"
+sudo chown -R deployer-uebernahme:deployer-uebernahme "$VPS_PATH"
+sudo find "$VPS_PATH" -type f -exec chmod u+rw {} \;
+sudo find "$VPS_PATH" -type d -exec chmod u+rwx {} \;
+
 echo "==> Pulling latest code"
 cd "$VPS_PATH"
 git fetch origin main
