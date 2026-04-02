@@ -551,7 +551,7 @@
 }
 
 .asset-total strong {
-    color: var(--c-accent);
+    color: var(--c-green-dark);
 }
 
 .asset-tabs {
@@ -562,55 +562,58 @@
 }
 
 .asset-tab {
-    padding: .35rem .8rem;
-    border: 1px solid var(--c-border);
+    padding: .4rem .9rem;
+    border: 1.5px solid var(--c-border-dark);
     border-radius: 20px;
-    background: var(--c-bg);
+    background: #fff;
     cursor: pointer;
     font-size: .82rem;
-    color: var(--c-text-2);
+    color: var(--c-text);
+    font-weight: 500;
     transition: all .15s;
     white-space: nowrap;
 }
 
 .asset-tab:hover {
-    border-color: var(--c-accent);
-    color: var(--c-accent);
+    border-color: var(--c-green);
+    color: var(--c-green);
+    background: var(--c-green-light);
 }
 
 .asset-tab.active {
-    background: var(--c-accent);
+    background: var(--c-green);
     color: #fff;
-    border-color: var(--c-accent);
+    border-color: var(--c-green-dark);
     font-weight: 600;
+    box-shadow: 0 2px 4px rgba(18, 84, 32, .25);
 }
 
 .asset-tab .badge {
     display: inline-block;
-    background: rgba(0, 0, 0, .12);
-    color: inherit;
+    background: var(--c-bg-2);
+    color: var(--c-text-2);
     border-radius: 10px;
     padding: 0 .45rem;
     font-size: .72rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-left: .3rem;
     line-height: 1.6;
     vertical-align: middle;
 }
 
 .asset-tab.active .badge {
-    background: rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .3);
     color: #fff;
 }
 
 .asset-tab .badge.badge-full {
-    background: var(--c-success);
+    background: var(--c-green);
     color: #fff;
 }
 
 .asset-tab.active .badge.badge-full {
     background: #fff;
-    color: var(--c-success);
+    color: var(--c-green);
 }
 
 .asset-panel {
@@ -632,13 +635,14 @@
     font-size: .78rem;
     border-radius: var(--radius);
     border: none;
-    background: var(--c-accent);
+    background: var(--c-purple);
     color: #fff;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .btn-sm:hover {
-    opacity: .85;
+    background: var(--c-purple-dark);
 }
 
 .btn-sm-outline {
@@ -678,14 +682,14 @@
 }
 
 .asset-item.selected {
-    background: var(--c-brand-light);
-    border-left: 3px solid var(--c-accent);
+    background: var(--c-green-light);
+    border-left: 3px solid var(--c-green);
     padding-left: calc(.6rem - 3px);
 }
 
 .asset-item.selected .asset-item-name {
     font-weight: 600;
-    color: var(--c-text);
+    color: var(--c-green-dark);
 }
 
 .asset-item-check {
@@ -699,6 +703,9 @@
 
 .asset-item-check input[type="checkbox"] {
     flex-shrink: 0;
+    accent-color: var(--c-green);
+    width: 1rem;
+    height: 1rem;
 }
 
 .asset-item-name {
@@ -727,7 +734,7 @@
     font-weight: 600;
     min-width: 70px;
     text-align: right;
-    color: var(--c-accent);
+    color: var(--c-green-dark);
 }
 
 .asset-qty-input {
@@ -798,12 +805,14 @@
 }
 
 .asset-table th {
-    background: var(--c-bg-2, #f5f7fa);
-    padding: .4rem .6rem;
+    background: var(--c-purple);
+    padding: .5rem .6rem;
     text-align: left;
-    border-bottom: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-purple-dark);
     font-weight: 600;
-    color: var(--c-text-2);
+    color: #fff;
+    font-size: .78rem;
+    letter-spacing: .02em;
 }
 
 .asset-table td {
@@ -812,9 +821,11 @@
 }
 
 .asset-table-total td {
-    border-top: 2px solid var(--c-accent);
+    border-top: 2px solid var(--c-green);
     border-bottom: none;
-    background: var(--c-brand-light);
+    background: var(--c-green-light);
+    font-weight: 600;
+    color: var(--c-green-dark);
 }
 
 
