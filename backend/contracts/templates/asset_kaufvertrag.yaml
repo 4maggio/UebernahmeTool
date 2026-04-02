@@ -448,6 +448,96 @@ sections:
           mit Sitz in {{KAEUFER_ADRESSE}},
           vertreten durch den Geschäftsführer {{KAEUFER_GESCHAEFTSFUEHRER}},
 
+      - id: rubrum_ag_seller
+        condition: "seller_type == 'AG'"
+        replaces: "VERKAEUFER_NAME block"
+        text: |
+          {{VERKAEUFER_NAME}},
+          eingetragen im Handelsregister des {{VERKAEUFER_REGISTERGERICHT}},
+          mit Sitz in {{VERKAEUFER_ADRESSE}},
+          vertreten durch den Vorstand {{VERKAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_ag_buyer
+        condition: "buyer_type == 'AG'"
+        replaces: "KAEUFER_NAME block"
+        text: |
+          {{KAEUFER_NAME}},
+          eingetragen im Handelsregister des {{KAEUFER_REGISTERGERICHT}},
+          mit Sitz in {{KAEUFER_ADRESSE}},
+          vertreten durch den Vorstand {{KAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_gmbh_cokg_seller
+        condition: "seller_type == 'GmbH & Co. KG'"
+        replaces: "VERKAEUFER_NAME block"
+        text: |
+          {{VERKAEUFER_NAME}},
+          eingetragen im Handelsregister des {{VERKAEUFER_REGISTERGERICHT}},
+          mit Sitz in {{VERKAEUFER_ADRESSE}},
+          vertreten durch die persönlich haftende Gesellschafterin,
+          diese vertreten durch den Geschäftsführer {{VERKAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_gmbh_cokg_buyer
+        condition: "buyer_type == 'GmbH & Co. KG'"
+        replaces: "KAEUFER_NAME block"
+        text: |
+          {{KAEUFER_NAME}},
+          eingetragen im Handelsregister des {{KAEUFER_REGISTERGERICHT}},
+          mit Sitz in {{KAEUFER_ADRESSE}},
+          vertreten durch die persönlich haftende Gesellschafterin,
+          diese vertreten durch den Geschäftsführer {{KAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_ohg_seller
+        condition: "seller_type == 'OHG'"
+        replaces: "VERKAEUFER_NAME block"
+        text: |
+          {{VERKAEUFER_NAME}},
+          eingetragen im Handelsregister des {{VERKAEUFER_REGISTERGERICHT}},
+          bestehend aus den Gesellschaftern:
+          {{VERKAEUFER_GESELLSCHAFTER}},
+          mit Sitz in {{VERKAEUFER_ADRESSE}},
+          vertreten durch {{VERKAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_ohg_buyer
+        condition: "buyer_type == 'OHG'"
+        replaces: "KAEUFER_NAME block"
+        text: |
+          {{KAEUFER_NAME}},
+          eingetragen im Handelsregister des {{KAEUFER_REGISTERGERICHT}},
+          bestehend aus den Gesellschaftern:
+          {{KAEUFER_GESELLSCHAFTER}},
+          mit Sitz in {{KAEUFER_ADRESSE}},
+          vertreten durch {{KAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_kg_seller
+        condition: "seller_type == 'KG'"
+        replaces: "VERKAEUFER_NAME block"
+        text: |
+          {{VERKAEUFER_NAME}},
+          eingetragen im Handelsregister des {{VERKAEUFER_REGISTERGERICHT}},
+          bestehend aus den Gesellschaftern:
+          {{VERKAEUFER_GESELLSCHAFTER}},
+          mit Sitz in {{VERKAEUFER_ADRESSE}},
+          vertreten durch den Komplementär {{VERKAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_kg_buyer
+        condition: "buyer_type == 'KG'"
+        replaces: "KAEUFER_NAME block"
+        text: |
+          {{KAEUFER_NAME}},
+          eingetragen im Handelsregister des {{KAEUFER_REGISTERGERICHT}},
+          bestehend aus den Gesellschaftern:
+          {{KAEUFER_GESELLSCHAFTER}},
+          mit Sitz in {{KAEUFER_ADRESSE}},
+          vertreten durch den Komplementär {{KAEUFER_GESCHAEFTSFUEHRER}},
+
+      - id: rubrum_einzelunternehmer_seller
+        condition: "seller_type == 'Einzelunternehmer'"
+        replaces: "VERKAEUFER_NAME block"
+        text: |
+          {{VERKAEUFER_NAME}},
+          Einzelunternehmer, eingetragen im Handelsregister des {{VERKAEUFER_REGISTERGERICHT}},
+          mit Geschäftsanschrift {{VERKAEUFER_ADRESSE}},
+
   # ═════════════════════════════════════════════════════════════════════════════
   # § 1 — PRÄAMBEL
   # ═════════════════════════════════════════════════════════════════════════════
@@ -574,7 +664,7 @@ sections:
               d) EDV-Hardware (Computer, Server, Peripheriegeräte),
               e) Werkzeuge und Kleingeräte,
               f) sonstige Betriebsmittel,
-              jeweils im Zustand zum Stichtag gemäß § 5 und im Einzelnen aufgeführt
+              jeweils im Zustand zum Stichtag gemäß § 6 und im Einzelnen aufgeführt
               in Anlage 2.2 (Inventarliste).
 
       # ── 2.2 Fahrzeuge ─────────────────────────────────────────
@@ -643,7 +733,7 @@ sections:
           (6) Vorräte:
               Sämtliche zum Geschäftsbetrieb gehörenden Roh-, Hilfs- und Betriebsstoffe,
               unfertigen und fertigen Erzeugnisse sowie Waren (nachfolgend „Vorräte")
-              im Zustand und Umfang zum Stichtag gemäß § 5, nach Maßgabe der am Stichtag
+              im Zustand und Umfang zum Stichtag gemäß § 6, nach Maßgabe der am Stichtag
               durchzuführenden gemeinsamen Inventur (Anlage 2.6).
 
               Die Bewertung der Vorräte erfolgt wie folgt:
@@ -656,7 +746,7 @@ sections:
                  oder mit einem Abschlag von {{VORRAETE_ABSCHLAG_PROZENT}} % bewertet.
 
               Der endgültige Vorrätewert wird in einem gemeinsamen Protokoll festgestellt
-              und führt zu einer Anpassung des Kaufpreises gemäß § 3 Abs. (6).
+              und führt zu einer Anpassung des Kaufpreises gemäß § 4 Abs. (6).
 
       # ── 2.6 Forderungen ───────────────────────────────────────
       - id: kaufgegenstand_forderungen
@@ -888,7 +978,7 @@ sections:
                vertraglich übertragbar sind. Der Verkäufer wird die für die Übertragung
                erforderlichen Zustimmungen der Lizenzgeber einholen. Soweit einzelne
                Lizenzen nicht übertragbar sind, wird der Verkäufer dem Käufer dies
-               unverzüglich mitteilen; in diesem Fall wird der Kaufpreis gemäß § 3
+               unverzüglich mitteilen; in diesem Fall wird der Kaufpreis gemäß § 4
                Abs. (7) angepasst.
 
       # ── 2.13 Kundenstamm / Geschäftsdaten ─────────────────────
@@ -2795,8 +2885,8 @@ sections:
       (Käufer)
 
     variants:
-      - id: unterschrift_gbr_seller
-        condition: "seller_type == 'GbR'"
+      - id: unterschrift_gesellschaft_seller
+        condition: "seller_type IN ['GbR', 'OHG', 'KG', 'GmbH', 'UG', 'GmbH & Co. KG', 'AG']"
         replaces: "VERKAEUFER_NAME block"
         text: |
           _______________________________________

@@ -823,7 +823,7 @@ const ContractApp = (() => {
         return n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
     }
 
-    // Build ANLAGE_ASSETLISTE text for contract
+    // Build ANLAGE_ASSETLISTE text for contract (no prices — values are internal only)
     function buildAssetListText() {
         const list = state.data.assetList || [];
         if (list.length === 0) return '(keine Posten erfasst)';
@@ -837,24 +837,15 @@ const ContractApp = (() => {
         }
 
         let text = '\n';
-        let totalAll = 0;
         for (const [cat, items] of Object.entries(byCategory)) {
             text += `\n  ${cat.toUpperCase()}\n`;
             text += `  ${'─'.repeat(60)}\n`;
-            let catTotal = 0;
             for (const item of items) {
-                const sub = (parseFloat(item.qty) || 0) * (parseFloat(item.unitPrice) || 0);
-                catTotal += sub;
-                const priceStr = item.unitPrice > 0
-                    ? `${item.qty} × ${fmtEur(item.unitPrice)} = ${fmtEur(sub)}`
-                    : `${item.qty} Stk. (Preis: 0,00 €)`;
-                text += `  • ${item.name.padEnd(50).substring(0, 50)}  ${priceStr}\n`;
+                const qty = parseInt(item.qty) || 1;
+                text += `  • ${item.name}${qty > 1 ? `  (${qty} Stk.)` : ''}\n`;
             }
-            text += `  Zwischensumme ${cat}: ${fmtEur(catTotal)}\n`;
-            totalAll += catTotal;
         }
-        text += `\n  ${'═'.repeat(60)}\n`;
-        text += `  GESAMTWERT ASSETLISTE: ${fmtEur(totalAll)}\n`;
+        text += `\n  Anzahl Posten gesamt: ${list.length}\n`;
         return text;
     }
 
