@@ -15,8 +15,13 @@ npm install --omit=dev
 echo "==> Running database migrations"
 node src/db/migrate.js
 
-echo "==> Importing Knowledge Base YAML files"
-node src/db/seeds/importKnowledge.js
+echo "==> Checking for Knowledge Base changes..."
+if git diff HEAD~1 HEAD --name-only | grep -q '^backend/knowledge/'; then
+  echo "==> Importing Knowledge Base YAML files (changes detected)"
+  node src/db/seeds/importKnowledge.js
+else
+  echo "==> Skipping Knowledge Base import (no YAML changes)"
+fi
 
 echo "==> Reloading nginx config (zero-downtime)"
 sudo docker exec traefik-uebernahme-1 nginx -s reload
