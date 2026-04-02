@@ -1,0 +1,285 @@
+slug: recht/konstellationen
+category: recht
+title:
+  de: "Rechtliche Anforderungen nach Verkäufer-/Käufer-Konstellation"
+  en: "Legal Requirements by Seller/Buyer Party Constellation"
+summary:
+  de: "Die rechtlichen Pflichten und Risiken einer Unternehmensübernahme variieren stark je nach Rechtsform der beteiligten Parteien — von Formvorschriften über Haftung bis zum Arbeitnehmerübergang."
+  en: "Legal duties and risks in a business acquisition vary significantly by the legal forms of the parties involved — from formal requirements to liability and employee transfer."
+content:
+  de: |
+    ## Rechtliche Konstellationen bei Unternehmensübernahmen
+
+    ⚠️ **Hinweis:** Dieser Artikel gibt einen Überblick, ersetzt aber keine anwaltliche Beratung.
+    Insbesondere bei Konstellationen mit Mitarbeitern, Immobilien oder hohen Kaufpreisen ist
+    eine individuelle Rechtsberatung zwingend erforderlich.
+
+    ---
+
+    ### Übersicht: Rechtliche Kernunterschiede nach Konstellation
+
+    | Thema | GbR → Privatperson | GbR → GmbH/UG | GmbH → Privatperson (Share) | GmbH → GmbH/UG (Share) | GmbH → beliebig (Asset) |
+    |-------|:------------------:|:--------------:|:---------------------------:|:----------------------:|:----------------------:|
+    | **§ 613a BGB** (Arbeitnehmerübergang) | ✅ Gilt | ✅ Gilt | ❌ Gilt nicht | ❌ Gilt nicht | ✅ Gilt |
+    | **Notarielle Beurkundung** | Nur bei Immobilien | Nur bei Immobilien | ✅ Zwingend (§ 15 GmbHG) | ✅ Zwingend (§ 15 GmbHG) | Nur bei Immobilien |
+    | **§ 25 HGB** (Firmenfortführung) | ⚠️ Prüfen | ⚠️ Prüfen | ❌ Nicht relevant | ❌ Nicht relevant | ⚠️ Prüfen |
+    | **Haftung für Altschulden** | Nur übernommene | Nur übernommene | ✅ Alle (in der GmbH) | ✅ Alle (in der GmbH) | Nur übernommene |
+    | **Due Diligence Umfang** | Selektiv (Assets) | Selektiv (Assets) | Umfassend (alles!) | Umfassend (alles!) | Selektiv (Assets) |
+    | **Vertragsübergang** | Einzeln, mit Zustimmung | Einzeln, mit Zustimmung | Automatisch | Automatisch | Einzeln, mit Zustimmung |
+
+    ---
+
+    ### 1. GbR → Privatperson (Asset Deal)
+
+    **Formvorschriften:**
+    - Kaufvertrag: Schriftform empfohlen, nicht gesetzlich vorgeschrieben (außer Immobilien → Notar)
+    - Jedes Wirtschaftsgut muss einzeln übertragen werden
+    - Übereignung beweglicher Sachen: § 929 BGB (Einigung + Übergabe)
+    - Domain-Transfer: über Registrar (DENIC, etc.)
+
+    **§ 613a BGB — Arbeitnehmerübergang:**
+    - ✅ **Gilt automatisch** bei Fortführung des Betriebs
+    - Alle Arbeitnehmer gehen auf den Käufer über — kein Wahlrecht des Käufers!
+    - Schriftliche Information an jeden Mitarbeiter erforderlich (§ 613a Abs. 5 BGB)
+    - Widerspruchsfrist: 1 Monat ab korrekter Information
+    - Kündigungsverbot wegen des Übergangs (§ 613a Abs. 4 BGB)
+
+    **§ 25 HGB — Firmenfortführung:**
+    - Wird der Geschäftsname weitergeführt (z. B. "budxxl"), haftet der Käufer für **alle Altverbindlichkeiten**
+    - Ausnahme: Vereinbarung mit Gläubigern + Eintragung im Handelsregister
+    - **Empfehlung:** Neuen Firmennamen verwenden oder § 25 HGB ausdrücklich im Vertrag ausschließen
+
+    **Vertragsübernahme:**
+    - Lieferantenverträge: Zustimmung des Vertragspartners nötig (§ 414 BGB)
+    - Mietvertrag: Zustimmung des Vermieters nötig
+    - Versicherungen: Separate Neuabschlüsse oder Umschreibung
+    - Online-Plattformen: Amazon-Konto **nicht übertragbar**, Shopify per Support-Transfer
+
+    **Haftungsthemen:**
+    - Käufer haftet nur für explizit übernommene Verbindlichkeiten
+    - Produkthaftung für vor der Übernahme hergestellte/verkaufte Waren verbleibt beim Verkäufer
+    - Gewährleistungsansprüche: Im Vertrag regeln (Haftungsausschluss / -begrenzung)
+
+    **GbR-Auflösung:**
+    - Nach dem Asset Deal muss die GbR aufgelöst werden
+    - Gewerbeabmeldung durch die alten Gesellschafter
+    - Finanzamt über Betriebsaufgabe informieren
+    - Ggf. Schlussabrechnung / Schlussbilanz erstellen
+
+    ---
+
+    ### 2. GbR → GmbH / UG (Asset Deal)
+
+    **Identisch mit GbR → Privatperson**, mit folgenden Besonderheiten:
+
+    **GmbH/UG als Käufer:**
+    - Die GmbH/UG muss bereits gegründet und im Handelsregister eingetragen sein
+    - Geschäftsführer handelt im Namen der GmbH — Vertretungsberechtigung prüfen (Handelsregister)
+    - Bei Neugründung: IHK-Mitgliedschaft beginnt automatisch
+    - **Achtung bei UG**: Stammkapital oft sehr gering — Unterkapitalisierung als Risiko für Verkäufer?
+      → Verkäufer sollte Kaufpreissicherung verlangen (z. B. Bankbürgschaft, Treuhandkonto)
+
+    **Vertragliche Besonderheit:**
+    - Kaufvertrag wird von GmbH-Geschäftsführer (nicht den Gesellschaftern) unterzeichnet
+    - Bei größeren Transaktionen: Zustimmung der Gesellschafterversammlung prüfen (§ 46 Nr. 6 GmbHG — "außergewöhnliche Geschäfte")
+
+    ---
+
+    ### 3. Einzelunternehmen → Privatperson (Asset Deal)
+
+    **Weitgehend identisch mit GbR → Privatperson**, mit Vereinfachungen:
+    - Nur ein Verkäufer → einfachere Vertragsgestaltung
+    - Kein Gesellschafterauseinandersetzung nötig
+    - Vollmacht / Vertretungsfragen entfallen
+
+    **§ 613a BGB:** Gilt identisch wie bei GbR.
+    **§ 25 HGB:** Gilt identisch wie bei GbR.
+
+    ---
+
+    ### 4. Einzelunternehmen → GmbH / UG (Asset Deal)
+
+    Kombination aus Konstellation 2 und 3. Keine zusätzlichen Besonderheiten.
+
+    **Alternative: Einbringung (§ 20 UmwStG)**
+    - Unternehmer bringt Betrieb in eigene neue GmbH ein
+    - Kein Verkauf, sondern Sacheinlage gegen GmbH-Anteile
+    - **Vorteil:** Steuerneutral zu Buchwerten möglich
+    - **Nachteil:** 7 Jahre Sperrfrist — bei Verkauf der GmbH-Anteile innerhalb der Frist: rückwirkende Versteuerung
+    - Formvorschrift: Notarielle Beurkundung der GmbH-Gründung / Kapitalerhöhung
+
+    ---
+
+    ### 5. GmbH → Privatperson (Share Deal)
+
+    **Formvorschriften:**
+    - **Notarielle Beurkundung zwingend** (§ 15 Abs. 3 GmbHG)
+    - Kosten: ca. 0,5–2 % des Kaufpreises (Notargebühren nach GNotKG)
+    - Aktualisierte Gesellschafterliste muss zum Handelsregister eingereicht werden (§ 40 GmbHG)
+
+    **§ 613a BGB:**
+    - ❌ **Gilt NICHT** — Arbeitgeber (die GmbH) bleibt identisch
+    - Kein Informations- oder Widerspruchsrecht der Arbeitnehmer
+    - **Großer Vorteil** bei Unternehmen mit vielen Mitarbeitern
+
+    **Haftung:**
+    - Käufer übernimmt die GmbH **mit allen Verbindlichkeiten**
+    - Altschulden, Steuernachzahlungen, Pensionsrückstellungen, laufende Rechtsstreitigkeiten
+    - → **Umfangreiche Due Diligence zwingend erforderlich**
+
+    **Garantien und Freistellungen (W&I):**
+    - Verkäufer gibt Garantien (Bilanzgarantie, Steuergarantie, keine unbekannten Schulden etc.)
+    - Bei Garantieverletzung: Schadensersatzanspruch des Käufers
+    - Freistellungsklauseln für bekannte Risiken (z. B. laufende Steuerprüfung)
+    - Haftungshöchstgrenze typisch: 50–100 % des Kaufpreises
+    - Verjährung: typisch 18–24 Monate, für Steuer- und Umweltgarantien länger
+
+    **Verträge:**
+    - Alle Verträge der GmbH bleiben unverändert bestehen
+    - **Achtung: Change-of-Control-Klauseln** — Lieferanten/Kunden haben ggf. Sonderkündigungsrecht bei Gesellschafterwechsel
+    - Diese Kunden/Lieferantenverträge vorher prüfen!
+
+    **Kartellrecht:**
+    - Bei Umsatzschwellen (§ 35 GWB): Anmeldepflicht beim Bundeskartellamt
+    - Relevant i.d.R. erst ab Umsatz > 500 Mio. € (weltweit) des Erwerbers oder > 50 Mio. € Zielunternehmen
+    - Bei kleinen KMU-Übernahmen: üblicherweise nicht relevant
+
+    **Gesellschaftsvertrag:**
+    - Vinkulierungsklausel prüfen: Erfordert die Anteilsübertragung die Zustimmung der übrigen Gesellschafter? (§ 15 Abs. 5 GmbHG)
+    - Vorkaufsrechte anderer Gesellschafter prüfen
+    - Tag-Along / Drag-Along-Rechte
+
+    ---
+
+    ### 6. GmbH → GmbH / UG (Share Deal)
+
+    **Identisch mit GmbH → Privatperson** (Share Deal), mit folgenden Besonderheiten:
+
+    - Käufer ist juristische Person → Geschäftsführer handelt, Vertretungsberechtigung prüfen
+    - **Gesellschafterbeschluss beim Käufer** nötig für Erwerb (§ 46 Nr. 6 GmbHG — "außergewöhnliches Geschäft")
+    - Ggf. Konzernrecht relevant (§§ 291–338 AktG analog): Abhängigkeitsbericht, wenn Käufer >50% hält
+
+    **Holding-Struktur:**
+    - Typisch: Käufer gründet Erwerber-GmbH (SPV), die die Ziel-GmbH kauft
+    - Fremdfinanzierung über die Erwerber-GmbH möglich (Leveraged Buyout)
+    - Zinsen der Akquisitionsfinanzierung steuerlich absetzbar (Zinsschranke § 4h EStG / § 8a KStG beachten)
+
+    ---
+
+    ### 7. GmbH → beliebig (Asset Deal)
+
+    **Formvorschriften:**
+    - Kaufvertrag schriftlich (bei Immobilien: notarielle Beurkundung)
+    - GmbH als Verkäufer: Geschäftsführer braucht ggf. Gesellschafterbeschluss (Verkauf aller wesentlichen Assets = § 179a AktG analog)
+
+    **§ 613a BGB:**
+    - ✅ **Gilt** — beim Asset Deal aus einer GmbH gehen die Arbeitnehmer auf den Käufer über
+    - Alle Informations- und Kündigungsschutzregeln gelten (wie bei GbR-Konstellation)
+
+    **§ 25 HGB:**
+    - ⚠️ Prüfen bei Fortführung des Geschäftsnamens
+
+    **Besonderheit: § 179a AktG analog auf GmbH:**
+    - Verkauf des gesamten Vermögens einer GmbH bedarf der Zustimmung **aller Gesellschafter** (oder 75 %)
+    - Ohne Beschluss: Kaufvertrag ist schwebend unwirksam!
+    - Nachweis des Gesellschafterbeschlusses im Vertrag dokumentieren
+
+    ---
+
+    ### Checkliste: Rechtliche Prüfpunkte nach Konstellation
+
+    #### Bei jedem Asset Deal:
+    - [ ] Vollständige Asset-Liste im Vertragsanhang?
+    - [ ] § 613a BGB: Mitarbeiterinformation vorbereitet?
+    - [ ] § 25 HGB: Firmenfortführung → Altschulden-Haftung?
+    - [ ] Alle Vertragsübernahmen mit Drittparteien geklärt?
+    - [ ] Gewerbeanmeldung beim Käufer geplant?
+    - [ ] Datenschutz: Kundendaten-Übertragung DSGVO-konform?
+    - [ ] Wettbewerbsverbot vereinbart?
+    - [ ] Übergangszeitraum / Einarbeitung geregelt?
+
+    #### Bei jedem Share Deal:
+    - [ ] Notartermin vereinbart?
+    - [ ] Gesellschaftsvertrag auf Vinkulierung/Vorkaufsrechte geprüft?
+    - [ ] Change-of-Control-Klauseln in Schlüsselverträgen identifiziert?
+    - [ ] Due Diligence: Legal, Financial, Tax, HR, IT durchgeführt?
+    - [ ] Garantiekatalog mit Verkäufer verhandelt?
+    - [ ] Gesellschafterliste beim Handelsregister aktualisiert?
+    - [ ] Kaufpreismechanismus (Locked Box vs. Closing Accounts) festgelegt?
+
+    #### Zusätzlich bei GbR als Verkäufer:
+    - [ ] Alle Gesellschafter stimmen der Veräußerung zu?
+    - [ ] Gesellschaftsvertrag erlaubt den Verkauf?
+    - [ ] Auflösung der GbR nach Vollzug geplant (Gewerbeabmeldung, FA)?
+    - [ ] Auseinandersetzungsbilanz der GbR erstellt?
+
+    #### Zusätzlich bei GmbH/UG als Käufer:
+    - [ ] Existiert die GmbH/UG bereits (HR-Eintrag)?
+    - [ ] Geschäftsführer vertretungsberechtigt?
+    - [ ] Gesellschafterbeschluss für die Akquisition?
+    - [ ] Finanzierung der Akquisition gesichert?
+
+    ---
+
+    ### Sonderfall: Umwandlung vor Verkauf
+
+    Manchmal lohnt es sich, die Rechtsform **vor der Transaktion** zu ändern:
+
+    | Ausgangslage | Umwandlung | Ziel | Vorteil |
+    |---|---|---|---|
+    | GbR soll verkauft werden | GbR → GmbH (Einbringung) | Share Deal ermöglichen | Steuerlich günstiger (§ 17 EStG statt § 16) |
+    | Einzelunternehmen → Nachfolge | eK → GmbH (Sacheinlage) | Haftungsbegrenzung + Share Deal | Käufer übernimmt nur GmbH-Anteile |
+    | GmbH-Gesellschafter will wenig Steuern | Holding → GmbH | Zwischenholding einziehen | § 8b KStG: 95% steuerfrei |
+
+    **Achtung:** Umwandlungen brauchen Vorlaufzeit (Sperrfristen bis 7 Jahre für volle Steuervorteile).
+
+  en: |
+    ## Legal Constellations in Business Acquisitions
+
+    ⚠️ **Note:** This overview does not replace individual legal advice.
+
+    ### Key Differences by Constellation
+
+    | Topic | GbR→Individual | GmbH→Individual (Share) | GmbH→Any (Asset) |
+    |-------|:--------------:|:-----------------------:|:-----------------:|
+    | § 613a BGB (employee transfer) | ✅ Applies | ❌ Does not apply | ✅ Applies |
+    | Notarization required | Only for real estate | ✅ Mandatory (§ 15 GmbHG) | Only for real estate |
+    | § 25 HGB (trade name liability) | ⚠️ Check | ❌ Not relevant | ⚠️ Check |
+    | Legacy liabilities | Only assumed ones | ✅ All (within GmbH) | Only assumed ones |
+    | Due diligence scope | Selective (assets) | Comprehensive (everything) | Selective (assets) |
+    | Contract transfer | Individual, consent needed | Automatic | Individual, consent needed |
+
+    ### Asset Deal Checklist
+    - Complete asset list in contract annex
+    - § 613a employee notification prepared
+    - § 25 HGB trade name liability addressed
+    - All third-party contract transfers arranged
+    - Trade registration for buyer planned
+    - GDPR compliance for customer data transfer
+    - Non-compete clause agreed
+    - Transition/handover period defined
+
+    ### Share Deal Checklist
+    - Notary appointment scheduled
+    - Articles of association checked for transfer restrictions
+    - Change-of-control clauses identified
+    - Full due diligence completed
+    - Warranty catalog negotiated
+    - Shareholder list update at commercial register
+    - Purchase price mechanism agreed (locked box vs. closing accounts)
+
+tags:
+  - recht
+  - konstellationen
+  - asset-deal
+  - share-deal
+  - §613a-bgb
+  - §25-hgb
+  - §15-gmbhg
+  - formvorschriften
+  - haftung
+  - due-diligence
+source_type: manual
+source_url: ""
+source_law_paragraph: "§ 613a BGB, § 25 HGB, § 15 GmbHG, § 179a AktG, § 414 BGB, § 20 UmwStG"
+is_active: true

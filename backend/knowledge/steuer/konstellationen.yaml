@@ -1,0 +1,268 @@
+slug: steuer/konstellationen
+category: steuer
+title:
+  de: "Steuerliche Auswirkungen nach Verkäufer-/Käufer-Konstellation"
+  en: "Tax Implications by Seller/Buyer Party Constellation"
+summary:
+  de: "Die Steuerbelastung bei einer Unternehmensübernahme hängt maßgeblich von den Rechtsformen der beteiligten Parteien ab. GbR→Privatperson ist grundlegend anders als GmbH→UG."
+  en: "Tax burden in a business acquisition depends heavily on the legal forms of the parties involved. GbR→individual is fundamentally different from GmbH→UG."
+content:
+  de: |
+    ## Steuerliche Konstellationen bei Unternehmensübernahmen
+
+    ⚠️ **Hinweis:** Dies ist eine vereinfachte Darstellung. Für eine verbindliche steuerliche
+    Einschätzung ist zwingend ein Steuerberater hinzuzuziehen.
+
+    ---
+
+    ### Übersicht: Welche Deal-Struktur ist möglich?
+
+    | Verkäufer | Käufer | Share Deal | Asset Deal |
+    |-----------|--------|:----------:|:----------:|
+    | GbR | Privatperson | ❌ | ✅ einzig möglich |
+    | GbR | GmbH / UG | ❌ | ✅ einzig möglich |
+    | Einzelunternehmen | Privatperson | ❌ | ✅ einzig möglich |
+    | Einzelunternehmen | GmbH / UG | ❌ | ✅ einzig möglich |
+    | GmbH | Privatperson | ✅ | ✅ |
+    | GmbH | GmbH / UG | ✅ | ✅ |
+    | UG | Privatperson | ✅ | ✅ |
+    | UG | GmbH / UG | ✅ | ✅ |
+
+    ---
+
+    ### 1. GbR → Privatperson (Asset Deal)
+
+    **Verkäufer (GbR-Gesellschafter):**
+    - Veräußerungsgewinn je Gesellschafter nach § 16 EStG (gewerbliche Einkünfte)
+    - Jeder Gesellschafter ermittelt seinen Anteil am Gewinn separat
+    - Freibetrag § 16 Abs. 4: 45.000 € (ab 55 J. / BU, einmalig, abschmelzend ab 136.000 €)
+    - Tarifbegünstigung § 34 EStG: Fünftelregelung oder halber Durchschnittssteuersatz
+    - Gewerbesteuerfrei (§ 7 Abs. 2 GewStG) bei natürlichen Personen
+    - **Effektive Steuerbelastung**: ca. 20–25 % (bei Nutzung § 34 Abs. 3) bis 45 % (ohne Begünstigungen)
+
+    **Käufer (Privatperson):**
+    - Kaufpreis wird auf einzelne Wirtschaftsgüter aufgeteilt
+    - AfA auf Anschaffungskosten (Step-up auf Marktwert)
+    - Goodwill: 15 Jahre linear abschreibbar (§ 7 Abs. 1 S. 3 EStG)
+    - Lagerbestand: sofort als Betriebsausgabe abziehbar (bei Verbrauch/Verkauf)
+    - USt: Bei Geschäftsveräußerung im Ganzen (§ 1 Abs. 1a UStG) keine USt fällig
+    - **Vorteil**: Volle Abschreibung aller erworbenen Vermögenswerte
+
+    **Besonderheit:** Käufer muss neues Gewerbe anmelden. Bestehende Lizenzen/Zulassungen gehen nicht automatisch über.
+
+    ---
+
+    ### 2. GbR → GmbH / UG (Asset Deal)
+
+    **Verkäufer (GbR-Gesellschafter):**
+    - Identisch wie bei GbR → Privatperson (§ 16 EStG, Freibetrag, § 34 EStG)
+
+    **Käufer (GmbH/UG):**
+    - Kaufpreis auf Wirtschaftsgüter aufgeteilt → AfA auf Anschaffungskosten
+    - Goodwill: 15 Jahre linear abschreibbar
+    - **Vorteil gegenüber Privatperson-Käufer**: Die AfA mindert den körperschaftsteuerpflichtigen Gewinn (KSt ~15 % + GewSt ~14 % = ~30 %)
+    - Bei späterer Weiterveräußerung: Gewinne der GmbH unterliegen erst bei Ausschüttung der Nachversteuerung (Abgeltungsteuer 25 % oder Teileinkünfte)
+    - **Achtung**: Vorsteuerpflicht prüfen — bei Geschäftsveräußerung im Ganzen (§ 1 Abs. 1a UStG) fällt keine USt an
+
+    **Strategischer Hinweis:** Gründung einer Erwerber-GmbH vor der Übernahme kann steuerlich sinnvoll sein (Holding-Struktur). Die GmbH erwirbt die Assets → AfA-Vorteile → späterer Exit der GmbH-Anteile ist für natürliche Person nur zu 60 % steuerpflichtig (§ 3 Nr. 40 EStG).
+
+    ---
+
+    ### 3. Einzelunternehmen → Privatperson (Asset Deal)
+
+    **Verkäufer:**
+    - Veräußerungsgewinn nach § 16 EStG (identisch wie GbR, aber nur ein Steuerpflichtiger)
+    - Freibetrag § 16 Abs. 4: 45.000 € (ab 55 J. / BU, einmalig)
+    - Tarifbegünstigung § 34 EStG anwendbar
+    - Gewerbesteuerfrei (§ 7 Abs. 2 GewStG)
+
+    **Käufer:**
+    - Identisch wie bei GbR → Privatperson
+
+    **Unterschied zur GbR:** Nur ein Gesellschafter → einfachere Abwicklung, kein Auseinandersetzungs­gutachten nötig.
+
+    ---
+
+    ### 4. Einzelunternehmen → GmbH / UG (Asset Deal)
+
+    **Verkäufer:**
+    - Identisch wie Einzelunternehmen → Privatperson
+
+    **Käufer (GmbH/UG):**
+    - Identisch wie bei GbR → GmbH/UG (AfA-Vorteile, Goodwill 15 J.)
+
+    **Alternative:** Einbringung nach § 20 UmwStG — der Einzelunternehmer bringt seinen Betrieb in eine (neue) GmbH ein. Der einbringende Unternehmer erhält GmbH-Anteile statt Bargeld. **Vorteil:** Steuerneutrale Einbringung zu Buchwerten möglich (Sperrfrist 7 Jahre).
+
+    ---
+
+    ### 5. GmbH → Privatperson (Share Deal)
+
+    **Verkäufer (natürliche Person, Privatvermögen):**
+    - § 17 EStG: Veräußerung bei ≥ 1 % Beteiligung in letzten 5 Jahren
+    - **Teileinkünfteverfahren**: Nur 60 % des Gewinns steuerpflichtig (§ 3 Nr. 40c EStG)
+    - Freibetrag § 17 Abs. 3: 9.060 € (abschmelzend ab 36.100 € Gewinn)
+    - **Effektive Steuerbelastung bei Spitzensteuersatz**: ca. 27,8 % (60 % × 45 % + SolZ)
+    - ⚠️ Kein § 34 EStG anwendbar (nur bei § 16 EStG-Gewinnen)
+
+    **Käufer (Privatperson):**
+    - Kaufpreis = Anschaffungskosten der GmbH-Anteile
+    - **Kein Step-up**: Wirtschaftsgüter bleiben zu Buchwerten in der GmbH — keine zusätzliche AfA
+    - Kaufpreis erst bei späterer Veräußerung steuerlich relevant
+    - **Nachteil**: Keine Abschreibungsmöglichkeit auf den Kaufpreis
+
+    ---
+
+    ### 6. GmbH → Privatperson (Asset Deal)
+
+    **Verkäufer (GmbH):**
+    - GmbH realisiert Veräußerungsgewinn auf Ebene der Gesellschaft
+    - KSt + GewSt auf Gewinn: ca. 30 %
+    - Bei anschließender Ausschüttung an Gesellschafter: + 25 % Abgeltungsteuer (oder Teileinkünfte)
+    - **Gesamtsteuerbelastung: ca. 50 %** — deutlich ungünstiger als Share Deal!
+    - Danach: GmbH muss liquidiert werden (wenn alle Assets verkauft)
+
+    **Käufer (Privatperson):**
+    - Identisch wie bei GbR → Privatperson (voller Step-up, AfA-Vorteile)
+
+    **Fazit:** Asset Deal aus GmbH heraus ist für den Verkäufer steuerlich sehr nachteilig. Share Deal fast immer zu bevorzugen.
+
+    ---
+
+    ### 7. GmbH → GmbH / UG (Share Deal)
+
+    **Verkäufer (GmbH als Holdinggesellschaft):**
+    - **95 % des Gewinns steuerfrei** (§ 8b Abs. 2 KStG)
+    - 5 % gelten als nicht abziehbare Betriebsausgaben
+    - **Effektive Steuerbelastung: ca. 1,5 %** — die steuerlich günstigste Konstellation!
+    - Voraussetzung: Beteiligung ≥ 10 % (für GewSt-Freistellung) bzw. ≥ 15 % (Schachtelprivileg)
+
+    **Verkäufer (natürliche Person mit GmbH-Anteilen):**
+    - § 17 EStG / Teileinkünfteverfahren: eff. ca. 27,8 % (siehe oben)
+
+    **Käufer (GmbH/UG):**
+    - Kein Step-up (Buchwertfortführung in der Zielgesellschaft)
+    - Bei späterer Weiterveräußerung der Anteile: § 8b KStG → wieder 95 % steuerfrei
+
+    **Holding-Strategie:** Wenn eine natürliche Person eine GmbH kaufen will, lohnt sich ggf. die Zwischenschaltung einer Holding-GmbH:
+    - Natürliche Person → gründet Holding-GmbH → Holding kauft Ziel-GmbH
+    - Späterer Verkauf der Ziel-GmbH: nur 1,5 % Steuerlast auf Holding-Ebene
+    - Geld bleibt in der Holding (Reinvestition ohne weitere Besteuerung)
+
+    ---
+
+    ### 8. GmbH → GmbH / UG (Asset Deal)
+
+    **Verkäufer (GmbH):**
+    - Veräußerungsgewinn auf Gesellschaftsebene: KSt + GewSt ≈ 30 %
+    - **Dann**: Liquidation oder Ausschüttung → nochmals Steuer beim Gesellschafter
+    - **Gesamtbelastung: ca. 50 %** — stark nachteilig!
+
+    **Käufer (GmbH/UG):**
+    - Voller Step-up aller Wirtschaftsgüter auf Marktwert
+    - AfA-Vorteile auf Goodwill (15 J.) und sonstige Assets
+    - **Vorteil gegenüber Share Deal**: Höhere Abschreibungen senken laufende Steuerlast
+
+    **Kompromiss:** Share Deal mit Ergänzungsbilanz — Käufer-GmbH aktiviert Mehrwerte in einer steuerlichen Ergänzungsbilanz. Funktioniert nur bei Personengesellschaften als Zwischenebene.
+
+    ---
+
+    ### 9. UG → Privatperson / GmbH
+
+    Die UG (haftungsbeschränkt) ist steuerlich identisch mit der GmbH behandelt. Alle oben genannten GmbH-Konstellationen gelten entsprechend.
+
+    **Besonderheit UG:**
+    - Geringeres Stammkapital (min. 1 €) kann bei Due Diligence auf Unterkapitalisierung hindeuten
+    - Thesaurierungspflicht: 25 % des Jahresüberschusses müssen in Rücklage (§ 5a Abs. 3 GmbHG)
+    - Bei Umwandlung UG → GmbH (nach Aufstockung auf 25.000 €): Kein steuerlicher Vorgang
+
+    ---
+
+    ### Zusammenfassung: Effektive Steuerbelastung Verkäufer
+
+    | Konstellation | Steuerbelastung Verkäufer | Bewertung |
+    |---------------|:-------------------------:|:---------:|
+    | GbR/eK → beliebig (Asset Deal, § 34 Abs. 3) | ca. 20–25 % | ⭐⭐⭐ |
+    | GbR/eK → beliebig (Asset Deal, ohne § 34) | bis 45 % | ⭐ |
+    | GmbH → Share Deal (natUrlP, Teileinkünfte) | ca. 27,8 % | ⭐⭐⭐ |
+    | GmbH → Share Deal (Holding → Holding) | ca. 1,5 % | ⭐⭐⭐⭐⭐ |
+    | GmbH → Asset Deal (GmbH verkauft + Ausschüttung) | ca. 50 % | ⭐ |
+
+    ### Zusammenfassung: Steuerliche Vorteile Käufer
+
+    | Konstellation | AfA-Vorteil (Step-up) | Bewertung |
+    |---------------|:---------------------:|:---------:|
+    | Asset Deal (alle Varianten) | ✅ Voller Step-up | ⭐⭐⭐⭐⭐ |
+    | Share Deal | ❌ Kein Step-up | ⭐ |
+
+    ---
+
+    ### Empfehlung nach Konstellation
+
+    **GbR wird verkauft:**
+    → Immer Asset Deal (einzige Option). Verkäufer sollten § 34 Abs. 3 EStG prüfen.
+    → Für Käufer: Erwerb über neu gegründete GmbH erwägen (Holding-Strategie für späteren Exit).
+
+    **GmbH wird verkauft an Privatperson:**
+    → Share Deal bevorzugen (27,8 % vs. 50 % bei Asset Deal).
+    → Käufer verliert AfA-Vorteil — im Kaufpreis berücksichtigen.
+
+    **GmbH wird verkauft an andere GmbH/Holding:**
+    → Share Deal mit Abstand am günstigsten (1,5 % Verkäufer-Steuer).
+    → Asset Deal nur wenn Käufer erhebliche AfA-Vorteile braucht (selten sinnvoll).
+
+    **Umwandlung vor Verkauf prüfen:**
+    → GbR → GmbH (Einbringung § 20 UmwStG) → dann Share Deal
+    → Nur sinnvoll bei ausreichend langer Vorlaufzeit (7 Jahre Sperrfrist!)
+
+  en: |
+    ## Tax Constellations in Business Acquisitions
+
+    ⚠️ **Note:** Simplified overview. Always consult a tax advisor for binding advice.
+
+    ### Deal Structure by Party Type
+
+    | Seller | Buyer | Share Deal | Asset Deal |
+    |--------|-------|:----------:|:----------:|
+    | GbR / Sole Trader | Individual | ❌ | ✅ only option |
+    | GbR / Sole Trader | GmbH / UG | ❌ | ✅ only option |
+    | GmbH / UG | Individual | ✅ | ✅ |
+    | GmbH / UG | GmbH / UG | ✅ | ✅ |
+
+    ### Effective Tax Rates — Seller
+
+    | Constellation | Seller Tax Rate |
+    |---------------|:---------------:|
+    | GbR/sole trader → any (Asset Deal, § 34(3)) | ~20–25% |
+    | GbR/sole trader → any (Asset Deal, no § 34) | up to 45% |
+    | GmbH → Share Deal (individual, partial-income) | ~27.8% |
+    | GmbH → Share Deal (holding → holding) | ~1.5% |
+    | GmbH → Asset Deal (company sale + distribution) | ~50% |
+
+    ### Buyer Tax Advantages
+
+    | Constellation | Step-up Depreciation |
+    |---------------|:--------------------:|
+    | Asset Deal (all variants) | ✅ Full step-up |
+    | Share Deal | ❌ No step-up |
+
+    ### Key Recommendations
+    - **GbR sale:** Always Asset Deal (only option). Check § 34(3) EStG eligibility.
+    - **GmbH sale to individual:** Prefer Share Deal (~27.8% vs. ~50% for Asset Deal).
+    - **GmbH sale to holding company:** Share Deal strongly preferred (~1.5% seller tax).
+    - **Pre-sale conversion:** GbR → GmbH (§ 20 UmwStG) enables Share Deal later (7-year lock-in).
+
+tags:
+  - steuer
+  - konstellationen
+  - asset-deal
+  - share-deal
+  - rechtsformen
+  - §16-estg
+  - §17-estg
+  - §34-estg
+  - §8b-kstg
+  - teileinkünfteverfahren
+source_type: manual
+source_url: ""
+source_law_paragraph: "§ 16 EStG, § 17 EStG, § 34 EStG, § 8b KStG, § 20 UmwStG"
+is_active: true
