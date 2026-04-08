@@ -15,6 +15,7 @@ const checklistRoutes = require('./routes/checklist');
 const knowledgeRoutes = require('./routes/knowledge');
 const adminRoutes = require('./routes/admin');
 const contractRoutes = require('./routes/contract');
+const planRoutes = require('./routes/plan');
 
 // Scrapers / cron (initialise after server starts)
 const { initScraperCron } = require('./scrapers/cron');
@@ -91,6 +92,7 @@ app.use('/api/checklist', checklistRoutes);
 app.use('/api/knowledge', knowledgeRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/contract', contractRoutes);
+app.use('/api/plan', planRoutes);
 
 // ──────────────────────────────────────────────
 //  Static frontend (production)

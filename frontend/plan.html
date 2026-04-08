@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>5-Jahres-Plan — Unternehmensübernahme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/baeste_favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/baeste_favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/baeste_favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/assets/baeste_favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="/css/plan.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<script>window.APP_CONFIG = { apiBase: '/api' };</script>
+<script src="/js/auth.js"></script>
+<script>
+    Auth.requireLogin().then(function (user) {
+        Auth.addLogoutButton('.header-actions');
+        document.getElementById('plan-username').textContent = user.username;
+    });
+</script>
+
+<!-- ── Header ─────────────────────────────────────────── -->
+<header class="plan-header">
+    <img class="logo" src="/assets/baesteLogoTag_PNG.png" alt="bäste">
+    <div>
+        <div class="title">5-Jahres-Plan</div>
+        <div class="subtitle">Interaktive Finanzplanung nach Unternehmensübernahme</div>
+    </div>
+    <div class="header-actions">
+        <span style="font-size:.8rem;color:#9ca3af" id="plan-username"></span>
+        <a href="/uebernahme" style="font-size:.8rem;color:#9ca3af;text-decoration:none;">← Hub</a>
+    </div>
+</header>
+
+<!-- ── Body ───────────────────────────────────────────── -->
+<div class="plan-body">
+
+    <!-- ── Sidebar: Global settings ─────────────────── -->
+    <aside class="plan-sidebar">
+
+        <div>
+            <h2>Grunddaten</h2>
+            <div class="field-group">
+                <div class="field-row">
+                    <label>Unternehmensname</label>
+                    <input type="text" id="s-company" placeholder="Muster GmbH" value="">
+                </div>
+                <div class="field-row">
+                    <label>Startjahr</label>
+                    <input type="number" id="s-start-year" value="2026" min="2020" max="2050">
+                </div>
+                <div class="field-row">
+                    <label>Kaufpreis (€)</label>
+                    <input type="number" id="s-purchase-price" value="500000" min="0" step="10000">
+                </div>
+                <div class="field-row">
+                    <label>Eigenkapital-Anteil (€)</label>
+                    <input type="number" id="s-equity" value="150000" min="0" step="5000">
+                </div>
+                <div class="field-row">
+                    <label>Fremdkapital / Darlehen (€)</label>
+                    <input type="number" id="s-debt" value="350000" min="0" step="5000">
+                </div>
+                <div class="field-row">
+                    <label>Zinssatz Darlehen (%)</label>
+                    <input type="number" id="s-interest-rate" value="4.5" min="0" max="25" step="0.1">
+                </div>
+                <div class="field-row">
+                    <label>Laufzeit Darlehen (Jahre)</label>
+                    <input type="number" id="s-loan-term" value="7" min="1" max="25" step="1">
+                </div>
+                <div class="field-row">
+                    <label>Eigentümergehalt p.a. (€)</label>
+                    <input type="number" id="s-owner-salary" value="72000" min="0" step="1000">
+                </div>
+                <div class="field-row">
+                    <label>Steuerquote gesamt (%)</label>
+                    <input type="number" id="s-tax-rate" value="28" min="0" max="60" step="0.5">
+                    <span class="hint">Gewerbesteuer + KSt / ESt</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2>Szenario</h2>
+            <div class="scenario-bar">
+                <button class="scenario-btn active-base" data-scenario="base" onclick="Plan.setScenario('base', this)">Basis</button>
+                <button class="scenario-btn" data-scenario="bull" onclick="Plan.setScenario('bull', this)">Optimistisch</button>
+                <button class="scenario-btn" data-scenario="bear" onclick="Plan.setScenario('bear', this)">Pessimistisch</button>
+            </div>
+        </div>
+
+        <div>
+            <h2>Wachstumsannahmen</h2>
+            <div class="assumption-grid" id="growth-sliders"></div>
+        </div>
+
+        <div class="btn-bar">
+            <button class="btn-primary" onclick="Plan.recalculate()">📊 Neu berechnen</button>
+            <button class="btn-secondary" onclick="Plan.exportCSV()">⬇ CSV</button>
+        </div>
+    </aside>
+
+    <!-- ── Main content ──────────────────────────────── -->
+    <main class="plan-main">
+
+        <!-- KPI Strip -->
+        <div class="kpi-strip" id="kpi-strip">
+            <div class="kpi-box neutral">
+                <div class="kpi-label">Ø Jahres-Umsatz</div>
+                <div class="kpi-value" id="kpi-avg-revenue">—</div>
+                <div class="kpi-sub">Ø über 5 Jahre</div>
+            </div>
+            <div class="kpi-box positive">
+                <div class="kpi-label">Kum. EBITDA</div>
+                <div class="kpi-value" id="kpi-cum-ebitda">—</div>
+                <div class="kpi-sub">5-Jahres-Summe</div>
+            </div>
+            <div class="kpi-box neutral">
+                <div class="kpi-label">Kum. Free Cashflow</div>
+                <div class="kpi-value" id="kpi-cum-fcf">—</div>
+                <div class="kpi-sub">nach Steuer & Tilgung</div>
+            </div>
+            <div class="kpi-box" id="kpi-payback-box">
+                <div class="kpi-label">Amortisation EK</div>
+                <div class="kpi-value" id="kpi-payback">—</div>
+                <div class="kpi-sub">Jahre bis Eigenkapital zurück</div>
+                <div class="payback-bar-wrap"><div class="payback-bar-fill" id="payback-bar" style="width:0%"></div></div>
+            </div>
+            <div class="kpi-box">
+                <div class="kpi-label">Schuldenstand J5</div>
+                <div class="kpi-value" id="kpi-debt-end">—</div>
+                <div class="kpi-sub">Restschuld nach Jahr 5</div>
+            </div>
+            <div class="kpi-box positive">
+                <div class="kpi-label">ROI (Eigenkapital)</div>
+                <div class="kpi-value" id="kpi-roi">—</div>
+                <div class="kpi-sub">Kum. FCF / EK-Einsatz</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="plan-tabs">
+            <button class="plan-tab-btn active" onclick="Plan.showTab('overview', this)">Übersicht</button>
+            <button class="plan-tab-btn" onclick="Plan.showTab('revenue', this)">Einnahmen</button>
+            <button class="plan-tab-btn" onclick="Plan.showTab('costs', this)">Ausgaben</button>
+            <button class="plan-tab-btn" onclick="Plan.showTab('financing', this)">Finanzierung</button>
+            <button class="plan-tab-btn" onclick="Plan.showTab('cashflow', this)">Cashflow</button>
+            <button class="plan-tab-btn" onclick="Plan.showTab('milestones', this)">Meilensteine</button>
+        </div>
+
+        <!-- ── Tab: Übersicht ─────────────────────────── -->
+        <div class="tab-panel active" id="tab-overview">
+            <div class="plan-card">
+                <h3>📈 GuV-Zusammenfassung <span class="pill" id="scenario-pill">Basis</span></h3>
+                <div class="year-table-wrapper">
+                    <table class="year-table" id="overview-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th id="ov-y1">J1</th>
+                                <th id="ov-y2">J2</th>
+                                <th id="ov-y3">J3</th>
+                                <th id="ov-y4">J4</th>
+                                <th id="ov-y5">J5</th>
+                                <th>Gesamt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overview-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📊 Umsatz, EBITDA & Free Cashflow</h3>
+                <div class="chart-container">
+                    <canvas id="chart-overview"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Tab: Einnahmen ─────────────────────────── -->
+        <div class="tab-panel" id="tab-revenue">
+            <div class="plan-card">
+                <h3>💰 Umsatz-Positionen (Jahr 1 Basiswerte)</h3>
+                <p style="font-size:.8rem;color:var(--c-text-muted);margin-bottom:.75rem">
+                    Trage hier die einzelnen Erlösquellen ein. Wachstumsrate wird aus den globalen Annahmen übernommen, kann aber pro Zeile überschrieben werden.
+                </p>
+                <table class="category-table">
+                    <thead>
+                        <tr>
+                            <th>Bezeichnung</th>
+                            <th class="right" style="width:130px">Jahr 1 (€/J)</th>
+                            <th class="right" style="width:110px">Wachstum %/J</th>
+                            <th style="width:36px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="revenue-rows"></tbody>
+                </table>
+                <button class="btn-add-row" onclick="Plan.addRevenueRow()">＋ Erlösquelle hinzufügen</button>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem;">
+                <h3>📊 Umsatz-Projektion nach Quelle</h3>
+                <div class="chart-container">
+                    <canvas id="chart-revenue"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Tab: Ausgaben ──────────────────────────── -->
+        <div class="tab-panel" id="tab-costs">
+            <div class="plan-card">
+                <h3>📤 Fixkosten (Jahr 1 Basiswerte)</h3>
+                <p style="font-size:.8rem;color:var(--c-text-muted);margin-bottom:.75rem">
+                    Jährliche Fixkosten. Wachstumsrate = Kosteninflation.
+                </p>
+                <table class="category-table">
+                    <thead>
+                        <tr>
+                            <th>Bezeichnung</th>
+                            <th class="right" style="width:130px">Jahr 1 (€/J)</th>
+                            <th class="right" style="width:110px">Wachstum %/J</th>
+                            <th style="width:36px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="fixcost-rows"></tbody>
+                </table>
+                <button class="btn-add-row" onclick="Plan.addFixcostRow()">＋ Fixkostenposition hinzufügen</button>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📤 Variable Kosten</h3>
+                <p style="font-size:.8rem;color:var(--c-text-muted);margin-bottom:.75rem">
+                    Als % vom Umsatz.
+                </p>
+                <table class="category-table">
+                    <thead>
+                        <tr>
+                            <th>Bezeichnung</th>
+                            <th class="right" style="width:130px">% vom Umsatz</th>
+                            <th style="width:36px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="varcost-rows"></tbody>
+                </table>
+                <button class="btn-add-row" onclick="Plan.addVarcostRow()">＋ Variable Kostenposition</button>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📊 Kostenstruktur über 5 Jahre</h3>
+                <div class="chart-container">
+                    <canvas id="chart-costs"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Tab: Finanzierung ──────────────────────── -->
+        <div class="tab-panel" id="tab-financing">
+            <div class="plan-card">
+                <h3>🏦 Tilgungsplan</h3>
+                <div class="year-table-wrapper">
+                    <table class="year-table" id="loan-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th id="ln-y1">J1</th>
+                                <th id="ln-y2">J2</th>
+                                <th id="ln-y3">J3</th>
+                                <th id="ln-y4">J4</th>
+                                <th id="ln-y5">J5</th>
+                                <th>Gesamt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="loan-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📊 Schuldenabbau</h3>
+                <div class="chart-container">
+                    <canvas id="chart-loan"></canvas>
+                </div>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>💡 Investitions-Positionen (CapEx)</h3>
+                <p style="font-size:.8rem;color:var(--c-text-muted);margin-bottom:.75rem">
+                    Geplante Investitionen pro Jahr (nicht cashflow-neutral).
+                </p>
+                <table class="category-table">
+                    <thead>
+                        <tr>
+                            <th>Bezeichnung</th>
+                            <th class="right" style="width:100px">J1 (€)</th>
+                            <th class="right" style="width:100px">J2 (€)</th>
+                            <th class="right" style="width:100px">J3 (€)</th>
+                            <th class="right" style="width:100px">J4 (€)</th>
+                            <th class="right" style="width:100px">J5 (€)</th>
+                            <th style="width:36px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="capex-rows"></tbody>
+                </table>
+                <button class="btn-add-row" onclick="Plan.addCapexRow()">＋ Investition hinzufügen</button>
+            </div>
+        </div>
+
+        <!-- ── Tab: Cashflow ──────────────────────────── -->
+        <div class="tab-panel" id="tab-cashflow">
+            <div class="plan-card">
+                <h3>💵 Free-Cashflow-Rechnung</h3>
+                <div class="year-table-wrapper">
+                    <table class="year-table" id="cf-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th id="cf-y1">J1</th>
+                                <th id="cf-y2">J2</th>
+                                <th id="cf-y3">J3</th>
+                                <th id="cf-y4">J4</th>
+                                <th id="cf-y5">J5</th>
+                                <th>Gesamt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cf-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📊 Kumulierter Free Cashflow</h3>
+                <div class="chart-container">
+                    <canvas id="chart-cf"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Tab: Meilensteine ──────────────────────── -->
+        <div class="tab-panel" id="tab-milestones">
+            <div class="plan-card">
+                <h3>🚩 Strategische Meilensteine</h3>
+                <p style="font-size:.8rem;color:var(--c-text-muted);margin-bottom:1rem">
+                    Definiere Etappenziele pro Jahr. Diese erscheinen im Export / Ausdruck.
+                </p>
+                <div class="milestone-list" id="milestone-list"></div>
+                <button class="btn-add-row" style="margin-top:1rem" onclick="Plan.addMilestone()">＋ Meilenstein hinzufügen</button>
+            </div>
+            <div class="plan-card" style="margin-top:1.5rem">
+                <h3>📋 Risiken &amp; Annahmen</h3>
+                <div id="risk-callouts"></div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="plan-footer">
+    Kein Ersatz für professionelle Steuer- und Unternehmensberatung. Alle Projektionen basieren auf Ihren Eingaben.
+</footer>
+
+<script src="/js/planApp.js"></script>
+</body>
+</html>

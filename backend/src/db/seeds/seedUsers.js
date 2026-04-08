@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * seedUsers.js — Create initial users (BudXXL, FredXXL, baeste)
+ * seedUsers.js — Create initial users (FredXXL, baeste)
  *
  * Usage:  node src/db/seeds/seedUsers.js
  *
@@ -16,12 +16,6 @@ const db = require('../index');
 const SALT_ROUNDS = 12;
 
 const USERS = [
-    {
-        username: 'BudXXL',
-        role: 'user',
-        envPassword: 'SEED_PW_BUDXXL',
-        defaultPassword: 'BudXXL_Start2026!',
-    },
     {
         username: 'FredXXL',
         role: 'manager',
