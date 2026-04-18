@@ -72,27 +72,43 @@ async function checkByHead(url) {
     return 'unknown';
 }
 
-// YouTube: GET + follow redirects (EU consent page). Returns 200 or 404.
+// YouTube: GET with consent-bypass cookie so EU servers don't get stuck on consent page
 async function checkYouTube(url) {
     const resp = await fetchWithTimeout(url, {
         method: 'GET',
         redirect: 'follow',
-        headers: { 'User-Agent': BROWSER_UA, 'Accept-Language': 'en-US,en;q=0.9' },
+        headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Cookie': 'CONSENT=PENDING+999; SOCS=CAESEwgDEgk2ODE4MTAyNTQaAmRlIAEaBgiA_LyaBg',
+        },
     });
     if (resp.status === 404) return 'available';
-    if (resp.status === 200) return 'taken';
+    if (resp.status !== 200) return 'unknown';
+    const body = await resp.text();
+    // consent page or error page → can't determine
+    if (body.includes('consent.youtube.com') || body.includes('consentpage')) return 'unknown';
+    // real channel page has og:title or channelId
+    if (body.includes('"channelId"') || body.includes('og:title')) return 'taken';
     return 'unknown';
 }
 
-// Instagram: public API endpoint returns 200 (exists) or 404 (not found)
+// Instagram: public API endpoint — parse JSON body to confirm user exists
 async function checkInstagram(username) {
     const resp = await fetchWithTimeout(
         `https://www.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
         { headers: { 'User-Agent': BROWSER_UA, 'X-IG-App-ID': '936619743392459' } },
     );
     if (resp.status === 404) return 'available';
-    if (resp.status === 200) return 'taken';
-    return 'unknown';
+    if (resp.status !== 200) return 'unknown';
+    // Parse body to verify user data is actually present
+    try {
+        const data = await resp.json();
+        if (data && data.data && data.data.user) return 'taken';
+        return 'available';
+    } catch {
+        return 'unknown';
+    }
 }
 
 // TikTok: GET the profile page, parse embedded JSON statusCode
@@ -106,21 +122,33 @@ async function checkTikTok(url) {
     const body = await resp.text();
     // statusCode 10221 = user does not exist
     if (body.includes('"statusCode":10221')) return 'available';
-    // statusCode 0 = OK, user exists
-    if (body.includes('"uniqueId"') && body.includes('"statusCode":0')) return 'taken';
+    // Must match BOTH uniqueId containing the username AND statusCode 0
+    if (body.includes('"statusCode":0')) {
+        // Confirm there's actual user data, not just generic page content
+        if (body.includes('"uniqueId"') && body.includes('"nickname"')) return 'taken';
+    }
     return 'unknown';
 }
 
-// Facebook: GET with Googlebot UA, check for og:title presence
+// Facebook: GET the page, check for user-specific og:title (not generic error page)
 async function checkFacebook(url) {
     const resp = await fetchWithTimeout(url, {
         method: 'GET',
         redirect: 'follow',
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1)' },
+        headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept-Language': 'en-US,en;q=0.9',
+        },
     });
     if (resp.status === 404) return 'available';
+    if (resp.status !== 200) return 'unknown';
     const body = await resp.text();
-    if (/<meta[^>]*property="og:title"[^>]*content="[^"]+"/i.test(body)) return 'taken';
+    // Facebook error/login pages have generic titles or no og:title
+    // A real profile page has a specific og:title with the page/user name
+    const ogMatch = body.match(/<meta[^>]*property="og:title"[^>]*content="([^"]*)"/i);
+    if (ogMatch && ogMatch[1] && !ogMatch[1].toLowerCase().includes('facebook')) return 'taken';
+    // Also check for profile-specific JSON-LD or entity data
+    if (body.includes('"@type":"Person"') || body.includes('"@type":"Organization"')) return 'taken';
     return 'unknown';
 }
 
