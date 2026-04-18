@@ -6,3 +6,5 @@ dist/
 coverage/
 *.pid
 .nyc_output/
+
+scripts/deploy.sh
