@@ -1,0 +1,287 @@
+/* ── Availability Checker Styles ─────────────────────────────── */
+
+.avail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ── Search Form ────────────────────────────────────────────── */
+.avail-form {
+    background: var(--c-bg-card);
+    border: 1.5px solid var(--c-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.avail-form h2 {
+    font-size: 1.25rem;
+    margin-bottom: .25rem;
+}
+
+.avail-form .subtitle {
+    color: var(--c-text-muted);
+    font-size: .85rem;
+    margin-bottom: 1.5rem;
+}
+
+.avail-input-row {
+    display: flex;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+}
+
+.avail-input-row input {
+    flex: 1;
+    padding: .65rem 1rem;
+    border: 1.5px solid var(--c-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color .15s;
+}
+
+.avail-input-row input:focus {
+    border-color: var(--c-brand);
+}
+
+.avail-input-row button {
+    padding: .65rem 1.5rem;
+    background: var(--c-brand);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: .95rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s;
+}
+
+.avail-input-row button:hover {
+    background: var(--c-brand-dark);
+}
+
+.avail-input-row button:disabled {
+    opacity: .5;
+    cursor: wait;
+}
+
+/* ── TLD Checkboxes ─────────────────────────────────────────── */
+.tld-label {
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.tld-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+.tld-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .3rem .65rem;
+    border: 1.5px solid var(--c-border);
+    border-radius: 20px;
+    font-size: .8rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    user-select: none;
+}
+
+.tld-chip:hover {
+    border-color: var(--c-brand);
+}
+
+.tld-chip input[type="checkbox"] {
+    accent-color: var(--c-brand);
+    margin: 0;
+}
+
+.tld-chip.checked {
+    background: #e8f0fd;
+    border-color: var(--c-brand);
+}
+
+/* ── Results ────────────────────────────────────────────────── */
+.avail-results {
+    display: none;
+}
+
+.avail-results.visible {
+    display: block;
+}
+
+.result-section {
+    background: var(--c-bg-card);
+    border: 1.5px solid var(--c-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.result-section h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.result-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .6rem .85rem;
+    border-radius: 8px;
+    background: var(--c-bg);
+    font-size: .9rem;
+    gap: .75rem;
+}
+
+.result-item .name {
+    font-weight: 600;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Status Badges ──────────────────────────────────────────── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .2rem .6rem;
+    border-radius: 12px;
+    font-size: .75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge.available {
+    background: #def7ec;
+    color: #03543f;
+}
+
+.badge.taken {
+    background: #fde8e8;
+    color: #9b1c1c;
+}
+
+.badge.unknown {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.result-item a {
+    color: var(--c-brand);
+    font-size: .8rem;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+/* ── Trademark Links ────────────────────────────────────────── */
+.trademark-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 8px;
+    background: var(--c-bg);
+    text-decoration: none;
+    color: inherit;
+    transition: background .15s;
+}
+
+.trademark-link:hover {
+    background: #e8f0fd;
+}
+
+.trademark-link .tm-name {
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.trademark-link .tm-desc {
+    font-size: .78rem;
+    color: var(--c-text-muted);
+}
+
+.trademark-link .arrow {
+    margin-left: auto;
+    color: var(--c-brand);
+    font-weight: 600;
+}
+
+/* ── Loading Spinner ────────────────────────────────────────── */
+.avail-loading {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    color: var(--c-text-muted);
+    font-size: .9rem;
+}
+
+.avail-loading.visible {
+    display: block;
+}
+
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--c-border);
+    border-top-color: var(--c-brand);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin-bottom: .5rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Error Message ──────────────────────────────────────────── */
+.avail-error {
+    display: none;
+    padding: 1rem;
+    background: #fde8e8;
+    color: #9b1c1c;
+    border-radius: 8px;
+    font-size: .875rem;
+    margin-bottom: 1rem;
+}
+
+.avail-error.visible {
+    display: block;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .avail-container { padding: 1rem; }
+    .avail-input-row { flex-direction: column; }
+    .result-item { flex-wrap: wrap; }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Verfügbarkeits-Check — Unternehmensübernahme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/baeste_favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/baeste_favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/baeste_favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/assets/baeste_favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/availability.css">
+</head>
+
+<body>
+    <script>window.APP_CONFIG = { apiBase: '/api' };</script>
+    <script src="/js/auth.js"></script>
+    <script>
+        Auth.requireLogin().then(function () {
+            Auth.addLogoutButton('.app-header');
+        });
+    </script>
+
+    <!-- ── Header ─────────────────────────────── -->
+    <header class="app-header" style="background:#111827;color:#fff;padding:1rem 2rem;display:flex;align-items:center;gap:.75rem">
+        <a href="/uebernahme" style="color:#9ca3af;text-decoration:none;font-size:.85rem;margin-right:.5rem">← Zurück</a>
+        <img class="logo" src="/assets/baesteLogoTag_PNG.png" alt="bäste" style="height:28px;width:auto">
+        <div>
+            <div style="font-size:1.05rem;font-weight:600">Verfügbarkeits-Check</div>
+            <div style="font-size:.72rem;color:#9ca3af">Domain · Social Media · Markenregister</div>
+        </div>
+    </header>
+
+    <!-- ── Main ───────────────────────────────── -->
+    <main class="avail-container">
+
+        <!-- Search Form -->
+        <div class="avail-form">
+            <h2>Name prüfen</h2>
+            <p class="subtitle">Prüfe ob ein Name als Domain, Social-Media-Handle und Marke noch verfügbar ist.</p>
+
+            <div class="avail-input-row">
+                <input type="text" id="avail-name" placeholder="z. B. meinunternehmen" maxlength="63" autocomplete="off" spellcheck="false">
+                <button id="avail-btn">Prüfen</button>
+            </div>
+
+            <span class="tld-label">Domain-Endungen:</span>
+            <div class="tld-grid">
+                <label class="tld-chip"><input type="checkbox" value="de" checked>.de</label>
+                <label class="tld-chip"><input type="checkbox" value="com" checked>.com</label>
+                <label class="tld-chip"><input type="checkbox" value="eu" checked>.eu</label>
+                <label class="tld-chip"><input type="checkbox" value="net">.net</label>
+                <label class="tld-chip"><input type="checkbox" value="org">.org</label>
+                <label class="tld-chip"><input type="checkbox" value="io">.io</label>
+                <label class="tld-chip"><input type="checkbox" value="shop">.shop</label>
+                <label class="tld-chip"><input type="checkbox" value="online">.online</label>
+                <label class="tld-chip"><input type="checkbox" value="info">.info</label>
+                <label class="tld-chip"><input type="checkbox" value="me">.me</label>
+                <label class="tld-chip"><input type="checkbox" value="tech">.tech</label>
+                <label class="tld-chip"><input type="checkbox" value="blog">.blog</label>
+            </div>
+        </div>
+
+        <!-- Error -->
+        <div class="avail-error" id="avail-error"></div>
+
+        <!-- Loading -->
+        <div class="avail-loading" id="avail-loading">
+            <div class="spinner"></div>
+            <div>Verfügbarkeit wird geprüft…</div>
+        </div>
+
+        <!-- Results -->
+        <div class="avail-results" id="avail-results">
+
+            <!-- Domains -->
+            <div class="result-section">
+                <h3>🌐 Domains</h3>
+                <ul class="result-list" id="domain-results"></ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="result-section">
+                <h3>📱 Social Media</h3>
+                <ul class="result-list" id="social-results"></ul>
+            </div>
+
+            <!-- Trademarks -->
+            <div class="result-section">
+                <h3>™️ Markenregister</h3>
+                <div id="trademark-results" style="display:flex;flex-direction:column;gap:.5rem"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ── Footer ─────────────────────────────── -->
+    <footer style="text-align:center;padding:1rem 2rem;font-size:.75rem;color:#6b7280;border-top:1px solid #d1d5db">
+        Ergebnisse dienen der Orientierung. Domain-Verfügbarkeit und Social-Media-Status können abweichen.
+    </footer>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/availabilityApp.js"></script>
+</body>
+
+</html>

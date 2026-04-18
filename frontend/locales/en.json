@@ -407,5 +407,15 @@
             "technisch": "Technical",
             "personal": "HR / Personnel"
         }
+    },
+    "availability": {
+        "title": "Availability Check",
+        "subtitle": "Domain · Social Media · Trademark Registry",
+        "description": "Check if a name is available as a domain, social media handle, and in trademark registries.",
+        "check": "Check",
+        "tldLabel": "Domain extensions:",
+        "available": "Available",
+        "taken": "Taken",
+        "unknown": "Unknown"
     }
 }

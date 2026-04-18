@@ -407,5 +407,15 @@
             "technisch": "Technisch",
             "personal": "Personal"
         }
+    },
+    "availability": {
+        "title": "Verfügbarkeits-Check",
+        "subtitle": "Domain · Social Media · Markenregister",
+        "description": "Prüfe ob ein Name als Domain, Social-Media-Handle und im Markenregister noch verfügbar ist.",
+        "check": "Prüfen",
+        "tldLabel": "Domain-Endungen:",
+        "available": "Frei",
+        "taken": "Belegt",
+        "unknown": "Unbekannt"
     }
 }

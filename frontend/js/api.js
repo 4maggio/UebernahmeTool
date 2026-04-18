@@ -126,6 +126,12 @@ const API = (() => {
         return authRequest(token, 'GET', '/admin/users');
     }
 
+    /* ── Availability Check ─────────────────────────────────────────── */
+
+    function checkAvailability(name, tlds) {
+        return request('POST', '/availability/check', { name, tlds });
+    }
+
     function adminCreateUser(token, userData) {
         return authRequest(token, 'POST', '/admin/users', userData);
     }
@@ -173,6 +179,7 @@ const API = (() => {
         adminGetUsers,
         adminCreateUser,
         adminUpdateUser,
+        checkAvailability,
     };
 })();
 
