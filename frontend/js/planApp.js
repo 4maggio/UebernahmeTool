@@ -19,7 +19,7 @@ const Plan = (() => {
     const STORAGE_KEY = 'plan_state_v1';
 
     const SCENARIO_MULTIPLIERS = {
-        base: { revenue: 1.0,  costs: 1.0  },
+        base: { revenue: 1.0, costs: 1.0 },
         bull: { revenue: 1.15, costs: 0.92 },
         bear: { revenue: 0.82, costs: 1.08 },
     };
@@ -83,15 +83,15 @@ const Plan = (() => {
     // ── Read sidebar globals ──────────────────────────────────────────
     function readGlobals() {
         return {
-            company:       document.getElementById('s-company')?.value || '',
-            startYear:     parseInt(document.getElementById('s-start-year')?.value) || 2026,
+            company: document.getElementById('s-company')?.value || '',
+            startYear: parseInt(document.getElementById('s-start-year')?.value) || 2026,
             purchasePrice: parseFloat(document.getElementById('s-purchase-price')?.value) || 0,
-            equity:        parseFloat(document.getElementById('s-equity')?.value) || 0,
-            debt:          parseFloat(document.getElementById('s-debt')?.value) || 0,
-            interestRate:  parseFloat(document.getElementById('s-interest-rate')?.value) || 0,
-            loanTerm:      parseInt(document.getElementById('s-loan-term')?.value) || 7,
-            ownerSalary:   parseFloat(document.getElementById('s-owner-salary')?.value) || 0,
-            taxRate:       parseFloat(document.getElementById('s-tax-rate')?.value) || 28,
+            equity: parseFloat(document.getElementById('s-equity')?.value) || 0,
+            debt: parseFloat(document.getElementById('s-debt')?.value) || 0,
+            interestRate: parseFloat(document.getElementById('s-interest-rate')?.value) || 0,
+            loanTerm: parseInt(document.getElementById('s-loan-term')?.value) || 7,
+            ownerSalary: parseFloat(document.getElementById('s-owner-salary')?.value) || 0,
+            taxRate: parseFloat(document.getElementById('s-tax-rate')?.value) || 28,
         };
     }
 
@@ -173,8 +173,8 @@ const Plan = (() => {
 
         // Loan
         const loanRows = calcLoan(g);
-        const interest   = loanRows.map(r => r.interest);
-        const repayment  = loanRows.map(r => r.repayment);
+        const interest = loanRows.map(r => r.interest);
+        const repayment = loanRows.map(r => r.repayment);
         const loanBalance = loanRows.map(r => r.balance);
 
         // EBIT (simplified: ignore D&A for now, note in UI)
@@ -277,7 +277,7 @@ const Plan = (() => {
 
     // ── Overview table ────────────────────────────────────────────────
     function renderOverviewTable(r) {
-        updateYearHeaders(['ov-y1','ov-y2','ov-y3','ov-y4','ov-y5'], r.years);
+        updateYearHeaders(['ov-y1', 'ov-y2', 'ov-y3', 'ov-y4', 'ov-y5'], r.years);
 
         const rows = [
             { label: 'EINNAHMEN', section: true },
@@ -301,7 +301,7 @@ const Plan = (() => {
 
     // ── Loan table ────────────────────────────────────────────────────
     function renderLoanTable(r) {
-        updateYearHeaders(['ln-y1','ln-y2','ln-y3','ln-y4','ln-y5'], r.years);
+        updateYearHeaders(['ln-y1', 'ln-y2', 'ln-y3', 'ln-y4', 'ln-y5'], r.years);
 
         const totalAnnuity = r.interest.map((v, i) => v + r.repayment[i]);
         const rows = [
@@ -316,7 +316,7 @@ const Plan = (() => {
 
     // ── CF table ──────────────────────────────────────────────────────
     function renderCFTable(r) {
-        updateYearHeaders(['cf-y1','cf-y2','cf-y3','cf-y4','cf-y5'], r.years);
+        updateYearHeaders(['cf-y1', 'cf-y2', 'cf-y3', 'cf-y4', 'cf-y5'], r.years);
 
         const rows = [
             { label: 'EBITDA', vals: r.ebitda, bold: true },
@@ -424,7 +424,7 @@ const Plan = (() => {
         destroyChart('chart-revenue');
         const revCtx = document.getElementById('chart-revenue');
         if (revCtx) {
-            const colors = ['#1a56db','#057a55','#d97706','#7c3aed','#be185d','#0891b2','#16a34a'];
+            const colors = ['#1a56db', '#057a55', '#d97706', '#7c3aed', '#be185d', '#0891b2', '#16a34a'];
             charts['chart-revenue'] = new Chart(revCtx, {
                 type: 'bar',
                 data: {
@@ -707,9 +707,9 @@ const Plan = (() => {
                 <div class="ms-year">${startYear + ms.year - 1}</div>
                 <div style="display:flex;flex-direction:column;gap:.35rem;flex:1">
                     <select onchange="Plan._updateMsCategory(${idx}, this.value)">
-                        ${['Betrieb','Wachstum','Finanzen','Personal','Produkt','Exit/Strategie'].map(c =>
-                            `<option ${ms.category === c ? 'selected' : ''}>${c}</option>`
-                        ).join('')}
+                        ${['Betrieb', 'Wachstum', 'Finanzen', 'Personal', 'Produkt', 'Exit/Strategie'].map(c =>
+                `<option ${ms.category === c ? 'selected' : ''}>${c}</option>`
+            ).join('')}
                     </select>
                     <input type="text" value="${escHtml(ms.text)}" placeholder="Meilenstein beschreiben…" onchange="Plan._updateMsText(${idx}, this.value)">
                 </div>
@@ -729,7 +729,7 @@ const Plan = (() => {
         if (!container) return;
         const sliders = [
             { key: 'globalGrowthRevenue', label: 'Umsatzwachstum %/J', min: -20, max: 40 },
-            { key: 'globalGrowthCosts',  label: 'Kostenentwicklung %/J', min: -10, max: 30 },
+            { key: 'globalGrowthCosts', label: 'Kostenentwicklung %/J', min: -10, max: 30 },
         ];
         container.innerHTML = sliders.map(s => `
             <div class="assumption-item">
@@ -948,8 +948,8 @@ const Plan = (() => {
 
     // ── Sidebar input listeners (auto-recalc) ─────────────────────────
     function bindSidebar() {
-        const ids = ['s-company','s-start-year','s-purchase-price','s-equity','s-debt',
-                     's-interest-rate','s-loan-term','s-owner-salary','s-tax-rate'];
+        const ids = ['s-company', 's-start-year', 's-purchase-price', 's-equity', 's-debt',
+            's-interest-rate', 's-loan-term', 's-owner-salary', 's-tax-rate'];
         ids.forEach(id => {
             const el = document.getElementById(id);
             if (el) el.addEventListener('change', () => recalculate());

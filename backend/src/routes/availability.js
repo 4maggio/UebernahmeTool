@@ -28,6 +28,8 @@ const ALLOWED_TLDS = new Set([
     'info', 'me', 'tech', 'blog', 'biz', 'app', 'dev', 'site',
 ]);
 
+const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
 // ── Helpers ──────────────────────────────────────────────────────
 
 async function checkDomain(domain) {
@@ -40,24 +42,99 @@ async function checkDomain(domain) {
     }
 }
 
-async function checkSocialProfile(url) {
+/**
+ * Platform-specific social media checks.
+ * Each platform responds differently to automated requests, so we need
+ * tailored strategies rather than a one-size-fits-all HEAD request.
+ */
+async function fetchWithTimeout(url, opts = {}, ms = 8000) {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
+    const timer = setTimeout(() => controller.abort(), ms);
     try {
-        const resp = await fetch(url, {
-            method: 'HEAD',
-            redirect: 'manual',
-            signal: controller.signal,
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (compatible; AvailabilityChecker/1.0)',
-            },
-        });
-        clearTimeout(timeout);
-        if (resp.status === 404) return 'available';
-        if (resp.status >= 200 && resp.status < 400) return 'taken';
-        return 'unknown';
+        const resp = await fetch(url, { ...opts, signal: controller.signal });
+        clearTimeout(timer);
+        return resp;
+    } catch (err) {
+        clearTimeout(timer);
+        throw err;
+    }
+}
+
+// GitHub & X/Twitter & LinkedIn: simple HEAD, 404 = available
+async function checkByHead(url) {
+    const resp = await fetchWithTimeout(url, {
+        method: 'HEAD',
+        redirect: 'follow',
+        headers: { 'User-Agent': BROWSER_UA },
+    });
+    if (resp.status === 404) return 'available';
+    if (resp.status >= 200 && resp.status < 400) return 'taken';
+    return 'unknown';
+}
+
+// YouTube: GET + follow redirects (EU consent page). Returns 200 or 404.
+async function checkYouTube(url) {
+    const resp = await fetchWithTimeout(url, {
+        method: 'GET',
+        redirect: 'follow',
+        headers: { 'User-Agent': BROWSER_UA, 'Accept-Language': 'en-US,en;q=0.9' },
+    });
+    if (resp.status === 404) return 'available';
+    if (resp.status === 200) return 'taken';
+    return 'unknown';
+}
+
+// Instagram: public API endpoint returns 200 (exists) or 404 (not found)
+async function checkInstagram(username) {
+    const resp = await fetchWithTimeout(
+        `https://www.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
+        { headers: { 'User-Agent': BROWSER_UA, 'X-IG-App-ID': '936619743392459' } },
+    );
+    if (resp.status === 404) return 'available';
+    if (resp.status === 200) return 'taken';
+    return 'unknown';
+}
+
+// TikTok: GET the profile page, parse embedded JSON statusCode
+async function checkTikTok(url) {
+    const resp = await fetchWithTimeout(url, {
+        method: 'GET',
+        redirect: 'follow',
+        headers: { 'User-Agent': BROWSER_UA },
+    });
+    if (resp.status === 404) return 'available';
+    const body = await resp.text();
+    // statusCode 10221 = user does not exist
+    if (body.includes('"statusCode":10221')) return 'available';
+    // statusCode 0 = OK, user exists
+    if (body.includes('"uniqueId"') && body.includes('"statusCode":0')) return 'taken';
+    return 'unknown';
+}
+
+// Facebook: GET with Googlebot UA, check for og:title presence
+async function checkFacebook(url) {
+    const resp = await fetchWithTimeout(url, {
+        method: 'GET',
+        redirect: 'follow',
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1)' },
+    });
+    if (resp.status === 404) return 'available';
+    const body = await resp.text();
+    if (/<meta[^>]*property="og:title"[^>]*content="[^"]+"/i.test(body)) return 'taken';
+    return 'unknown';
+}
+
+// Dispatcher: route each platform to its checker
+async function checkSocialProfile(platform, username) {
+    try {
+        switch (platform.id) {
+            case 'youtube':   return await checkYouTube(platform.url(username));
+            case 'instagram': return await checkInstagram(username);
+            case 'tiktok':    return await checkTikTok(platform.url(username));
+            case 'facebook':  return await checkFacebook(platform.url(username));
+            default:          return await checkByHead(platform.url(username));
+        }
     } catch {
-        clearTimeout(timeout);
         return 'unknown';
     }
 }
@@ -99,7 +176,7 @@ router.post('/check', [
         const socialResults = await Promise.allSettled(
             PLATFORMS.map(async platform => {
                 const url = platform.url(cleanName);
-                const status = await checkSocialProfile(url);
+                const status = await checkSocialProfile(platform, cleanName);
                 return { id: platform.id, name: platform.name, url, status };
             })
         );

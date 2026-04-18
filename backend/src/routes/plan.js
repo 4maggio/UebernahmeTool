@@ -155,15 +155,15 @@ router.post('/export/xlsx', [
         wb.created = new Date();
 
         // ── Brand colors ───────────────────────────────────────────
-        const BLUE_DARK  = '1A56DB';
+        const BLUE_DARK = '1A56DB';
         const BLUE_LIGHT = 'E8F0FD';
-        const GREEN      = '057A55';
-        const GREEN_BG   = 'DEF7EC';
-        const RED        = '9B1C1C';
-        const RED_BG     = 'FDE8E8';
-        const GREY_BG    = 'F3F4F6';
-        const HEADER_BG  = '111827';
-        const HEADER_FG  = 'FFFFFF';
+        const GREEN = '057A55';
+        const GREEN_BG = 'DEF7EC';
+        const RED = '9B1C1C';
+        const RED_BG = 'FDE8E8';
+        const GREY_BG = 'F3F4F6';
+        const HEADER_BG = '111827';
+        const HEADER_FG = 'FFFFFF';
 
         const boldFont = { bold: true };
         const headerFont = { bold: true, color: { argb: HEADER_FG } };

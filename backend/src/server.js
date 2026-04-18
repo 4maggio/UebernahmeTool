@@ -43,7 +43,7 @@ app.use(helmet({
 // ──────────────────────────────────────────────
 //  CORS
 // ──────────────────────────────────────────────
-const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3000,https://baeste.eu,https://xn--bste-loa.eu')
+const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3000')
     .split(',')
     .map(s => s.trim());
 
